@@ -24,3 +24,16 @@ input{
     border: none;
 }
 
+.courses{
+    display:grid;
+    grid-template-columns: 33% 34% 33%;
+    position: relative;
+    transform: translate(-50%);
+    margin-left: 50%;
+}
+
+.course{
+     margin: 10%;
+     text-align: center;
+}
+
