@@ -14,3 +14,13 @@ h1{
 
 }
 
+input{
+    padding: 5px;
+    height:50%;
+    top:-50px;
+    width:100%;
+    font-size:20px;
+    background-color: CornflowerBlue;
+    border: none;
+}
+
