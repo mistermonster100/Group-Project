@@ -3,14 +3,18 @@ body{
 }
 
 h1{
-        position: relative;
+       position: relative;
         transform: translate(-50%);
         margin-left: 50%;
+        line-height: 100px;
         text-align: center;
         font-size: 50px;
         background-color: black;
         color: white;
-        height: 50px;
+        height: 100px;
+        opacity: 80%;
+        top:-40px;
+        width: 110%;
 
 }
 
