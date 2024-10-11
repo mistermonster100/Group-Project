@@ -3,49 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <title>Technology</title>
-    <link rel="stylesheet" href = "style.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        style{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    html, body {
+        height: 100%; /* Ensure the body and html take up full height */
+        margin: 0;
+        padding: 0;
+        background-image: url('https://www.progressiveautomations.com/cdn/shop/articles/automated-agriculture_387e4e59-5148-4139-aed9-8a6b1276092f.jpg?v=1587721776&width=1100');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed; /* Ensures background stays in place during scrolling */
+        font-family: Arial, sans-serif;
+        color: white;
+        text-align: center;
+    }
+    
+    h1 {
+        margin-top: 50px;
+        font-size: 48px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        position: relative;
+        z-index: 1;
+    }
+    
+    .courses {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2px;
+        padding: 2px;
+        position: relative;
+        z-index: 1;
+    }
+    
+    .courses div {
+        background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background for readability */
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+    }
+    
+    .courses h2 {
+        font-size: 21px;
+    }
+    
+    .courses p {
+        font-size: 16px;
+    }
+</style>
 </head>
 <body>
-    <h1>Agriculture and Natural Resources </h1>
-    <div class = "courses">
-        <div class = "course">
-            <!--img Put your image link here-->
+    <div class="image-container"></div>
+    <h1>Agriculture and Natural Resources</h1>
+    <div class="courses">
+        <div class="course">
+            <h2>Veterinary Science</h2>
+            <p>Course description</p>
+        </div>
+        <div class="course">
+            <h2>Agriscience</h2>
+            <p>Course description</p>
+        </div>
+        <div class="course">
+            <h2>Agriculture Systems</h2>
+            <p>Course description</p>
+        </div>
+        <div class="course">
+            <h2>Global Sustainability</h2>
+            <p>Course description</p>
+        </div>
+        <div class="course">
             <h2>Course Name</h2>
             <p>Course description</p>
         </div>
-
-        <div class = "course">
-            <!--img Put your image link here-->
+        <div class="course">
             <h2>Course Name</h2>
             <p>Course description</p>
         </div>
-
-        <div class = "course">
-            <!--img Put your image link here-->
-            <h2>Course Name</h2>
-            <p>Course description</p>
-        </div>
-
-        <div class = "course">
-            <!--img Put your image link here-->
-            <h2>Course Name</h2>
-            <p>Course description</p>
-        </div>
-
-        <div class = "course">
-            <!--img Put your image link here-->
-            <h2>Course Name</h2>
-            <p>Course description</p>
-        </div>
-
-        <div class = "course">
-            <!--img Put your image link here-->
-            <h2>Course Name</h2>
-            <p>Course description</p>
-        </div>
-        
     </div>
-
-
 </body>
 </html>
+
