@@ -4,12 +4,21 @@
   <title> Medical </title>
   <link rel="stylesheet" href = "style.css">
 </head>
-  <style> body {
+  <style> {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%; /* Ensure the body and html take up full height */
+    margin: 0;
+    padding: 0;
     background-image: url('https://resources.nejmcareercenter.org/wp-content/uploads/articleImage_network-960x537-1.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    margin: 0;
+    background-attachment: fixed; /* Ensures background stays in place during scrolling */
     font-family: Arial, sans-serif;
     color: white;
     text-align: center;
@@ -19,6 +28,8 @@ h1 {
     margin-top: 50px;
     font-size: 48px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    position: relative;
+    z-index: 1;
 }
 
 .courses {
@@ -26,6 +37,8 @@ h1 {
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
     padding: 20px;
+    position: relative;
+    z-index: 1;
 }
 
 .courses div {
@@ -41,7 +54,8 @@ h1 {
 
 .courses p {
     font-size: 16px;
-}/style>
+}
+</style>
 <body>
     <h1>Medical Network </h1>
     <div class = "courses">
