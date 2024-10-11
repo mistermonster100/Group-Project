@@ -5,6 +5,58 @@
     <title>Public services </title>
     <link rel="stylesheet" href = "style.css">
 </head>
+    <style>{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%; /* Ensure the body and html take up the full height */
+    margin: 0;
+    padding: 0;
+    background-image: url('https://resources.nejmcareercenter.org/wp-content/uploads/articleImage_network-960x537-1.jpg'); /* Use your new background image here */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Keep the background fixed while scrolling */
+    font-family: Arial, sans-serif;
+    color: white;
+    text-align: center;
+}
+
+h1 {
+    margin-top: 50px;
+    font-size: 48px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow to improve readability */
+    position: relative;
+    z-index: 1; /* Keep text on top of background */
+}
+
+.courses {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Create a grid with 3 columns */
+    gap: 20px;
+    padding: 20px;
+    position: relative;
+    z-index: 1; /* Keep content on top of background */
+}
+
+.course {
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background for readability */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.course h2 {
+    font-size: 24px;
+}
+
+.course p {
+    font-size: 16px;
+}
+</style>
 <body>
     <h1> Public Service Network </h1>
     <div class = "courses">
