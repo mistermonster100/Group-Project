@@ -20,9 +20,9 @@ h1{
 
 .courses{
     display:grid;
-    grid-template-columns: 33% 34% 33%;
+    grid-template-columns: 50% 50% 50%;
     position: relative;
-    transform: translate(-50%);
+    transform: translate(-75%);
     margin-left: 50%;
 }
 
