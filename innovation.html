@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Innovation and Trades</title>
+  <style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-image: 
+      url('/api/placeholder/960/640'), /* Left side placeholder */
+      url('/api/placeholder/960/640'); /* Right side placeholder */
+    background-size: 50% 100%;
+    background-position: left, right;
+    background-repeat: no-repeat;
+    font-family: 'Comic Sans MS', sans-serif;
+    color: white;
+    text-align: center;
+  }
+
+  h1 {
+    margin-top: 40px;
+    font-size: 52px;
+    color: #ffcc00;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+    position: relative;
+    z-index: 1;
+  }
+
+  .courses {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    padding: 40px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .courses div {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .courses div:hover {
+    transform: scale(1.05);
+  }
+
+  .courses h2 {
+    font-size: 26px;
+    color: #003366;
+    margin-bottom: 15px;
+  }
+
+  .courses p {
+    font-size: 18px;
+    color: #333;
+    margin-top: 10px;
+  }
+  </style>
+</head>
+<body>
+  <h1>Discover Trades & Innovation!</h1>
+  <div class="courses">
+    <div class="entrepreneurship">
+      <h2>Entrepreneurship</h2>
+      <p>Learn how to start and grow your own business in the trades industry.</p>
+    </div>
+
+    <div class="electrical">
+      <h2>Electrical</h2>
+      <p>Master residential and commercial electrical systems installation and maintenance.</p>
+    </div>
+
+    <div class="plumbing">
+      <h2>Plumbing</h2>
+      <p>Learn modern plumbing techniques for residential and commercial applications.</p>
+    </div>
+
+    <div class="automotive">
+      <h2>Automotive</h2>
+      <p>Develop skills in vehicle maintenance, repair, and diagnostic technologies.</p>
+    </div>
+
+    <div class="welding">
+      <h2>Welding</h2>
+      <p>Master various welding techniques and metal fabrication skills.</p>
+    </div>
+
+    <div class="construction">
+      <h2>Construction</h2>
+      <p>Learn building techniques, project management, and construction tools.</p>
+    </div>
+  </div>
+</body>
+</html>
