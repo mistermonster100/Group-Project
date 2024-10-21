@@ -39,6 +39,10 @@ h1{
         aspect-ratio: 1 / 1;
 }
 
+.icon:hover{
+    transform: scale(1.05);
+}
+
 .table{
     display:grid;
     grid-template-columns: 25% 25%;
