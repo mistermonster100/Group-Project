@@ -41,3 +41,20 @@ input{
      text-align: center;
 }
 
+.icon{
+        width: 100%;
+        border-radius: 50%;
+        object-fit:cover;
+        border: none;
+        aspect-ratio: 1 / 1;
+}
+
+.table{
+    display:grid;
+    grid-template-columns: 25% 25%;
+    position: relative;
+    transform:translate(20%);
+    column-gap: 10%;
+    row-gap: 5%;
+    text-align: center;
+}
