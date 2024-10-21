@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Engineering and Technology</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html, body {
+    height: 100%; 
+    margin: 0;
+    padding: 0;
+    background-image: 
+      url('https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/GoldenGateBridge-001.jpg/1920px-GoldenGateBridge-001.jpg'), /* Engineering side */
+      url('https://media.istockphoto.com/id/1305305406/photo/kids-coding-in-school.jpg'); /* Technology side */
+    background-size: 50% 100%; /* Each image takes up 50% of the width and full height */
+    background-position: left, right; /* Engineering on the left, tech on the right */
+    background-repeat: no-repeat;
+    font-family: 'Comic Sans MS', sans-serif;
+    color: white;
+    text-align: center;
+  }
+
+  h1 {
+    margin-top: 40px;
+    font-size: 52px;
+    color: #ffcc00; /* Bright color to catch attention */
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+    position: relative;
+    z-index: 1;
+  }
+
+  .courses {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns for better spacing */
+    gap: 30px;
+    padding: 40px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .courses div {
+    background-color: rgba(255, 255, 255, 0.9); /* White semi-transparent background */
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    transition: transform 0.3s ease-in-out; /* Adds hover effect */
+  }
+
+  .courses div:hover {
+    transform: scale(1.05); /* Slightly enlarges the card on hover */
+  }
+
+  .courses h2 {
+    font-size: 26px;
+    color: #003366; /* Deep blue for engineering feel */
+  }
+
+  .courses p {
+    font-size: 18px;
+    color: #333;
+  }
+
+  /* Image styles */
+  .courses img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+  }
+</style>
+<body>
+  <h1>Explore Engineering & Technology!</h1>
+  <div class="courses">
+    <div class="Cybersecurity">
+      <img src="https://www.sans.org/sites/default/files/2023-02/Hands%20on%20laptop.jpg" alt="Cybersecurity">
+      <h2>Cybersecurity</h2>
+      <p>Learn how to protect computers, networks, and data from hackers.</p>
+    </div>
+
+    <div class="Computer Science & Software Development">
+      <img src="https://miro.medium.com/v2/resize:fit:1200/format:webp/1*wdzKaZTULPkMjeb6Flu7bw.png" alt="Computer Science">
+      <h2>Computer Science & Software Development</h2>
+      <p>Build apps, games, and explore the world of coding and programming.</p>
+    </div>
+
+    <div class="Engineering">
+      <img src="https://static.scientificamerican.com/sciam/cache/file/0A28E282-9927-4DE9-B980EFD07B476E07_source.jpg" alt="Engineering">
+      <h2>Engineering</h2>
+      <p>Create amazing machines and solve real-world problems through design.</p>
+    </div>
+
+    <div class="Informatics">
+      <img src="https://cdn.britannica.com/98/230998-050-C2CF909F/coding-hackathon.jpg" alt="Informatics">
+      <h2>Informatics</h2>
+      <p>Study how to manage and interpret data to improve technology.</p>
+    </div>
+  </div>
+</body>
+</html>
