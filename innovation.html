@@ -1,105 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Innovation and Trades</title>
-  <style>
-  * {
+    <meta charset="UTF-8">
+    <title>Innovation</title>
+    <link rel="stylesheet" href = "style.css">
+</head>
+<style>
+    style{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  }
+}
 
-  html, body {
-    height: 100%;
+html, body {
+    height: 100%; /* Ensure the body and html take up full height */
     margin: 0;
     padding: 0;
-    background-image: 
-      url('/api/placeholder/960/640'), /* Left side placeholder */
-      url('/api/placeholder/960/640'); /* Right side placeholder */
-    background-size: 50% 100%;
-    background-position: left, right;
+    background-image: url(https://alcorfund.com/wp-content/uploads/2020/09/Technical-Innovation.png;
+    background-size: cover;
+    background-position: center;
     background-repeat: no-repeat;
-    font-family: 'Comic Sans MS', sans-serif;
+    background-attachment: fixed; /* Ensures background stays in place during scrolling */
+    font-family: Arial, sans-serif;
     color: white;
     text-align: center;
-  }
+}
 
-  h1 {
-    margin-top: 40px;
-    font-size: 52px;
-    color: #ffcc00;
-    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+h1 {
+    margin-top: 50px;
+    font-size: 48px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
     position: relative;
     z-index: 1;
-  }
+}
 
-  .courses {
+.courses {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
-    padding: 40px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    padding: 2px;
     position: relative;
     z-index: 1;
-  }
+}
 
-  .courses div {
-    background-color: rgba(255, 255, 255, 0.9);
+.courses div {
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background for readability */
     padding: 20px;
-    border-radius: 12px;
-    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
-    text-align: center;
-    transition: transform 0.3s ease-in-out;
-  }
+    border-radius: 8px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+}
 
-  .courses div:hover {
-    transform: scale(1.05);
-  }
+.courses h2 {
+    font-size: 21px;
+}
 
-  .courses h2 {
-    font-size: 26px;
-    color: #003366;
-    margin-bottom: 15px;
-  }
-
-  .courses p {
-    font-size: 18px;
-    color: #333;
-    margin-top: 10px;
-  }
-  </style>
-</head>
+.courses p {
+    font-size: 16px;
+}
+#back{
+    width: 75px;
+        padding: 8px;
+        margin: 8px;
+        background-color: rgba(0, 0, 0, 0.7);
+        color: white;
+}
+</style>
 <body>
-  <h1>Discover Trades & Innovation!</h1>
-  <div class="courses">
-    <div class="entrepreneurship">
-      <h2>Entrepreneurship</h2>
-      <p>Learn how to start and grow your own business in the trades industry.</p>
+    <div id="back">
+    <form action="index.html">
+        <input type="submit" value="Back">
+    </form>
     </div>
+    <h1>Entrepenurship </h1>
+    <div class = "courses">
+        <div class = "course">
+            <h2>Entrepenurship</h2> 
+            <p>Learn the process of creating a new business or improving an existing one. The art of creating something that hasn't been perfected.p>
+        </div>
+        <div class = "course">  
+            <h2>Electrical</h2> 
+            <p>Learn the process of electricity, electronics, and electromagnetism. Electricity is the power source of the world.</p>
+        </div>
 
-    <div class="electrical">
-      <h2>Electrical</h2>
-      <p>Master residential and commercial electrical systems installation and maintenance.</p>
-    </div>
+        <div class = "course">            
+            <h2>Plumbing</h2>
+            <p> Prepare yourself to install, maintain, and repair plumbing systems and components. Without plumbing, you wouldn't have or couldn't do much./p>
+        </div>
 
-    <div class="plumbing">
-      <h2>Plumbing</h2>
-      <p>Learn modern plumbing techniques for residential and commercial applications.</p>
-    </div>
+      <div class = "course">            
+            <h2>Automotive</h2>
+            <p>Cover a whole range of topics related to self-propelled vehicles, including their design, engineering, mechanics, and computer technology/p>
+        </div>    </div>
 
-    <div class="automotive">
-      <h2>Automotive</h2>
-      <p>Develop skills in vehicle maintenance, repair, and diagnostic technologies.</p>
-    </div>
+  <div class = "course">            
+            <h2>Welding</h2>
+            <p>The process where two or more parts are fused from heat, and the pressure of both forming a join as the parts cool/p>
+        </div>
+  
+  <div class = "course">            
+            <h2>Contruction Trades</h2>
+            <p>Teaches students the skills and knowledge needed for residential and commercial construction. Shaping the world tomorrow.</p>
+        </div>
 
-    <div class="welding">
-      <h2>Welding</h2>
-      <p>Master various welding techniques and metal fabrication skills.</p>
-    </div>
-
-    <div class="construction">
-      <h2>Construction</h2>
-      <p>Learn building techniques, project management, and construction tools.</p>
-    </div>
-  </div>
+  <div class = "course">            
+            <h2>Journalism</h2>
+            <p>The process of gathering, verifying, and reporting on news and related information to inform the public.</p>
+        </div>
 </body>
 </html>
