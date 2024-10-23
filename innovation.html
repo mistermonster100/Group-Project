@@ -36,12 +36,15 @@ h1 {
 
 .courses {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
     gap: 2px;
     padding: 2px;
     position: relative;
     z-index: 1;
 }
+
+.courses > :nth-child(7) {
+    grid-column: 2 / 3; /* Place the 4th item in the middle column */
+}    
 
 .courses div {
     background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background for readability */
@@ -90,21 +93,22 @@ h1 {
       <div class = "course">            
             <h2>Automotive</h2>
             <p>Cover a whole range of topics related to self-propelled vehicles, including their design, engineering, mechanics, and computer technology/p>
-        </div>    </div>
+        </div> 
 
-  <div class = "course">            
-            <h2>Welding</h2>
-            <p>The process where two or more parts are fused from heat, and the pressure of both forming a join as the parts cool/p>
-        </div>
-  
-  <div class = "course">            
-            <h2>Contruction Trades</h2>
-            <p>Teaches students the skills and knowledge needed for residential and commercial construction. Shaping the world tomorrow.</p>
-        </div>
-
-  <div class = "course">            
-            <h2>Journalism</h2>
-            <p>The process of gathering, verifying, and reporting on news and related information to inform the public.</p>
-        </div>
+      <div class = "course">            
+                <h2>Welding</h2>
+                <p>The process where two or more parts are fused from heat, and the pressure of both forming a join as the parts cool/p>
+            </div>
+      
+      <div class = "course">            
+                <h2>Contruction Trades</h2>
+                <p>Teaches students the skills and knowledge needed for residential and commercial construction. Shaping the world tomorrow.</p>
+            </div>
+    
+      <div class = "course">            
+                <h2>Journalism</h2>
+                <p>The process of gathering, verifying, and reporting on news and related information to inform the public.</p>
+            </div>
+</div>
 </body>
 </html>
