@@ -75,13 +75,33 @@
                 width: 90%;
             }
         }
+        /* Button styles */
+        .student-reviews-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 10px 15px;
+            background-color: #0077b6;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1em;
+            transition: background-color 0.3s;
+        }
+        .student-reviews-button:hover {
+            background-color: #005f73;
+        }
     </style>
 </head>
 <body>
     <h1>ASPYR</h1>
 
+    <!-- Student Reviews Button -->
+    <button class="student-reviews-button" onclick="location.href='student_reviews.html'">Student Reviews</button>
+
     <div class="table">
-        <!-- Rest of the content remains the same -->
         <form action="A&C.html">
             <input class="icon" type="image" src="https://uh.edu/kgmca/art/undergraduate-programs/images/uh-soa-website-programs-minors-2.png" alt="Arts & Communication">
             <h2>Arts & Communication</h2>
