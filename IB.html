@@ -2,92 +2,138 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Technology</title>
-    <link rel="stylesheet" href = "style.css">
+    <title>ASPYR</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            position: relative;
+            width: 100%;
+            padding: 20px 0;
+            background-color: #0077b6;
+            color: #fff;
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+            font-size: 3.2em;
+            letter-spacing: 1.5px;
+            text-shadow: 0 4px 6px rgba(0, 119, 182, 0.4);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            margin: 0;
+        }
+        .table {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            max-width: 1200px;
+            margin: 40px auto 0 auto;
+            padding: 20px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 250px;
+            margin: 20px;
+            text-align: center;
+        }
+        .icon {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+        }
+        .icon:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            border: 3px solid #00b4d8;
+        }
+        h2 {
+            margin-top: 15px;
+            font-size: 1.4em;
+            font-family: 'Poppins', sans-serif;
+            color: #005f73;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+        form:hover h2 {
+            color: #0077b6;
+        }
+        @media (max-width: 768px) {
+            .table {
+                flex-direction: column;
+                align-items: center;
+            }
+            form {
+                width: 90%;
+            }
+        }
+        /* Button styles */
+        .student-reviews-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 10px 15px;
+            background-color: #0077b6;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1em;
+            transition: background-color 0.3s;
+        }
+        .student-reviews-button:hover {
+            background-color: #005f73;
+        }
+    </style>
 </head>
-<style>
-    style{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html, body {
-    height: 100%; /* Ensure the body and html take up full height */
-    margin: 0;
-    padding: 0;
-    background-image: url('https://dataroomssoftware.net/wp-content/uploads/2022/03/International-Acquisition-Strategies.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed; /* Ensures background stays in place during scrolling */
-    font-family: Arial, sans-serif;
-    color: white;
-    text-align: center;
-}
-
-h1 {
-    margin-top: 50px;
-    font-size: 48px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-    position: relative;
-    z-index: 1;
-}
-
-.courses {
-    display: grid;
-    gap: 2px;
-    padding: 2px;
-    position: relative;
-    z-index: 1;
-}
-
-.courses div {
-    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background for readability */
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
-}
-
-.courses h2 {
-    font-size: 21px;
-}
-
-.courses p {
-    font-size: 16px;
-}
-#back{
-    width: 75px;
-        padding: 8px;
-        margin: 8px;
-        background-color: rgba(0, 0, 0, 0.7);
-        color: white;
-}
-</style>
 <body>
-    <div id="back">
-    <form action="index.html">
-        <input type="submit" value="Back">
-    </form>
+    <h1>ASPYR</h1>
+
+    <!-- Student Reviews Button -->
+    <button class="student-reviews-button" onclick="location.href='SR.html'">Student Reviews</button>
+
+    <div class="table">
+        <form action="A&C.html">
+            <input class="icon" type="image" src="https://uh.edu/kgmca/art/undergraduate-programs/images/uh-soa-website-programs-minors-2.png" alt="Arts & Communication">
+            <h2>Arts & Communication</h2>
+        </form>
+        <form action="A&NR.html">
+            <input class="icon" type="image" src="https://humphreys.tennessee.edu/wp-content/uploads/sites/121/2019/11/food-natural-resources-aspect-ratio-300x300-1.jpg" alt="Agriculture & Natural Resources">
+            <h2>Agriculture & Natural Resources</h2>
+        </form>
+        <form action="MD&PS.html">
+            <input class="icon" type="image" src="https://medicine.unimelb.edu.au/__data/assets/image/0009/3629142/MD_2000x1000.png" alt="Medical Network">
+            <h2>Medical Network</h2>
+        </form>
+        <form action="PBS.html">
+            <input class="icon" type="image" src="https://media.mktg.workday.com/is/image/workday/illustration-public-servants-1?fmt=png-alpha&wid=1000" alt="Public Service Network">
+            <h2>Public Service Network</h2>
+        </form>
+        <form action="ETI.html">
+            <input class="icon" type="image" src="https://www.stonewallco.com/hubfs/10%20ways%20technology%20is%20shifting%20the%20engineering%20industry.png" alt="Engineering & Technology">
+            <h2>Engineering & Technology</h2>
+        </form>
+        <form action="innovation.html">
+            <input class="icon" type="image" src="https://u2vjdxa2quhx-u4030.pressidiumcdn.com/wp-content/webp-express/webp-images/doc-root/wp-content/uploads/2023/10/digital-innovation-light-bulb-moment.png.webp" alt="Innovation">
+            <h2>Innovation</h2>
+        </form>
+        <form action="business.html">
+            <input class="icon" type="image" src="https://mvnu.edu/content/uploads/2024/01/mvnu-online-difference-between-admin-and-business-management.jpeg.webp" alt="Business & Administration">
+            <h2>Business & Administration</h2>
+        </form>
+        <form action="IB.html">
+            <input class="icon" type="image" src="https://resources.finalsite.net/images/f_auto,q_auto/v1718375665/vertexacademiesorg/vfnlrvunpluvtqmmcp8g/image0.png" alt="International Baccalaureate">
+            <h2>International Baccalaureate</h2>
+        </form>
     </div>
-    <h1>International Business</h1>
-    <div class = "courses">
-        <div class = "course">
-            <h2>Creativity, Action, Service</h2> 
-            <p>This course integrates creative projects, physical activities, and community service. Students will explore artistic expression, engage in sports, and participate in service projects, developing skills in self-expression, teamwork, and social responsibility.</p>
-        </div>
-        <div class = "course">  
-            <h2>Therory of Knowledge (TOK)</h2> 
-            <p>TOK examines the nature of knowledge and how we acquire it. Students will discuss different ways of knowing and explore various perspectives, encouraging critical thinking and questioning of assumptions.</p>
-        </div>
-
-        <div class = "course">            
-            <h2>Exctended Essay</h2>
-            <p>In the Extended Essay, students conduct independent research on a topic of interest. They will formulate a research question, perform in-depth investigations, and write a 4,000-word essay to enhance their research and writing skills.</p>
-        </div>
-        
-    </div>
-
-
 </body>
 </html>
