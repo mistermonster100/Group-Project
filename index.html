@@ -1,4 +1,4 @@
-  <!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -18,8 +18,8 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 400px;
-            height: 400px;
+            width: 600px; /* Smaller size */
+            height: 600px; /* Smaller size */
             z-index: -1;
         }
         h1 {
@@ -55,11 +55,14 @@
             flex-direction: column;
             align-items: center;
             padding: 20px;
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(211, 211, 211, 0.9); /* Light grey background */
             border-radius: 20px;
             transition: all 0.3s ease;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             max-width: 300px;
+        }
+        .white-background {
+            background: rgba(255, 255, 255, 0.9); /* White background */
         }
         form:hover {
             transform: translateY(-5px);
@@ -183,6 +186,7 @@
         <div class="row">
             <form action="business.html">
                 <input class="icon" type="image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfoKyqIjDTuXV5j6y2HGogcWUYfnUB--XhxBVwGsPluSu6MnPDr9W6aER7zAG_I1uTDC4&usqp=CAU" alt="Business & Administration">
+
                 <h2>Business & Administration</h2>
             </form>
             <form action="IB.html">
