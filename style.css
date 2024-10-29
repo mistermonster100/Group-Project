@@ -58,4 +58,6 @@ h1{
     height: 10px;
     z-index: 3;
     top: 25px;
+    background: none;
+    border-radius: 20px;
 }
