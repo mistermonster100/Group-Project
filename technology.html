@@ -2,49 +2,171 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Technology</title>
-    <link rel="stylesheet" href = "style.css">
+    <title>Engineering and Technology</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+<style>
+    html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        background-image: url('https://kce.ac.in/new/wp-content/uploads/2023/07/What-are-the-technologies-shifting-the-Civil-Engineering-Industry.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        font-family: Arial, sans-serif;
+        color: white;
+        text-align: center;
+    }
+
+    h1 {
+        margin-top: 50px;
+        font-size: 48px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        position: relative;
+        z-index: 1;
+    }
+
+    .courses {
+        display: grid;
+        gap: 2px;
+        padding: 2px;
+        position: relative;
+        z-index: 1;
+    }
+
+    .courses div {
+        background-color: rgba(0, 0, 0, 0.7);
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+    }
+
+    .courses > :nth-child(4) {
+        grid-column: 2 / 3;
+    }
+
+    .courses h2 {
+        font-size: 21px;
+    }
+
+    .courses p {
+        font-size: 16px;
+    }
+
+    #back {
+        width: 75px;
+        padding: 8px;
+        margin: 8px;
+        background-color: rgba(0, 0, 0, 0.7);
+        color: white;
+    }
+</style>
 <body>
-    <h1> *Title* </h1>
-    <div class = "courses">
-        <div class = "course">
-            <!--img Put your image link here-->
-            <h2>Course Name</h2>
-            <p>Course description</p>
+<div id="back">
+    <form action="index.html">
+        <input type="submit" value="Back">
+    </form>
+</div>
+<h1>Engineering and Technology</h1>
+    
+<div class="courses">
+    <a href="#overlay1" class="course-link">
+        <div class="course">
+            <h2>Course 1</h2>
+            <p> Description </p>
         </div>
+    </a>
 
-        <div class = "course">
-            <!--img Put your image link here-->
-            <h2>Course Name</h2>
-            <p>Course description</p>
+    <a href="#overlay2" class="course-link">
+        <div class="course">
+            <h2>Course 2</h2>
+            <p>Description</p>
         </div>
+    </a>
 
-        <div class = "course">
-            <!--img Put your image link here-->
-            <h2>Course Name</h2>
-            <p>Course description</p>
+    <a href="#overlay3" class="course-link">
+        <div class="course">
+            <h2>Course 3</h2>
+            <p>Description</p>
         </div>
+    </a>
 
-        <div class = "course">
-            <!--img Put your image link here-->
-            <h2>Course Name</h2>
-            <p>Course description</p>
+    <a href="#overlay4" class="course-link">
+        <div class="course">
+            <h2>Course 4</h2>
+            <p>Description</p>
         </div>
+    </a>
+</div>
 
-        <div class = "course">
-            <!--img Put your image link here-->
-            <h2>Course Name</h2>
-            <p>Course description</p>
-        </div>
+<div id="overlay1" class="overlay">
+    <div class="overlay-content">
+        <a href="#" class="close">&times;</a>
+        <h2>Cybersecurity</h2>
+        <div class="overlay-classes">
+            <div class="overlay-class">
+                <img src="sample.jpg" alt="Class 1 Image" class="overlay-image">
+                <p> Class 1 <br> <br> Description </p>
 
-        <div class = "course">
-            <!--img Put your image link here-->
-            <h2>Course Name</h2>
-            <p>Course description</p>
+            </div>
+            <div class="overlay-class">
+                <img src="sample.jpg" alt="Class 2 Image" class="overlay-image">
+                <p> Class 2 <br> <br> Description </p>
+            </div>
+            <div class="overlay-class">
+                <img src="sample.jpg" alt="Class 3 Image" class="overlay-image">
+                <p> Class 3 <br> <br> Description </p>
+            </div>
         </div>
-        
     </div>
+</div>
+
+<div id="overlay2" class="overlay">
+    <div class="overlay-content">
+        <a href="#" class="close">&times;</a>
+        <h2>Cybersecurity</h2>
+        <div class="overlay-classes">
+            <div class="overlay-class">
+                <img src="sample.jpg" alt="Class 1 Image" class="overlay-image">
+                <p> Class 1 <br> <br> Description </p>
+
+            </div>
+            <div class="overlay-class">
+                <img src="sample.jpg" alt="Class 2 Image" class="overlay-image">
+                <p> Class 2 <br> <br> Description </p>
+            </div>
+            <div class="overlay-class">
+                <img src="sample.jpg" alt="Class 3 Image" class="overlay-image">
+                <p> Class 3 <br> <br> Description </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="overlay3" class="overlay">
+    <div class="overlay-content">
+        <a href="#" class="close">&times;</a>
+        <h2>Cybersecurity</h2>
+        <div class="overlay-classes">
+            <div class="overlay-class">
+                <img src="sample.jpg" alt="Class 1 Image" class="overlay-image">
+                <p> Class 1 <br> <br> Description </p>
+
+            </div>
+            <div class="overlay-class">
+                <img src="sample.jpg" alt="Class 2 Image" class="overlay-image">
+                <p> Class 2 <br> <br> Description </p>
+            </div>
+            <div class="overlay-class">
+                <img src="sample.jpg" alt="Class 3 Image" class="overlay-image">
+                <p> Class 3 <br> <br> Description </p>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 
 </body>
