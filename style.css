@@ -18,6 +18,10 @@ h1{
 
 }
 
+.course:hover{
+    transform: scale(1.05);
+}
+
 .courses{
     display:grid;
     grid-template-columns: 50% 50% 50%;
@@ -29,6 +33,7 @@ h1{
 .course{
      margin: 10%;
      text-align: center;
+     transition: transform 0.2s ease-in-out;
 }
 
 .icon{
