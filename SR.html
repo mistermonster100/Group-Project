@@ -2,26 +2,188 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Student Reviews</title>
-    <link rel="stylesheet" href = "style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Class Reviews</title>
+    <style>
+        /* General styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f0f2f5;
+        }
+        h1 {
+            text-align: center;
+        }
+        /* Back button */
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            text-decoration: none;
+            color: #444;
+            padding: 5px 10px;
+            background-color: #ddd;
+            border-radius: 5px;
+        }
+        /* Container styling */
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        /* Sorting and class selection */
+        .sort-section {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        select, button {
+            padding: 5px 10px;
+            font-size: 1em;
+        }
+        /* Reviews section */
+        .reviews {
+            margin-top: 20px;
+        }
+        .review-item {
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+        }
+        .review-item:last-child {
+            border-bottom: none;
+        }
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .star-rating span {
+            color: gold;
+        }
+        .review-content {
+            margin-top: 5px;
+        }
+        /* Review form */
+        .review-form {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+        .review-form input[type="text"],
+        .review-form select {
+            margin: 5px 0;
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            font-size: 1em;
+        }
+        .review-form button {
+            margin-top: 10px;
+            padding: 8px;
+            background-color: #5cb85c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
 </head>
-<style>
-#back{
-    width: 75px;
-        padding: 8px;
-        margin: 8px;
-        background-color: rgba(0, 0, 0, 0.7);
-        color: white;
-}
-</style>
 <body>
-    <div id="back">
-    <form action="index.html">
-        <input type="submit" value="Back">
-    </form>
+
+<a href="index.html" class="back-button">Back</a>
+<div class="container">
+    <h1>Class Reviews</h1>
+
+    <!-- Sort and Select Section -->
+    <div class="sort-section">
+        <select id="class-select">
+            <option value="All Classes">All Classes</option>
+            <option value="Computer Science">Computer Science</option>
+<option value="Anatomy">Anatomy</option>
+<option value="Physics">Physics</option>
+<option value="Graphic Design">Graphic Design</option>
+<option value="Journalism">Journalism</option>
+<option value="Psychology">Psychology</option>
+<option value="Business Management">Business Management</option>
+<option value="Creative Writing">Creative Writing</option>
+<option value="Environmental Science">Environmental Science</option>
+<option value="AP Economics">AP Economics</option>
+<option value="Digital Media">Digital Media</option>
+<option value="Audio/Visual Production">Audio/Visual Production</option>
+<option value="Sociology">Sociology</option>
+<option value="AP Statistics">AP Statistics</option>
+<option value="Forensic Science">Forensic Science</option>
+
+        </select>
+        <button onclick="sortReviews()">Sort by Class</button>
     </div>
-    <h1>Student Reviews</h1>
- 
+
+    <!-- Reviews Section -->
+    <div class="reviews" id="reviews">
+        <!-- Example of dynamically added reviews -->
+    </div>
+
+    <!-- Review Form -->
+    <form class="review-form" onsubmit="addReview(event)">
+        <input type="text" id="review-input" placeholder="Write your review here..." required>
+        <select id="rating">
+            <option value="1">⭐</option>
+            <option value="2">⭐⭐</option>
+            <option value="3">⭐⭐⭐</option>
+            <option value="4">⭐⭐⭐⭐</option>
+            <option value="5">⭐⭐⭐⭐⭐</option>
+        </select>
+        <button type="submit">Submit Review</button>
+    </form>
+</div>
+
+<script>
+    const reviews = [];
+
+    function addReview(event) {
+        event.preventDefault();
+        const classSelect = document.getElementById('class-select').value;
+        const reviewText = document.getElementById('review-input').value;
+        const rating = document.getElementById('rating').value;
+
+        // Add new review to the top of the reviews array
+        reviews.unshift({ className: classSelect, review: reviewText, rating: '⭐'.repeat(rating) });
+        
+        // Clear form inputs
+        document.getElementById('review-input').value = '';
+        document.getElementById('rating').value = '1';
+
+        // Display reviews
+        displayReviews();
+    }
+
+    function displayReviews() {
+        const reviewsContainer = document.getElementById('reviews');
+        reviewsContainer.innerHTML = ''; // Clear previous reviews
+
+        reviews.forEach(review => {
+            const reviewItem = document.createElement('div');
+            reviewItem.classList.add('review-item');
+            reviewItem.innerHTML = `
+                <div class="review-header">
+                    <span><strong>${review.className}</strong></span>
+                    <span class="star-rating">${review.rating}</span>
+                </div>
+                <div class="review-content">${review.review}</div>
+            `;
+            reviewsContainer.appendChild(reviewItem);
+        });
+    }
+
+    function sortReviews() {
+        reviews.sort((a, b) => a.className.localeCompare(b.className));
+        displayReviews();
+    }
+</script>
 
 </body>
 </html>
+
