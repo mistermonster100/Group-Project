@@ -2,92 +2,169 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Technology</title>
-    <link rel="stylesheet" href = "style.css">
+    <title>Engineering and Technology</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <style>
-    style{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+    html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        background-image: url('https://media.licdn.com/dms/image/D4E12AQFPmSv30c9I9w/article-cover_image-shrink_720_1280/0/1708089772272?e=2147483647&v=beta&t=Vb4w2Eyc7AQcqZ_T18SZ4J3rdCHoc7DnKv3bsbdja2E');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        font-family: Arial, sans-serif;
+        color: white;
+        text-align: center;
+    }
 
-html, body {
-    height: 100%; /* Ensure the body and html take up full height */
-    margin: 0;
-    padding: 0;
-    background-image: url('https://media.licdn.com/dms/image/D4E12AQFPmSv30c9I9w/article-cover_image-shrink_720_1280/0/1708089772272?e=2147483647&v=beta&t=Vb4w2Eyc7AQcqZ_T18SZ4J3rdCHoc7DnKv3bsbdja2E');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed; /* Ensures background stays in place during scrolling */
-    font-family: Arial, sans-serif;
-    color: white;
-    text-align: center;
-}
+    h1 {
+        margin-top: 50px;
+        font-size: 48px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        position: relative;
+        z-index: 1;
+    }
 
-h1 {
-    margin-top: 50px;
-    font-size: 48px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-    position: relative;
-    z-index: 1;
-}
+    .courses {
+        display: grid;
+        gap: 2px;
+        padding: 2px;
+        position: relative;
+        z-index: 1;
+    }
 
-.courses {
-    display: grid;
-    gap: 2px;
-    padding: 2px;
-    position: relative;
-    z-index: 1;
-}
+    .courses div {
+        background-color: rgba(0, 0, 0, 0.7);
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+    }
 
-.courses div {
-    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background for readability */
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
-}
+    .courses > :nth-child(4) {
+        grid-column: 2 / 3;
+    }
 
-.courses h2 {
-    font-size: 21px;
-}
+    .courses h2 {
+        font-size: 21px;
+    }
 
-.courses p {
-    font-size: 16px;
-}
-#back{
-    width: 75px;
+    .courses p {
+        font-size: 16px;
+    }
+
+    #back {
+        width: 75px;
         padding: 8px;
         margin: 8px;
         background-color: rgba(0, 0, 0, 0.7);
         color: white;
-}
+    }
 </style>
 <body>
-    <div id="back">
+<div id="back">
     <form action="index.html">
         <input type="submit" value="Back">
     </form>
-    </div>
-    <h1>Arts And Communication </h1>
-    <div class = "courses">
-        <div class = "course">
-            <h2>Broadcasting and Production</h2> 
-            <p>This course covers the essentials of radio and television production, focusing on storytelling, audio and video editing, and on-air presentation, with hands-on projects to develop practical skills.</p>
+</div>
+<h1>Arts & Communication </h1>
+<div class="courses">
+    <a href="#overlay1" class="course-link">
+        <div class="course">
+            <h2>Broadcasting & Production</h2> 
+            <p>his course introduces students to animal health care, covering anatomy, common veterinary practices, and hands-on experience in labs and field trips.</p>
         </div>
-        <div class = "course">  
-            <h2>Art & Performance</h2> 
-            <p>Students explore various forms of art and performance, including visual arts and theater, fostering creativity through workshops and a final exhibition to showcase their work.</p>
-        </div>
+    </a>
 
-        <div class = "course">            
+    <a href="#overlay2" class="course-link">
+        <div class="course">
+            <h2>Art & Performance</h2>
+            <p>Students explore the scientific foundations of agriculture, engaging in hands-on activities related to soil health, plant biology, and animal science.</p>
+        </div>
+    </a>
+
+    <a href="#overlay3" class="course-link">
+        <div class="course">
             <h2>Journalism</h2>
-            <p>This course introduces the principles of journalism, emphasizing reporting, writing, and ethics, while equipping students with the skills to research stories and produce compelling content for various media.</p>
+            <p>This course covers the components of agricultural systems, including crop production and livestock management, emphasizing their environmental and economic impacts.</p>
         </div>
-        
-    </div>
+    </a>
 
+</div>
+<div id="overlay1" class="overlay">
+    <div class="overlay-content">
+        <a href="#" class="close">&times;</a>
+        <h2>Broadcasting & Production</h2>
+        <div class="overlay-classes">
+            <div class="overlay-class">
+                <img src="https://d5i19g0fn6omf.cloudfront.net/uploads/catalog/ap/apcspcore.png?v=yyv" alt="Class 1 Image" class="overlay-image">
+                <p>Principles of Broadcasting<br> <br> Introduces students to the foundational concepts of computer science and programming. With a unique focus on creative problem solving and real-world applications, students are challenged to explore how computing and technology can impact the world.</p>
+
+            </div>
+            <div class="overlay-class">
+                <img src="https://nexwebsites.com/images/blog/web-database-design.png" alt="Class 2 Image" class="overlay-image">
+                <p>Digital Media<br> <br>This course equips students with essential skills in multimedia production, including digital video editing, sound design, and storytelling techniques. Students gain hands-on experience working with audio/visual equipment, creating projects that simulate real-world broadcasting, and producing content for various media formats.</p>
+            </div>
+            <div class="overlay-class">
+                <img src="https://i.ytimg.com/vi/sCQjVIzKaEo/maxresdefault.jpg" alt="Class 3 Image" class="overlay-image">
+                <p>Audio/Visual Production or Student Media: Broadcast<br> <br> This course equips students with essential skills in multimedia production, including digital video editing, sound design, and storytelling techniques. Students gain hands-on experience working with audio/visual equipment, creating projects that simulate real-world broadcasting, and producing content for various media formats.</p>
+            </div>
+            <div class="overlay-class">
+                <img src="https://i.ytimg.com/vi/sCQjVIzKaEo/maxresdefault.jpg" alt="Class 3 Image" class="overlay-image">
+                <p>Mass Media Production<br> <br>Focuses on the creation, editing, and distribution of media content for broad audiences. Students gain skills in storytelling, digital editing, and content creation for mass communication platforms.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div id="overlay2" class="overlay">
+        <div class="overlay-content">
+            <a href="#" class="close">&times;</a>
+            <h2>Art & Performance</h2>
+            <div class="overlay-classes">
+                <div class="overlay-class">
+                    <img src="https://d5i19g0fn6omf.cloudfront.net/uploads/catalog/ap/apcspcore.png?v=yyv" alt="Class 1 Image" class="overlay-image">
+                    <p>Principles of Broadcasting<br> <br>An introduction to the world of broadcasting, where students learn production techniques, audio-visual editing, and media ethics. The course covers both technical and creative aspects of broadcast production.</p>
+    
+                </div>
+                <div class="overlay-class">
+                    <img src="https://nexwebsites.com/images/blog/web-database-design.png" alt="Class 2 Image" class="overlay-image">
+                    <p>ACP Speech<br> <br> This course strengthens public speaking and communication skills, focusing on effective delivery, speech organization, and audience engagement. Students practice crafting and presenting speeches for various settings.</p>
+                </div>
+                <div class="overlay-class">
+                    <img src="https://i.ytimg.com/vi/sCQjVIzKaEo/maxresdefault.jpg" alt="Class 3 Image" class="overlay-image">
+                    <p>Adv. Band/Orchestra/Art/Theatre<br> <br>Offers students advanced opportunities in performance, artistic expression, and technical skill development. Students participate in high-level projects, concerts, or productions within their chosen art discipline.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="overlay3" class="overlay">
+        <div class="overlay-content">
+            <a href="#" class="close">&times;</a>
+            <h2>Journalism</h2>
+            <div class="overlay-classes">
+                <div class="overlay-class">
+                    <img src="https://www.giasuib.com/wp-content/uploads/2021/05/ap-calculus-bc-thuong-dem-den-kho-khan-nao-cho-hoc-sinh-1.jpg" alt="Class 1 Image" class="overlay-image">
+                    <p>Principles of Business Management<br> <br>This course introduces key concepts in business management, including leadership, strategic planning, and organizational structures. Students develop a foundational understanding of business operations and decision-making.</p>
+    
+                </div>
+                <div class="overlay-class">
+                    <img src="https://www.fusd.net/cms/lib/CA50000190/Centricity/Domain/3523/75.svg" alt="Class 2 Image" class="overlay-image">
+                    <p>ACP Speech<br> <br>This course strengthens public speaking and communication skills, focusing on effective delivery, speech organization, and audience engagement. Students practice crafting and presenting speeches for various settings.</p>
+                </div>
+                <div class="overlay-class">
+                    <img src="https://www.fusd.net/cms/lib/CA50000190/Centricity/Domain/3523/75.svg" alt="Class 2 Image" class="overlay-image">
+                    <p>Newspaper/Yearbook<br> <br> A hands-on course where students engage in journalism, photography, and publication design. They contribute to school newspapers or yearbooks, learning all aspects of publication production from content creation to layout design.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    
 
 </body>
 </html>
