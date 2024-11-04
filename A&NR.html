@@ -2,29 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Technology</title>
+    <title>Engineering and Technology</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-        style{
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-    
+</head>
+<style>
     html, body {
-        height: 100%; /* Ensure the body and html take up full height */
+        height: 100%;
         margin: 0;
         padding: 0;
         background-image: url('https://www.progressiveautomations.com/cdn/shop/articles/automated-agriculture_387e4e59-5148-4139-aed9-8a6b1276092f.jpg?v=1587721776&width=1100');
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
-        background-attachment: fixed; /* Ensures background stays in place during scrolling */
+        background-attachment: fixed;
         font-family: Arial, sans-serif;
         color: white;
         text-align: center;
     }
-    
+
     h1 {
         margin-top: 50px;
         font-size: 48px;
@@ -32,7 +27,7 @@
         position: relative;
         z-index: 1;
     }
-    
+
     .courses {
         display: grid;
         gap: 2px;
@@ -41,25 +36,26 @@
         z-index: 1;
     }
 
-    .courses > :nth-child(4) {
-    grid-column: 2 / 3; /* Place the 4th item in the middle column */
-    }
-    
     .courses div {
-        background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background for readability */
+        background-color: rgba(0, 0, 0, 0.7);
         padding: 20px;
         border-radius: 8px;
         box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
     }
-    
+
+    .courses > :nth-child(4) {
+        grid-column: 2 / 3;
+    }
+
     .courses h2 {
         font-size: 21px;
     }
-    
+
     .courses p {
         font-size: 16px;
     }
-    #back{
+
+    #back {
         width: 75px;
         padding: 8px;
         margin: 8px;
@@ -67,33 +63,128 @@
         color: white;
     }
 </style>
-</head>
 <body>
-    <div id="back">
-        <form action="index.html">
-            <input type="submit" value="Back">
-        </form>
-        </div>
-    <div class="image-container"></div>
-    <h1>Agriculture and Natural Resources</h1>
-    <div class="courses">
+<div id="back">
+    <form action="index.html">
+        <input type="submit" value="Back">
+    </form>
+</div>
+<h1>Agriculture and Natural Resources</h1>
+<div class="courses">
+    <a href="#overlay1" class="course-link">
         <div class="course">
             <h2>Veterinary Science</h2>
-            <p>This course introduces students to animal health care, covering anatomy, common veterinary practices, and hands-on experience in labs and field trips.</p>
+            <p>his course introduces students to animal health care, covering anatomy, common veterinary practices, and hands-on experience in labs and field trips.</p>
         </div>
+    </a>
+
+    <a href="#overlay2" class="course-link">
         <div class="course">
             <h2>Agriscience</h2>
             <p>Students explore the scientific foundations of agriculture, engaging in hands-on activities related to soil health, plant biology, and animal science.</p>
         </div>
+    </a>
+
+    <a href="#overlay3" class="course-link">
         <div class="course">
             <h2>Agriculture Systems</h2>
-            <p>This course covers the components of agricultural systems, including crop production and livestock management, emphasizing their environmental and economic impacts./p>
+            <p>This course covers the components of agricultural systems, including crop production and livestock management, emphasizing their environmental and economic impacts.</p>
         </div>
+    </a>
+
+    <a href="#overlay4" class="course-link">
         <div class="course">
             <h2>Global Sustainability</h2>
             <p>Students examine sustainability principles globally, focusing on environmental, economic, and social issues, and explore solutions for climate change and resource management.</p>
         </div>
-        
+    </a>
+</div>
+
+<div id="overlay1" class="overlay">
+    <div class="overlay-content">
+        <a href="#" class="close">&times;</a>
+        <h2>Agriscience</h2>
+        <div class="overlay-classes">
+            <div class="overlay-class">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/Computer_science_and_engineering.jpg" alt="Class 1 Image" class="overlay-image">
+                <p>Principles of Agriculture <br> <br>This course introduces students to the foundational concepts of agriculture, covering topics such as crop production, soil science, agribusiness, and resource management. Students gain a practical understanding of agricultural systems and industry practices.</p>
+
+            </div>
+            <div class="overlay-class">
+                <img src="https://assets.bizclikmedia.net/1800/8dc2872cdb3d622f052fee37f0a9b7de:0bf8bd6dce2a2e2475cfd3734827c31e/gettyimages-1310426274-0-jpg.webp" alt="Class 2 Image" class="overlay-image">
+                <p>Animal Science<br> <br> Students explore the biology, care, and management of animals, learning about animal behavior, health, and nutritional needs. This course provides a solid grounding in livestock production and animal welfare.</p>
+            </div>
+            <div class="overlay-class">
+                <img src="https://www.singtel.com/content/dam/singtel/business/sb/articles/smebc-advance-cybersecurity-smb-2022.jpg" alt="Class 3 Image" class="overlay-image">
+                <p>Adv. Science: Animals<br> <br> Building on basic animal science, this course covers advanced topics in animal physiology, genetics, and breeding. It is ideal for students interested in in-depth knowledge of animal production systems and scientific research.</p>
+            </div>
+        </div>
     </div>
+</div>
+
+<div id="overlay2" class="overlay">
+    <div class="overlay-content">
+        <a href="#" class="close">&times;</a>
+        <h2>Veterinary Scienee</h2>
+        <div class="overlay-classes">
+            <div class="overlay-class">
+                <img src="https://d5i19g0fn6omf.cloudfront.net/uploads/catalog/ap/apcspcore.png?v=yyv" alt="Class 1 Image" class="overlay-image">
+                <p>Principles of Veterinary Science<br> <br>An introductory course that familiarizes students with the veterinary field, focusing on animal health, disease prevention, and basic medical care. It prepares students for further study in veterinary medicine or animal health care.</p>
+
+            </div>
+            <div class="overlay-class">
+                <img src="https://nexwebsites.com/images/blog/web-database-design.png" alt="Class 2 Image" class="overlay-image">
+                <p>Veterinary Science<br> <br>This course provides a comprehensive look at animal anatomy, diagnostic practices, and disease treatment. Students learn hands-on skills for clinical settings, including the management of animal health and emergency care.</p>
+            </div>
+            <div class="overlay-class">
+                <img src="https://i.ytimg.com/vi/sCQjVIzKaEo/maxresdefault.jpg" alt="Class 3 Image" class="overlay-image">
+                <p>Adv. Science: Animals<br> <br> Building on basic animal science, this course covers advanced topics in animal physiology, genetics, and breeding. It is ideal for students interested in in-depth knowledge of animal production systems and scientific research</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="overlay3" class="overlay">
+    <div class="overlay-content">
+        <a href="#" class="close">&times;</a>
+        <h2>Agriculture Systems</h2>
+        <div class="overlay-classes">
+            <div class="overlay-class">
+                <img src="https://www.giasuib.com/wp-content/uploads/2021/05/ap-calculus-bc-thuong-dem-den-kho-khan-nao-cho-hoc-sinh-1.jpg" alt="Class 1 Image" class="overlay-image">
+                <p>Principles of Agriculture<br> <br>This foundational course introduces students to the science and business of agriculture, exploring topics like crop and livestock production, soil health, and environmental sustainability. </p>
+
+            </div>
+            <div class="overlay-class">
+                <img src="https://www.fusd.net/cms/lib/CA50000190/Centricity/Domain/3523/75.svg" alt="Class 2 Image" class="overlay-image">
+                <p>Agriculture Power, Structures, and Technology Principles of Welding<br> <br> This course examines the mechanics of agricultural machinery, the design of agricultural structures, and the technology used in modern farming. Students learn about equipment maintenance, safety protocols, and structural innovations.</p>
+            </div>
+            
+        </div>
+    </div>
+</div>
+<div id="overlay4" class="overlay">
+    <div class="overlay-content">
+        <a href="#" class="close">&times;</a>
+        <h2>Global Sustainability</h2>
+        <div class="overlay-classes">
+            <div class="overlay-class">
+                <img src="https://www.giasuib.com/wp-content/uploads/2021/05/ap-calculus-bc-thuong-dem-den-kho-khan-nao-cho-hoc-sinh-1.jpg" alt="Class 1 Image" class="overlay-image">
+                <p>AP Macroeconomics<br> <br>This advanced placement course covers the principles of macroeconomics, including economic indicators, fiscal and monetary policy, and market dynamics. Students gain a broad understanding of the factors that influence national and global economies.<p>
+
+            </div>
+            <div class="overlay-class">
+                <img src="https://www.fusd.net/cms/lib/CA50000190/Centricity/Domain/3523/75.svg" alt="Class 2 Image" class="overlay-image">
+                <p>AP/IB Global Politics<br> <br>This course explores global political systems, international relations, and current global issues. Students analyze political structures, policies, and the complexities of global interactions in today’s world.</p>
+            </div>
+            <div class="overlay-class">
+                <img src="https://www.fusd.net/cms/lib/CA50000190/Centricity/Domain/3523/75.svg" alt="Class 2 Image" class="overlay-image">
+                <p>AP Environmental Science<br> <br>This course examines the relationships between natural systems and human impact, covering topics like ecology, sustainability, pollution, and environmental policy. Students explore the scientific basis for conservation and environmental management.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
 </body>
 </html>
