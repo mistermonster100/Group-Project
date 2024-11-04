@@ -141,7 +141,8 @@
 </div>
 
 <script>
-    const reviews = [];
+    // Load reviews from localStorage on page load
+    const reviews = JSON.parse(localStorage.getItem('reviews')) || [];
 
     function addReview(event) {
         event.preventDefault();
@@ -152,6 +153,9 @@
         // Add new review to the top of the reviews array
         reviews.unshift({ className: classSelect, review: reviewText, rating: '⭐'.repeat(rating) });
         
+        // Save reviews to localStorage
+        localStorage.setItem('reviews', JSON.stringify(reviews));
+
         // Clear form inputs
         document.getElementById('review-input').value = '';
         document.getElementById('rating').value = '1';
@@ -182,7 +186,11 @@
         reviews.sort((a, b) => a.className.localeCompare(b.className));
         displayReviews();
     }
+
+    // Display reviews on page load
+    displayReviews();
 </script>
+
 
 </body>
 </html>
