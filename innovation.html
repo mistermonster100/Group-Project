@@ -2,110 +2,252 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Innovation</title>
-    <link rel="stylesheet" href = "style.css">
+    <title>Engineering and Technology</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <style>
-    style{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+    html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        background-image: url('https://alcorfund.com/wp-content/uploads/2020/09/Technical-Innovation.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        font-family: Arial, sans-serif;
+        color: white;
+        text-align: center;
+    }
 
-html, body {
-    height: 100%; /* Ensure the body and html take up full height */
-    margin: 0;
-    padding: 0;
-    background-image: url('https://alcorfund.com/wp-content/uploads/2020/09/Technical-Innovation.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed; /* Ensures background stays in place during scrolling */
-    font-family: Arial, sans-serif;
-    color: white;
-    text-align: center;
-}
+    h1 {
+        margin-top: 50px;
+        font-size: 48px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        position: relative;
+        z-index: 1;
+    }
 
-h1 {
-    margin-top: 50px;
-    font-size: 48px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-    position: relative;
-    z-index: 1;
-}
+    .courses {
+        display: grid;
+        gap: 2px;
+        padding: 2px;
+        position: relative;
+        z-index: 1;
+    }
 
-.courses {
-    display: grid;
-    gap: 2px;
-    padding: 2px;
-    position: relative;
-    z-index: 1;
-}
+    .courses div {
+        background-color: rgba(0, 0, 0, 0.7);
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+    }
 
-.courses > :nth-child(7) {
-    grid-column: 2 / 3; /* Place the 4th item in the middle column */
-}    
+    .courses h2 {
+        font-size: 21px;
+    }
 
-.courses div {
-    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background for readability */
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
-}
+    .courses p {
+        font-size: 16px;
+    }
 
-.courses h2 {
-    font-size: 21px;
-}
-
-.courses p {
-    font-size: 16px;
-}
-#back{
-    width: 75px;
+    #back {
+        width: 75px;
         padding: 8px;
         margin: 8px;
         background-color: rgba(0, 0, 0, 0.7);
         color: white;
-}
+    }
 </style>
 <body>
-    <div id="back">
+<div id="back">
     <form action="index.html">
         <input type="submit" value="Back">
     </form>
-    </div>
-    <h1>Innovation </h1>
-    <div class = "courses">
-        <div class = "course">
-            <h2>Entrepenurship</h2> 
-            <p>Learn the process of creating a new business or improving an existing one. The art of creating something that hasn't been perfected. </p>
-        </div>
-        <div class = "course">  
-            <h2>Electrical</h2> 
-            <p>Learn the process of electricity, electronics, and electromagnetism. Electricity is the power source of the world. </p>
-        </div>
-
-        <div class = "course">            
-            <h2>Plumbing</h2>
-            <p> Prepare yourself to install, maintain, and repair plumbing systems and components. Without plumbing, you wouldn't have or couldn't do much. </p>
-        </div>
-
-      <div class = "course">            
-            <h2>Automotive</h2>
-            <p>Cover a whole range of topics related to self-propelled vehicles, including their design, engineering, mechanics, and computer technology. </p>
-        </div> 
-
-      <div class = "course">            
-                <h2>Welding</h2>
-                <p>The process where two or more parts are fused from heat, and the pressure of both forming a join as the parts cool. </p>
-            </div>
-      
-      <div class = "course">            
-                <h2>Contruction Trades</h2>
-                <p>Teaches students the skills and knowledge needed for residential and commercial construction. Shaping the world tomorrow. </p>
-            </div>
-    
-      
 </div>
+<h1>Innovation</h1>
+
+<div class="courses">
+    <a href="#overlay1" class="course-link">
+        <div class="course">
+            <h2>Electrical</h2>
+            <p> Learn the process of electricity, electronics, and electromagnetism. Electricity is the power source of the world. </p>
+        </div>
+    </a>
+
+    <a href="#overlay2" class="course-link">
+        <div class="course">
+            <h2>Plumbing</h2>
+            <p>Prepare yourself to install, maintain, and repair plumbing systems and components. Without plumbing, you wouldn't have or couldn't do much.</p>
+        </div>
+    </a>
+
+    <a href="#overlay3" class="course-link">
+        <div class="course">
+            <h2>Auto & Collision Repair</h2>
+            <p>Build in-demand skills for repairing, repainting, and restoring damaged vehicles. Collision Repair training will show you how to make cars, trucks and SUVs look and run like new.</p>
+        </div>
+    </a>
+
+    <a href="#overlay4" class="course-link">
+        <div class="course">
+            <h2>Automotive</h2>
+            <p>Cover a whole range of topics related to self-propelled vehicles, including their design, engineering, mechanics, and computer technology.</p>
+        </div>
+    </a>
+
+    <a href="#overlay5" class="course-link">
+        <div class="course">
+            <h2>Welding</h2>
+            <p>The process where two or more parts are fused from heat, and the pressure of both forming a join as the parts cool.</p>
+        </div>
+    </a>
+
+    <a href="#overlay6" class="course-link">
+        <div class="course">
+            <h2>Construction Trades</h2>
+            <p>Teaches students the skills and knowledge needed for residential and commercial construction. Shaping the world tomorrow.</p>
+        </div>
+    </a>
+
+</div>
+
+<div id="overlay1" class="overlay">
+    <div class="overlay-content">
+        <a href="#" class="close">&times;</a>
+        <h2>Electrical</h2>
+        <div class="overlay-classes">
+            <div class="overlay-class">
+                <img src="sample.jpg" alt="Class 1 Image" class="overlay-image">
+                <p> Principles of Construction Trade <br> <br> Prepares students with the basic skills needed to continue in a construction trade field. Topics will include an introduction to the types and uses for common hand and power tools, learn the types and basic terminology associated with construction drawings, and basic safety. Additionally students will study the roles of individuals and companies within the construction industry and reinforce mathematical and communication skills necessary to be successful in the construction field.
+                </p>
+
+            </div>
+            <div class="overlay-class">
+                <img src="sample.jpg" alt="Class 2 Image" class="overlay-image">
+                <p> Electrical Fundamentals <br> <br> Teaches students everything they need to know about how electricity behaves. Starting from the basic scientific principles, it covers the following topics and related skills: Matter, Electron Theory, Magnetism, Electricity, Electromagnetism, Use of Electromagnetism, The Electrical Circuit, Electrical Formulas
+                </p>
+            </div>
+            <div class="overlay-class">
+                <img src="sample.jpg" alt="Class 3 Image" class="overlay-image">
+                <p> Advanced Electrical <br> <br> Covers topics such as load calculations - feeders and services, health care facilities, standby and emergency systems, basic electronic theory, fire alarm systems, specialty transformers, and advanced controls. </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="overlay2" class="overlay">
+    <div class="overlay-content">
+        <a href="#" class="close">&times;</a>
+        <h2>Plumbing</h2>
+        <div class="overlay-classes">
+            <div class="overlay-class">
+                <img src="sample.jpg" alt="Class 1 Image" class="overlay-image">
+                <p> Principles of Construction Trade <br> <br> Prepares students with the basic skills needed to continue in a construction trade field. Topics will include an introduction to the types and uses for common hand and power tools, learn the types and basic terminology associated with construction drawings, and basic safety. Additionally students will study the roles of individuals and companies within the construction industry and reinforce mathematical and communication skills necessary to be successful in the construction field.
+                </p>
+
+            </div>
+            <div class="overlay-class">
+                <img src="sample.jpg" alt="Class 2 Image" class="overlay-image">
+                <p> Plumbing and Pipefitting <br> <br> Provides the trainee with the skills and knowledge needed to perform those tasks associated with the trades of plumber and pipefitter. The program includes coverage of the most widely accepted materials used for pipe, fittings, and valves. The trainee will learn how to use the tools of the trades, with an emphasis on safety. In addition, the methods used to join pipe, and the procedures for supporting, installing, and testing piping systems, are discussed in detail. </p>
+            </div>
+            <div class="overlay-class">
+                <img src="sample.jpg" alt="Class 3 Image" class="overlay-image">
+                <p> Plumbing and Pipefitting Fundamentals <br> <br> This course covers the basics of plumbing and pipefitting, focusing on installation, repair, and safety protocols.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="overlay3" class="overlay">
+    <div class="overlay-content">
+        <a href="#" class="close">&times;</a>
+        <h2>Auto & Collision Repair</h2>
+        <div class="overlay-classes">
+            <div class="overlay-class">
+                <img src="sample.jpg" alt="Class 1 Image" class="overlay-image">
+                <p> Principles of Collision Repair <br> <br> Provides students an overview of the operating, electrical, and general maintenance systems of the modern automobile. Students will be introduced to the safety and operation of equipment and tools used in the automotive collision industry. Students will study the basics of collision repair, along with learning to perform basic service and maintenance, including the car’s starting and charging system. </p>
+
+            </div>
+            <div class="overlay-class">
+                <img src="sample.jpg" alt="Class 2 Image" class="overlay-image">
+                <p> Repair & Paint Fundamentals <br> <br> Introduces the types of fiberglass and plastic materials used in auto body repair and considerations for automotive painting. Students will explore methods for repairing fiberglass and plastic damage, like welding, reinforcing, repairing holes, and retexturing plastic. Students will be asked to demonstrate the proper use of primers and sealers, spraying techniques, and an understanding of various paint finishes. </p>
+            </div>
+            <div class="overlay-class">
+                <img src="sample.jpg" alt="Class 3 Image" class="overlay-image">
+                <p> Automotive Body Repair <br> <br> Provides students with an understanding of the materials, measuring, welding, and information resources applicable to collision repair. Students will study steel and aluminum dent repair, including the welding practices commonly performed within an automotive repair environment. Students will gain basic skills and knowledge in oxy-fuel welding, cutting, brazing and plasma cutting, gas metal arc welding, squeeze type resistance welding, exterior panel welding and I-CAR welding test preparation. Students will also learn the installation of moldings, ornaments, and fasteners with emphasis on sheet metal analysis and safety. </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="overlay4" class="overlay">
+    <div class="overlay-content">
+        <a href="#" class="close">&times;</a>
+        <h2>Automotive</h2>
+        <div class="overlay-classes">
+            <div class="overlay-class">
+                <img src="sample.jpg" alt="Class 1 Image" class="overlay-image">
+                <p> Principles of Automotive Services <br> <br> Description </p>
+
+            </div>
+            <div class="overlay-class">
+                <img src="sample.jpg" alt="Class 2 Image" class="overlay-image">
+                <p> Brake Systems <br> <br> Description </p>
+            </div>
+            <div class="overlay-class">
+                <img src="sample.jpg" alt="Class 3 Image" class="overlay-image">
+                <p> Steering and Suspensions <br> <br> Description </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="overlay5" class="overlay">
+    <div class="overlay-content">
+        <a href="#" class="close">&times;</a>
+        <h2>Welding</h2>
+        <div class="overlay-classes">
+            <div class="overlay-class">
+                <img src="sample.jpg" alt="Class 1 Image" class="overlay-image">
+                <p> Principles of Welding <br> <br> Description </p>
+
+            </div>
+            <div class="overlay-class">
+                <img src="sample.jpg" alt="Class 2 Image" class="overlay-image">
+                <p> Shielded Metal Arc Welding <br> <br> Description </p>
+            </div>
+            <div class="overlay-class">
+                <img src="sample.jpg" alt="Class 3 Image" class="overlay-image">
+                <p> Gas Welding <br> <br> Description </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="overlay6" class="overlay">
+    <div class="overlay-content">
+        <a href="#" class="close">&times;</a>
+        <h2>Construction Trades</h2>
+        <div class="overlay-classes">
+            <div class="overlay-class">
+                <img src="sample.jpg" alt="Class 1 Image" class="overlay-image">
+                <p> Principles of Contruction Trade <br> <br> Description </p>
+
+            </div>
+            <div class="overlay-class">
+                <img src="sample.jpg" alt="Class 2 Image" class="overlay-image">
+                <p> General Carpentry <br> <br> Description </p>
+            </div>
+            <div class="overlay-class">
+                <img src="sample.jpg" alt="Class 3 Image" class="overlay-image">
+                <p> Carpentry - Framing and Finishing <br> <br> Description </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 </body>
 </html>
