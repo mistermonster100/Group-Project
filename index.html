@@ -10,45 +10,86 @@
             margin: 0;
             padding: 0;
             min-height: 100vh;
-            position: relative;
+            background: url('https://yt3.googleusercontent.com/ytc/AIdro_k9Hz1yVRb_QzFjCL2G8q0r_ILFozqdF43uOuvf8TvE8w=s900-c-k-c0x00ffffff-no-rj') no-repeat center center fixed;
+            background-size: 50%; /* Adjusts the size of the background image */
+            color: #ffffff;
+            overflow-x: hidden;
         }
 
-        .background-logo {
+        .overlay {
             position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 600px;
-            height: 600px;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
             z-index: -1;
         }
 
-        h1 {
-            position: relative;
-            width: 100%;
-            padding: 20px 0 5px 0;
-            background-color: rgba(128, 128, 128, 0.95);
-            color: #ffffff;
-            text-align: center;
-            font-family: 'Poppins', sans-serif;
+        .header {
+            position: fixed;
+            top: 20px;
+            left: 20px;
             font-size: 3em;
             font-weight: 700;
-            letter-spacing: 3px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-            margin: 0;
+            color: #ffffff;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+            font-family: 'Poppins', sans-serif;
+            z-index: 10;
+        }
+
+        .student-class-reviews-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 8px 16px;
+            background: linear-gradient(135deg, #B22222, #8B0000);
+            color: #ffffff;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9em;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .student-class-reviews-button:hover {
+            background: linear-gradient(135deg, #8c1111, #4B0000);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .motto-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 70vh;
+            position: relative;
+            z-index: 1;
+            text-align: center;
         }
 
         .motto {
             font-family: 'Poppins', sans-serif;
-            color: #000000;
-            text-align: center;
-            font-size: 1.2em;
-            font-weight: 500;
-            letter-spacing: 1px;
-            margin-top: 5px;
-            margin-bottom: 15px;
-            padding: 0 20px;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+            font-size: 3em;
+            font-weight: 600;
+            color: #ffffff;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+            line-height: 1.2;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 10px 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            animation: appear 1.5s ease-out;
+        }
+
+        @keyframes appear {
+            0% { opacity: 0; transform: scale(0.9); }
+            100% { opacity: 1; transform: scale(1); }
         }
 
         .table {
@@ -58,6 +99,9 @@
             max-width: 1200px;
             margin: 40px auto;
             padding: 20px;
+            background: rgba(196, 192, 192, 0.85);
+            border-radius: 15px;
+            box-shadow: 0 6px 12px rgb(54, 87, 165);
         }
 
         .row {
@@ -73,10 +117,10 @@
             flex-direction: column;
             align-items: center;
             padding: 20px;
-            background: rgba(211, 211, 211, 0.9);
+            background: rgba(205, 204, 204, 0.9);
             border-radius: 20px;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 6px rgb(255, 27, 27);
             max-width: 300px;
         }
 
@@ -96,7 +140,7 @@
 
         .icon:hover {
             transform: scale(1.05);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2), 0 0 0 2px rgba(255, 0, 0, 0.4);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2), 0 0 0 2px rgba(194, 46, 46, 0.434);
         }
 
         h2 {
@@ -109,62 +153,34 @@
             letter-spacing: 0.5px;
         }
 
-        .student-reviews-button {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            padding: 10px 18px;
-            background: linear-gradient(135deg, #0077b6, #005f73);
-            color: white;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            font-family: 'Poppins', sans-serif;
-            font-size: 0.9em;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s ease;
-        }
-
-        .student-reviews-button:hover {
-            background: linear-gradient(135deg, #005f73, #003844);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-        }
-
         @media (max-width: 768px) {
-            .background-logo {
-                width: 300px;
-                height: 300px;
+            .header {
+                font-size: 2em;
             }
-            h1 {
+
+            .motto {
                 font-size: 2.2em;
-                padding: 15px 0 5px 0;
             }
-            .student-reviews-button {
+
+            .student-class-reviews-button {
                 position: relative;
                 top: 10px;
                 right: auto;
                 margin: 10px auto;
                 display: block;
             }
-            .icon {
-                width: 160px;
-                height: 160px;
-            }
-            h2 {
-                font-size: 1.1em;
-            }
         }
     </style>
 </head>
 <body>
-    <img class="background-logo" src="https://image.maxpreps.io/school-mascot/9/5/1/951860ab-d82d-476e-b355-80a8dbad705e.gif?version=637304818800000000&width=1024&height=1024" alt="Background Logo">
-    <h1>ASPYR</h1>
-    <p class="motto">Find The Network to Your Future Path</p>
-    <button class="student-reviews-button" onclick="location.href='SR.html'">Student Reviews</button>
+    <div class="overlay"></div>
+    <div class="header">ASPYR</div>
+    <button class="student-class-reviews-button" onclick="location.href='SR.html'">Student Class Reviews</button>
+
+    <div class="motto-container">
+        <p class="motto">Find the Network to your Future Career Path</p>
+    </div>
+
     <div class="table">
         <div class="row">
             <form action="A&C.html">
@@ -188,19 +204,19 @@
             <form action="ETI.html">
                 <input class="icon" type="image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRf-q8_7jl4oaZW8Ya3ZzWktucNHgpAYHj2czR2Xq6-0MFfeurRiJD2ilj36796zKoT5Oc&usqp=CAU" alt="Engineering & Technology">
                 <h2>Engineering & Technology</h2>
-            </form>
-            <form action="innovation.html">
-                <input class="icon" type="image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQ3Bdgc1BEdhxHC0qAmqOlMqnSyHteQLBk3g&s" alt="Innovation">
-                <h2>Innovation</h2>
-            </form>
-        <form action="business.html">
-            <input class="icon" type="image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQojtpp4hn1A0aLECEOJWPOknUDsy2m3jjtAPRc6C3j7OkfBW0sLbByJYazC9OE68WpEzA&usqp=CAU" alt="Business & Administration">
-            <h2>Business & Administration</h2>
-        </form>
-        <form action="IB.html">
-            <input class="icon" type="image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7eTdF4yJ9N1VYESswz802nghLYMcRndFeoQ&s" alt="International Baccalaureate">
-            <h2>International Baccalaureate</h2>
-        </form>
-    </div>
-</body>
-</html>
+               </form>
+               <form action="innovation.html">
+                   <input class="icon" type="image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQ3Bdgc1BEdhxHC0qAmqOlMqnSyHteQLBk3g&s" alt="Innovation">
+                   <h2>Innovation</h2>
+               </form>
+           <form action="business.html">
+               <input class="icon" type="image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQojtpp4hn1A0aLECEOJWPOknUDsy2m3jjtAPRc6C3j7OkfBW0sLbByJYazC9OE68WpEzA&usqp=CAU" alt="Business & Administration">
+               <h2>Business & Administration</h2>
+           </form>
+           <form action="IB.html">
+               <input class="icon" type="image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7eTdF4yJ9N1VYESswz802nghLYMcRndFeoQ&s" alt="International Baccalaureate">
+               <h2>International Baccalaureate</h2>
+           </form>
+       </div>
+   </body>
+   </html>
