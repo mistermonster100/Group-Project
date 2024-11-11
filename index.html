@@ -10,12 +10,13 @@
             margin: 0;
             padding: 0;
             min-height: 100vh;
-            background: url('https://yt3.googleusercontent.com/ytc/AIdro_k9Hz1yVRb_QzFjCL2G8q0r_ILFozqdF43uOuvf8TvE8w=s900-c-k-c0x00ffffff-no-rj') no-repeat center center fixed;
-            background-size: 50%; /* Adjusts the size of the background image */
+            background: url('https://yt3.googleusercontent.com/ytc/AIdro_k9Hz1yVRb_QzFjCL2G8q0r_ILFozqdF43uOuvf8TvE8w=s900-c-k-c0x00ffffff-no-rj') no-repeat center -100% fixed; /* Changed from center center to center 25% */
+            background-size: 50%;
             color: #ffffff;
             overflow-x: hidden;
         }
 
+        /* Rest of the CSS remains the same */
         .overlay {
             position: fixed;
             top: 0;
@@ -176,7 +177,7 @@
 <body>
     <div class="overlay"></div>
     <div class="header">ASPYR</div>
-       <button class="class-reviews-button" onclick="location.href='SR.html'">Class Reviews</button>
+    <button class="class-reviews-button" onclick="location.href='SR.html'">Class Reviews</button>
 
     <div class="motto-container">
         <p class="motto">Find the Network to your Future Career Path</p>
@@ -205,19 +206,20 @@
             <form action="ETI.html">
                 <input class="icon" type="image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRf-q8_7jl4oaZW8Ya3ZzWktucNHgpAYHj2czR2Xq6-0MFfeurRiJD2ilj36796zKoT5Oc&usqp=CAU" alt="Engineering & Technology">
                 <h2>Engineering & Technology</h2>
-               </form>
-               <form action="innovation.html">
-                   <input class="icon" type="image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQ3Bdgc1BEdhxHC0qAmqOlMqnSyHteQLBk3g&s" alt="Innovation">
-                   <h2>Innovation</h2>
-               </form>
-           <form action="business.html">
-               <input class="icon" type="image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQojtpp4hn1A0aLECEOJWPOknUDsy2m3jjtAPRc6C3j7OkfBW0sLbByJYazC9OE68WpEzA&usqp=CAU" alt="Business & Administration">
-               <h2>Business & Administration</h2>
-           </form>
-           <form action="IB.html">
-               <input class="icon" type="image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7eTdF4yJ9N1VYESswz802nghLYMcRndFeoQ&s" alt="International Baccalaureate">
-               <h2>International Baccalaureate</h2>
-           </form>
-       </div>
-   </body>
-   </html>
+            </form>
+            <form action="innovation.html">
+                <input class="icon" type="image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQ3Bdgc1BEdhxHC0qAmqOlMqnSyHteQLBk3g&s" alt="Innovation">
+                <h2>Innovation</h2>
+            </form>
+            <form action="business.html">
+                <input class="icon" type="image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQojtpp4hn1A0aLECEOJWPOknUDsy2m3jjtAPRc6C3j7OkfBW0sLbByJYazC9OE68WpEzA&usqp=CAU" alt="Business & Administration">
+                <h2>Business & Administration</h2>
+            </form>
+            <form action="IB.html">
+                <input class="icon" type="image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7eTdF4yJ9N1VYESswz802nghLYMcRndFeoQ&s" alt="International Baccalaureate">
+                <h2>International Baccalaureate</h2>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
