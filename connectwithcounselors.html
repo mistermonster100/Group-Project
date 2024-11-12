@@ -29,7 +29,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-        }
+           /* Back button styling */
         .back-button {
             position: fixed;
             top: 20px;
@@ -37,13 +37,15 @@
             text-decoration: none;
             color: var(--text-primary);
             padding: 10px 20px;
-            background: rgba(229, 229, 229, 0.907);
+            background: rgba(229, 229, 229, 0.9);
             border-radius: 30px;
             box-shadow: 0 2px 10px rgba(88, 30, 30, 0.1);
             transition: var(--transition);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(0, 0, 0, 0.918);
+            border: 1px solid rgba(0, 0, 0, 0.9);
             z-index: 1000;
+            display: flex;
+            align-items: center;
         }
 
         .back-button:hover {
@@ -51,6 +53,9 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
         }
 
+        .back-button svg {
+            margin-right: 8px;
+        }
         .container {
             max-width: 600px;
             width: 100%;
