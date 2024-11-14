@@ -2,180 +2,228 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Future Career Survey</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Suitability Survey</title>
     <style>
         body {
-            font-family: 'Inter', sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #f0f0f5;
-            color: #333;
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 1em;
+            background-color: #f9f9f9;
         }
         .container {
-            max-width: 800px;
-            margin: auto;
+            background: #ffffff;
+            border-radius: 8px;
             padding: 20px;
-            background: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
         }
         h1 {
-            font-size: 2rem;
-            color: #0056b3;
+            color: #1e40af;
         }
         .question {
-            margin: 20px 0;
+            margin-bottom: 1em;
         }
-        label {
-            display: block;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-        input[type="radio"] {
-            margin-right: 8px;
-        }
-        .submit-button {
-            margin-top: 20px;
-            padding: 12px 24px;
-            background-color: #0056b3;
-            color: #fff;
+        .button {
+            background-color: #1e40af;
+            color: #ffffff;
+            padding: 10px 20px;
             border: none;
             border-radius: 5px;
-            font-size: 1rem;
             cursor: pointer;
-            transition: 0.3s;
         }
-        .submit-button:hover {
-            background-color: #0041a3;
+        .button:hover {
+            background-color: #1a365d;
         }
-        .result {
-            display: none;
+        #results {
             margin-top: 20px;
-            padding: 20px;
-            background-color: #dff0d8;
-            border-radius: 10px;
-            color: #3c763d;
-            font-size: 1.2rem;
-            font-weight: 600;
+            padding: 15px;
         }
     </style>
 </head>
 <body>
-
-<div class="container">
-    <h1>Career Suitability Survey</h1>
-    <p>Answer the questions below to help determine a career path that might be right for you.</p>
-
-    <form id="survey-form" onsubmit="return getCareerRecommendation()">
-        <div class="question">
-            <label>1. Do you enjoy working with numbers?</label>
-            <input type="radio" name="question1" value="yes"> Yes
-            <input type="radio" name="question1" value="no"> No
-        </div>
-        
-        <div class="question">
-            <label>2. Are you interested in solving complex problems?</label>
-            <input type="radio" name="question2" value="yes"> Yes
-            <input type="radio" name="question2" value="no"> No
-        </div>
-        
-        <div class="question">
-            <label>3. Do you enjoy helping people in need?</label>
-            <input type="radio" name="question3" value="yes"> Yes
-            <input type="radio" name="question3" value="no"> No
-        </div>
-        
-        <div class="question">
-            <label>4. Are you interested in technology and coding?</label>
-            <input type="radio" name="question4" value="yes"> Yes
-            <input type="radio" name="question4" value="no"> No
-        </div>
-        
-        <div class="question">
-            <label>5. Do you prefer hands-on work?</label>
-            <input type="radio" name="question5" value="yes"> Yes
-            <input type="radio" name="question5" value="no"> No
-        </div>
-        
-        <div class="question">
-            <label>6. Are you comfortable with public speaking?</label>
-            <input type="radio" name="question6" value="yes"> Yes
-            <input type="radio" name="question6" value="no"> No
-        </div>
-        
-        <div class="question">
-            <label>7. Do you enjoy creative work, like writing or design?</label>
-            <input type="radio" name="question7" value="yes"> Yes
-            <input type="radio" name="question7" value="no"> No
-        </div>
-        
-        <div class="question">
-            <label>8. Do you have an interest in scientific research?</label>
-            <input type="radio" name="question8" value="yes"> Yes
-            <input type="radio" name="question8" value="no"> No
-        </div>
-        
-        <div class="question">
-            <label>9. Do you enjoy working in a team environment?</label>
-            <input type="radio" name="question9" value="yes"> Yes
-            <input type="radio" name="question9" value="no"> No
-        </div>
-        
-        <div class="question">
-            <label>10. Do you like working in a fast-paced environment?</label>
-            <input type="radio" name="question10" value="yes"> Yes
-            <input type="radio" name="question10" value="no"> No
-        </div>
-
-        <input type="submit" class="submit-button" value="Submit">
-    </form>
-
-    <div class="result" id="result">
-        <p id="career-suggestion"></p>
+    <div class="container">
+        <h1>Career Suitability Survey</h1>
+        <p>Estimated time: 8-10 minutes</p>
+        <div id="survey-container"></div>
+        <button class="button" id="submit-button" onclick="handleSubmit()">View Results</button>
+        <div id="results"></div>
     </div>
-</div>
 
-<script>
-    function getCareerRecommendation() {
-        // Get the values from the form
-        var responses = {};
-        var formElements = document.querySelectorAll('input[type="radio"]:checked');
-        
-        formElements.forEach(function(element) {
-            responses[element.name] = element.value;
-        });
+    <script>
+        const questions = [
+            { id: 1, text: "What type of work environment do you prefer?", options: ["Fast-paced and dynamic", "Structured and organized", "Creative and flexible", "Research-oriented"] },
+            { id: 2, text: "How do you prefer to solve problems?", options: ["Using technical and analytical approaches", "Through creative and innovative solutions", "By collaborating with others", "Using established procedures and methods"] },
+            { id: 3, text: "What kind of impact do you want to make in your career?", options: ["Advancing technology and innovation", "Helping people directly and personally", "Creating art or cultural contributions", "Serving the community and society"] },
+            { id: 4, text: "How do you prefer to communicate?", options: ["Through data and technical documentation", "Via artistic expression and design", "Direct personal interaction", "Written reports and formal presentations"] },
+            { id: 5, text: "What motivates you the most?", options: ["Innovation and pushing boundaries", "Making a difference in people's lives", "Creative expression and originality", "Building and improving systems"] },
+            { id: 6, text: "How do you prefer to learn new things?", options: ["Through hands-on experimentation", "By studying theories and research", "Through social interaction and discussion", "By following structured tutorials"] },
+            { id: 7, text: "What kind of projects interest you most?", options: ["Technical challenges and problem-solving", "Creative and artistic endeavors", "People-focused initiatives", "Research and analysis"] },
+            { id: 8, text: "How do you handle deadlines and pressure?", options: ["Thrive on tight deadlines and competition", "Prefer steady, measured progress", "Work best with flexible timelines", "Excel in structured environments"] },
+            { id: 9, text: "What role do you prefer in a team?", options: ["Technical expert and problem solver", "Creative contributor and innovator", "Leader and coordinator", "Support and team player"] },
+            { id: 10, text: "What kind of tools do you enjoy working with?", options: ["Digital and technical tools", "Creative and artistic materials", "People and communication platforms", "Research and analytical software"] },
+            { id: 11, text: "How do you prefer to measure success?", options: ["Through technical achievements and innovations", "By positive impact on individuals", "Through creative accomplishments", "By community or societal improvement"] },
+            { id: 12, text: "What interests you most about potential employers?", options: ["Innovation and technical advancement", "Social responsibility and impact", "Creative freedom and expression", "Stability and professional growth"] },
+            { id: 13, text: "How do you prefer to structure your workday?", options: ["Dynamic and project-based", "Regular and predictable", "Flexible and adaptable", "Research and development focused"] },
+            { id: 14, text: "What kind of challenges excite you?", options: ["Complex technical problems", "Helping others overcome obstacles", "Creative and artistic challenges", "Social and community issues"] },
+            { id: 15, text: "Where do you see yourself making the biggest contribution?", options: ["Advancing technological innovation", "Improving healthcare or education", "Contributing to arts and culture", "Building community and social programs"] }
+        ];
 
-        // Simple evaluation logic based on user responses
-        var recommendation = '';
-        var yesCount = 0;
+        const careerPaths = {
+            "Arts & Communication": [
+                { title: "Graphic Designer", salary: "$50,000 - $85,000" },
+                { title: "Public Relations Specialist", salary: "$50,000 - $90,000" },
+                { title: "Content Creator", salary: "$45,000 - $80,000" },
+                { title: "Film Producer", salary: "$60,000 - $120,000" },
+                { title: "UX/UI Designer", salary: "$75,000 - $120,000" },
+                { title: "Digital Marketing Specialist", salary: "$55,000 - $95,000" }
+            ],
+            "Agriculture & Natural Resources": [
+                { title: "Agricultural Scientist", salary: "$60,000 - $90,000" },
+                { title: "Forester", salary: "$50,000 - $75,000" },
+                { title: "Environmental Consultant", salary: "$55,000 - $85,000" },
+                { title: "Wildlife Biologist", salary: "$45,000 - $75,000" },
+                { title: "Farm Manager", salary: "$40,000 - $65,000" },
+                { title: "Soil Scientist", salary: "$55,000 - $80,000" }
+            ],
+            "Medical Network": [
+                { title: "Registered Nurse", salary: "$60,000 - $110,000" },
+                { title: "Medical Researcher", salary: "$90,000 - $140,000" },
+                { title: "Healthcare Administrator", salary: "$80,000 - $130,000" },
+                { title: "Physical Therapist", salary: "$65,000 - $100,000" },
+                { title: "Pharmacist", salary: "$85,000 - $130,000" },
+                { title: "Clinical Psychologist", salary: "$70,000 - $120,000" }
+            ],
+            "Public Service Network": [
+                { title: "Public Policy Analyst", salary: "$70,000 - $110,000" },
+                { title: "Social Worker", salary: "$45,000 - $70,000" },
+                { title: "Community Outreach Coordinator", salary: "$50,000 - $85,000" },
+                { title: "Public Affairs Specialist", salary: "$60,000 - $100,000" },
+                { title: "Urban Planner", salary: "$70,000 - $110,000" },
+                { title: "Nonprofit Manager", salary: "$55,000 - $95,000" }
+            ],
+            "Engineering & Technology": [
+                { title: "Software Engineer", salary: "$95,000 - $150,000" },
+                { title: "Data Scientist", salary: "$90,000 - $140,000" },
+                { title: "Network Architect", salary: "$100,000 - $160,000" },
+                { title: "Mechanical Engineer", salary: "$80,000 - $120,000" },
+                { title: "Electrical Engineer", salary: "$85,000 - $125,000" },
+                { title: "AI/ML Engineer", salary: "$100,000 - $170,000" }
+            ],
+            "Innovation": [
+                { title: "Innovation Consultant", salary: "$90,000 - $150,000" },
+                { title: "Product Manager", salary: "$80,000 - $130,000" },
+                { title: "Business Analyst", salary: "$65,000 - $110,000" },
+                { title: "Operations Manager", salary: "$70,000 - $120,000" },
+                { title: "Market Researcher", salary: "$60,000 - $100,000" },
+                { title: "Supply Chain Analyst", salary: "$60,000 - $105,000" }
+            ],
+            "Business & Administration": [
+                { title: "Financial Analyst", salary: "$60,000 - $100,000" },
+                { title: "Human Resources Manager", salary: "$70,000 - $120,000" },
+                { title: "Sales Manager", salary: "$65,000 - $115,000" },
+                { title: "Marketing Manager", salary: "$75,000 - $125,000" },
+                { title: "Business Development Manager", salary: "$80,000 - $140,000" },
+                { title: "Project Manager", salary: "$70,000 - $120,000" }
+            ],
+            "International Baccalaureate": [
+                { title: "International School Teacher", salary: "$45,000 - $75,000" },
+                { title: "Curriculum Developer", salary: "$60,000 - $90,000" },
+                { title: "Education Administrator", salary: "$70,000 - $120,000" },
+                { title: "Academic Coordinator", salary: "$55,000 - $85,000" },
+                { title: "International Education Consultant", salary: "$65,000 - $110,000" },
+                { title: "Student Counselor", salary: "$50,000 - $80,000" }
+            ]
+        };
 
-        for (var key in responses) {
-            if (responses[key] === 'yes') {
-                yesCount++;
-            }
+        function createQuestions() {
+            const container = document.getElementById('survey-container');
+            questions.forEach(question => {
+                const questionDiv = document.createElement('div');
+                questionDiv.className = 'question';
+                
+                const questionText = document.createElement('p');
+                questionText.textContent = `${question.id}. ${question.text}`;
+                questionDiv.appendChild(questionText);
+                
+                question.options.forEach((option, index) => {
+                    const label = document.createElement('label');
+                    label.style.display = 'block';
+                    label.style.marginBottom = '5px';
+                    
+                    const radio = document.createElement('input');
+                    radio.type = 'radio';
+                    radio.name = `question${question.id}`;
+                    radio.value = index;
+                    
+                    label.appendChild(radio);
+                    label.appendChild(document.createTextNode(' ' + option));
+                    questionDiv.appendChild(label);
+                });
+                
+                container.appendChild(questionDiv);
+            });
         }
 
-        if (yesCount >= 8) {
-            recommendation = 'You might want to explore careers in: Engineering and Technology.';
-        } else if (yesCount >= 6) {
-            recommendation = 'You might be suited for a career in: Medical Network.';
-        } else if (yesCount >= 4) {
-            recommendation = 'Consider pursuing a career in: Arts and Communication.';
-        } else if (yesCount >= 2) {
-            recommendation = 'A career in: Public Service Network might be right for you.';
-        } else {
-            recommendation = 'You might be interested in: Innovation or the IB Pathway.';
+        function handleSubmit() {
+            const results = {};
+            questions.forEach(question => {
+                const selected = document.querySelector(`input[name="question${question.id}"]:checked`);
+                if (selected) {
+                    results[question.id] = parseInt(selected.value);
+                }
+            });
+
+            let scores = {};
+            Object.keys(careerPaths).forEach(career => {
+                scores[career] = 0;
+            });
+
+            Object.entries(results).forEach(([questionId, answer]) => {
+                if (answer === 0) {
+                    scores["Engineering & Technology"] += 2;
+                    scores["Innovation"] += 1;
+                }
+                if (answer === 1) {
+                    scores["Arts & Communication"] += 2;
+                    scores["Innovation"] += 1;
+                }
+                if (answer === 2) {
+                    scores["Medical Network"] += 2;
+                    scores["Public Service Network"] += 2;
+                    scores["International Baccalaureate"] += 1;
+                }
+                if (answer === 3) {
+                    scores["Agriculture & Natural Resources"] += 2;
+                    scores["Business & Administration"] += 1;
+                }
+            });
+
+            const sortedCareers = Object.entries(scores)
+                .sort((a, b) => b[1] - a[1])
+                .slice(0, 3);
+
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = `
+                <h2>Your Career Network Matches</h2>
+                <p>Based on your responses, here are your top career network matches:</p>
+                ${sortedCareers.map((career, index) => `
+                    <div style="margin-bottom: 20px;">
+                        <h3>${index + 1}. ${career[0]}</h3>
+                        <div style="margin-left: 20px;">
+                            <h4>Potential Career Paths:</h4>
+                            <ul>
+                                ${careerPaths[career[0]].map(job => `
+                                    <li><strong>${job.title}</strong> (${job.salary})</li>
+                                `).join('')}
+                            </ul>
+                        </div>
+                    </div>
+                `).join('')}
+            `;
         }
 
-        // Display the result
-        document.getElementById('career-suggestion').textContent = recommendation;
-        document.getElementById('result').style.display = 'block';
-
-        // Prevent form submission
-        return false;
-    }
-</script>
-
+        createQuestions();
+    </script>
 </body>
 </html>
