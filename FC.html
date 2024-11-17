@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Career Suitability Survey</title>
+    <title>Personalized Career Suitability Survey</title>
     <style>
-        /* Global Styles */
         body {
             font-family: Arial, sans-serif;
-            background-color: #e0e0e0;
+            background-color: #f0f2f5;
             color: #333;
             margin: 0;
             padding: 20px;
@@ -18,9 +17,8 @@
             min-height: 100vh;
         }
 
-        /* Container Styles */
         .container {
-            background: #d4d0d0;
+            background: #fff;
             border-radius: 8px;
             padding: 30px;
             max-width: 800px;
@@ -28,306 +26,377 @@
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
-        /* Title Styles */
         h1 {
-            color: #e01616;
-            font-size: 1.8em;
+            color: #d32f2f;
+            font-size: 2em;
             text-align: center;
-            margin-bottom: 0.5em;
         }
 
-        /* Subtitle */
         p {
             text-align: center;
             font-size: 1em;
-            color: #464141;
+            margin-bottom: 20px;
         }
 
-        /* Question Styles */
         .question {
-            margin-bottom: 1.5em;
+            margin-bottom: 30px;
         }
 
         .question p {
             font-size: 1.1em;
             font-weight: bold;
-            color: #0e0e0e;
-            margin-bottom: 0.5em;
+            margin-bottom: 10px;
+            color: #000000;
         }
 
-        label {
-            font-size: 0.95em;
-            display: block;
-            padding: 8px;
-            background-color: #f3f3f3;
+        .slider-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .slider {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 8px;
             border-radius: 4px;
-            margin-bottom: 5px;
+            background: #e0e0e0;
+            outline: none;
             cursor: pointer;
-            color: #333;
         }
 
-        /* Radio Button */
-        input[type="radio"] {
-            margin-right: 10px;
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #d32f2f;
+            cursor: pointer;
+            transition: background 0.2s;
         }
 
-        /* Button Styles */
+        .slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #d32f2f;
+            cursor: pointer;
+            transition: background 0.2s;
+            border: none;
+        }
+
+        .slider::-webkit-slider-thumb:hover {
+            background: #b71c1c;
+        }
+
+        .slider-labels {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            font-size: 0.9em;
+            color: #757575;
+        }
+
         .button {
             display: block;
             width: 100%;
-            background-color: #dd0707;
-            color: #ffffff;
-            padding: 12px;
+            background-color: #1976d2;
+            color: white;
+            padding: 15px;
             border: none;
             border-radius: 5px;
-            cursor: pointer;
             font-size: 1.1em;
             font-weight: bold;
             text-align: center;
-            margin-top: 1em;
-        }
-
-        .back-button {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            text-decoration: none;
-            color: var(--text-primary);
-            padding: 10px 20px;
-            background: rgba(229, 229, 229, 0.907);
-            border-radius: 30px;
-            box-shadow: 0 2px 10px rgba(88, 30, 30, 0.1);
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(0, 0, 0, 0.918);
-            z-index: 1000;
-        }
-
-        .back-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.2s;
         }
 
         .button:hover {
-            background-color: #153076;
+            background-color: #1565c0;
         }
 
-        /* Results Styles */
         #results {
-            margin-top: 20px;
+            margin-top: 30px;
             padding: 20px;
-            background-color: #f9f9f9;
-            border: 1px solid #ddd;
+            background-color: #f5f5f5;
+            border: 1px solid #e0e0e0;
             border-radius: 8px;
         }
 
-        /* Career Network and Jobs Styles */
-        h3 {
+        .network-score {
+            margin: 15px 0;
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .network-score h3 {
             color: #d32f2f;
-            margin-bottom: 0.5em;
+            margin: 0 0 10px 0;
         }
 
-        h4 {
-            color: #1e40af;
-            margin-bottom: 0.5em;
+        .score-bar {
+            height: 10px;
+            background-color: #e0e0e0;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            overflow: hidden;
         }
 
-        ul {
-            list-style: none;
-            padding-left: 1em;
+        .score-fill {
+            height: 100%;
+            background-color: #1976d2;
+            transition: width 0.5s ease-out;
         }
 
-        li {
-            font-size: 0.9em;
-            padding: 0.3em 0;
-            color: #444;
+        .career-suggestions {
+            padding-left: 20px;
+        }
+
+        .career-suggestions li {
+            margin: 5px 0;
+            color: #424242;
         }
     </style>
 </head>
 <body>
-    <a href="index.html" class="back-button">← Back</a>
     <div class="container">
-        <h1>Career Suitability Survey</h1>
-        <p>Estimated time: 8-10 minutes</p>
+        <h1>Personalized Career Suitability Survey</h1>
+        <p>Rate how strongly you agree with each statement from 1 (Strongly Disagree) to 5 (Strongly Agree)</p>
         <div id="survey-container"></div>
-        <button class="button" id="submit-button" onclick="handleSubmit()">View Results</button>
+        <button class="button" id="submit-button" onclick="handleSubmit()">Submit</button>
         <div id="results"></div>
     </div>
 
     <script>
         const questions = [
-            { id: 1, text: "What type of work environment do you prefer?", options: ["Fast-paced and dynamic", "Structured and organized", "Creative and flexible", "Research-oriented"] },
-            { id: 2, text: "How do you prefer to solve problems?", options: ["Using technical and analytical approaches", "Through creative and innovative solutions", "By collaborating with others", "Using established procedures and methods"] },
-            { id: 3, text: "What kind of impact do you want to make in your career?", options: ["Advancing technology and innovation", "Helping people directly and personally", "Creating art or cultural contributions", "Serving the community and society"] },
-            { id: 4, text: "How do you prefer to communicate?", options: ["Through data and technical documentation", "Via artistic expression and design", "Direct personal interaction", "Written reports and formal presentations"] },
-            { id: 5, text: "What motivates you the most?", options: ["Innovation and pushing boundaries", "Making a difference in people's lives", "Creative expression and originality", "Building and improving systems"] },
-            { id: 6, text: "How do you prefer to learn new things?", options: ["Through hands-on experimentation", "By studying theories and research", "Through social interaction and discussion", "By following structured tutorials"] },
-            { id: 7, text: "What kind of projects interest you most?", options: ["Technical challenges and problem-solving", "Creative and artistic endeavors", "People-focused initiatives", "Research and analysis"] },
-            { id: 8, text: "How do you handle deadlines and pressure?", options: ["Thrive on tight deadlines and competition", "Prefer steady, measured progress", "Work best with flexible timelines", "Excel in structured environments"] },
-            { id: 9, text: "What role do you prefer in a team?", options: ["Technical expert and problem solver", "Creative contributor and innovator", "Leader and coordinator", "Support and team player"] },
-            { id: 10, text: "What kind of tools do you enjoy working with?", options: ["Digital and technical tools", "Creative and artistic materials", "People and communication platforms", "Research and analytical software"] },
-            { id: 11, text: "How do you prefer to measure success?", options: ["Through technical achievements and innovations", "By positive impact on individuals", "Through creative accomplishments", "By community or societal improvement"] },
-            { id: 12, text: "What interests you most about potential employers?", options: ["Innovation and technical advancement", "Social responsibility and impact", "Creative freedom and expression", "Stability and professional growth"] },
-            { id: 13, text: "How do you prefer to structure your workday?", options: ["Dynamic and project-based", "Regular and predictable", "Flexible and adaptable", "Research and development focused"] },
-            { id: 14, text: "What kind of challenges excite you?", options: ["Complex technical problems", "Helping others overcome obstacles", "Creative and artistic challenges", "Social and community issues"] },
-            { id: 15, text: "Where do you see yourself making the biggest contribution?", options: ["Advancing technological innovation", "Improving healthcare or education", "Contributing to arts and culture", "Building community and social programs"] }
+            {
+                text: "I enjoy working on creative projects and expressing ideas through various media.",
+                networks: {
+                    "Arts & Communication": 2,
+                    "Innovation": 1
+                }
+            },
+            {
+                text: "I like solving complex technical problems and understanding how things work.",
+                networks: {
+                    "Engineering & Technology": 2,
+                    "Innovation": 1
+                }
+            },
+            {
+                text: "I enjoy helping people and making a positive impact in their lives.",
+                networks: {
+                    "Public Service Network": 2,
+                    "Medical Network": 1
+                }
+            },
+            {
+                text: "I like working with nature and understanding environmental systems.",
+                networks: {
+                    "Agriculture & Natural Resources": 2,
+                    "Public Service Network": 1
+                }
+            },
+            {
+                text: "I am interested in health, medicine, and scientific research.",
+                networks: {
+                    "Medical Network": 2,
+                    "Engineering & Technology": 1
+                }
+            },
+            {
+                text: "I enjoy organizing, planning, and managing resources efficiently.",
+                networks: {
+                    "Business & Administration": 2,
+                    "Innovation": 1
+                }
+            },
+            {
+                text: "I like learning about different cultures and global perspectives.",
+                networks: {
+                    "International Baccalaureate": 2,
+                    "Arts & Communication": 1
+                }
+            },
+            {
+                text: "I enjoy analyzing data and using technology to solve problems.",
+                networks: {
+                    "Engineering & Technology": 2,
+                    "Business & Administration": 1
+                }
+            },
+            {
+                text: "I like leading teams and coordinating group efforts.",
+                networks: {
+                    "Business & Administration": 2,
+                    "Public Service Network": 1
+                }
+            },
+            {
+                text: "I enjoy teaching others and sharing knowledge.",
+                networks: {
+                    "International Baccalaureate": 2,
+                    "Public Service Network": 1
+                }
+            },
+            // Adding new questions
+            {
+                text: "I am comfortable working with financial data and making investment decisions.",
+                networks: {
+                    "Business & Administration": 2,
+                    "Innovation": 1
+                }
+            },
+            {
+                text: "I enjoy conducting research and discovering new information.",
+                networks: {
+                    "Medical Network": 2,
+                    "Engineering & Technology": 1
+                }
+            },
+            {
+                text: "I like working with digital tools and creating online content.",
+                networks: {
+                    "Arts & Communication": 2,
+                    "Engineering & Technology": 1
+                }
+            },
+            {
+                text: "I am passionate about sustainability and environmental conservation.",
+                networks: {
+                    "Agriculture & Natural Resources": 2,
+                    "Public Service Network": 1
+                }
+            },
+            {
+                text: "I enjoy solving puzzles and complex logical problems.",
+                networks: {
+                    "Engineering & Technology": 2,
+                    "Innovation": 1
+                }
+            }
         ];
 
-        const careerPaths = {
-            "Arts & Communication": [
-                { title: "Graphic Designer", salary: "$50,000 - $85,000" },
-                { title: "Public Relations Specialist", salary: "$50,000 - $90,000" },
-                { title: "Content Creator", salary: "$45,000 - $80,000" },
-                { title: "Film Producer", salary: "$60,000 - $120,000" },
-                { title: "UX/UI Designer", salary: "$75,000 - $120,000" },
-                { title: "Digital Marketing Specialist", salary: "$55,000 - $95,000" }
-            ],
-            "Agriculture & Natural Resources": [
-                { title: "Agricultural Scientist", salary: "$60,000 - $90,000" },
-                { title: "Forester", salary: "$50,000 - $75,000" },
-                { title: "Environmental Consultant", salary: "$55,000 - $85,000" },
-                { title: "Wildlife Biologist", salary: "$45,000 - $75,000" },
-                { title: "Farm Manager", salary: "$40,000 - $65,000" },
-                { title: "Soil Scientist", salary: "$55,000 - $80,000" }
-            ],
-            "Medical Network": [
-                { title: "Registered Nurse", salary: "$60,000 - $110,000" },
-                { title: "Medical Researcher", salary: "$90,000 - $140,000" },
-                { title: "Healthcare Administrator", salary: "$80,000 - $130,000" },
-                { title: "Physical Therapist", salary: "$65,000 - $100,000" },
-                { title: "Pharmacist", salary: "$85,000 - $130,000" },
-                { title: "Clinical Psychologist", salary: "$70,000 - $120,000" }
-            ],
-            "Public Service Network": [
-                { title: "Public Policy Analyst", salary: "$70,000 - $110,000" },
-                { title: "Social Worker", salary: "$45,000 - $70,000" },
-                { title: "Community Outreach Coordinator", salary: "$50,000 - $85,000" },
-                { title: "Public Affairs Specialist", salary: "$60,000 - $100,000" },
-                { title: "Urban Planner", salary: "$70,000 - $110,000" },
-                { title: "Nonprofit Manager", salary: "$55,000 - $95,000" }
-            ],
-            "Engineering & Technology": [
-                { title: "Software Engineer", salary: "$95,000 - $150,000" },
-                { title: "Data Scientist", salary: "$90,000 - $140,000" },
-                { title: "Network Architect", salary: "$100,000 - $160,000" },
-                { title: "Mechanical Engineer", salary: "$80,000 - $120,000" },
-                { title: "Electrical Engineer", salary: "$85,000 - $125,000" },
-                { title: "AI/ML Engineer", salary: "$100,000 - $170,000" }
-            ],
-            "Innovation": [
-                { title: "Innovation Consultant", salary: "$90,000 - $150,000" },
-                { title: "Product Manager", salary: "$80,000 - $130,000" },
-                { title: "Business Analyst", salary: "$65,000 - $110,000" },
-                { title: "Operations Manager", salary: "$70,000 - $120,000" },
-                { title: "Market Researcher", salary: "$60,000 - $100,000" },
-                { title: "Supply Chain Analyst", salary: "$60,000 - $105,000" }
-            ],
-            "Business & Administration": [
-                { title: "Financial Analyst", salary: "$60,000 - $100,000" },
-                { title: "Human Resources Manager", salary: "$70,000 - $120,000" },
-                { title: "Sales Manager", salary: "$65,000 - $115,000" },
-                { title: "Marketing Manager", salary: "$75,000 - $125,000" },
-                { title: "Business Development Manager", salary: "$80,000 - $140,000" },
-                { title: "Project Manager", salary: "$70,000 - $120,000" }
-            ],
-            "International Baccalaureate": [
-                { title: "International School Teacher", salary: "$45,000 - $75,000" },
-                { title: "Curriculum Developer", salary: "$60,000 - $90,000" },
-                { title: "Education Administrator", salary: "$70,000 - $120,000" },
-                { title: "Academic Coordinator", salary: "$55,000 - $85,000" },
-                { title: "International Education Consultant", salary: "$65,000 - $110,000" },
-                { title: "Student Counselor", salary: "$50,000 - $80,000" }
-            ]
+        const careerNetworks = {
+            "Arts & Communication": {
+                careers: ["Graphic Designer", "Public Relations Specialist", "Content Creator", "Journalist", "Marketing Creative Director", "Digital Media Producer"]
+            },
+            "Agriculture & Natural Resources": {
+                careers: ["Environmental Scientist", "Agricultural Manager", "Wildlife Biologist", "Conservation Officer", "Sustainable Agriculture Consultant", "Renewable Energy Specialist"]
+            },
+            "Medical Network": {
+                careers: ["Registered Nurse", "Pharmacist", "Physical Therapist", "Medical Laboratory Technician", "Healthcare Administrator", "Biomedical Researcher"]
+            },
+            "Public Service Network": {
+                careers: ["Social Worker", "Urban Planner", "Public Policy Analyst", "Community Outreach Coordinator", "Non-profit Manager", "Emergency Management Director"]
+            },
+            "Engineering & Technology": {
+                careers: ["Software Engineer", "Mechanical Engineer", "Data Scientist", "Systems Architect", "Robotics Engineer", "AI Developer"]
+            },
+            "Innovation": {
+                careers: ["Product Manager", "Innovation Consultant", "Research & Development Specialist", "Technology Entrepreneur", "Design Thinking Consultant", "Strategic Innovation Director"]
+            },
+            "Business & Administration": {
+                careers: ["Financial Analyst", "Marketing Manager", "Project Manager", "Business Development Manager", "Human Resources Director", "Investment Banker"]
+            },
+            "International Baccalaureate": {
+                careers: ["International Teacher", "Education Consultant", "Curriculum Developer", "Global Programs Coordinator", "Educational Technology Specialist", "International School Administrator"]
+            }
         };
 
-        function createQuestions() {
-            const container = document.getElementById('survey-container');
-            questions.forEach(question => {
-                const questionDiv = document.createElement('div');
-                questionDiv.className = 'question';
-                
-                const questionText = document.createElement('p');
-                questionText.textContent = `${question.id}. ${question.text}`;
+        function createSurvey() {
+            const container = document.getElementById("survey-container");
+            questions.forEach((question, index) => {
+                const questionDiv = document.createElement("div");
+                questionDiv.className = "question";
+
+                const questionText = document.createElement("p");
+                questionText.textContent = `${index + 1}. ${question.text}`;
                 questionDiv.appendChild(questionText);
-                
-                question.options.forEach((option, index) => {
-                    const label = document.createElement('label');
-                    label.style.display = 'block';
-                    label.style.marginBottom = '5px';
-                    
-                    const radio = document.createElement('input');
-                    radio.type = 'radio';
-                    radio.name = `question${question.id}`;
-                    radio.value = index;
-                    
-                    label.appendChild(radio);
-                    label.appendChild(document.createTextNode(' ' + option));
-                    questionDiv.appendChild(label);
-                });
-                
+
+                const sliderContainer = document.createElement("div");
+                sliderContainer.className = "slider-container";
+
+                const slider = document.createElement("input");
+                slider.type = "range";
+                slider.min = 1;
+                slider.max = 5;
+                slider.value = 3;
+                slider.className = "slider";
+                slider.id = `question-${index}`;
+
+                const labels = document.createElement("div");
+                labels.className = "slider-labels";
+                labels.innerHTML = `
+                    <span>Strongly Disagree</span>
+                    <span>Neutral</span>
+                    <span>Strongly Agree</span>
+                `;
+
+                sliderContainer.appendChild(slider);
+                sliderContainer.appendChild(labels);
+                questionDiv.appendChild(sliderContainer);
                 container.appendChild(questionDiv);
             });
         }
 
         function handleSubmit() {
-            const results = {};
-            questions.forEach(question => {
-                const selected = document.querySelector(`input[name="question${question.id}"]:checked`);
-                if (selected) {
-                    results[question.id] = parseInt(selected.value);
-                }
+            const networkScores = Object.keys(careerNetworks).reduce((acc, network) => {
+                acc[network] = 0;
+                return acc;
+            }, {});
+
+            questions.forEach((question, index) => {
+                const value = parseInt(document.getElementById(`question-${index}`).value);
+                const weight = (value - 1) / 4; // Normalize to 0-1 range
+                
+                Object.entries(question.networks).forEach(([network, impact]) => {
+                    networkScores[network] += weight * impact;
+                });
             });
 
-            let scores = {};
-            Object.keys(careerPaths).forEach(career => {
-                scores[career] = 0;
+            // Normalize scores to percentages
+            const maxPossibleScore = Math.max(...Object.values(networkScores));
+            Object.keys(networkScores).forEach(network => {
+                networkScores[network] = (networkScores[network] / maxPossibleScore) * 100;
             });
 
-            Object.entries(results).forEach(([questionId, answer]) => {
-                if (answer === 0) {
-                    scores["Engineering & Technology"] += 2;
-                    scores["Innovation"] += 1;
-                }
-                if (answer === 1) {
-                    scores["Arts & Communication"] += 2;
-                    scores["Innovation"] += 1;
-                }
-                if (answer === 2) {
-                    scores["Medical Network"] += 2;
-                    scores["Public Service Network"] += 2;
-                    scores["International Baccalaureate"] += 1;
-                }
-                if (answer === 3) {
-                    scores["Agriculture & Natural Resources"] += 2;
-                    scores["Business & Administration"] += 1;
-                }
-            });
-
-            const sortedCareers = Object.entries(scores)
-                .sort((a, b) => b[1] - a[1])
-                .slice(0, 3);
-
-            const resultsDiv = document.getElementById('results');
-            resultsDiv.innerHTML = `
-                <h2>Your Career Network Matches</h2>
-                <p>Based on your responses, here are your top career network matches:</p>
-                ${sortedCareers.map((career, index) => `
-                    <div style="margin-bottom: 20px;">
-                        <h3>${index + 1}. ${career[0]}</h3>
-                        <div style="margin-left: 20px;">
-                            <h4>Potential Career Paths:</h4>
-                            <ul>
-                                ${careerPaths[career[0]].map(job => `
-                                    <li><strong>${job.title}</strong> (${job.salary})</li>
-                                `).join('')}
-                            </ul>
-                        </div>
-                    </div>
-                `).join('')}
-            `;
+            displayResults(networkScores);
         }
 
-        createQuestions();
+        function displayResults(scores) {
+            const resultsDiv = document.getElementById("results");
+            const sortedNetworks = Object.entries(scores)
+                .sort((a, b) => b[1] - a[1]);
+
+            let html = '<h2>Your Career Network Matches</h2>';
+            
+            sortedNetworks.forEach(([network, score]) => {
+                html += `
+                    <div class="network-score">
+                        <h3>${network}</h3>
+                        <div class="score-bar">
+                            <div class="score-fill" style="width: ${score}%"></div>
+                        </div>
+                        <p>Match: ${Math.round(score)}%</p>
+                        <h4>Suggested Careers:</h4>
+                        <ul class="career-suggestions">
+                            ${careerNetworks[network].careers.map(career => `<li>${career}</li>`).join('')}
+                        </ul>
+                    </div>
+                `;
+            });
+
+            resultsDiv.innerHTML = html;
+        }
+
+        createSurvey();
     </script>
 </body>
 </html>
