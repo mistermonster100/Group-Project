@@ -3,20 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <title>Arts & Communication</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         /* Global Styles */
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
             margin: 0;
             padding: 20px;
-            background-color: #b4aeae;
-            color: #333;
+            background-color: #f0f4f8;
+            color: #2c3e50;
             line-height: 1.6;
         }
 
         h1, h2, h3 {
             margin: 0;
             font-weight: 600;
+            color: #1a73e8;
         }
 
         /* Header */
@@ -24,14 +26,21 @@
             text-align: center;
             padding: 40px 20px;
             margin-bottom: 40px;
-            background: linear-gradient(to right, #ec0404, #045cd8);
+            background: linear-gradient(135deg, #ff6b6b, #1a73e8);
             color: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .header:hover {
+            transform: scale(1.02);
         }
 
         .header h1 {
             font-size: 3em;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
         /* Layout */
@@ -44,10 +53,11 @@
 
         .schedules {
             flex: 1;
-            background: #fff;
+            background: white;
             padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid #ff6b6b;
         }
 
         .courses-container {
@@ -59,27 +69,30 @@
 
         .courses-section, .careers-section {
             padding: 20px;
-            background: #f8f8f8;
-            border-radius: 10px;
+            background: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
         }
 
         .course-block, .career-card {
-            background: #fff;
+            background: #f0f4f8;
             padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            cursor: pointer;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border-left: 4px solid #1a73e8;
+            margin-bottom: 15px;
         }
 
         .course-block:hover, .career-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+            transform: translateY(-8px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            background: #ffffff;
         }
 
         .period {
             font-weight: bold;
-            color: #d32f2f;
+            color: #ff6b6b;
         }
 
         /* Overlay Styles */
@@ -92,29 +105,31 @@
             width: 100%;
             height: 100%;
             overflow: auto;
-            background-color: rgba(0,0,0,0.8);
+            background-color: rgba(26, 115, 232, 0.7);
         }
 
         .overlay-content {
             background-color: white;
             margin: 5% auto;
-            padding: 20px;
-            border-radius: 10px;
+            padding: 30px;
+            border-radius: 15px;
             width: 80%;
             max-width: 1000px;
             position: relative;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
         }
 
         .overlay-close {
-            color: #aaa;
+            color: #ff6b6b;
             float: right;
-            font-size: 28px;
+            font-size: 35px;
             font-weight: bold;
             cursor: pointer;
+            transition: color 0.3s ease;
         }
 
         .overlay-close:hover {
-            color: black;
+            color: #1a73e8;
         }
 
         /* Responsive Design */
@@ -130,6 +145,7 @@
     </style>
 </head>
 <body>
+    <!-- Rest of the HTML remains the same as the original document -->
     <div class="header">
         <h1>Arts & Communication</h1>
     </div>
@@ -203,8 +219,6 @@
                     <h3>Journalism</h3>
                     <p>Hands-on experience with professional equipment, live production techniques, and advanced editing software.</p>
                 </div>
-
-        
             </div>
 
             <div class="careers-section">
@@ -238,7 +252,7 @@
         </div>
     </div>
 
-    <!-- Overlays -->
+    <!-- Overlays remain the same as original document -->
     <div id="broadcast-overlay" class="overlay">
         <div class="overlay-content">
             <span class="overlay-close" onclick="closeOverlay('broadcast-overlay')">&times;</span>
@@ -277,9 +291,6 @@
                 <li>Newspaper/Yearbook</li>
             </ul>
         </div>
-    </div>
-
-   
     </div>
 
     <script>
