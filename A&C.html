@@ -10,7 +10,7 @@
             font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
             margin: 0;
             padding: 20px;
-            background-color: #f0f4f8;
+            background-color: #c2c2cc7c;
             color: #2c3e50;
             line-height: 1.6;
         }
@@ -18,7 +18,7 @@
         h1, h2, h3 {
             margin: 0;
             font-weight: 600;
-            color: #1a73e8;
+            color: #0e0e0e;
         }
 
         /* Header */
@@ -26,20 +26,16 @@
             text-align: center;
             padding: 40px 20px;
             margin-bottom: 40px;
-            background: linear-gradient(135deg, #ff6b6b, #1a73e8);
+            background: linear-gradient(135deg, #df0505, #bd0f0f);
             color: white;
             border-radius: 15px;
             box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease;
         }
 
-        .header:hover {
-            transform: scale(1.02);
-        }
-
         .header h1 {
             font-size: 3em;
-            color: white;
+            color: rgb(255, 253, 253);
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
@@ -53,10 +49,10 @@
 
         .schedules {
             flex: 1;
-            background: white;
+            background: rgb(239, 238, 238);
             padding: 20px;
             border-radius: 15px;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 6px 12px rgba(213, 212, 212, 0.912);
             border-left: 5px solid #ff6b6b;
         }
 
@@ -66,10 +62,14 @@
             flex-direction: column;
             gap: 20px;
         }
-
+        .course-block:hover, .career-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            background: #06a2f0d4;
+        }
         .courses-section, .careers-section {
             padding: 20px;
-            background: #ffffff;
+            background: (239, 238, 238);
             border-radius: 15px;
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
         }
@@ -80,19 +80,18 @@
             border-radius: 12px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
             transition: all 0.3s ease;
-            border-left: 4px solid #1a73e8;
-            margin-bottom: 15px;
-        }
-
-        .course-block:hover, .career-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-            background: #ffffff;
+            border-left: 5.5px solid #1a73e8;
+            margin-bottom: 18px;
         }
 
         .period {
             font-weight: bold;
             color: #ff6b6b;
+        }
+
+        /* New style for highlighted 5th period */
+        .fifth-period {
+            background-color: #ffff9c;
         }
 
         /* Overlay Styles */
@@ -105,11 +104,11 @@
             width: 100%;
             height: 100%;
             overflow: auto;
-            background-color: rgba(26, 115, 232, 0.7);
+            background-color: rgba(208, 81, 81, 0.7);
         }
 
         .overlay-content {
-            background-color: white;
+            background-color: rgb(255, 255, 255);
             margin: 5% auto;
             padding: 30px;
             border-radius: 15px;
@@ -120,7 +119,7 @@
         }
 
         .overlay-close {
-            color: #ff6b6b;
+            color: #ea0c0c;
             float: right;
             font-size: 35px;
             font-weight: bold;
@@ -145,7 +144,6 @@
     </style>
 </head>
 <body>
-    <!-- Rest of the HTML remains the same as the original document -->
     <div class="header">
         <h1>Arts & Communication</h1>
     </div>
@@ -161,7 +159,7 @@
                 <p><span class="period">2nd:</span> Algebra I</p>
                 <p><span class="period">3rd:</span> Biology</p>
                 <p><span class="period">4th:</span> World History</p>
-                <p><span class="period">5th:</span> Principles of Broadcasting</p>
+                <p class="fifth-period"><span class="period">5th:</span> Principles of Broadcasting</p>
                 <p><span class="period">6th:</span> Physical Education</p>
                 <p><span class="period">7th:</span> World Language</p>
             </div>
@@ -172,7 +170,7 @@
                 <p><span class="period">2nd:</span> Geometry</p>
                 <p><span class="period">3rd:</span> Chemistry</p>
                 <p><span class="period">4th:</span> Digital Media</p>
-                <p><span class="period">5th:</span> ACP Speech</p>
+                <p class="fifth-period"><span class="period">5th:</span> ACP Speech</p>
                 <p><span class="period">6th:</span> World Language</p>
                 <p><span class="period">7th:</span> Elective</p>
             </div>
@@ -183,7 +181,7 @@
                 <p><span class="period">2nd:</span> Algebra II</p>
                 <p><span class="period">3rd:</span> Physics</p>
                 <p><span class="period">4th:</span> U.S. History</p>
-                <p><span class="period">5th:</span> Audio/Visual Production</p>
+                <p class="fifth-period"><span class="period">5th:</span> Audio/Visual Production</p>
                 <p><span class="period">6th:</span> Newspaper/Yearbook</p>
                 <p><span class="period">7th:</span> Elective</p>
             </div>
@@ -194,13 +192,16 @@
                 <p><span class="period">2nd:</span> Math</p>
                 <p><span class="period">3rd:</span> Government/Economics</p>
                 <p><span class="period">4th:</span> Mass Media Production</p>
-                <p><span class="period">5th:</span> Advanced Media Production</p>
+                <p class="fifth-period"><span class="period">5th:</span> Advanced Media Production</p>
                 <p><span class="period">6th:</span> Newspaper/Yearbook</p>
                 <p><span class="period">7th:</span> Elective</p>
             </div>
         </div>
 
-        <!-- Right Section: Courses and Careers -->
+        <!-- Rest of the document remains unchanged -->
+        <!-- (Courses, Careers, Overlays, and Script sections are identical to the original) -->
+        
+        <!-- Full original right section content goes here -->
         <div class="courses-container">
             <div class="courses-section">
                 <h2>Available Courses</h2>
