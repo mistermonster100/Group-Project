@@ -2,151 +2,76 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Arts & Communication</title>
-    <style>
-        body {
-            font-family: 'Inter', -apple-system, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #ffffff;
-            color: #333;
-        }
-
-        .header {
-            text-align: center;
-            padding: 20px;
-            margin-bottom: 40px;
-        }
-
-        h1 {
-            color: #d32f2f;
-            font-size: 2.5em;
-            margin: 0;
-        }
-
-        .content-container {
-            display: flex;
-            gap: 40px;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .schedules {
-            flex: 1;
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: 8px;
-        }
-
-        .courses-container {
-            flex: 1;
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: 8px;
-        }
-
-        .schedule-block {
-            background: white;
-            padding: 15px;
-            margin-bottom: 20px;
-            border-radius: 6px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        }
-
-        .course-block {
-            background: white;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 6px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            transition: transform 0.2s;
-        }
-
-        .course-block:hover {
-            transform: translateY(-2px);
-        }
-
-        .careers-section {
-            margin-top: 40px;
-            padding: 20px;
-            background: #f8f9fa;
-            border-radius: 8px;
-        }
-
-        .career-card {
-            background: white;
-            padding: 15px;
-            margin-bottom: 15px;
-            border-radius: 6px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        }
-
-        h2, h3 {
-            color: #d32f2f;
-            margin-top: 0;
-        }
-
-        .period {
-            font-weight: bold;
-            color: #d32f2f;
-        }
-    </style>
+    <title>Engineering and Technology</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+<style>
+   html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-image: url('https://fhschoirs.org/wp-content/uploads/2023/09/Cantabile-2023-2024-scaled.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: Arial, sans-serif;
+    color: white;
+    text-align: center;
+    overflow: hidden; /* Prevents any scrolling if the background exceeds the viewport */
+}
+    }
+
+    h1 {
+        margin-top: 50px;
+        font-size: 48px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        position: relative;
+        z-index: 1;
+    }
+
+    .courses {
+        display: grid;
+        gap: 2px;
+        padding: 2px;
+        position: relative;
+        z-index: 1;
+    }
+
+    .courses div {
+        background-color: rgba(0, 0, 0, 0.7);
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+    }
+
+    .courses > :nth-child(4) {
+        grid-column: 2 / 3;
+    }
+
+    .courses h2 {
+        font-size: 21px;
+    }
+
+    .courses p {
+        font-size: 16px;
+    }
+
+    #back {
+        width: 75px;
+        padding: 8px;
+        margin: 8px;
+        background-color: rgba(0, 0, 0, 0.7);
+        color: white;
+    }
+</style>
 <body>
-    <div class="header">
-        <h1>Arts & Communication</h1>
-    </div>
-
-    <div class="content-container">
-        <div class="schedules">
-            <h2>Sample Schedules</h2>
-            
-            <div class="schedule-block">
-                <h3>Freshman Year</h3>
-                <p><span class="period">1st:</span> English 9</p>
-                <p><span class="period">2nd:</span> Algebra I</p>
-                <p><span class="period">3rd:</span> Biology</p>
-                <p><span class="period">4th:</span> World History</p>
-                <p><span class="period">5th:</span> Principles of Broadcasting</p>
-                <p><span class="period">6th:</span> Physical Education</p>
-                <p><span class="period">7th:</span> World Language</p>
-            </div>
-
-            <div class="schedule-block">
-                <h3>Sophomore Year</h3>
-                <p><span class="period">1st:</span> English 10</p>
-                <p><span class="period">2nd:</span> Geometry</p>
-                <p><span class="period">3rd:</span> Chemistry</p>
-                <p><span class="period">4th:</span> Digital Media</p>
-                <p><span class="period">5th:</span> ACP Speech</p>
-                <p><span class="period">6th:</span> World Language</p>
-                <p><span class="period">7th:</span> Elective</p>
-            </div>
-
-            <div class="schedule-block">
-                <h3>Junior Year</h3>
-                <p><span class="period">1st:</span> English 11</p>
-                <p><span class="period">2nd:</span> Algebra II</p>
-                <p><span class="period">3rd:</span> Physics</p>
-                <p><span class="period">4th:</span> U.S. History</p>
-                <p><span class="period">5th:</span> Audio/Visual Production</p>
-                <p><span class="period">6th:</span> Newspaper/Yearbook</p>
-                <p><span class="period">7th:</span> Elective</p>
-            </div>
-
-            <div class="schedule-block">
-                <h3>Senior Year</h3>
-                <p><span class="period">1st:</span> English 12</p>
-                <p><span class="period">2nd:</span> Math</p>
-                <p><span class="period">3rd:</span> Government/Economics</p>
-                <p><span class="period">4th:</span> Mass Media Production</p>
-                <p><span class="period">5th:</span> Advanced Media Production</p>
-                <p><span class="period">6th:</span> Newspaper/Yearbook</p>
-                <p><span class="period">7th:</span> Elective</p>
-            </div>
-        </div>
-
-        <h1>Arts & Communication </h1>
+<div id="back">
+    <form action="index.html">
+        <input type="submit" value="Back">
+    </form>
+</div>
+<h1>Arts & Communication </h1>
 <div class="courses">
     <a href="#overlay1" class="course-link">
         <div class="course">
