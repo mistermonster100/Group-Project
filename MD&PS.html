@@ -1,228 +1,362 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Medical</title>
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <title>Arts & Communication</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #c2c2cc7c;
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            margin: 0;
+            font-weight: 600;
+            color: #0e0e0e;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 40px 20px;
+            margin-bottom: 40px;
+            background: linear-gradient(135deg, #df0505, #bd0f0f);
+            color: white;
+            border-radius: 15px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .header h1 {
+            font-size: 3em;
+            color: rgb(255, 253, 253);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        /* Layout */
+        .content-container {
+            display: flex;
+            gap: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .schedules {
+            flex: 1;
+            background: rgb(239, 238, 238);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 6px 12px rgba(213, 212, 212, 0.912);
+            border-left: 5px solid #ff6b6b;
+        }
+
+        .courses-container {
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .course-block:hover, .career-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            background: #06a2f0d4;
+        }
+        .courses-section, .careers-section {
+            padding: 20px;
+            background: (239, 238, 238);
+            border-radius: 15px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .course-block, .career-card {
+            background: #f0f4f8;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border-left: 5.5px solid #1a73e8;
+            margin-bottom: 18px;
+        }
+
+        .period {
+            font-weight: bold;
+            color: #ff6b6b;
+        }
+
+        /* New style for highlighted 5th period */
+        .fifth-period {
+            background-color: #ffff9c;
+        }
+
+        /* Overlay Styles */
+        .overlay {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(208, 81, 81, 0.7);
+        }
+
+        .overlay-content {
+            background-color: rgb(255, 255, 255);
+            margin: 5% auto;
+            padding: 30px;
+            border-radius: 15px;
+            width: 80%;
+            max-width: 1000px;
+            position: relative;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .overlay-close {
+            color: #ea0c0c;
+            float: right;
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .overlay-close:hover {
+            color: #1a73e8;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .content-container {
+                flex-direction: column;
+            }
+
+            .header h1 {
+                font-size: 2.5em;
+            }
+        }
+    </style>
 </head>
 <body>
-<style>
-html, body {
-    height: 100%; /* Ensure the body and html take up full height */
-    margin: 0;
-    padding: 0;
-    background-image: url('https://fire.fishersin.gov/wp-content/uploads/sites/2/ems-1024x768.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed; /* Ensures background stays in place during scrolling */
-    font-family: Arial, sans-serif;
-    color: white;
-    text-align: center;
-}
-
-h1 {
-    margin-top: 50px;
-    font-size: 48px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-    position: relative;
-    z-index: 1;
-}
-
-.courses {
-    display: grid;
-    gap: 20px;
-    padding: 20px;
-    position: relative;
-    z-index: 1;
-}
-
-.courses div {
-    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background for readability */
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
-}
-
-.courses h2 {
-    font-size: 24px;
-}
-
-.courses p {
-    font-size: 16px;
-}
-
-#back {
-    width: 75px;
-    padding: 8px;
-    margin: 8px;
-    background-color: rgba(0, 0, 0, 0.7);
-    color: white;
-}
-</style>
-<div id="back">
-    <form action="index.html">
-        <input type="submit" value="Back">
-    </form>
-</div>
-<h1>Medical Network</h1>
-<div class="courses">
-     <a href="#overlay1" class="course-link">
-         <div class="course">
-        <h2>Certified Nursing Assistant</h2>
-        <p>This course provides the foundational skills needed to assist nurses in patient care, including basic medical procedures, patient hygiene, and vital signs monitoring.</p>
+    <div class="header">
+        <h1>Arts & Communication</h1>
     </div>
- <a href="#overlay2" class="course-link">
-     <div class="course">
-        <h2>Medical Assisting</h2>
-        <p>Students will learn administrative and clinical skills necessary for working in medical offices, including patient management, medical billing, and laboratory procedures.</p>
-    </div>
- <a href="#overlay3" class="course-link">
-     <div class="course">
-        <h2>Emergency Medical Technician</h2>
-        <p>This course covers the skills needed to provide emergency care to patients in various situations, including CPR, first aid, and basic life support techniques.</p>
-    </div>
- <a href="#overlay4" class="course-link">
-     <div class="course">
-        <h2>Pre-Med</h2>
-        <p>This course prepares students for a future in medical school, focusing on biology, chemistry, and health sciences, along with hands-on experience in clinical settings.</p>
-    </div>
- <a href="#overlay5" class="course-link">    <div class="course">
-        <h2>Biomedical Science</h2>
-        <p>Students will explore the biological and physical sciences that underpin healthcare, including anatomy, physiology, and medical ethics.</p>
-    </div>
- <a href="#overlay6" class="course-link">
-     <div class="course">
-        <h2>Exercise Science</h2>
-        <p>This course examines the scientific principles behind physical activity, focusing on fitness assessment, exercise prescription, and the role of exercise in health.</p>
-    </div>
-</div>
-<div id="overlay1" class="overlay">
-    <div class="overlay-content">
-        <a href="#" class="close">&times;</a>
-        <h2>Certified Nursing Assistant</h2>
-        <div class="overlay-classes">
-            <div class="overlay-class">
-                <img src="https://esoftskills.com/healthcare/wp-content/uploads/2024/04/Principles-of-Healthcare-Ethics-768x439.jpg" alt="Class 1 Image" class="overlay-image">
-                <p>Principles of Healthcare <br> <br>  The Principles of Health Care course introduces students to the foundational concepts of healthcare systems, practices, and ethical standards. It covers a wide range of topics including healthcare delivery models, the roles of healthcare professionals, patient rights, medical law, and ethical decision-making.  </p>
 
+    <div class="content-container">
+        <!-- Left Section: Schedules -->
+        <div class="schedules">
+            <h2>Sample Schedules</h2>
+            
+            <div class="schedule-block">
+                <h3>Freshman Year</h3>
+                <p><span class="period">1st:</span> English 9</p>
+                <p><span class="period">2nd:</span> Algebra I</p>
+                <p><span class="period">3rd:</span> Biology</p>
+                <p><span class="period">4th:</span> PCC/Health</p>
+                <p><span class="period">5th:</span> Geography</p>
+                <p><span class="period">6th:</span> Weights</p>
+                <p><span class="period">7th:</span> AP CSP</p>
             </div>
-            <div class="overlay-class">
-                <img src="https://png.pngtree.com/png-vector/20230816/ourlarge/pngtree-doctor-standing-next-to-various-medical-supplies-clipart-vector-png-image_6989293.png" alt="Class 2 Image" class="overlay-image">
-                <p>Medical Terminology<br> <br> The Medical Terminology course provides a comprehensive introduction to the language used in the healthcare industry. Students will explore medical vocabulary, focusing on root words, prefixes, suffixes, and their usage in describing the human body, diseases, treatments, and medical procedures. </p>
+
+            <div class="schedule-block">
+                <h3>Sophomore Year</h3>
+                <p><span class="period">1st:</span> English 10</p>
+                <p><span class="period">2nd:</span> Geometry</p>
+                <p><span class="period">3rd:</span> ICP</p>
+                <p><span class="period">4th:</span> U.S History</p>
+                <p class="fifth-period"><span class="period">5th:</span> P Exercise Science/Kin</p>
+                <p><span class="period">6th:</span> Weights</p>
+                <p><span class="period">7th:</span> Study Hall </p>
             </div>
-            <div class="overlay-class">
-                <img src="https://images.ctfassets.net/5ghoewqh73wu/5u7SxdLdXwU5hCxioyjYcy/ec23cfbff9fc94041c07134c5de780fd/certified-nursing-assistant-helping-senior-woman-to-walk-at-private-clinic.jpg?w=1254&h=836&q=50&fm=png" alt="Class 3 Image" class="overlay-image">
-                <p>Certified Nursing Assistant<br> <br>  The Certified Nursing Assistant (CNA) course is designed to prepare students for a career in healthcare by providing the knowledge and practical skills needed to become a certified nursing assistant. The curriculum covers essential topics such as patient care, infection control, safety procedures, anatomy and physiology, communication, and documentation. Students will gain hands-on experience through clinical practice, learning to assist patients with daily living activities, monitor vital signs, and provide compassionate support under the supervision of nursing staff. </p>
+
+            <div class="schedule-block">
+                <h3>Junior Year</h3>
+                <p><span class="period">1st:</span> Speech/Comp</p>
+                <p><span class="period">2nd:</span> Algebra II</p>
+                <p><span class="period">3rd:</span> Anatomy</p>
+                <p><span class="period">4th:</span> Principles of Healthcare</p>
+                <p class="fifth-period"><span class="period">5th:</span> Human Perf/Weights</p>
+                <p><span class="period">6th:</span> Medical Term</p>
+                <p><span class="period">7th:</span> Study Hall</p>
+            </div>
+
+            <div class="schedule-block">
+                <h3>Senior Year</h3>
+                <p><span class="period">1st:</span> English 12</p>
+                <p><span class="period">2nd:</span> PF/Gov</p>
+                <p><span class="period">3rd:</span> Capstone</p>
+                <p><span class="period">4th:</span> Capstone</p>
+                <p class="fifth-period"><span class="period">5th:</span> EMT</p>
+                <p><span class="period">6th:</span> Capstone</p>
+                <p><span class="period">7th:</span> Elective</p>
+            </div>
+        </div>
+
+        <!-- Rest of the document remains unchanged -->
+        <!-- (Courses, Careers, Overlays, and Script sections are identical to the original) -->
+        
+        <!-- Full original right section content goes here -->
+        <div class="courses-container">
+            <div class="courses-section">
+                <h2>Available Courses</h2>
+                
+                <div class="course-block" onclick="openOverlay('broadcast-overlay')">
+                    <h3>Certified Nursing Assistant</h3>
+                    <p>Learn fundamentals of media production for TV, radio, and digital platforms. Master camera work, sound editing, and video production techniques.</p>
+                </div>
+
+                <div class="course-block" onclick="openOverlay('digital-media-overlay')">
+                    <h3>Medical Assisting</h3>
+                    <p>Create and edit multimedia content, develop digital storytelling skills, and learn industry-standard software for content creation.</p>
+                </div>
+
+                <div class="course-block" onclick="openOverlay('av-production-overlay')">
+                    <h3>Emergency Medical Technician</h3>
+                    <p>Hands-on experience with professional equipment, live production techniques, and advanced editing software.</p>
+                </div>
+                <div class="course-block" onclick="openOverlay('av-production-overlay')">
+                    <h3>Pre-Med</h3>
+                    <p>Hands-on experience with professional equipment, live production techniques, and advanced editing software.</p>
+                </div>
+                <div class="course-block" onclick="openOverlay('av-production-overlay')">
+                    <h3>Bio-Medical Science</h3>
+                    <p>Hands-on experience with professional equipment, live production techniques, and advanced editing software.</p>
+                </div>
+                <div class="course-block" onclick="openOverlay('av-production-overlay')">
+                    <h3>Exercise Science</h3>
+                    <p>Hands-on experience with professional equipment, live production techniques, and advanced editing software.</p>
+                </div>
+            </div>
+
+            <div class="careers-section">
+                <h2>Unique Career Paths</h2>
+                
+                <div class="career-card">
+                    <h3>Registered Nurse</h3>
+                    <p>Develops and manages content plans for brands, analyzing data to determine what content will resonate with audiences and planning distribution across various platforms.</p>
+                </div>
+
+                <div class="career-card">
+                    <h3>Pharmacist</h3>
+                    <p>Creates audio feedback and sound effects for apps, websites, and digital products to enhance user experience and brand identity.</p>
+                </div>
+
+                <div class="career-card">
+                    <h3>Physical Therapist</h3>
+                    <p>Manages real-time 3D environments for film and TV production, combining traditional filmmaking with game engine technology.</p>
+                </div>
+
+                <div class="career-card">
+                    <h3>Medical Laboratory Technician</h3>
+                    <p>Creates interactive experiences using AR/VR technology for entertainment, education, and commercial applications.</p>
+                </div>
+
+                <div class="career-card">
+                    <h3>Health  care Adminstrator</h3>
+                    <p>Ensures content and media productions follow ethical guidelines, privacy regulations, and maintain social responsibility in the digital age.</p>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<div id="overlay2" class="overlay">
-    <div class="overlay-content">
-        <a href="#" class="close">&times;</a>
-        <h2>Medical Assisting</h2>
-        <div class="overlay-classes">
-            <div class="overlay-class">
-                <img src="https://i.pinimg.com/736x/33/a2/ab/33a2ab8b5845bc0009d7b1eba480227b.jpg" alt="Class 1 Image" class="overlay-image">
-                <p>Principles of Health Care <br> <br> The Principles of Health Care course introduces students to the foundational concepts of healthcare systems, practices, and ethical standards. It covers a wide range of topics including healthcare delivery models, the roles of healthcare professionals, patient rights, medical law, and ethical decision-making.  </p>
 
-            </div>
-            <div class="overlay-class">
-                <img src="https://png.pngtree.com/png-vector/20230816/ourlarge/pngtree-doctor-standing-next-to-various-medical-supplies-clipart-vector-png-image_6989293.png" alt="Class 2 Image" class="overlay-image">
-                <p>Medical Terminology <br> <br>The Medical Terminology course provides a comprehensive introduction to the language used in the healthcare industry. Students will explore medical vocabulary, focusing on root words, prefixes, suffixes, and their usage in describing the human body, diseases, treatments, and medical procedures.  </p>
-            </div>
-            <div class="overlay-class">
-                <img src="https://images.ctfassets.net/5ghoewqh73wu/5u7SxdLdXwU5hCxioyjYcy/ec23cfbff9fc94041c07134c5de780fd/certified-nursing-assistant-helping-senior-woman-to-walk-at-private-clinic.jpg?w=1254&h=836&q=50&fm=png" alt="Class 3 Image" class="overlay-image">
-                <p>Certified Clinical Medical Assisting<br> <br> The Certified Clinical Medical Assisting (CCMA) course equips students with the knowledge and skills needed to perform clinical and administrative duties in medical settings. The curriculum covers a range of topics, including patient care procedures, laboratory techniques, infection control, pharmacology, medical terminology, and clinical documentation. Students will develop proficiency in performing EKGs, administering medications, taking patient histories, and preparing patients for exams, while also mastering office operations such as scheduling and medical billing.  </p>
-            </div>
+    <!-- Overlays remain the same as original document -->
+    <div id="broadcast-overlay" class="overlay">
+        <div class="overlay-content">
+            <span class="overlay-close" onclick="closeOverlay('broadcast-overlay')">&times;</span>
+            <h2>Certified Nursing Details</h2>
+            <p>Comprehensive course covering media production techniques, including:</p>
+            <ul>
+                <li>Principals of HealthCare</li>
+                <li>Medical Terminology</li>
+                <li>Certified Nursing Assistant</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="digital-media-overlay" class="overlay">
+        <div class="overlay-content">
+            <span class="overlay-close" onclick="closeOverlay('digital-media-overlay')">&times;</span>
+            <h2>Medical Assisting</h2>
+            <p>In-depth exploration of multimedia content creation, including:</p>
+            <ul>
+                <li>Principles of HealthCare</li>
+                <li>Medical Terminology</li>
+                <li>Certified Clinical Medical Assisting</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="av-production-overlay" class="overlay">
+        <div class="overlay-content">
+            <span class="overlay-close" onclick="closeOverlay('av-production-overlay')">&times;</span>
+            <h2>Emergency Medical Technician</h2>
+            <p>Hands-on course focusing on professional media production:</p>
+            <ul>
+                <li>Principles of HealthCare</li>
+                <li>Medical Terminology</li>
+                <li>Emergency Medical Technician</li>
+            </ul>
+        </div>
+    </div>
+    <div id="av-production-overlay" class="overlay">
+        <div class="overlay-content">
+            <span class="overlay-close" onclick="closeOverlay('av-production-overlay')">&times;</span>
+            <h2>Pre-Med</h2>
+            <p>Hands-on course focusing on professional media production:</p>
+            <ul>
+                <li> Adv. Anatomy/Physiology </li>
+                <li>AP/ACP Biology</li>
+                <li>AP/ACP Chemistry</li>
+            </ul>
+        </div>
+    </div>
+    <div id="av-production-overlay" class="overlay">
+        <div class="overlay-content">
+            <span class="overlay-close" onclick="closeOverlay('av-production-overlay')">&times;</span>
+            <h2>Biomedical Science</h2>
+            <p>Hands-on course focusing on professional media production:</p>
+            <ul>
+                <li>Principles of Biomedical</li>
+                <li>Human Body Systems</li>
+                <li>Medical Interventions</li>
+            </ul>
+        </div>
+    </div>
+    <div id="av-production-overlay" class="overlay">
+        <div class="overlay-content">
+            <span class="overlay-close" onclick="closeOverlay('av-production-overlay')">&times;</span>
+            <h2>Exercise Science</h2>
+            <p>Hands-on course focusing on professional media production:</p>
+            <ul>
+                <li>Principles of Exercise Science</li>
+                <li>Kinesiology</li>
+                <li>Human Performance</li>
+            </ul>
         </div>
     </div>
 </div>
 
-<div id="overlay3" class="overlay">
-    <div class="overlay-content">
-        <a href="#" class="close">&times;</a>
-        <h2>EMT</h2>
-        <div class="overlay-classes">
-            <div class="overlay-class">
-                <img src="https://i.pinimg.com/736x/33/a2/ab/33a2ab8b5845bc0009d7b1eba480227b.jpg" alt="Class 1 Image" class="overlay-image">
-                <p>Principles of HealthCare <br> <br> The Principles of Health Care course introduces students to the foundational concepts of healthcare systems, practices, and ethical standards. It covers a wide range of topics including healthcare delivery models, the roles of healthcare professionals, patient rights, medical law, and ethical decision-making.  </p>
+    <script>
+        function openOverlay(overlayId) {
+            document.getElementById(overlayId).style.display = 'block';
+        }
 
-            </div>
-            <div class="overlay-class">
-                <img src="https://png.pngtree.com/png-vector/20230816/ourlarge/pngtree-doctor-standing-next-to-various-medical-supplies-clipart-vector-png-image_6989293.png" alt="Class 2 Image" class="overlay-image">
-                <p>Medical Terminology<br> <br> The Medical Terminology course provides a comprehensive introduction to the language used in the healthcare industry. Students will explore medical vocabulary, focusing on root words, prefixes, suffixes, and their usage in describing the human body, diseases, treatments, and medical procedures.  </p>
-            </div>
-            <div class="overlay-class">
-                <img src="https://www.mdc.edu/emt/img/emt.jpg" alt="Class 3 Image" class="overlay-image">
-                <p>Emergency Medical Technician<br> <br> The Emergency Medical Technician (EMT) course provides students with the essential knowledge and skills required to respond to medical emergencies and provide pre-hospital care. Topics covered include patient assessment, airway management, CPR and advanced cardiac life support, trauma care, emergency pharmacology, and medical emergencies such as respiratory, cardiovascular, and neurological conditions. Students will also learn how to operate emergency medical equipment, administer basic first aid, and work effectively within a team in high-pressure situations. </p>
-            </div>
-        </div>
-    </div>
-</div>
+        function closeOverlay(overlayId) {
+            document.getElementById(overlayId).style.display = 'none';
+        }
 
-<div id="overlay4" class="overlay">
-    <div class="overlay-content">
-        <a href="#" class="close">&times;</a>
-        <h2>Pre-Medical</h2>
-        <div class="overlay-classes">
-            <div class="overlay-class">
-                <img src="https://static.vecteezy.com/system/resources/previews/015/412/193/non_2x/human-organ-set-heart-brain-lungs-liver-stomach-intestines-bladder-kidneys-uterus-and-ovaries-internal-organs-design-element-for-medicine-biology-education-illustration-vector.jpg" alt="Class 1 Image" class="overlay-image">
-                <p>Adv. Anatomy/Physiology <br> <br> The Advanced Anatomy and Physiology course is designed to provide students with a deeper understanding of the structure and function of the human body, building upon foundational knowledge in basic anatomy and physiology. This course delves into the complex interrelationships between the body's organ systems, emphasizing how they work together to maintain homeostasis and support life. </p>
-
-            </div>
-            <div class="overlay-class">
-                <img src="https://static.vecteezy.com/system/resources/previews/001/759/758/non_2x/biology-supplies-and-books-vector.jpg" alt="Class 2 Image" class="overlay-image">
-                <p>AP/ACP Biology<br> <br> The AP/ACP Biology course offers an in-depth exploration of biological principles and concepts, preparing students for both advanced college-level biology studies and the AP Biology exam. The course covers a wide range of topics including cell biology, genetics, evolution, ecology, and the molecular mechanisms that govern life. Students will study biological systems from the molecular level up to the ecosystem level, understanding the complexity and interconnectedness of life processes.  </p>
-            </div>
-            <div class="overlay-class">
-                <img src="https://www.imagella.com/cdn/shop/products/0a77b819e73dad3c73de2290621bff5e.jpg?v=1692682662" alt="Class 3 Image" class="overlay-image">
-                <p>AP/ACP Chemistry<br> <br> The AP/ACP Chemistry course provides an intensive study of the principles of chemistry at a college level, designed for students preparing for the AP Chemistry exam and those pursuing advanced studies in science. Topics covered include atomic structure, chemical bonding, thermodynamics, kinetics, equilibrium, acid-base chemistry, and redox reactions.  </p>
-            </div>
-        </div>
-    </div>
-</div>
-<div id="overlay5" class="overlay">
-    <div class="overlay-content">
-        <a href="#" class="close">&times;</a>
-        <h2>Biomedical Science</h2>
-        <div class="overlay-classes">
-            <div class="overlay-class">
-                <img src="https://i.pinimg.com/736x/e5/24/7a/e5247a33fda12fe9dcfb5e683820f067.jpg" alt="Class 1 Image" class="overlay-image">
-                <p>Principles of Biomedical <br> <br> Principles of Biomedical Science introduces students to the interdisciplinary field of biomedical science, where they explore key concepts in biology, chemistry, and health science to understand the human body and its systems. The course covers foundational topics such as human anatomy and physiology, cellular biology, microbiology, genetics, and the biomedical research process.  </p>
-
-            </div>
-            <div class="overlay-class">
-                <img src="https://cdn.britannica.com/96/177096-138-2CB46AEC/discussion-organ-systems-human-body-another-influence.jpg?w=800&h=450&c=crop" alt="Class 2 Image" class="overlay-image">
-                <p>Human Body Systems<br> <br> Human Body Systems provides students with an in-depth study of the human body’s structure and function, emphasizing the interconnectivity of its various systems. Topics include the skeletal, muscular, cardiovascular, respiratory, digestive, nervous, and endocrine systems, among others. Through hands-on activities and laboratory experiments, students explore how these systems work independently and together to maintain homeostasis and overall health. </p>
-            </div>
-            <div class="overlay-class">
-                <img src="https://i.pinimg.com/736x/ab/db/5d/abdb5d2dd079dd9f924cd31415ff1e73.jpg" alt="Class 3 Image" class="overlay-image">
-                <p>Medical Interventions<br> <br> Medical Intervention is an advanced course that explores the role of medical professionals in diagnosing, treating, and managing diseases and conditions. Students will investigate a variety of medical interventions, including diagnostic procedures, surgical techniques, pharmaceutical treatments, and innovative medical technologies. </p>
-            </div>
-        </div>
-    </div>
-</div>
-<div id="overlay6" class="overlay">
-    <div class="overlay-content">
-        <a href="#" class="close">&times;</a>
-        <h2>Exercise Science</h2>
-        <div class="overlay-classes">
-            <div class="overlay-class">
-                <img src="https://www.scienceforsport.com/wp-content/uploads/2023/12/ExSci1-1-scaled.webp" alt="Class 1 Image" class="overlay-image">
-                <p>Principles of Exercise Science <br> <br> Principles of Exercise Science introduces students to the foundational concepts of exercise physiology, biomechanics, and kinesiology. This course covers the scientific principles behind human movement, physical fitness, and the impact of exercise on overall health and performance. </p>
-
-            </div>
-            <div class="overlay-class">
-                <img src="https://fsastore.com/dw/image/v2/BFKW_PRD/on/demandware.static/-/Library-Sites-fsaStoreLibrary/default/dw34e7401b/images/Joint%20&%20Muscle%20Pain%20Relief/tile-joint-and-muscle-support2.jpg" alt="Class 2 Image" class="overlay-image">
-                <p>Kinesiology<br> <br> Kinesiology is the study of human movement, focusing on the mechanics of body motion and the physiological effects of exercise. This course provides a comprehensive understanding of the anatomical and biomechanical principles that govern human movement, including the structure and function of muscles, bones, joints, and the nervous system.  </p>
-            </div>
-            <div class="overlay-class">
-                <img src="https://www.boozallen.com/assets/home/images/article/thumbnail/human-performance-thumb.jpg.img.jpeg" alt="Class 3 Image" class="overlay-image">
-                <p>Human Performance<br> <br> Human Performance focuses on the physiological, biomechanical, and psychological factors that contribute to an individual’s ability to perform physical tasks, particularly in athletic and fitness contexts. This course explores the science behind optimizing performance through training, nutrition, and recovery. Topics include muscular strength, endurance, cardiovascular fitness, flexibility, and motor skills, as well as how the body adapts to various types of physical activity. </p>
-            </div>
-        </div>
-    </div>
-</div>
+        // Close overlay if user clicks outside of it
+        window.onclick = function(event) {
+            if (event.target.classList.contains('overlay')) {
+                event.target.style.display = 'none';
+            }
+        }
+    </script>
 </body>
 </html>
