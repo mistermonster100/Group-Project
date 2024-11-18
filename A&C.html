@@ -196,6 +196,30 @@
             transform: scale(1.2);
             background-color: rgba(0, 0, 0, 0.4);
         }
+
+        .green-plus {
+            color: #28a745; /* Green color */
+            font-size: 1.5em;
+            cursor: pointer;
+            padding-left: 10px;
+            transition: color 0.3s ease;
+        }
+        
+        .green-plus:hover {
+            color: #218838; /* Darker green on hover */
+        }
+        /* Cart Icon Styling */
+        .cart-icon {
+         position: fixed;
+         top: 20px;
+         right: 20px;
+         cursor: pointer;
+        }
+
+        .cart-icon img {
+         width: 40px; /* Adjust the size of the cart icon */
+          height: 40px;
+        }
     </style>
 </head>
 <body>
@@ -216,7 +240,11 @@
             <a href="IB.html" class="header-link">IB</a>
         </div>
     </div>
-
+    <div id="cart-icon" class="cart-icon">
+    <a href="CC.html">
+        <img src="https://banner2.cleanpng.com/20180426/jxq/avez1anz5.webp" alt="Cart" />
+    </a>
+</div>
     <div class="content-container">
         <!-- Left Section: Schedules -->
         <div class="schedules">
@@ -322,46 +350,68 @@
         </div>
     </div>
 
-    <!-- Overlays remain the same as original document -->
-    <div id="broadcast-overlay" class="overlay">
-        <div class="overlay-content">
-            <span class="overlay-close" onclick="closeOverlay('broadcast-overlay')">&times;</span>
-            <h2>Broadcasting & Production Details</h2>
-            <p>Comprehensive course covering media production techniques, including:</p>
-            <ul>
-                <li>Principals of Broadcasting</li>
-                <li>Digital Media</li>
-                <li>Audio/Visual Production or Student Media: Broadcast</li>
-                <li>Mass Media Production</li>
-            </ul>
-        </div>
+      <!-- Broadcast Overlay -->
+<div id="broadcast-overlay" class="overlay">
+    <div class="overlay-content">
+        <span class="overlay-close" onclick="closeOverlay('broadcast-overlay')">&times;</span>
+        <h2>Broadcasting & Production Details</h2>
+        <p>Comprehensive course covering media production techniques, including:</p>
+        <ul>
+            <li>Principals of Broadcasting
+                <span class="green-plus" onclick="addClassToFile('Principals of Broadcasting')"> +</span>
+            </li>
+            <li>Digital Media
+                <span class="green-plus" onclick="addClassToFile('Digital Media')"> +</span>
+            </li>
+            <li>Audio/Visual Production or Student Media: Broadcast
+                <span class="green-plus" onclick="addClassToFile('Audio/Visual Production or Student Media: Broadcast')"> +</span>
+            </li>
+            <li>Mass Media Production
+                <span class="green-plus" onclick="addClassToFile('Mass Media Production')"> +</span>
+            </li>
+        </ul>
     </div>
+</div>
 
-    <div id="digital-media-overlay" class="overlay">
-        <div class="overlay-content">
-            <span class="overlay-close" onclick="closeOverlay('digital-media-overlay')">&times;</span>
-            <h2>Arts and Performance</h2>
-            <p>In-depth exploration of multimedia content creation, including:</p>
-            <ul>
-                <li>Principles of Broadcasting</li>
-                <li>ACP Speech</li>
-                <li>Adv. Band/Orchestra/Art/Theatre</li>
-            </ul>
-        </div>
+<!-- Digital Media Overlay -->
+<div id="digital-media-overlay" class="overlay">
+    <div class="overlay-content">
+        <span class="overlay-close" onclick="closeOverlay('digital-media-overlay')">&times;</span>
+        <h2>Arts and Performance</h2>
+        <p>In-depth exploration of multimedia content creation, including:</p>
+        <ul>
+            <li>Principles of Broadcasting
+                <span class="green-plus" onclick="addClassToFile('Principles of Broadcasting')"> +</span>
+            </li>
+            <li>ACP Speech
+                <span class="green-plus" onclick="addClassToFile('ACP Speech')"> +</span>
+            </li>
+            <li>Adv. Band/Orchestra/Art/Theatre
+                <span class="green-plus" onclick="addClassToFile('Adv. Band/Orchestra/Art/Theatre')"> +</span>
+            </li>
+        </ul>
     </div>
+</div>
 
-    <div id="av-production-overlay" class="overlay">
-        <div class="overlay-content">
-            <span class="overlay-close" onclick="closeOverlay('av-production-overlay')">&times;</span>
-            <h2>Journalism</h2>
-            <p>Hands-on course focusing on professional media production:</p>
-            <ul>
-                <li>Principles of Business Management</li>
-                <li>ACP Speech</li>
-                <li>Newspaper/Yearbook</li>
-            </ul>
-        </div>
+<!-- AV Production Overlay -->
+<div id="av-production-overlay" class="overlay">
+    <div class="overlay-content">
+        <span class="overlay-close" onclick="closeOverlay('av-production-overlay')">&times;</span>
+        <h2>Journalism</h2>
+        <p>Hands-on course focusing on professional media production:</p>
+        <ul>
+            <li>Principles of Business Management
+                <span class="green-plus" onclick="addClassToFile('Principles of Business Management')"> +</span>
+            </li>
+            <li>ACP Speech
+                <span class="green-plus" onclick="addClassToFile('ACP Speech')"> +</span>
+            </li>
+            <li>Newspaper/Yearbook
+                <span class="green-plus" onclick="addClassToFile('Newspaper/Yearbook')"> +</span>
+            </li>
+        </ul>
     </div>
+</div>
 
     <script>
         function openOverlay(overlayId) {
