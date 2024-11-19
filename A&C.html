@@ -223,28 +223,29 @@
     </style>
 </head>
 <body>
-
     <a href="index.html" class="home-button">
-    <img src="https://static.thenounproject.com/png/1407802-200.png" alt="Home" class="home-icon">
-    </a>
-    
-    <div class="header">
-        <h1>Arts & Communication</h1>
-        <div class="header-links">
-            <a href="A&NR.html" class="header-link">Agriculture</a>
-            <a href="MD&PS.html" class="header-link">Medical</a>
-            <a href="PBS.html" class="header-link">Public Service</a>
-            <a href="ETI.html" class="header-link">Engineering</a>
-            <a href="innovation.html" class="header-link">Innovation</a>
-            <a href="business.html" class="header-link">Business</a>
-            <a href="IB.html" class="header-link">IB</a>
+        <img src="https://static.thenounproject.com/png/1407802-200.png" alt="Home" class="home-icon">
+        </a>
+        
+        <div class="header">
+            <h1>Arts & Communication</h1>
+            <div class="header-links">
+                <a href="A&NR.html" class="header-link">Agriculture</a>
+                <a href="MD&PS.html" class="header-link">Medical</a>
+                <a href="PBS.html" class="header-link">Public Service</a>
+                <a href="ETI.html" class="header-link">Engineering</a>
+                <a href="innovation.html" class="header-link">Innovation</a>
+                <a href="business.html" class="header-link">Business</a>
+                <a href="IB.html" class="header-link">IB</a>
+            </div>
         </div>
-    </div>
-    <div id="cart-icon" class="cart-icon">
+    <!-- Cart Icon in the top right -->
+<div id="cart-icon" class="cart-icon">
     <a href="CC.html">
         <img src="https://banner2.cleanpng.com/20180426/jxq/avez1anz5.webp" alt="Cart" />
     </a>
 </div>
+
     <div class="content-container">
         <!-- Left Section: Schedules -->
         <div class="schedules">
@@ -350,7 +351,7 @@
         </div>
     </div>
 
-      <!-- Broadcast Overlay -->
+   <!-- Broadcast Overlay -->
 <div id="broadcast-overlay" class="overlay">
     <div class="overlay-content">
         <span class="overlay-close" onclick="closeOverlay('broadcast-overlay')">&times;</span>
@@ -413,21 +414,28 @@
     </div>
 </div>
 
-    <script>
-        function openOverlay(overlayId) {
-            document.getElementById(overlayId).style.display = 'block';
-        }
 
-        function closeOverlay(overlayId) {
-            document.getElementById(overlayId).style.display = 'none';
-        }
+<script>
+    function openOverlay(overlayId) {
+        document.getElementById(overlayId).style.display = 'block';
+    }
 
-        // Close overlay if user clicks outside of it
-        window.onclick = function(event) {
-            if (event.target.classList.contains('overlay')) {
-                event.target.style.display = 'none';
-            }
+    function closeOverlay(overlayId) {
+        document.getElementById(overlayId).style.display = 'none';
+    }
+
+    // Close overlay if user clicks outside of it
+    window.onclick = function(event) {
+        if (event.target.classList.contains('overlay')) {
+            event.target.style.display = 'none';
         }
-    </script>
+    }
+
+    function addClassToFile(className) {
+        let currentClasses = JSON.parse(localStorage.getItem('classes')) || [];  // Get existing classes or empty array
+        currentClasses.push(className);  // Add the new class
+        localStorage.setItem('classes', JSON.stringify(currentClasses));  // Save updated classes to localStorage
+    }
+</script>
 </body>
 </html>
