@@ -1,253 +1,484 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Engineering and Technology</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Innovation </title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #c2c2cc7c;
+            color: #000000;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            margin: 0;
+            font-weight: 600;
+            color: #0e0e0e;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 40px 20px;
+            margin-bottom: 40px;
+            background: linear-gradient(135deg, #df0505, #bd0f0f);
+            color: white;
+            border-radius: 15px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .header h1 {
+            font-size: 3em;
+            color: rgb(255, 253, 253);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        /* Layout */
+        .content-container {
+            display: flex;
+            gap: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .schedules {
+            flex: 1;
+            background: rgb(239, 238, 238);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 6px 12px rgba(213, 212, 212, 0.912);
+            border-left: 5px solid #ff6b6b;
+        }
+
+        .courses-container {
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .course-block:hover, .career-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            background: #06a2f0d4;
+        }
+        .courses-section, .careers-section {
+            padding: 20px;
+            background: (239, 238, 238);
+            border-radius: 15px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .course-block, .career-card {
+            background: #f0f4f8;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border-left: 5.5px solid #1a73e8;
+            margin-bottom: 18px;
+        }
+
+        .period {
+            font-weight: bold;
+            color: #ff6b6b;
+        }
+
+        /* New style for highlighted 5th period */
+        .fifth-period {
+            background-color: #ffff9c;
+        }
+
+        /* Overlay Styles */
+        .overlay {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(208, 81, 81, 0.7);
+        }
+
+        .overlay-content {
+            background-color: rgb(255, 255, 255);
+            margin: 5% auto;
+            padding: 30px;
+            border-radius: 15px;
+            width: 80%;
+            max-width: 1000px;
+            position: relative;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .overlay-close {
+            color: #ea0c0c;
+            float: right;
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .overlay-close:hover {
+            color: #1a73e8;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .content-container {
+                flex-direction: column;
+            }
+
+            .header h1 {
+                font-size: 2.5em;
+            }
+        }
+
+        .home-button {
+        position: absolute;
+        top: 70px;
+        left: 70px; /* Distance from the left */
+        width: 50px;
+        height: 50px;
+        background-color: white;
+        opacity: 80%;
+        border-radius: 50%; /* Makes the button circular */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional shadow for depth */
+        text-decoration: none; /* Removes underline for links */
+        z-index: 1000; /* Ensures it's above other elements */
+        transition: transform 0.2s ease;
+        }
+
+        .home-button:hover {
+         transform: scale(1.2);
+         cursor: pointer; /* Changes cursor to pointer */
+        }
+
+        .home-icon {
+            width: 60%;
+            height: 60%;
+        }
+        
+        /* Header Links Container */
+        .header-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        /* Individual Header Links */
+        .header-link {
+            text-decoration: none;
+            color: white;
+            background-color: rgb#022549;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 1em;
+            font-weight: 600;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .header-link:hover {
+            transform: scale(1.2);
+            background-color: rgba(50, 50, 150, 1);
+        }
+
+        .green-plus {
+            color: #28a745; /* Green color */
+            font-size: 1.5em;
+            cursor: pointer;
+            padding-left: 10px;
+            transition: color 0.3s ease;
+        }
+        
+        .green-plus:hover {
+            color: #218838; /* Darker green on hover */
+        }
+        /* Cart Icon Styling */
+        .cart-icon {
+         position: fixed;
+         top: 20px;
+         right: 20px;
+         cursor: pointer;
+        }
+
+        .cart-icon img {
+         width: 40px; /* Adjust the size of the cart icon */
+          height: 40px;
+        }
+    </style>
 </head>
-<style>
-    html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-        background-image: url('https://alcorfund.com/wp-content/uploads/2020/09/Technical-Innovation.png');
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        font-family: Arial, sans-serif;
-        color: white;
-        text-align: center;
-    }
-
-    h1 {
-        margin-top: 50px;
-        font-size: 48px;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-        position: relative;
-        z-index: 1;
-    }
-
-    .courses {
-        display: grid;
-        gap: 2px;
-        padding: 2px;
-        position: relative;
-        z-index: 1;
-    }
-
-    .courses div {
-        background-color: rgba(0, 0, 0, 0.7);
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
-    }
-
-    .courses h2 {
-        font-size: 21px;
-    }
-
-    .courses p {
-        font-size: 16px;
-    }
-
-    #back {
-        width: 75px;
-        padding: 8px;
-        margin: 8px;
-        background-color: rgba(0, 0, 0, 0.7);
-        color: white;
-    }
-</style>
 <body>
-<div id="back">
-    <form action="index.html">
-        <input type="submit" value="Back">
-    </form>
+
+    <a href="index.html" class="home-button">
+    <img src="https://static.thenounproject.com/png/1407802-200.png" alt="Home" class="home-icon">
+    </a>
+    
+    <div class="header">
+        <h1>Innovation</h1>
+        <div class="header-links">
+            <a href="A&NR.html" class="header-link">Agriculture</a>
+            <a href="MD&PS.html" class="header-link">Medical</a>
+            <a href="PBS.html" class="header-link">Public Service</a>
+            <a href="ETI.html" class="header-link">Engineering</a>
+            <a href="innovation.html" class="header-link">Innovation</a>
+            <a href="business.html" class="header-link">Business</a>
+            <a href="IB.html" class="header-link">IB</a>
+        </div>
+    </div>
+    <div id="cart-icon" class="cart-icon">
+    <a href="CC.html">
+        <img src="https://banner2.cleanpng.com/20180426/jxq/avez1anz5.webp" alt="Cart" />
+    </a>
 </div>
-<h1>Innovation</h1>
+    <div class="content-container">
+        <!-- Left Section: Schedules -->
+        <div class="schedules">
+            <h2>Sample Schedules</h2>
+            
+            <div class="schedule-block">
+                <h3>Freshman Year</h3>
+                <p><span class="period">1st:</span> English 9</p>
+                <p><span class="period">2nd:</span> Algebra I</p>
+                <p><span class="period">3rd:</span> Biology</p>
+                <p><span class="period">4th:</span> World History</p>
+                <p class="fifth-period"><span class="period">5th:</span> Principals of Construction Trade</p>
+                <p><span class="period">6th:</span> World Language</p>
+                <p><span class="period">7th:</span> Physical Educaitons</p>
+            </div>
 
-<div class="courses">
-    <a href="#overlay1" class="course-link">
-        <div class="course">
-            <h2>Electrical</h2>
-            <p> Learn the process of electricity, electronics, and electromagnetism. Electricity is the power source of the world. </p>
+            <div class="schedule-block">
+                <h3>Sophomore Year</h3>
+                <p><span class="period">1st:</span> English 10</p>
+                <p><span class="period">2nd:</span> Geometry</p>
+                <p><span class="period">3rd:</span> Chemistry</p>
+                <p><span class="period">4th:</span> World History</p>
+                <p class="fifth-period"><span class="period">5th:</span> Plumbing and Pipe Fitting</p>
+                <p><span class="period">6th:</span> AP World Language</p>
+                <p><span class="period">7th:</span> Physical Educaiton</p>
+            </div>
+
+            <div class="schedule-block">
+                <h3>Junior Year</h3>
+                <p><span class="period">1st:</span> English 11</p>
+                <p><span class="period">2nd:</span> Algebra II</p>
+                <p><span class="period">3rd:</span>  Physcis </p>
+                <p><span class="period">4th:</span> U.S. History</p>
+                <p class="fifth-period"><span class="period">5th:</span> Automotive Body Repair</p>
+                <p><span class="period">6th:</span> Elective</p>
+                <p><span class="period">7th:</span> Economics</p>
+            </div>
+
+            <div class="schedule-block">
+                <h3>Senior Year</h3>
+                <p><span class="period">1st:</span> English 12</p>
+                <p><span class="period">2nd:</span> Pre-Calc</p>
+                <p><span class="period">3rd:</span> AP Enviromental Science </p>
+                <p><span class="period">4th:</span> Personal Finacnce</p>
+                <p class="fifth-period"><span class="period">5th:</span> Gas Welding</p>
+                <p><span class="period">6th:</span> Goverment</p>
+                <p><span class="period">7th:</span> Flex</p>
+            </div>
         </div>
-    </a>
 
-    <a href="#overlay2" class="course-link">
-        <div class="course">
-            <h2>Plumbing</h2>
-            <p>Prepare yourself to install, maintain, and repair plumbing systems and components. Without plumbing, you wouldn't have or couldn't do much.</p>
+        <!-- Rest of the document remains unchanged -->
+        <!-- (Courses, Careers, Overlays, and Script sections are identical to the original) -->
+        
+        <!-- Full original right section content goes here -->
+        <div class="courses-container">
+            <div class="courses-section">
+                <h2>Available Courses</h2>
+                
+                <div class="course-block" onclick="openOverlay('broadcast-overlay')">
+                    <h3>Electrical</h3>
+                    <p>Learn the process of electricity, electronics, and electromagnetism. Electricity is the power source of the world.</p>
+                </div>
+
+                <div class="course-block" onclick="openOverlay('digital-media-overlay')">
+                    <h3>Plumbing</h3>
+                    <p>Prepare yourself to install, maintain, and repair plumbing systems and components. Without plumbing, you wouldn't have or couldn't do much.</p>
+                </div>
+
+                <div class="course-block" onclick="openOverlay('av-production-overlay')">
+                    <h3>Auto & Collision Repair</h3>
+                    <p>Build in-demand skills for repairing, repainting, and restoring damaged vehicles. Collision Repair training will show you how to make cars, trucks and SUVs look and run like new.</p>
+                </div>
+
+                <div class="course-block" onclick="openOverlay('av-production-overlay')">
+                    <h3>Automotive</h3>
+                    <p>Cover a whole range of topics related to self-propelled vehicles, including their design, engineering, mechanics, and computer technology.</p>
+                </div>
+                <div class="course-block" onclick="openOverlay('av-production-overlay')">
+                    <h3>Welding</h3>
+                    <p>The process where two or more parts are fused from heat, and the pressure of both forming a join as the parts cool.</p>
+                </div>
+                <div class="course-block" onclick="openOverlay('av-production-overlay')">
+                    <h3>Construction Trades</h3>
+                    <p>Teaches students the skills and knowledge needed for residential and commercial construction. Shaping the world tomorrow.</p>
+                </div>
+            </div>
+
+            <div class="careers-section">
+                <h2>Unique Career Paths</h2>
+                
+                <div class="career-card">
+                    <h3>Product Manager</h3>
+                    <p>A professional who is responsible for the development, launch, and management of a product or service.</p>
+                </div>
+
+                <div class="career-card">
+                    <h3>Innovation Consultant</h3>
+                    <p>Helps businesses and organizations develop new ideas and strategies to solve problems and achieve growth</p>
+                </div>
+
+                <div class="career-card">
+                    <h3>Research & Development Specialist</h3>
+                    <p>Conducting research, analyzing data, and developing innovative solutions to enhance the company's products and services.</p>
+                </div>
+
+                <div class="career-card">
+                    <h3>Technology Entrepreneur</h3>
+                    <p>Someone who starts a new company in the technology or biotechnology industry with the goal of creating a positive impact on a large scale. </p>
+                </div>
+
+                <div class="career-card">
+                    <h3>Design Thinking Consultant</h3>
+                    <p> An organization to help them understand more about their target market and ensure their products or services deal with the challenges of the target customers. They are becoming more and more prominent in organizations today.</p>
+                </div>
+
+                <div class="career-card">
+                    <h3>Strategic Innovation Director</h3>
+                    <p>The helm of fostering a culture of creativity and forward-thinking within an organization.</p>
+                </div>
         </div>
-    </a>
+    </div>
 
-    <a href="#overlay3" class="course-link">
-        <div class="course">
-            <h2>Auto & Collision Repair</h2>
-            <p>Build in-demand skills for repairing, repainting, and restoring damaged vehicles. Collision Repair training will show you how to make cars, trucks and SUVs look and run like new.</p>
-        </div>
-    </a>
-
-    <a href="#overlay4" class="course-link">
-        <div class="course">
-            <h2>Automotive</h2>
-            <p>Cover a whole range of topics related to self-propelled vehicles, including their design, engineering, mechanics, and computer technology.</p>
-        </div>
-    </a>
-
-    <a href="#overlay5" class="course-link">
-        <div class="course">
-            <h2>Welding</h2>
-            <p>The process where two or more parts are fused from heat, and the pressure of both forming a join as the parts cool.</p>
-        </div>
-    </a>
-
-    <a href="#overlay6" class="course-link">
-        <div class="course">
-            <h2>Construction Trades</h2>
-            <p>Teaches students the skills and knowledge needed for residential and commercial construction. Shaping the world tomorrow.</p>
-        </div>
-    </a>
-
-</div>
-
-<div id="overlay1" class="overlay">
+      <!-- Broadcast Overlay -->
+<div id="broadcast-overlay" class="overlay">
     <div class="overlay-content">
-        <a href="#" class="close">&times;</a>
+        <span class="overlay-close" onclick="closeOverlay('broadcast-overlay')">&times;</span>
         <h2>Electrical</h2>
-        <div class="overlay-classes">
-            <div class="overlay-class">
-                <img src="https://www.acuity.com/binaries/content/gallery/acuitycms/blogs/contractor-focus%5B2%5D/adobestock_263908017.jpeg" alt="Class 1 Image" class="overlay-image">
-                <p> Principles of Construction Trade <br> <br> Prepares students with the basic skills needed to continue in a construction trade field.
-                </p>
-
-            </div>
-            <div class="overlay-class">
-                <img src="https://cdn.vectorstock.com/i/500p/89/96/home-furnace-installation-vector-43548996.jpg" alt="Class 2 Image" class="overlay-image">
-                <p> Electrical Fundamentals <br> <br> Teaches students everything they need to know about how electricity behaves. Starting from the basic scientific principles, it covers the following topics and related skills: Matter, Electron Theory, Magnetism, Electricity, Electromagnetism, Use of Electromagnetism, The Electrical Circuit, Electrical Formulas
-                </p>
-            </div>
-            <div class="overlay-class">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuO8GpO3ic2fPOl1NKaB94bWXxvKZy7BPbFyMkPv_2WAIfXrSdUUSgidRdDkjqpBk5MmI&usqp=CAU" alt="Class 3 Image" class="overlay-image">
-                <p> Advanced Electrical <br> <br> Covers topics such as load calculations - feeders and services, health care facilities, standby and emergency systems, basic electronic theory, fire alarm systems, specialty transformers, and advanced controls. </p>
-            </div>
-        </div>
+        <ul>
+            <li>Principals of Construction Trade
+                <span class="green-plus" onclick="addClassToFile('Principals of Broadcasting')"> +</span>
+            </li>
+            <li>Electrical Fundamentals
+                <span class="green-plus" onclick="addClassToFile('Digital Media')"> +</span>
+            </li>
+            <li>Advance Electrical
+                <span class="green-plus" onclick="addClassToFile('Audio/Visual Production or Student Media: Broadcast')"> +</span>
+        </ul>
     </div>
 </div>
 
-<div id="overlay2" class="overlay">
+<!-- Digital Media Overlay -->
+<div id="digital-media-overlay" class="overlay">
     <div class="overlay-content">
-        <a href="#" class="close">&times;</a>
+        <span class="overlay-close" onclick="closeOverlay('digital-media-overlay')">&times;</span>
         <h2>Plumbing</h2>
-        <div class="overlay-classes">
-            <div class="overlay-class">
-                <img src= "https://www.acuity.com/binaries/content/gallery/acuitycms/blogs/contractor-focus%5B2%5D/adobestock_263908017.jpeg" alt="Class 1 Image" class="overlay-image">
-                <p> Principles of Construction Trade <br> <br> Prepares students with the basic skills needed to continue in a construction trade field.
-                </p>
-
-            </div>
-            <div class="overlay-class">
-                <img src= "https://www.byf.org/wp-content/uploads/2020/11/IMG_3509-1146x600-1.jpg" alt="Class 2 Image" class="overlay-image">
-                <p> Plumbing and Pipefitting <br> <br> Provides the trainee with the skills and knowledge needed to perform those tasks associated with the trades of plumber and pipefitter. The program includes coverage of the most widely accepted materials used for pipe, fittings, and valves. </p>
-            </div>
-            <div class="overlay-class">
-                <img src= "https://www.macomb.edu/resources/programs/images/plumbing-pipe-fitting.jpg" alt="Class 3 Image" class="overlay-image">
-                <p> Plumbing and Pipefitting Fundamentals <br> <br> This course covers the basics of plumbing and pipefitting, focusing on installation, repair, and safety protocols.
-                </p>
-            </div>
-        </div>
+        <ul>
+            <li>Principles of Construction Trade
+                <span class="green-plus" onclick="addClassToFile('Principles of Broadcasting')"> +</span>
+            </li>
+            <li>Plumbing and Pipe Fitting
+                <span class="green-plus" onclick="addClassToFile('ACP Speech')"> +</span>
+            </li>
+            <li>Plumbing and Pipe Fitting Fundamentals
+                <span class="green-plus" onclick="addClassToFile('Adv. Band/Orchestra/Art/Theatre')"> +</span>
+            </li>
+        </ul>
     </div>
 </div>
-
-<div id="overlay3" class="overlay">
+<div id="av-production-overlay" class="overlay">
     <div class="overlay-content">
-        <a href="#" class="close">&times;</a>
-        <h2>Auto & Collision Repair</h2>
-        <div class="overlay-classes">
-            <div class="overlay-class">
-                <img src= "https://static.vecteezy.com/system/resources/previews/047/519/978/non_2x/realistic-vehicle-concept-illustration-vector.jpg" alt="Class 1 Image" class="overlay-image">
-                <p> Principles of Collision Repair <br> <br> Provides students an overview of the operating, electrical, and general maintenance systems of the modern automobile. Students will be introduced to the safety and operation of equipment and tools used in the automotive collision industry. </p>
-
-            </div>
-            <div class="overlay-class">
-                <img src= "https://autobossvaughan.com/wp-content/uploads/2023/02/Car-Wash-Auto-Detailing-Flyer-300x290.png" alt="Class 2 Image" class="overlay-image">
-                <p> Repair & Paint Fundamentals <br> <br> Introduces the types of fiberglass and plastic materials used in auto body repair and considerations for automotive painting. Students will explore methods for repairing fiberglass and plastic damage, like welding, reinforcing, repairing holes, and retexturing plastic. </p>
-            </div>
-            <div class="overlay-class">
-                <img src= "https://fixedopsdigital.s3.amazonaws.com/collision/auto/service/general/generic-service-repair-min.jpg" alt="Class 3 Image" class="overlay-image">
-                <p> Automotive Body Repair <br> <br> Provides students with an understanding of the materials, measuring, welding, and information resources applicable to collision repair. Students will study steel and aluminum dent repair, including the welding practices commonly performed within an automotive repair environment. </p>
-            </div>
-        </div>
+        <span class="overlay-close" onclick="closeOverlay('av-production-overlay')">&times;</span>
+        <h2>Auto & Collsion Repair</h2>
+        <ul>
+            <li>Principles of Collision Repair
+                <span class="green-plus" onclick="addClassToFile('Principles of Business Management')"> +</span>
+            </li>
+            <li>Repair & Paint Fundamentals
+                <span class="green-plus" onclick="addClassToFile('ACP Speech')"> +</span>
+            <li>Automotive Body Repair
+            <span class="green-plus" onclick="addClassToFile('Principles of Business Management')"> +</span>
+        </li>
     </div>
 </div>
-
-<div id="overlay4" class="overlay">
+<div id="av-production-overlay" class="overlay">
     <div class="overlay-content">
-        <a href="#" class="close">&times;</a>
-        <h2>Automotive</h2>
-        <div class="overlay-classes">
-            <div class="overlay-class">
-                <img src="sample.jpg" alt="Class 1 Image" class="overlay-image">
-                <p> Principles of Automotive Services <br> <br> Description </p>
-
-            </div>
-            <div class="overlay-class">
-                <img src="sample.jpg" alt="Class 2 Image" class="overlay-image">
-                <p> Brake Systems <br> <br> Description </p>
-            </div>
-            <div class="overlay-class">
-                <img src="sample.jpg" alt="Class 3 Image" class="overlay-image">
-                <p> Steering and Suspensions <br> <br> Description </p>
-            </div>
-        </div>
+        <span class="overlay-close" onclick="closeOverlay('av-production-overlay')">&times;</span>
+        <h2>Automotive Technology<h2>
+        <ul>
+            <li>Principles of Automotive Service
+                <span class="green-plus" onclick="addClassToFile('Principles of Business Management')"> +</span>
+            </li>
+            <li>Brake Systems
+                <span class="green-plus" onclick="addClassToFile('ACP Speech')"> +</span>
+            </li>
+        <li>Steering and Suspensions 
+            <span class="green-plus" onclick="addClassToFile('ACP Speech')"> +</span>
+        </ul>
     </div>
+    <div id="av-production-overlay" class="overlay">
+        <div class="overlay-content">
+            <span class="overlay-close" onclick="closeOverlay('av-production-overlay')">&times;</span>
+            <h2>Welding</h2>
+            <ul>
+                <li>Principles of Welding
+                    <span class="green-plus" onclick="addClassToFile('Principles of Business Management')"> +</span>
+                </li>
+                <li>Shielded Metal Arc Welding
+                    <span class="green-plus" onclick="addClassToFile('ACP Speech')"> +</span>
+                <li>Gas Welding
+                <span class="green-plus" onclick="addClassToFile('Principles of Business Management')"> +</span>
+            </li>
+        </div>
+        <div id="av-production-overlay" class="overlay">
+            <div class="overlay-content">
+                <span class="overlay-close" onclick="closeOverlay('av-production-overlay')">&times;</span>
+                <h2>Construction Trades</h2>
+                <ul>
+                    <li>Principles of Constructoion Trade
+                        <span class="green-plus" onclick="addClassToFile('Principles of Business Management')"> +</span>
+                    </li>
+                    <li>General Carpentry
+                        <span class="green-plus" onclick="addClassToFile('ACP Speech')"> +</span>
+                    <li>Carpentry- Framing and Finishing
+                    <span class="green-plus" onclick="addClassToFile('Principles of Business Management')"> +</span>
+                </li>
+            </div>
 </div>
 
-<div id="overlay5" class="overlay">
-    <div class="overlay-content">
-        <a href="#" class="close">&times;</a>
-        <h2>Welding</h2>
-        <div class="overlay-classes">
-            <div class="overlay-class">
-                <img src="sample.jpg" alt="Class 1 Image" class="overlay-image">
-                <p> Principles of Welding <br> <br> Description </p>
+    <script>
+        function openOverlay(overlayId) {
+            document.getElementById(overlayId).style.display = 'block';
+        }
 
-            </div>
-            <div class="overlay-class">
-                <img src="sample.jpg" alt="Class 2 Image" class="overlay-image">
-                <p> Shielded Metal Arc Welding <br> <br> Description </p>
-            </div>
-            <div class="overlay-class">
-                <img src="sample.jpg" alt="Class 3 Image" class="overlay-image">
-                <p> Gas Welding <br> <br> Description </p>
-            </div>
-        </div>
-    </div>
-</div>
+        function closeOverlay(overlayId) {
+            document.getElementById(overlayId).style.display = 'none';
+        }
 
-<div id="overlay6" class="overlay">
-    <div class="overlay-content">
-        <a href="#" class="close">&times;</a>
-        <h2>Construction Trades</h2>
-        <div class="overlay-classes">
-            <div class="overlay-class">
-                <img src="sample.jpg" alt="Class 1 Image" class="overlay-image">
-                <p> Principles of Contruction Trade <br> <br> Description </p>
-
-            </div>
-            <div class="overlay-class">
-                <img src="sample.jpg" alt="Class 2 Image" class="overlay-image">
-                <p> General Carpentry <br> <br> Description </p>
-            </div>
-            <div class="overlay-class">
-                <img src="sample.jpg" alt="Class 3 Image" class="overlay-image">
-                <p> Carpentry - Framing and Finishing <br> <br> Description </p>
-            </div>
-        </div>
-    </div>
-</div>
-
-
+        // Close overlay if user clicks outside of it
+        window.onclick = function(event) {
+            if (event.target.classList.contains('overlay')) {
+                event.target.style.display = 'none';
+            }
+        }
+    </script>
 </body>
 </html>
