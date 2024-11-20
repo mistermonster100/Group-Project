@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Medical Network</title>
+    <title>Medical</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         /* Global Styles */
@@ -141,7 +141,6 @@
                 font-size: 2.5em;
             }
         }
-        
         .home-button {
         position: absolute;
         top: 70px;
@@ -220,18 +219,20 @@
          width: 40px; /* Adjust the size of the cart icon */
           height: 40px;
         }
+
+    
     </style>
-</head>
-<body>
+    </head>
+    </body>
     <a href="index.html" class="home-button">
-    <img src="https://static.thenounproject.com/png/1407802-200.png" alt="Home" class="home-icon">
+        <img src="https://static.thenounproject.com/png/1407802-200.png" alt="Home" class="home-icon">
     </a>
     
     <div class="header">
-        <h1>Medical Network</h1>
+        <h1>Medical</h1>
         <div class="header-links">
-            <a href="A&C.html" class="header-link">Arts</a>
             <a href="A&NR.html" class="header-link">Agriculture</a>
+            <a href="MD&PS.html" class="header-link">Medical</a>
             <a href="PBS.html" class="header-link">Public Service</a>
             <a href="ETI.html" class="header-link">Engineering</a>
             <a href="innovation.html" class="header-link">Innovation</a>
@@ -239,6 +240,12 @@
             <a href="IB.html" class="header-link">IB</a>
         </div>
     </div>
+    <div id="cart-icon" class="cart-icon">
+    <a href="CC.html">
+        <img src="https://banner2.cleanpng.com/20180426/jxq/avez1anz5.webp" alt="Cart" />
+    </a>
+    </div>
+
 
     <div class="content-container">
         <!-- Left Section: Schedules -->
@@ -312,14 +319,17 @@
                     <h3>Emergency Medical Technician</h3>
                     <p>Hands-on experience with professional equipment, live production techniques, and advanced editing software.</p>
                 </div>
+
                 <div class="course-block" onclick="openOverlay('av-production-overlay')">
                     <h3>Pre-Med</h3>
                     <p>Hands-on experience with professional equipment, live production techniques, and advanced editing software.</p>
                 </div>
+
                 <div class="course-block" onclick="openOverlay('av-production-overlay')">
                     <h3>Bio-Medical Science</h3>
                     <p>Hands-on experience with professional equipment, live production techniques, and advanced editing software.</p>
                 </div>
+
                 <div class="course-block" onclick="openOverlay('av-production-overlay')">
                     <h3>Exercise Science</h3>
                     <p>Hands-on experience with professional equipment, live production techniques, and advanced editing software.</p>
@@ -364,9 +374,15 @@
             <h2>Certified Nursing Details</h2>
             <p>Comprehensive course covering media production techniques, including:</p>
             <ul>
-                <li>Principals of HealthCare</li>
-                <li>Medical Terminology</li>
-                <li>Certified Nursing Assistant</li>
+                <li>Principals of HealthCare
+                    <span class="green-plus" onclick="addClassToFile('Principals of HealthCare')"> +</span>
+                    </li>
+                <li>Medical Terminology
+                    <span class="green-plus" onclick="addClassToFile('Medical Terminology')"> +</span>
+                    </li>
+                <li>Certified Nursing Assistant
+                    <span class="green-plus" onclick="addClassToFile('Certified Nursing Assistant')"> +</span>
+                    </li>
             </ul>
         </div>
     </div>
@@ -377,9 +393,15 @@
             <h2>Medical Assisting</h2>
             <p>In-depth exploration of multimedia content creation, including:</p>
             <ul>
-                <li>Principles of HealthCare</li>
-                <li>Medical Terminology</li>
-                <li>Certified Clinical Medical Assisting</li>
+                <li>Principles of HealthCare
+                <span class="green-plus" onclick="addClassToFile('Principals of HealthCare')"> +</span>
+                </li>
+                <li>Medical Terminology
+                <span class="green-plus" onclick="addClassToFile('Medical Terminology')"> +</span>
+                </li>
+                <li>Certified Clinical Medical Assisting
+                <span class="green-plus" onclick="addClassToFile('Certified Clinical Medical Assisting')"> +</span>
+            </li>
             </ul>
         </div>
     </div>
@@ -390,9 +412,15 @@
             <h2>Emergency Medical Technician</h2>
             <p>Hands-on course focusing on professional media production:</p>
             <ul>
-                <li>Principles of HealthCare</li>
-                <li>Medical Terminology</li>
-                <li>Emergency Medical Technician</li>
+                <li>Principles of HealthCare
+                    <span class="green-plus" onclick="addClassToFile('Principals of HealthCare')"> +</span>
+                    </li>
+                <li>Medical Terminology
+                    <span class="green-plus" onclick="addClassToFile('Medical Terminology')"> +</span>
+                    </li>
+                <li>Emergency Medical Technician
+                    <span class="green-plus" onclick="addClassToFile(' Emergency Medical Technician')"> +</span>
+                    </li>
             </ul>
         </div>
     </div>
@@ -402,9 +430,15 @@
             <h2>Pre-Med</h2>
             <p>Hands-on course focusing on professional media production:</p>
             <ul>
-                <li> Adv. Anatomy/Physiology </li>
-                <li>AP/ACP Biology</li>
-                <li>AP/ACP Chemistry</li>
+                <li> Adv. Anatomy/Physiology 
+                    <span class="green-plus" onclick="addClassToFile('Adv. Anatomy/Physiology')"> +</span>
+                    </li>
+                <li>AP/ACP Biology
+                    <span class="green-plus" onclick="addClassToFile('AP/ACP Biology')"> +</span>
+                    </li>
+                <li>AP/ACP Chemistry
+                    <span class="green-plus" onclick="addClassToFile('AP/ACP Chemistry')"> +</span>
+                    </li>
             </ul>
         </div>
     </div>
@@ -414,9 +448,15 @@
             <h2>Biomedical Science</h2>
             <p>Hands-on course focusing on professional media production:</p>
             <ul>
-                <li>Principles of Biomedical</li>
-                <li>Human Body Systems</li>
-                <li>Medical Interventions</li>
+                <li>Principles of Biomedical
+                    <span class="green-plus" onclick="addClassToFile('Principles of Biomedical')"> +</span>
+                    </li>
+                <li>Human Body Systems
+                    <span class="green-plus" onclick="addClassToFile('Human Body Systems  ')"> +</span>
+                    </li>
+                <li>Medical Interventions
+                    <span class="green-plus" onclick="addClassToFile('Medical Interventions ')"> +</span>
+                    </li>
             </ul>
         </div>
     </div>
@@ -426,9 +466,15 @@
             <h2>Exercise Science</h2>
             <p>Hands-on course focusing on professional media production:</p>
             <ul>
-                <li>Principles of Exercise Science</li>
-                <li>Kinesiology</li>
-                <li>Human Performance</li>
+                <li>Principles of Exercise Science
+                <span class="green-plus" onclick="addClassToFile('Principles of Exercise Science')"> +</span>
+                </li>
+                <li>Kinesiology
+                    <span class="green-plus" onclick="addClassToFile('Kinesiology')"> +</span>
+                    </li>
+                <li>Human Performance
+                    <span class="green-plus" onclick="addClassToFile('Human Performance')"> +</span>
+                    </li>
             </ul>
         </div>
     </div>
