@@ -7,12 +7,12 @@
     <style>
         /* Color Variables */
         :root {
-            --primary-color: #d10404;
-            --secondary-color: #05264a;
+            --primary-color: #c40a0a;
+            --secondary-color: #0662d1;
             --grey-bg: #f4f4f9;
             --text-color: #333;
             --card-bg: #ffffff;
-            --btn-hover: #045387;
+            --btn-hover: #2980b9;
             --transition: all 0.3s ease-in-out;
             --border-radius: 8px;
         }
@@ -69,13 +69,13 @@
         }
 
         /* Class List */
-        .class-list {
+        .class-list, .counselor-list {
             list-style: none;
             padding: 0;
-            margin: 0;
+            margin: 0 0 20px 0;
         }
 
-        .class-list li {
+        .class-list li, .counselor-list li {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -86,16 +86,16 @@
             transition: var(--transition);
         }
 
-        .class-list li:hover {
+        .class-list li:hover, .counselor-list li:hover {
             transform: translateY(-2px);
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
-        .class-name {
+        .class-name, .counselor-name {
             font-size: 18px;
         }
 
-        .delete-btn {
+        .delete-btn, .submit-btn {
             background-color: var(--secondary-color);
             color: white;
             border: none;
@@ -106,27 +106,8 @@
             transition: var(--transition);
         }
 
-        .delete-btn:hover {
+        .delete-btn:hover, .submit-btn:hover {
             background-color: #c0392b;
-        }
-
-        /* Submit Button */
-        .submit-btn {
-            margin-top: 20px;
-            padding: 12px 20px;
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            border-radius: var(--border-radius);
-            font-size: 16px;
-            cursor: pointer;
-            text-align: center;
-            width: 100%;
-            transition: var(--transition);
-        }
-
-        .submit-btn:hover {
-            background-color: var(--btn-hover);
         }
     </style>
 </head>
@@ -140,16 +121,27 @@
 <div class="container">
     <h2>Selected Classes</h2>
     <ul class="class-list" id="class-list">
-        <!-- List items will be dynamically added here -->
+        <!-- Class items will be dynamically added here -->
     </ul>
-    <button class="submit-btn" onclick="submitToCounselor()">Submit to Counselors</button>
+    <h2> Send your Sechdule to your Counselor</h2>
+    <ul class="counselor-list" id="counselor-list">
+        <!-- Counselor items will be dynamically added here -->
+    </ul>
 </div>
 
 <script>
+    // Sample counselors data
+    const counselors = [
+        { name: "Matt Swaim", email: "mswaim@hse.k12.in.us" },
+        { name: "Kelly Applegate", email: "kapplegate@hse.k12.in.us" },
+        { name: "Lindsay Thomas", email: "lthomas@hse.k12.in.us" },
+        { name: "Maria Chinni", email: "mchinni@hse.k12.in.us" },
+    ];
+
     // Fetch the class list from localStorage
     let savedClasses = JSON.parse(localStorage.getItem('classes')) || [];
 
-    // Populate the list in the HTML
+    // Populate the class list in the HTML
     const classList = document.getElementById('class-list');
     savedClasses.forEach((className, index) => {
         let listItem = document.createElement('li');
@@ -159,12 +151,30 @@
         let deleteBtn = document.createElement('button');
         deleteBtn.textContent = 'Remove';
         deleteBtn.classList.add('delete-btn');
-        deleteBtn.onclick = function() {
+        deleteBtn.onclick = function () {
             deleteClass(index);
         };
 
         listItem.appendChild(deleteBtn);
         classList.appendChild(listItem);
+    });
+
+    // Populate the counselor list in the HTML
+    const counselorList = document.getElementById('counselor-list');
+    counselors.forEach(counselor => {
+        let listItem = document.createElement('li');
+        listItem.innerHTML = `<span class="counselor-name">${counselor.name}</span>`;
+
+        // Create the submit button
+        let submitBtn = document.createElement('button');
+        submitBtn.textContent = 'Submit';
+        submitBtn.classList.add('submit-btn');
+        submitBtn.onclick = function () {
+            submitToCounselor(counselor.email);
+        };
+
+        listItem.appendChild(submitBtn);
+        counselorList.appendChild(listItem);
     });
 
     // Function to delete a class
@@ -174,15 +184,15 @@
         location.reload();
     }
 
-    // Submit to counselors function
-    function submitToCounselor() {
+    // Function to submit classes to a counselor
+    function submitToCounselor(email) {
         if (savedClasses.length === 0) {
             alert('No classes to submit.');
             return;
         }
 
         const emailBody = encodeURIComponent(`Selected classes:\n\n${savedClasses.join('\n')}`);
-        window.location.href = `mailto:yourcounselor@example.com?subject=Class Selection&body=${emailBody}`;
+        window.location.href = `mailto:${email}?subject=Class Selection&body=${emailBody}`;
     }
 </script>
 
