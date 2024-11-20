@@ -169,7 +169,7 @@
             width: 60%;
             height: 60%;
         }
-        
+
         /* Header Links Container */
         .header-links {
             display: flex;
@@ -198,18 +198,20 @@
         }
 
         .green-plus {
+            position:absolute;
+            transform:translate(10%,-10%);
             color: #28a745; /* Green color */
             font-size: 1.5em;
             cursor: pointer;
             padding-left: 10px;
-            transition: color 0.3s ease;
+            transition: transform 0.3s ease;
         }
-        
+
         .green-plus:hover {
-            color: #218838; /* Darker green on hover */
+            font-size: 1.7em;
         }
         /* Cart Icon Styling */
-        
+
         .cart-icon {
         position: absolute;
         top: 70px;
@@ -245,151 +247,151 @@
     </style>
 </head>
 <body>
-    <a href="index.html" class="home-button">
-        <img src="https://static.thenounproject.com/png/1407802-200.png" alt="Home" class="home-icon">
-        </a>
-        
-        <div class="header">
-            <h1>Arts & Communication</h1>
-            <div class="header-links">
-                <a href="A&NR.html" class="header-link">Agriculture</a>
-                <a href="MD&PS.html" class="header-link">Medical</a>
-                <a href="PBS.html" class="header-link">Public Service</a>
-                <a href="ETI.html" class="header-link">Engineering</a>
-                <a href="innovation.html" class="header-link">Innovation</a>
-                <a href="business.html" class="header-link">Business</a>
-                <a href="IB.html" class="header-link">IB</a>
-            </div>
-        </div>
-    <!-- Cart Icon in the top right -->
+<a href="index.html" class="home-button">
+    <img src="https://static.thenounproject.com/png/1407802-200.png" alt="Home" class="home-icon">
+</a>
+
+<div class="header">
+    <h1>Arts & Communication</h1>
+    <div class="header-links">
+        <a href="A&NR.html" class="header-link">Agriculture</a>
+        <a href="MD&PS.html" class="header-link">Medical</a>
+        <a href="PBS.html" class="header-link">Public Service</a>
+        <a href="ETI.html" class="header-link">Engineering</a>
+        <a href="innovation.html" class="header-link">Innovation</a>
+        <a href="business.html" class="header-link">Business</a>
+        <a href="IB.html" class="header-link">IB</a>
+    </div>
+</div>
+<!-- Cart Icon in the top right -->
 <div id="cart-icon" class="cart-icon">
     <a href="CC.html">
         <img src="https://icons.veryicon.com/png/o/miscellaneous/simple-linetype-icon/notebook-52.png" alt="Cart" />
     </a>
 </div>
 
-    <div class="content-container">
-        <!-- Left Section: Schedules -->
-        <div class="schedules">
-            <h2>Sample Schedules</h2>
-            
-            <div class="schedule-block">
-                <h3>Freshman Year</h3>
-                <p><span class="period">1st:</span> English 9</p>
-                <p><span class="period">2nd:</span> Algebra I</p>
-                <p><span class="period">3rd:</span> Biology</p>
-                <p><span class="period">4th:</span> World History</p>
-                <p class="fifth-period"><span class="period">5th:</span> Principles of Broadcasting</p>
-                <p><span class="period">6th:</span> Physical Education</p>
-                <p><span class="period">7th:</span> World Language</p>
-            </div>
+<div class="content-container">
+    <!-- Left Section: Schedules -->
+    <div class="schedules">
+        <h2>Sample Schedules</h2>
 
-            <div class="schedule-block">
-                <h3>Sophomore Year</h3>
-                <p><span class="period">1st:</span> English 10</p>
-                <p><span class="period">2nd:</span> Geometry</p>
-                <p><span class="period">3rd:</span> Chemistry</p>
-                <p><span class="period">4th:</span> Digital Media</p>
-                <p class="fifth-period"><span class="period">5th:</span> ACP Speech</p>
-                <p><span class="period">6th:</span> World Language</p>
-                <p><span class="period">7th:</span> Elective</p>
-            </div>
-
-            <div class="schedule-block">
-                <h3>Junior Year</h3>
-                <p><span class="period">1st:</span> English 11</p>
-                <p><span class="period">2nd:</span> Algebra II</p>
-                <p><span class="period">3rd:</span> Physics</p>
-                <p><span class="period">4th:</span> U.S. History</p>
-                <p class="fifth-period"><span class="period">5th:</span> Audio/Visual Production</p>
-                <p><span class="period">6th:</span> Newspaper/Yearbook</p>
-                <p><span class="period">7th:</span> Elective</p>
-            </div>
-
-            <div class="schedule-block">
-                <h3>Senior Year</h3>
-                <p><span class="period">1st:</span> English 12</p>
-                <p><span class="period">2nd:</span> Math</p>
-                <p><span class="period">3rd:</span> Government/Economics</p>
-                <p><span class="period">4th:</span> Mass Media Production</p>
-                <p class="fifth-period"><span class="period">5th:</span> Advanced Media Production</p>
-                <p><span class="period">6th:</span> Newspaper/Yearbook</p>
-                <p><span class="period">7th:</span> Elective</p>
-            </div>
+        <div class="schedule-block">
+            <h3>Freshman Year</h3>
+            <p><span class="period">1st:</span> English 9</p>
+            <p><span class="period">2nd:</span> Algebra I</p>
+            <p><span class="period">3rd:</span> Biology</p>
+            <p><span class="period">4th:</span> World History</p>
+            <p class="fifth-period"><span class="period">5th:</span> Principles of Broadcasting</p>
+            <p><span class="period">6th:</span> Physical Education</p>
+            <p><span class="period">7th:</span> World Language</p>
         </div>
 
-        <!-- Rest of the document remains unchanged -->
-        <!-- (Courses, Careers, Overlays, and Script sections are identical to the original) -->
-        
-        <!-- Full original right section content goes here -->
-        <div class="courses-container">
-            <div class="courses-section">
-                <h2>Available Courses</h2>
-                
-                <div class="course-block" onclick="openOverlay('broadcast-overlay')">
-                    <h3>Broadcasting & Production</h3>
-                    <p>Learn fundamentals of media production for TV, radio, and digital platforms. Master camera work, sound editing, and video production techniques.</p>
-                </div>
+        <div class="schedule-block">
+            <h3>Sophomore Year</h3>
+            <p><span class="period">1st:</span> English 10</p>
+            <p><span class="period">2nd:</span> Geometry</p>
+            <p><span class="period">3rd:</span> Chemistry</p>
+            <p><span class="period">4th:</span> Digital Media</p>
+            <p class="fifth-period"><span class="period">5th:</span> ACP Speech</p>
+            <p><span class="period">6th:</span> World Language</p>
+            <p><span class="period">7th:</span> Elective</p>
+        </div>
 
-                <div class="course-block" onclick="openOverlay('digital-media-overlay')">
-                    <h3>Arts & Performance</h3>
-                    <p>Create and edit multimedia content, develop digital storytelling skills, and learn industry-standard software for content creation.</p>
-                </div>
+        <div class="schedule-block">
+            <h3>Junior Year</h3>
+            <p><span class="period">1st:</span> English 11</p>
+            <p><span class="period">2nd:</span> Algebra II</p>
+            <p><span class="period">3rd:</span> Physics</p>
+            <p><span class="period">4th:</span> U.S. History</p>
+            <p class="fifth-period"><span class="period">5th:</span> Audio/Visual Production</p>
+            <p><span class="period">6th:</span> Newspaper/Yearbook</p>
+            <p><span class="period">7th:</span> Elective</p>
+        </div>
 
-                <div class="course-block" onclick="openOverlay('av-production-overlay')">
-                    <h3>Journalism</h3>
-                    <p>Hands-on experience with professional equipment, live production techniques, and advanced editing software.</p>
-                </div>
-            </div>
-
-            <div class="careers-section">
-                <h2>Unique Career Paths</h2>
-                
-                <div class="career-card">
-                    <h3>Content Strategist</h3>
-                    <p>Develops and manages content plans for brands, analyzing data to determine what content will resonate with audiences and planning distribution across various platforms.</p>
-                </div>
-
-                <div class="career-card">
-                    <h3>UX/UI Sound Designer</h3>
-                    <p>Creates audio feedback and sound effects for apps, websites, and digital products to enhance user experience and brand identity.</p>
-                </div>
-
-                <div class="career-card">
-                    <h3>Virtual Production Director</h3>
-                    <p>Manages real-time 3D environments for film and TV production, combining traditional filmmaking with game engine technology.</p>
-                </div>
-
-                <div class="career-card">
-                    <h3>Immersive Experience Designer</h3>
-                    <p>Creates interactive experiences using AR/VR technology for entertainment, education, and commercial applications.</p>
-                </div>
-
-                <div class="career-card">
-                    <h3>Digital Ethics Officer</h3>
-                    <p>Ensures content and media productions follow ethical guidelines, privacy regulations, and maintain social responsibility in the digital age.</p>
-                </div>
-            </div>
+        <div class="schedule-block">
+            <h3>Senior Year</h3>
+            <p><span class="period">1st:</span> English 12</p>
+            <p><span class="period">2nd:</span> Math</p>
+            <p><span class="period">3rd:</span> Government/Economics</p>
+            <p><span class="period">4th:</span> Mass Media Production</p>
+            <p class="fifth-period"><span class="period">5th:</span> Advanced Media Production</p>
+            <p><span class="period">6th:</span> Newspaper/Yearbook</p>
+            <p><span class="period">7th:</span> Elective</p>
         </div>
     </div>
 
-   <!-- Broadcast Overlay -->
+    <!-- Rest of the document remains unchanged -->
+    <!-- (Courses, Careers, Overlays, and Script sections are identical to the original) -->
+
+    <!-- Full original right section content goes here -->
+    <div class="courses-container">
+        <div class="courses-section">
+            <h2>Available Courses</h2>
+
+            <div class="course-block" onclick="openOverlay('broadcast-overlay')">
+                <h3>Broadcasting & Production</h3>
+                <p>Learn fundamentals of media production for TV, radio, and digital platforms. Master camera work, sound editing, and video production techniques.</p>
+            </div>
+
+            <div class="course-block" onclick="openOverlay('digital-media-overlay')">
+                <h3>Arts & Performance</h3>
+                <p>Create and edit multimedia content, develop digital storytelling skills, and learn industry-standard software for content creation.</p>
+            </div>
+
+            <div class="course-block" onclick="openOverlay('av-production-overlay')">
+                <h3>Journalism</h3>
+                <p>Hands-on experience with professional equipment, live production techniques, and advanced editing software.</p>
+            </div>
+        </div>
+
+        <div class="careers-section">
+            <h2>Unique Career Paths</h2>
+
+            <div class="career-card">
+                <h3>Content Strategist</h3>
+                <p>Develops and manages content plans for brands, analyzing data to determine what content will resonate with audiences and planning distribution across various platforms.</p>
+            </div>
+
+            <div class="career-card">
+                <h3>UX/UI Sound Designer</h3>
+                <p>Creates audio feedback and sound effects for apps, websites, and digital products to enhance user experience and brand identity.</p>
+            </div>
+
+            <div class="career-card">
+                <h3>Virtual Production Director</h3>
+                <p>Manages real-time 3D environments for film and TV production, combining traditional filmmaking with game engine technology.</p>
+            </div>
+
+            <div class="career-card">
+                <h3>Immersive Experience Designer</h3>
+                <p>Creates interactive experiences using AR/VR technology for entertainment, education, and commercial applications.</p>
+            </div>
+
+            <div class="career-card">
+                <h3>Digital Ethics Officer</h3>
+                <p>Ensures content and media productions follow ethical guidelines, privacy regulations, and maintain social responsibility in the digital age.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Broadcast Overlay -->
 <div id="broadcast-overlay" class="overlay">
     <div class="overlay-content">
         <span class="overlay-close" onclick="closeOverlay('broadcast-overlay')">&times;</span>
         <h2>Broadcasting & Production Details</h2>
         <ul>
             <li>Principals of Broadcasting
-                <span class="green-plus" onclick="addClassToFile('Principals of Broadcasting')"> +</span>
+                <span class="green-plus" onclick="toggleClass(this)"> +</span>
             </li>
             <li>Digital Media
-                <span class="green-plus" onclick="addClassToFile('Digital Media')"> +</span>
+                <span class="green-plus" onclick="toggleClass(this)"> +</span>
             </li>
             <li>Audio/Visual Production or Student Media: Broadcast
-                <span class="green-plus" onclick="addClassToFile('Audio/Visual Production or Student Media: Broadcast')"> +</span>
+                <span class="green-plus" onclick="toggleClass(this)"> +</span>
             </li>
             <li>Mass Media Production
-                <span class="green-plus" onclick="addClassToFile('Mass Media Production')"> +</span>
+                <span class="green-plus" onclick="toggleClass(this)"> +</span>
             </li>
         </ul>
     </div>
@@ -402,7 +404,7 @@
         <h2>Arts and Performance</h2>
         <ul>
             <li>Principles of Broadcasting
-                <span class="green-plus" onclick="addClassToFile('Principles of Broadcasting')"> +</span>
+                <a class="green-plus" onclick="addClassToFile('Principles of Broadcasting')"> +</a>
             </li>
             <li>ACP Speech
                 <span class="green-plus" onclick="addClassToFile('ACP Speech')"> +</span>
@@ -435,26 +437,59 @@
 
 
 <script>
-    function openOverlay(overlayId) {
-        document.getElementById(overlayId).style.display = 'block';
-    }
 
-    function closeOverlay(overlayId) {
-        document.getElementById(overlayId).style.display = 'none';
-    }
-
-    // Close overlay if user clicks outside of it
-    window.onclick = function(event) {
-        if (event.target.classList.contains('overlay')) {
-            event.target.style.display = 'none';
+        function openOverlay(overlayId) {
+            document.getElementById(overlayId).style.display = 'block';
         }
-    }
 
-    function addClassToFile(className) {
-        let currentClasses = JSON.parse(localStorage.getItem('classes')) || [];  // Get existing classes or empty array
-        currentClasses.push(className);  // Add the new class
-        localStorage.setItem('classes', JSON.stringify(currentClasses));  // Save updated classes to localStorage
-    }
+        function closeOverlay(overlayId) {
+            document.getElementById(overlayId).style.display = 'none';
+        }
+
+        // Close overlay if user clicks outside of it
+        window.onclick = function(event) {
+            if (event.target.classList.contains('overlay')) {
+                event.target.style.display = 'none';
+            }
+        }
+
+        // Function to toggle class and update button
+        function toggleClass(button) {
+            const className = button.parentElement.textContent.trim(); // Get class name from the li text
+            let currentClasses = JSON.parse(localStorage.getItem('classes')) || [];
+
+            // Toggle the class in the list
+            if (currentClasses.includes(className)) {
+                currentClasses = currentClasses.filter(c => c !== className);
+                button.textContent = ' +'; // Change button text to "+"
+            } else {
+                currentClasses.push(className);
+                button.textContent = ' -'; // Change button text to "-"
+            }
+
+            // Update localStorage with the new classes list
+            localStorage.setItem('classes', JSON.stringify(currentClasses));
+        }
+
+        // Update all buttons on page load
+        window.onload = function() {
+            let currentClasses = JSON.parse(localStorage.getItem('classes')) || [];
+
+            // Loop through all li elements and update their buttons
+            const listItems = document.querySelectorAll('ul li');
+            listItems.forEach(item => {
+                const className = item.textContent.trim(); // Get class name from the li text
+                const button = item.querySelector('.green-plus');
+
+                // Update the button text depending on whether the class is in localStorage
+                if (currentClasses.includes(className)) {
+                    button.textContent = ' -';
+                } else {
+                    button.textContent = ' +';
+                }
+            });
+        };
+
 </script>
 </body>
 </html>
