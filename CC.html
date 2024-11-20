@@ -5,140 +5,186 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Classes</title>
     <style>
-        /* Global Styles */
+        /* Color Variables */
+        :root {
+            --primary-color: #d10404;
+            --secondary-color: #05264a;
+            --grey-bg: #f4f4f9;
+            --text-color: #333;
+            --card-bg: #ffffff;
+            --btn-hover: #045387;
+            --transition: all 0.3s ease-in-out;
+            --border-radius: 8px;
+        }
+
+        /* General Styling */
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #f4f4f9;
-            color: #333;
             margin: 0;
-            padding: 0;
+            background-color: var(--grey-bg);
+            color: var(--text-color);
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            height: 100vh;
-        }
-
-        h1 {
-            color: #2c3e50;
-            text-align: center;
-            margin-top: 20px;
-            font-size: 36px;
-            margin-bottom: 20px;
-        }
-
-        #class-list {
-            list-style: none;
-            padding: 0;
-            width: 80%;
-            max-width: 600px;
-            margin: 0;
-            display: grid;
-            gap: 10px;
-            background-color: white;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
             padding: 20px;
         }
 
-        #class-list li {
-            background-color: #eaf1f1;
-            padding: 15px;
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            width: 100%;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        header img {
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        header h1 {
+            font-size: 24px;
+            margin: 0;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 900px;
+            width: 100%;
+            background-color: var(--card-bg);
+            margin-top: 20px;
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .container h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-align: center;
+            color: var(--primary-color);
+        }
+
+        /* Class List */
+        .class-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .class-list li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--grey-bg);
+            margin-bottom: 15px;
+            padding: 15px 20px;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+        }
+
+        .class-list li:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .class-name {
             font-size: 18px;
-            border-radius: 6px;
-            transition: background-color 0.3s, transform 0.3s;
-            position: relative;
         }
 
-        #class-list li:hover {
-            background-color: #d1e7e7;
-            transform: scale(1.05);
-        }
-
-        /* Red delete icon without circle background */
         .delete-btn {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            color: red;
-            font-size: 20px;
-            font-weight: bold;
-            background: none;
+            background-color: var(--secondary-color);
+            color: white;
             border: none;
+            border-radius: var(--border-radius);
+            padding: 10px 15px;
+            font-size: 16px;
             cursor: pointer;
-            transition: color 0.3s ease;
+            transition: var(--transition);
         }
 
         .delete-btn:hover {
-            color: #c0392b; /* Darker red when hovered */
+            background-color: #c0392b;
         }
 
-        #class-list li:hover .delete-btn {
-            display: inline-block;
-        }
-
-        /* Button styling */
-        .back-btn {
-            margin-top: 30px;
-            padding: 10px 20px;
-            background-color: #3498db;
+        /* Submit Button */
+        .submit-btn {
+            margin-top: 20px;
+            padding: 12px 20px;
+            background-color: var(--primary-color);
             color: white;
             border: none;
-            border-radius: 5px;
+            border-radius: var(--border-radius);
             font-size: 16px;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            text-align: center;
+            width: 100%;
+            transition: var(--transition);
         }
 
-        .back-btn:hover {
-            background-color: #2980b9;
+        .submit-btn:hover {
+            background-color: var(--btn-hover);
         }
-
     </style>
 </head>
 <body>
 
-    <h1>Classes You've Selected</h1>
-    <ul id="class-list">
-        <!-- List will be populated here -->
+<header>
+    <img src="https://yt3.googleusercontent.com/ytc/AIdro_k9Hz1yVRb_QzFjCL2G8q0r_ILFozqdF43uOuvf8TvE8w=s900-c-k-c0x00ffffff-no-rj" alt="Logo">
+    <h1>Your Classes</h1>
+</header>
+
+<div class="container">
+    <h2>Selected Classes</h2>
+    <ul class="class-list" id="class-list">
+        <!-- List items will be dynamically added here -->
     </ul>
-    
-    <button class="back-btn" onclick="window.location.href='A&C.html'">Back to A&C</button>
+    <button class="submit-btn" onclick="submitToCounselor()">Submit to Counselors</button>
+</div>
 
-    <script>
-        // Fetch the class list from localStorage
-        let savedClasses = JSON.parse(localStorage.getItem('classes')) || [];
+<script>
+    // Fetch the class list from localStorage
+    let savedClasses = JSON.parse(localStorage.getItem('classes')) || [];
+
+    // Populate the list in the HTML
+    const classList = document.getElementById('class-list');
+    savedClasses.forEach((className, index) => {
+        let listItem = document.createElement('li');
+        listItem.innerHTML = `<span class="class-name">${className}</span>`;
         
-        // Populate the list in the HTML
-        const classList = document.getElementById('class-list');
-        savedClasses.forEach((className, index) => {
-            let listItem = document.createElement('li');
-            listItem.textContent = className;
+        // Create the delete button
+        let deleteBtn = document.createElement('button');
+        deleteBtn.textContent = 'Remove';
+        deleteBtn.classList.add('delete-btn');
+        deleteBtn.onclick = function() {
+            deleteClass(index);
+        };
 
-            // Create the delete button
-            let deleteBtn = document.createElement('button');
-            deleteBtn.textContent = '-';
-            deleteBtn.classList.add('delete-btn');
-            deleteBtn.onclick = function() {
-                deleteClass(index);
-            };
+        listItem.appendChild(deleteBtn);
+        classList.appendChild(listItem);
+    });
 
-            listItem.appendChild(deleteBtn);
-            classList.appendChild(listItem);
-        });
+    // Function to delete a class
+    function deleteClass(index) {
+        savedClasses.splice(index, 1);
+        localStorage.setItem('classes', JSON.stringify(savedClasses));
+        location.reload();
+    }
 
-        // Function to delete a class
-        function deleteClass(index) {
-            // Remove the class from the savedClasses array
-            savedClasses.splice(index, 1);
-            
-            // Update localStorage with the new array
-            localStorage.setItem('classes', JSON.stringify(savedClasses));
-            
-            // Re-populate the class list after deletion
-            location.reload(); // Reload the page to reflect changes
+    // Submit to counselors function
+    function submitToCounselor() {
+        if (savedClasses.length === 0) {
+            alert('No classes to submit.');
+            return;
         }
-    </script>
+
+        const emailBody = encodeURIComponent(`Selected classes:\n\n${savedClasses.join('\n')}`);
+        window.location.href = `mailto:yourcounselor@example.com?subject=Class Selection&body=${emailBody}`;
+    }
+</script>
 
 </body>
 </html>
