@@ -209,17 +209,39 @@
             color: #218838; /* Darker green on hover */
         }
         /* Cart Icon Styling */
+        
         .cart-icon {
-         position: fixed;
-         top: 20px;
-         right: 20px;
-         cursor: pointer;
+        position: absolute;
+        top: 70px;
+        right: 70px; /* Distance from the left */
+        width: 50px;
+        height: 50px;
+        background-color: white;
+        opacity: 80%;
+        border-radius: 50%; /* Makes the button circular */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional shadow for depth */
+        text-decoration: none; /* Removes underline for links */
+        z-index: 1000; /* Ensures it's above other elements */
+        transition: transform 0.2s ease;
         }
 
         .cart-icon img {
-         width: 40px; /* Adjust the size of the cart icon */
-          height: 40px;
+         position: absolute;
+         top:50%;
+         left:50%;
+         transform: translate(-50%, -50%);
+         width:60%;
+         height:60%;
         }
+
+        .cart-icon:hover {
+         transform: scale(1.2);
+         cursor: pointer; /* Changes cursor to pointer */
+        }
+
     </style>
 </head>
 <body>
@@ -242,7 +264,7 @@
     <!-- Cart Icon in the top right -->
 <div id="cart-icon" class="cart-icon">
     <a href="CC.html">
-        <img src="https://banner2.cleanpng.com/20180426/jxq/avez1anz5.webp" alt="Cart" />
+        <img src="https://static.thenounproject.com/png/1407802-200.png" alt="Cart" />
     </a>
 </div>
 
