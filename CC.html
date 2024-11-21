@@ -109,10 +109,35 @@
         .delete-btn:hover, .submit-btn:hover {
             background-color: #0571b5;
         }
+        .nav-buttons {
+            position: absolute;
+            top: 40px;
+            right: 20px;
+        }
+        .back-button {
+        background-color: var(--secondary-color);
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: var(--border-radius);
+        cursor: pointer;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transition: var(--transition);
+        }
+        
+        .back-button:hover {
+        background-color: var(--btn-hover);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
     </style>
 </head>
 <body>
-
+<div class="header-container">
+    <div class="nav-buttons">
+    <button class="back-button" onclick="history.back()">Back</button>
+    </div>
+</div>
 <header>
     <img src="https://yt3.googleusercontent.com/ytc/AIdro_k9Hz1yVRb_QzFjCL2G8q0r_ILFozqdF43uOuvf8TvE8w=s900-c-k-c0x00ffffff-no-rj" alt="Logo">
 </header>
