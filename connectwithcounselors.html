@@ -1,165 +1,185 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>ASPYR - About</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@500;700&display=swap" rel="stylesheet">
-    <style>
-        /* Modern styling with enhanced aesthetics */
-        :root {
-            --primary-color: #171616;
-            --secondary-color: #0b0a0a;
-            --background-color: #1e1e1f;
-            --card-background: #edeaea;
-            --text-primary: #000000;
-            --text-secondary: #333333;
-            --border-radius: 12px;
-            --transition: all 0.3s ease;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Counselors</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
 
-        body {
-            font-family: 'Inter', sans-serif;
-            margin: 0;
-            padding: 20px;
-            background: linear-gradient(135deg, #034c94 0%, #970606 100%);
-            color: var(--text-primary);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+    .grid-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 15px;
+      width: 90%;
+      max-width: 800px;
+    }
 
-        /* Back button styling */
-        .back-button {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            text-decoration: none;
-            color: var(--text-primary);
-            padding: 10px 20px;
-            background: rgba(184, 182, 182, 0.9);
-            border-radius: 30px;
-            box-shadow: 0 2px 10px rgb(248, 180, 7);
-            transition: var(--transition);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(0, 0, 0, 0.9);
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-        }
+    .counselor-block {
+      background: #ffffff;
+      border: 2px solid #000000;
+      border-radius: 8px;
+      padding: 15px;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      font-size: 0.9rem;
+    }
 
-        .back-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-        }
+    .counselor-header {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-bottom: 5px;
+      text-transform: uppercase;
+    }
 
-        .container {
-            max-width: 600px;
-            width: 100%;
-            background: var(--card-background);
-            padding: 30px;
-            border-radius: var(--border-radius);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
+    .counselor-subtitle {
+      font-size: 0.9rem;
+      font-weight: normal;
+      color: #333;
+      margin-bottom: 10px;
+    }
 
-        h1 {
-            color: var(--primary-color);
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            font-weight: 700;
-        }
+    .counselor-info {
+      margin-bottom: 8px;
+    }
 
-        p {
-            color: var(--text-secondary);
-            font-size: 1.1rem;
-            margin-bottom: 30px;
-        }
+    .counselor-name {
+      font-weight: bold;
+      color: #000;
+      font-size: 0.9rem;
+    }
 
-        .counselor-info {
-            background: #e0dddd;
-            padding: 20px;
-            border-radius: var(--border-radius);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-            text-align: left;
-            transition: var(--transition);
-            border: 1px solid #f80a0a;
-            margin-bottom: 15px;
-        }
+    .counselor-email {
+      color: #e81212;
+      text-decoration: none;
+      font-size: 0.8rem;
+    }
 
-        .counselor-info:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        }
+    .counselor-email:hover {
+      text-decoration: underline;
+    }
 
-        .counselor-name {
-            font-weight: 600;
-            color: var(--primary-color);
-            font-size: 1.2rem;
-        }
+    .connect-circle {
+      grid-column: span 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: #ba0707;
+      color: white;
+      border-radius: 50%;
+      width: 180px;
+      height: 180px;
+      margin: auto;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      font-size: 0.9rem;
+    }
 
-        .counselor-email {
-            color: var(--text-secondary);
-            font-size: 1rem;
-            margin-top: 5px;
-            display: block;
-            text-decoration: none;
-            transition: color var(--transition);
-        }
+    .connect-circle img {
+      width: 80px;
+      height: 80px;
+      margin-bottom: 8px;
+      border-radius: 50%;
+      border: 2px solid white;
+    }
 
-        .counselor-email:hover {
-            color: var(--primary-color);
-            text-decoration: underline;
-        }
-
-        input[type="submit"] {
-            margin-top: 20px;
-            padding: 12px 24px;
-            background: var(--primary-color);
-            color: #ffffff;
-            border: none;
-            border-radius: var(--border-radius);
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        input[type="submit"]:hover {
-            background: var(--secondary-color);
-            transform: translateY(-2px);
-        }
-    </style>
+    .connect-circle h2 {
+      font-size: 1rem;
+      margin: 0;
+      text-transform: uppercase;
+    }
+  </style>
 </head>
 <body>
+  <div class="grid-container">
+    <!-- Team Red -->
+    <div class="counselor-block" style="border-color: #e60000;">
+      <div class="counselor-header" style="color: #e60000;">Team Red</div>
+      <div class="counselor-subtitle">Grades 10-12, Last Names A-Graz</div>
+      <div class="counselor-info">
+        <div class="counselor-name">Katie Rehor</div>
+        <a href="mailto:krehor@hse.k12.in.us" class="counselor-email">krehor@hse.k12.in.us</a>
+      </div>
+      <div class="counselor-info">
+        <div class="counselor-name">Maggie Schwartzkopf</div>
+        <a href="mailto:mschwartzkopf@hse.k12.in.us" class="counselor-email">mschwartzkopf@hse.k12.in.us</a>
+      </div>
+      <div class="counselor-info">
+        <div class="counselor-name">Jenna Petroff</div>
+        <a href="mailto:jpetroff@hse.k12.in.us" class="counselor-email">jpetroff@hse.k12.in.us</a>
+      </div>
+    </div>
 
-<div class="container">
-    <a href="index.html" class="back-button">← Back</a>
-    <h1>Connect with Counselors</h1>
-    <p>Having trouble? Connect with your counselor to make sure you’re on the right path!</p>
-    
-    <div class="counselor-info">
+    <!-- Team White -->
+    <div class="counselor-block" style="border-color: #000000;">
+      <div class="counselor-header" style="color: #000000;">TEAM WHITE</div>
+      <div class="counselor-subtitle">GRADES 10-12, LAST NAMES OI-Z</div>
+      <div class="counselor-info">
         <div class="counselor-name">Matt Swaim</div>
         <a href="mailto:mswaim@hse.k12.in.us" class="counselor-email">mswaim@hse.k12.in.us</a>
-    </div>
-
-    <div class="counselor-info">
+      </div>
+      <div class="counselor-info">
         <div class="counselor-name">Kelly Applegate</div>
         <a href="mailto:kapplegate@hse.k12.in.us" class="counselor-email">kapplegate@hse.k12.in.us</a>
-    </div>
-
-    <div class="counselor-info">
+      </div>
+      <div class="counselor-info">
         <div class="counselor-name">Lindsay Thomas</div>
         <a href="mailto:lthomas@hse.k12.in.us" class="counselor-email">lthomas@hse.k12.in.us</a>
-    </div>
-
-    <div class="counselor-info">
+      </div>
+      <div class="counselor-info">
         <div class="counselor-name">Maria Chinni</div>
         <a href="mailto:mchinni@hse.k12.in.us" class="counselor-email">mchinni@hse.k12.in.us</a>
+      </div>
     </div>
-    
 
-</div>
+    <!-- Connect Circle -->
+    <div class="connect-circle">
+      <img src="https://image.maxpreps.io/school-mascot/9/5/1/951860ab-d82d-476e-b355-80a8dbad705e.gif?version=637304818800000000&width=1024&height=1024" alt="School Mascot">
+      <h2>Connect with Counselors</h2>
+    </div>
 
+    <!-- Team Silver -->
+    <div class="counselor-block" style="border-color: #afabab;">
+      <div class="counselor-header" style="color: #747171;">Team Silver</div>
+      <div class="counselor-subtitle">GRADES 10-12, Last Names GRB-OHZ</div>
+      <div class="counselor-info">
+        <div class="counselor-name">Jacob Hornberger</div>
+        <a href="mailto:jhornberger@hse.k12.in.us" class="counselor-email">jhornberger@hse.k12.in.us</a>
+      </div>
+      <div class="counselor-info">
+        <div class="counselor-name">Lizette Baumann</div>
+        <a href="mailto:lbaumann@hse.k12.in.us" class="counselor-email">lbaumann@hse.k12.in.us</a>
+      </div>
+      <div class="counselor-info">
+        <div class="counselor-name">Lindsay Thomas</div>
+        <a href="mailto:lthomas@hse.k12.in.us" class="counselor-email">lthomas@hse.k12.in.us</a>
+      </div>
+    </div>
+
+    <!-- Team Freshman -->
+    <div class="counselor-block" style="border-color: #e60606;">
+      <div class="counselor-header" style="color: #e60606;">Team Freshman</div>
+      <div class="counselor-subtitle">GRADES 9</div>
+      <div class="counselor-info">
+        <div class="counselor-name">Steven Curtis</div>
+        <a href="mailto:scurtis@hse.k12.in.us" class="counselor-email">scurtis@hse.k12.in.us</a>
+      </div>
+      <div class="counselor-info">
+        <div class="counselor-name">Maggie Stiller</div>
+        <a href="mailto:mstiller@hse.k12.in.us" class="counselor-email">mstiller@hse.k12.in.us</a>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
