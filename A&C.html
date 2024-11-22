@@ -93,19 +93,19 @@
         .fifth-period {
             background-color: #ffff9c;
         }
-
+/*-------------------------Copy below for confetti------------------------------------- */
         /* Overlay Styles */
         .overlay {
-            display: none;
+            display: none; /* Hidden by default */
             position: fixed;
-            z-index: 1000;
-            left: 0;
             top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            overflow: auto;
-            background-color: rgba(208, 81, 81, 0.7);
-        }
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 10;
+          }
+/*-------------------------Copy above for confetti------------------------------------- */
 
         .overlay-content {
             background-color: rgb(255, 255, 255);
@@ -243,7 +243,37 @@
          transform: scale(1.2);
          cursor: pointer; /* Changes cursor to pointer */
         }
+/*-------------------------Copy below for confetti------------------------------------- */
 
+        .confetti {
+            position: fixed; /* Ensure the confetti is fixed on the screen */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 100; /* Ensure this is above all other elements */
+            pointer-events: none; /* Prevent confetti from interfering with interactions */
+        }
+
+        .confetti div {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #f39c12;
+            animation: confetti 1.5s ease-in-out infinite;
+        }
+
+        @keyframes confetti {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+/*-------------------------Copy above for confetti------------------------------------- */
     </style>
 </head>
 <body>
@@ -382,16 +412,16 @@
         <h2>Broadcasting & Production Details</h2>
         <ul>
             <li>Principals of Broadcasting
-                <span class="green-plus" onclick="toggleClass(this)"> +</span>
+                <span class="green-plus" onclick="toggleClass(this)"><div class="green-plus" onclick="celebrate()">+</div></span></span>
             </li>
             <li>Digital Media
-                <span class="green-plus" onclick="toggleClass(this)"> +</span>
+                <span class="green-plus" onclick="toggleClass(this)"><div class="green-plus" onclick="celebrate()">+</div></span></span>
             </li>
             <li>Audio/Visual Production or Student Media: Broadcast
-                <span class="green-plus" onclick="toggleClass(this)"> +</span>
+                <span class="green-plus" onclick="toggleClass(this)"><div class="green-plus" onclick="celebrate()">+</div></span></span>
             </li>
             <li>Mass Media Production
-                <span class="green-plus" onclick="toggleClass(this)"> +</span>
+                <span class="green-plus" onclick="toggleClass(this)"><div class="green-plus" onclick="celebrate()">+</div></span></span>
             </li>
         </ul>
     </div>
@@ -404,13 +434,13 @@
         <h2>Arts and Performance</h2>
         <ul>
             <li>Principles of Broadcasting
-                <a class="green-plus" onclick="addClassToFile('Principles of Broadcasting')"> +</a>
+                <a class="green-plus" onclick="toggleClass(this)"><div class="green-plus" onclick="celebrate()">+</div></a></a>
             </li>
             <li>ACP Speech
-                <span class="green-plus" onclick="addClassToFile('ACP Speech')"> +</span>
+                <span class="green-plus" onclick="toggleClass(this)"><div class="green-plus" onclick="celebrate()">+</div></span></span>
             </li>
             <li>Adv. Band/Orchestra/Art/Theatre
-                <span class="green-plus" onclick="addClassToFile('Adv. Band/Orchestra/Art/Theatre')"> +</span>
+                <span class="green-plus" onclick="toggleClass(this)"><div class="green-plus" onclick="celebrate()">+</div></span></span>
             </li>
         </ul>
     </div>
@@ -423,18 +453,21 @@
         <h2>Journalism</h2>
         <ul>
             <li>Principles of Business Management
-                <span class="green-plus" onclick="addClassToFile('Principles of Business Management')"> +</span>
+                <span class="green-plus" onclick="toggleClass(this)"><div class="green-plus" onclick="celebrate()">+</div></span></span>
             </li>
             <li>ACP Speech
-                <span class="green-plus" onclick="addClassToFile('ACP Speech')"> +</span>
+                <span class="green-plus" onclick="toggleClass(this)"><div class="green-plus" onclick="celebrate()">+</div></span></span>
             </li>
             <li>Newspaper/Yearbook
-                <span class="green-plus" onclick="addClassToFile('Newspaper/Yearbook')"> +</span>
+                <span class="green-plus" onclick="toggleClass(this)"> <div class="green-plus" onclick="celebrate()">+</div></span>
             </li>
         </ul>
     </div>
 </div>
+<!--------------------------Copy below for confetti-------------------------------------->
 
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti"></script> <!-- Confetti library -->
+<!-------------------------Copy above for confetti-------------------------------------->
 
 <script>
 
@@ -465,6 +498,7 @@
             } else {
                 currentClasses.push(className);
                 button.textContent = ' -'; // Change button text to "-"
+                celebrate();
             }
 
             // Update localStorage with the new classes list
@@ -489,6 +523,17 @@
                 }
             });
         };
+//--------------------------Copy below for confetti--------------------------------------//
+        
+        function celebrate() {
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { x: 0.5, y: 0.5 }
+            });
+        }
+//--------------------------Copy above for confetti--------------------------------------//
+        
 
 </script>
 </body>
