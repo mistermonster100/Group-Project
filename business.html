@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Business & Administration</title>
+    <title>Arts & Communication</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         /* Global Styles */
@@ -93,7 +93,7 @@
         .fifth-period {
             background-color: #ffff9c;
         }
-        /*-------------------------Copy below for confetti------------------------------------- */
+/*-------------------------Copy below for confetti------------------------------------- */
         /* Overlay Styles */
         .overlay {
             display: none; /* Hidden by default */
@@ -106,19 +106,6 @@
             z-index: 10;
           }
 /*-------------------------Copy above for confetti------------------------------------- */
-
-        /* Overlay Styles */
-        .overlay {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(208, 81, 81, 0.7);
-        }
 
         .overlay-content {
             background-color: rgb(255, 255, 255);
@@ -182,7 +169,7 @@
             width: 60%;
             height: 60%;
         }
-        
+
         /* Header Links Container */
         .header-links {
             display: flex;
@@ -211,28 +198,82 @@
         }
 
         .green-plus {
+            position:absolute;
+            transform:translate(10%,-10%);
             color: #28a745; /* Green color */
             font-size: 1.5em;
             cursor: pointer;
             padding-left: 10px;
-            transition: color 0.3s ease;
+            transition: transform 0.3s ease;
         }
-        
+
         .green-plus:hover {
-            color: #218838; /* Darker green on hover */
+            font-size: 1.7em;
         }
         /* Cart Icon Styling */
+
         .cart-icon {
-         position: fixed;
-         top: 20px;
-         right: 20px;
-         cursor: pointer;
+        position: absolute;
+        top: 70px;
+        right: 70px; /* Distance from the left */
+        width: 50px;
+        height: 50px;
+        background-color: white;
+        opacity: 80%;
+        border-radius: 50%; /* Makes the button circular */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional shadow for depth */
+        text-decoration: none; /* Removes underline for links */
+        z-index: 1000; /* Ensures it's above other elements */
+        transition: transform 0.2s ease;
         }
 
         .cart-icon img {
-         width: 40px; /* Adjust the size of the cart icon */
-          height: 40px;
+         position: absolute;
+         top:50%;
+         left:50%;
+         transform: translate(-50%, -50%);
+         width:60%;
+         height:60%;
         }
+
+        .cart-icon:hover {
+         transform: scale(1.2);
+         cursor: pointer; /* Changes cursor to pointer */
+        }
+/*-------------------------Copy below for confetti------------------------------------- */
+
+        .confetti {
+            position: fixed; /* Ensure the confetti is fixed on the screen */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 100; /* Ensure this is above all other elements */
+            pointer-events: none; /* Prevent confetti from interfering with interactions */
+        }
+
+        .confetti div {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #f39c12;
+            animation: confetti 1.5s ease-in-out infinite;
+        }
+
+        @keyframes confetti {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+/*-------------------------Copy above for confetti------------------------------------- */
     </style>
 </head>
 <body>
@@ -243,12 +284,12 @@
     <div class="header">
         <h1>Business & Administration</h1>
         <div class="header-links">
+            <a href="A&C.html" class="header-link">Arts</a>
             <a href="A&NR.html" class="header-link">Agriculture</a>
             <a href="MD&PS.html" class="header-link">Medical</a>
             <a href="PBS.html" class="header-link">Public Service</a>
             <a href="ETI.html" class="header-link">Engineering</a>
             <a href="innovation.html" class="header-link">Innovation</a>
-            <a href="Arts.html" class="header-link">Arts</a>
             <a href="IB.html" class="header-link">IB</a>
         </div>
     </div>
@@ -375,16 +416,16 @@
         <p>Comprehensive course covering different aspects of Buisness including:</p>
         <ul>
             <li>ACP Buisness Administration
-                <span class="green-plus" onclick="addClassToFile('Principals of Broadcasting')"> +</span>
+                <span class="green-plus" onclick="toggleClass(this)"> <div class="green-plus" onclick="celebrate()">+</div></span>
             </li>
             <li>AP Macro/ AP Micro
-                <span class="green-plus" onclick="addClassToFile('Digital Media')"> +</span>
+                <span class="green-plus" onclick="toggleClass(this)"> <div class="green-plus" onclick="celebrate()">+</div></span>
             </li>
             <li>AP Statistics 
-                <span class="green-plus" onclick="addClassToFile('Audio/Visual Production or Student Media: Broadcast')"> +</span>
+                <span class="green-plus" onclick="toggleClass(this)"> <div class="green-plus" onclick="celebrate()">+</div></span>
             </li>
             <li>ACP Finite Mathmatics
-                <span class="green-plus" onclick="addClassToFile('Mass Media Production')"> +</span>
+                <span class="green-plus" onclick="toggleClass(this)"> <div class="green-plus" onclick="celebrate()">+</div></span>
             </li>
         </ul>
     </div>
@@ -398,13 +439,13 @@
         <p>In-depth exploration of multitude of paths to provide an increase of revenue for different companies:</p>
         <ul>
             <li>Principles of Buisness Management
-                <span class="green-plus" onclick="addClassToFile('Principles of Broadcasting')"> +</span>
+                <span class="green-plus" onclick="toggleClass(this)"> <div class="green-plus" onclick="celebrate()">+</div></span>
             </li>
             <li>Marketing Fundamentals
-                <span class="green-plus" onclick="addClassToFile('ACP Speech')"> +</span>
+                <span class="green-plus" onclick="toggleClass(this)"> <div class="green-plus" onclick="celebrate()">+</div></span>
             </li>
             <li>Digital Marketing or Strategic Marketing
-                <span class="green-plus" onclick="addClassToFile('Adv. Band/Orchestra/Art/Theatre')"> +</span>
+                <span class="green-plus" onclick="toggleClass(this)"> <div class="green-plus" onclick="celebrate()">+</div></span>
             </li>
         </ul>
     </div>
@@ -418,14 +459,14 @@
         <p>focusing on advising companies,goverments,institutions and providing finacial awareness:</p>
         <ul>
             <li>Principles of Business Management
-                <span class="green-plus" onclick="addClassToFile('Principles of Business Management')"> +</span>
+                <span class="green-plus" onclick="toggleClass(this)"> <div class="green-plus" onclick="celebrate()">+</div></span>
             </li>
             <li>Accounting Fundamentals or Management Fundamentals
-                <span class="green-plus" onclick="addClassToFile('ACP Speech')"> +</span>
+                <span class="green-plus" onclick="toggleClass(this)"> <div class="green-plus" onclick="celebrate()">+</div></span>
             </li>
             <li>Finance Investment
-                <span class="green-plus" onclick="addClassToFile('Newspaper/Yearbook')"> +</span>
-            </li>
+                <span class="green-plus" onclick="toggleClass(this)"> <div class="green-plus" onclick="celebrate()">+</div></span>
+                </li>
         </ul>
     </div>
     <div id="av-production-overlay" class="overlay">
@@ -435,40 +476,88 @@
             <p>Focuses on Buisness on an International Scale and learning the respective required skills:</p>
             <ul>
                 <li>AP Research or IB Global Politics or International Buisness
-                    <span class="green-plus" onclick="addClassToFile('Principles of Business Management')"> +</span>
+                    <span class="green-plus" onclick="toggleClass(this)"> <div class="green-plus" onclick="celebrate()">+</div></span>
                 </li>
                 <li> Level II World Languange or Above</li>
-                    <span class="green-plus" onclick="addClassToFile('ACP Speech')"> +</span>
+                <span class="green-plus" onclick="toggleClass(this)"> <div class="green-plus" onclick="celebrate()">+</div></span>
                 </li>
                 <li>ACP Buisness Administration
-                    <span class="green-plus" onclick="addClassToFile('Newspaper/Yearbook')"> +</span>
+                    <span class="green-plus" onclick="toggleClass(this)"> <div class="green-plus" onclick="celebrate()">+</div></span>
                 </li>
             </ul>
         </div>
 </div>
+<!--------------------------Copy below for confetti-------------------------------------->
 
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti"></script> <!-- Confetti library -->
+<!-------------------------Copy above for confetti-------------------------------------->
 
 <script>
-    function openOverlay(overlayId) {
-        document.getElementById(overlayId).style.display = 'block';
-    }
 
-    function closeOverlay(overlayId) {
-        document.getElementById(overlayId).style.display = 'none';
-    }
-
-    // Close overlay if user clicks outside of it
-    window.onclick = function(event) {
-        if (event.target.classList.contains('overlay')) {
-            event.target.style.display = 'none';
+        function openOverlay(overlayId) {
+            document.getElementById(overlayId).style.display = 'block';
         }
-    }
 
-    function addClassToFile(className) {
-        let currentClasses = JSON.parse(localStorage.getItem('classes')) || [];  // Get existing classes or empty array
-        currentClasses.push(className);  // Add the new class
-        localStorage.setItem('classes', JSON.stringify(currentClasses));  // Save updated classes to localStorage
-    }
+        function closeOverlay(overlayId) {
+            document.getElementById(overlayId).style.display = 'none';
+        }
+
+        // Close overlay if user clicks outside of it
+        window.onclick = function(event) {
+            if (event.target.classList.contains('overlay')) {
+                event.target.style.display = 'none';
+            }
+        }
+
+        // Function to toggle class and update button
+        function toggleClass(button) {
+            const className = button.parentElement.textContent.trim(); // Get class name from the li text
+            let currentClasses = JSON.parse(localStorage.getItem('classes')) || [];
+
+            // Toggle the class in the list
+            if (currentClasses.includes(className)) {
+                currentClasses = currentClasses.filter(c => c !== className);
+                button.textContent = ' +'; // Change button text to "+"
+            } else {
+                currentClasses.push(className);
+                button.textContent = ' -'; // Change button text to "-"
+                celebrate();
+            }
+
+            // Update localStorage with the new classes list
+            localStorage.setItem('classes', JSON.stringify(currentClasses));
+        }
+
+        // Update all buttons on page load
+        window.onload = function() {
+            let currentClasses = JSON.parse(localStorage.getItem('classes')) || [];
+
+            // Loop through all li elements and update their buttons
+            const listItems = document.querySelectorAll('ul li');
+            listItems.forEach(item => {
+                const className = item.textContent.trim(); // Get class name from the li text
+                const button = item.querySelector('.green-plus');
+
+                // Update the button text depending on whether the class is in localStorage
+                if (currentClasses.includes(className)) {
+                    button.textContent = ' -';
+                } else {
+                    button.textContent = ' +';
+                }
+            });
+        };
+//--------------------------Copy below for confetti--------------------------------------//
+        
+        function celebrate() {
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { x: 0.5, y: 0.5 }
+            });
+        }
+//--------------------------Copy above for confetti--------------------------------------//
+        
+
 </script>
 </body>
 </html>
