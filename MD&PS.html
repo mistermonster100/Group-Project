@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Medical</title>
+    <title>Arts & Communication</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         /* Global Styles */
@@ -93,19 +93,19 @@
         .fifth-period {
             background-color: #ffff9c;
         }
-
+/*-------------------------Copy below for confetti------------------------------------- */
         /* Overlay Styles */
         .overlay {
-            display: none;
+            display: none; /* Hidden by default */
             position: fixed;
-            z-index: 1000;
-            left: 0;
             top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            overflow: auto;
-            background-color: rgba(208, 81, 81, 0.7);
-        }
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 10;
+          }
+/*-------------------------Copy above for confetti------------------------------------- */
 
         .overlay-content {
             background-color: rgb(255, 255, 255);
@@ -141,6 +141,7 @@
                 font-size: 2.5em;
             }
         }
+
         .home-button {
         position: absolute;
         top: 70px;
@@ -168,7 +169,7 @@
             width: 60%;
             height: 60%;
         }
-        
+
         /* Header Links Container */
         .header-links {
             display: flex;
@@ -182,7 +183,7 @@
         .header-link {
             text-decoration: none;
             color: white;
-            background-color: rgba(0, 0, 0, 0.2);
+            background-color: rgba(50, 50, 150, 0.8);
             padding: 10px 20px;
             border-radius: 8px;
             font-size: 1em;
@@ -193,34 +194,86 @@
 
         .header-link:hover {
             transform: scale(1.2);
-            background-color: rgba(0, 0, 0, 0.4);
+            background-color: rgba(50, 50, 150, 1);
         }
 
         .green-plus {
+            position:absolute;
+            transform:translate(10%,-10%);
             color: #28a745; /* Green color */
             font-size: 1.5em;
             cursor: pointer;
             padding-left: 10px;
-            transition: color 0.3s ease;
+            transition: transform 0.3s ease;
         }
-        
+
         .green-plus:hover {
-            color: #218838; /* Darker green on hover */
+            font-size: 1.7em;
         }
         /* Cart Icon Styling */
+
         .cart-icon {
-         position: fixed;
-         top: 20px;
-         right: 20px;
-         cursor: pointer;
+        position: absolute;
+        top: 70px;
+        right: 70px; /* Distance from the left */
+        width: 50px;
+        height: 50px;
+        background-color: white;
+        opacity: 80%;
+        border-radius: 50%; /* Makes the button circular */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional shadow for depth */
+        text-decoration: none; /* Removes underline for links */
+        z-index: 1000; /* Ensures it's above other elements */
+        transition: transform 0.2s ease;
         }
 
         .cart-icon img {
-         width: 40px; /* Adjust the size of the cart icon */
-          height: 40px;
+         position: absolute;
+         top:50%;
+         left:50%;
+         transform: translate(-50%, -50%);
+         width:60%;
+         height:60%;
         }
 
-    
+        .cart-icon:hover {
+         transform: scale(1.2);
+         cursor: pointer; /* Changes cursor to pointer */
+        }
+/*-------------------------Copy below for confetti------------------------------------- */
+
+        .confetti {
+            position: fixed; /* Ensure the confetti is fixed on the screen */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 100; /* Ensure this is above all other elements */
+            pointer-events: none; /* Prevent confetti from interfering with interactions */
+        }
+
+        .confetti div {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #f39c12;
+            animation: confetti 1.5s ease-in-out infinite;
+        }
+
+        @keyframes confetti {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+/*-------------------------Copy above for confetti------------------------------------- */
     </style>
     </head>
     </body>
@@ -231,8 +284,8 @@
     <div class="header">
         <h1>Medical</h1>
         <div class="header-links">
+            <a href="A&C.html" class="header-link">Arts</a>
             <a href="A&NR.html" class="header-link">Agriculture</a>
-            <a href="MD&PS.html" class="header-link">Medical</a>
             <a href="PBS.html" class="header-link">Public Service</a>
             <a href="ETI.html" class="header-link">Engineering</a>
             <a href="innovation.html" class="header-link">Innovation</a>
@@ -394,14 +447,13 @@
             <p>In-depth exploration of multimedia content creation, including:</p>
             <ul>
                 <li>Principles of HealthCare
-                <span class="green-plus" onclick="addClassToFile('Principals of HealthCare')"> +</span>
+                    <span class="green-plus" onclick="toggleClass(this)"> <div class="green-plus" onclick="celebrate()">+</div></span>
                 </li>
                 <li>Medical Terminology
-                <span class="green-plus" onclick="addClassToFile('Medical Terminology')"> +</span>
+                    <span class="green-plus" onclick="toggleClass(this)"> <div class="green-plus" onclick="celebrate()">+</div></span>
                 </li>
                 <li>Certified Clinical Medical Assisting
-                <span class="green-plus" onclick="addClassToFile('Certified Clinical Medical Assisting')"> +</span>
-            </li>
+                    <span class="green-plus" onclick="toggleClass(this)"> <div class="green-plus" onclick="celebrate()">+</div></span>            </li>
             </ul>
         </div>
     </div>
@@ -412,15 +464,12 @@
             <h2>Emergency Medical Technician</h2>
             <p>Hands-on course focusing on professional media production:</p>
             <ul>
-                <li>Principles of HealthCare
-                    <span class="green-plus" onclick="addClassToFile('Principals of HealthCare')"> +</span>
-                    </li>
-                <li>Medical Terminology
-                    <span class="green-plus" onclick="addClassToFile('Medical Terminology')"> +</span>
-                    </li>
-                <li>Emergency Medical Technician
-                    <span class="green-plus" onclick="addClassToFile(' Emergency Medical Technician')"> +</span>
-                    </li>
+                <li>Principles of HealthCare</li>
+                    <span class="green-plus" onclick="toggleClass(this)"> <div class="green-plus" onclick="celebrate()">+</div></span>                  
+                <li>Medical Terminology</li>
+                    <span class="green-plus" onclick="toggleClass(this)"> <div class="green-plus" onclick="celebrate()">+</div></span>                  
+                <li>Emergency Medical Technician</li>
+                <span class="green-plus" onclick="toggleClass(this)"> <div class="green-plus" onclick="celebrate()">+</div></span>
             </ul>
         </div>
     </div>
@@ -431,13 +480,13 @@
             <p>Hands-on course focusing on professional media production:</p>
             <ul>
                 <li> Adv. Anatomy/Physiology 
-                    <span class="green-plus" onclick="addClassToFile('Adv. Anatomy/Physiology')"> +</span>
+                    <span class="green-plus" onclick="toggleClass(this)"> <div class="green-plus" onclick="celebrate()">+</div></span>
                     </li>
                 <li>AP/ACP Biology
-                    <span class="green-plus" onclick="addClassToFile('AP/ACP Biology')"> +</span>
+                    <span class="green-plus" onclick="toggleClass(this)"> <div class="green-plus" onclick="celebrate()">+</div></span>
                     </li>
                 <li>AP/ACP Chemistry
-                    <span class="green-plus" onclick="addClassToFile('AP/ACP Chemistry')"> +</span>
+                    <span class="green-plus" onclick="toggleClass(this)"> <div class="green-plus" onclick="celebrate()">+</div></span>
                     </li>
             </ul>
         </div>
@@ -449,13 +498,13 @@
             <p>Hands-on course focusing on professional media production:</p>
             <ul>
                 <li>Principles of Biomedical
-                    <span class="green-plus" onclick="addClassToFile('Principles of Biomedical')"> +</span>
+                    <span class="green-plus" onclick="toggleClass(this)"> <div class="green-plus" onclick="celebrate()">+</div></span>
                     </li>
                 <li>Human Body Systems
-                    <span class="green-plus" onclick="addClassToFile('Human Body Systems')"> +</span>
+                    <span class="green-plus" onclick="toggleClass(this)"> <div class="green-plus" onclick="celebrate()">+</div></span>
                     </li>
                 <li>Medical Interventions
-                    <span class="green-plus" onclick="addClassToFile('Medical Interventions')"> +</span>
+                    <span class="green-plus" onclick="toggleClass(this)"> <div class="green-plus" onclick="celebrate()">+</div></span>
                     </li>
             </ul>
         </div>
@@ -467,34 +516,85 @@
             <p>Hands-on course focusing on professional media production:</p>
             <ul>
                 <li>Principles of Exercise Science
-                <span class="green-plus" onclick="addClassToFile('Principles of Exercise Science')"> +</span>
+                    <span class="green-plus" onclick="toggleClass(this)"> <div class="green-plus" onclick="celebrate()">+</div></span>
                 </li>
                 <li>Kinesiology
-                    <span class="green-plus" onclick="addClassToFile('Kinesiology')"> +</span>
+                    <span class="green-plus" onclick="toggleClass(this)"> <div class="green-plus" onclick="celebrate()">+</div></span>
                     </li>
                 <li>Human Performance
-                    <span class="green-plus" onclick="addClassToFile('Human Performance')"> +</span>
+                    <span class="green-plus" onclick="toggleClass(this)"> <div class="green-plus" onclick="celebrate()">+</div></span>
                     </li>
             </ul>
         </div>
     </div>
 </div>
 
-    <script>
-        function openOverlay(overlayId) {
-            document.getElementById(overlayId).style.display = 'block';
+<script>
+
+    function openOverlay(overlayId) {
+        document.getElementById(overlayId).style.display = 'block';
+    }
+
+    function closeOverlay(overlayId) {
+        document.getElementById(overlayId).style.display = 'none';
+    }
+
+    // Close overlay if user clicks outside of it
+    window.onclick = function(event) {
+        if (event.target.classList.contains('overlay')) {
+            event.target.style.display = 'none';
+        }
+    }
+
+    // Function to toggle class and update button
+    function toggleClass(button) {
+        const className = button.parentElement.textContent.trim(); // Get class name from the li text
+        let currentClasses = JSON.parse(localStorage.getItem('classes')) || [];
+
+        // Toggle the class in the list
+        if (currentClasses.includes(className)) {
+            currentClasses = currentClasses.filter(c => c !== className);
+            button.textContent = ' +'; // Change button text to "+"
+        } else {
+            currentClasses.push(className);
+            button.textContent = ' -'; // Change button text to "-"
+            celebrate();
         }
 
-        function closeOverlay(overlayId) {
-            document.getElementById(overlayId).style.display = 'none';
-        }
+        // Update localStorage with the new classes list
+        localStorage.setItem('classes', JSON.stringify(currentClasses));
+    }
 
-        // Close overlay if user clicks outside of it
-        window.onclick = function(event) {
-            if (event.target.classList.contains('overlay')) {
-                event.target.style.display = 'none';
+    // Update all buttons on page load
+    window.onload = function() {
+        let currentClasses = JSON.parse(localStorage.getItem('classes')) || [];
+
+        // Loop through all li elements and update their buttons
+        const listItems = document.querySelectorAll('ul li');
+        listItems.forEach(item => {
+            const className = item.textContent.trim(); // Get class name from the li text
+            const button = item.querySelector('.green-plus');
+
+            // Update the button text depending on whether the class is in localStorage
+            if (currentClasses.includes(className)) {
+                button.textContent = ' -';
+            } else {
+                button.textContent = ' +';
             }
-        }
-    </script>
+        });
+    };
+//--------------------------Copy below for confetti--------------------------------------//
+    
+    function celebrate() {
+        confetti({
+            particleCount: 100,
+            spread: 70,
+            origin: { x: 0.5, y: 0.5 }
+        });
+    }
+//--------------------------Copy above for confetti--------------------------------------//
+    
+
+</script>
 </body>
 </html>
