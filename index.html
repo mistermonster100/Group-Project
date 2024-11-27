@@ -163,6 +163,37 @@
             transform: scale(1.05);
             box-shadow: 0 6px 15px rgb(121, 121, 121), 0 0 0 2px rgba(6, 129, 230, 0.851);
         }
+        .cart-icon {
+            position: absolute;
+            top: 30px;
+            right: 25px; /* Distance from the left */
+            width: 50px;
+            height: 50px;
+            background-color: white;
+            opacity: 80%;
+            border-radius: 50%; /* Makes the button circular */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional shadow for depth */
+            text-decoration: none; /* Removes underline for links */
+            z-index: 1000; /* Ensures it's above other elements */
+            transition: transform 0.2s ease;
+            }
+    
+            .cart-icon img {
+             position: absolute;
+             top:50%;
+             left:50%;
+             transform: translate(-50%, -50%);
+             width:60%;
+             height:60%;
+            }
+    
+            .cart-icon:hover {
+             transform: scale(1.2);
+             cursor: pointer; /* Changes cursor to pointer */
+            }
 
         h2 {
             margin-top: 15px;
@@ -207,13 +238,16 @@
             <button class="nav-button" onclick="location.href='about.html'">About</button>
             <button class="nav-button" onclick="location.href='FC.html'">Survey</button>
             <button class="nav-button" onclick="location.href='SR.html'">Class Reviews</button>
-            <button class="nav-button" onclick="location.href='connectwithcounselors.html'">Connect with Counselors</button>
-            <button class="nav-button" onclick="location.href='CC.html'">Class Cart</button>
             <button class="nav-button" onclick="location.href='dp.html'">Diploma Pathways</button>
+            <button class="nav-button" onclick="location.href='connectwithcounselors.html'">Connect with Counselors</button>
 
         </div>
     </div>
-
+    <div id="cart-icon" class="cart-icon">
+        <a href="CC.html">
+            <img src="https://icons.veryicon.com/png/o/miscellaneous/simple-linetype-icon/notebook-52.png" alt="Cart" />
+        </a>
+    </div>
     <div class="motto-container">
         <p class="motto">Find the Network to your Future Career Path</p>
     </div>
