@@ -1,294 +1,293 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>ASPYR</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@500;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            margin: 0;
-            padding: 0;
-            min-height: 100vh;
-            background: url('https://yt3.googleusercontent.com/ytc/AIdro_k9Hz1yVRb_QzFjCL2G8q0r_ILFozqdF43uOuvf8TvE8w=s900-c-k-c0x00ffffff-no-rj') no-repeat center 10% fixed;
-            background-size: 50%;
-            color: #ffffff;
-            overflow-x: hidden;
-            padding-top: 100px;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Asypr</title>
+  <style>
+    /* General Styles */
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #2D3142, #E71D36); /* Cool gradient background */
+      color: #fffdfd;
+      overflow-x: hidden;
+    }
 
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(190, 189, 189, 0.706);
-            z-index: -1;
-        }
+    /* Background Tiger Animation */
+    #background {
+      position: fixed; /* Fix the background */
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('https://i.gifer.com/Z8Dq.gif');
+      background-size: 25%;
+      background-repeat: no-repeat;
+      background-position: center;
+      opacity: 0.6;
+      z-index: -1; /* Keep it behind all content */
+    }
 
-        .banner {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            height: 100px;
-            background: #022549;
-            z-index: 999;
-        }
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.8); /* Semi-transparent dark background for header */
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    }
 
-        .header-container {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            z-index: 1000;
-        }
+    header .logo {
+      font-size: 2rem;
+      color: #dc0505; /* Red for the logo */
+    }
 
-        .header {
-            font-size: 3em;
-            font-weight: 650;
-            color: #ffffff;
-            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-        }
+    header .logo span {
+      color: #f5f5f5; /* White accent for contrast */
+    }
 
-        .nav-buttons {
-            display: flex;
-            gap: 10px;
-        }
+    header nav {
+      display: flex;
+      align-items: center;
+    }
 
-        .nav-button {
-            padding: 8px 16px;
-            background: linear-gradient(135deg, #b70202, #f00606);
-            color: #ffffff;
-            border: none;
-            border-radius: 20px;
-            cursor: pointer;
-            font-family: 'Poppins', sans-serif;
-            font-size: 0.9em;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s ease;
-            height: fit-content;
-        }
+    /* Navigation Buttons with Gradient */
+    .nav-buttons {
+      display: flex;
+    }
 
-        .nav-button:hover {
-            background: linear-gradient(135deg, #0b5de1, #0755ca);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-        }
+    .nav-button {
+      background: linear-gradient(135deg, #d6d7d8, #d20808, #d20808); /* Teal, Purple, Red */
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      margin: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+      border-radius: 5px;
+      text-transform: uppercase;
+      font-weight: bold;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
 
-        .motto-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 55vh;
-            position: relative;
-            z-index: 1;
-            text-align: center;
-        }
+    .nav-button:hover {
+      background: linear-gradient(135deg, #0572ba, #850ec6, #db0b0b); /* Slightly darker red on hover */
+      transform: scale(1.05); /* Slight grow effect on hover */
+    }
 
-        .motto {
-            font-family: 'Poppins', sans-serif;
-            font-size: 3em;
-            font-weight: 600;
-            color: #ffffff;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
-            line-height: 1.2;
-            background: rgba(220, 213, 213, 0.912);
-            padding: 10px 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            animation: appear 1.5s ease-out;
-        }
+    /* Welcome Section */
+    .welcome {
+      text-align: center;
+      padding: 100px 20px;
+      background: linear-gradient(135deg, rgba(178, 175, 175, 0.9), rgba(60, 60, 60, 0.8));
+      animation: fadeIn 2s ease-in-out;
+      position: relative;
+      border-bottom: 3px solid #f21b1b; /* Red border for visual separation */
+    }
 
-        @keyframes appear {
-            0% { opacity: 0; transform: scale(0.9); }
-            100% { opacity: 1; transform: scale(1); }
-        }
+    .welcome h1 {
+      font-size: 4rem;
+      margin-bottom: 20px;
+      color: #e2e1e1; /* Red for the title */
+    }
 
-        .table {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-            max-width: 1200px;
-            margin: 40px auto;
-            padding: 20px;
-            background: rgba(208, 205, 205, 0.9);
-            border-radius: 15px;
-            box-shadow: 0 6px 12px rgb(4, 93, 176);
-        }
+    .welcome p {
+      font-size: 1.2rem;
+      margin-bottom: 100px;
+      color: #f5f5f5; /* White text */
+    }
 
-        .row {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-        }
+    /* Section Colors */
+    .section {
+      padding: 50px 20px;
+      text-align: center;
+      border-bottom: 3px solid #dc0505; /* Red border for separation */
+    }
 
-        form {
-            flex: 0 1 calc(33.333% - 20px);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 20px;
-            background: rgb(221, 218, 218);
-            border-radius: 20px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgb(247, 15, 15);
-            max-width: 300px;
-        }
+    .courses, .motivation, .fun {
+      background: #191b20; /* Dark gray for sections */
+      border-radius: 10px;
+      margin-bottom: 30px;
+    }
 
-        form:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-        }
+    .courses h2, .motivation h2, .fun h2 {
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+      color: #E71D36; /* Red headings */
+    }
 
-        .icon {
-            width: 200px;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 15px;
-            box-shadow: 0 4px 12px rgba(245, 244, 244, 0.1);
-            transition: all 0.3s ease;
-        }
+    .courses p, .motivation p, .fun p {
+      font-size: 1.2rem;
+      color: #939597; /* Light gray text */
+    }
 
-        .icon:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 15px rgb(121, 121, 121), 0 0 0 2px rgba(6, 129, 230, 0.851);
-        }
-        .cart-icon {
-            position: absolute;
-            top: 30px;
-            right: 25px; /* Distance from the left */
-            width: 50px;
-            height: 50px;
-            background-color: white;
-            opacity: 80%;
-            border-radius: 50%; /* Makes the button circular */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional shadow for depth */
-            text-decoration: none; /* Removes underline for links */
-            z-index: 1000; /* Ensures it's above other elements */
-            transition: transform 0.2s ease;
-            }
-    
-            .cart-icon img {
-             position: absolute;
-             top:50%;
-             left:50%;
-             transform: translate(-50%, -50%);
-             width:60%;
-             height:60%;
-            }
-    
-            .cart-icon:hover {
-             transform: scale(1.2);
-             cursor: pointer; /* Changes cursor to pointer */
-            }
+    /* Testimonial Section Styles */
+    #testimonials {
+      background: #191b20; /* Dark background to match other sections */
+      padding: 50px 20px;
+      text-align: center;
+      border-bottom: 3px solid #dc0505; /* Red border for separation */
+    }
 
-        h2 {
-            margin-top: 15px;
-            font-size: 1.2em;
-            font-family: 'Poppins', sans-serif;
-            color: #393939;
-            font-weight: 600;
-            text-align: center;
-            letter-spacing: 0.5px;
-        }
+    #testimonials h2 {
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+      color: #E71D36; /* Red for headings */
+    }
 
-        @media (max-width: 768px) {
-            body {
-                padding-top: 140px;
-            }
-            
-            .header-container {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            
-            .header {
-                font-size: 2em;
-            }
+    .testimonial-container {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
 
-            .nav-buttons {
-                margin-top: 10px;
-            }
+    .testimonial {
+      background: #222; /* Slightly lighter dark background for testimonials */
+      padding: 20px;
+      border-radius: 10px;
+      width: 30%;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease-in-out;
+    }
 
-            .motto {
-                font-size: 2.2em;
-            }
-        }
-    </style>
+    .testimonial:hover {
+      transform: scale(1.05); /* Slight grow effect on hover */
+    }
+
+    .testimonial p {
+      font-size: 1.2rem;
+      color: #ccc; /* Light gray text for testimonials */
+      margin-bottom: 10px;
+    }
+
+    .testimonial h4 {
+      font-size: 1.5rem;
+      color: #e71d36; /* Red for the names */
+      margin-top: 10px;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #171818; /* Very dark gray for footer */
+      position: relative;
+      z-index: 1;
+      border-top: 3px solid #e61515; /* Red top border for footer */
+    }
+
+    footer p {
+      font-size: 0.9rem;
+      color: #aaa; /* Light gray footer text */
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="banner"></div>
-    <div class="overlay"></div>
-    <div class="header-container">
-        <div class="header">ASPYR</div>
-        <div class="nav-buttons">
-            <button class="nav-button" onclick="location.href='about.html'">About</button>
-            <button class="nav-button" onclick="location.href='FC.html'">Survey</button>
-            <button class="nav-button" onclick="location.href='SR.html'">Class Reviews</button>
-            <button class="nav-button" onclick="location.href='dp.html'">Diploma Pathways</button>
-            <button class="nav-button" onclick="location.href='connectwithcounselors.html'">Connect with Counselors</button>
+  <!-- Background Tiger Animation -->
+  <div id="background"></div>
 
-        </div>
-    </div>
-    <div id="cart-icon" class="cart-icon">
-        <a href="CC.html">
-            <img src="https://icons.veryicon.com/png/o/miscellaneous/simple-linetype-icon/notebook-52.png" alt="Cart" />
-        </a>
-    </div>
-    <div class="motto-container">
-        <p class="motto">Find the Network to your Future Career Path</p>
-    </div>
+  <!-- Header -->
+  <header>
+    <div class="logo">Asypr<span>Pathways</span></div>
+    <nav>
+      <!-- Gradient Buttons -->
+      <div class="nav-buttons">
+        <button class="nav-button" onclick="location.href='about.html'">About</button>
+        <button class="nav-button" onclick="location.href='FC.html'">Survey</button>
+        <button class="nav-button" onclick="location.href='SR.html'">Class Reviews</button>
+        <button class="nav-button" onclick="location.href='dp.html'">Diploma Pathways</button>
+        <button class="nav-button" onclick="location.href='connectwithcounselors.html'">Connect with Counselors</button>
+      </div>
+    </nav>
+  </header>
 
-    <div class="table">
-        <div class="row">
-            <form action="A&C.html">
-                <input class="icon" type="image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBnwEI-nBnIBaRFhoTuPQMHWdfnE_JKUIxeg&s" alt="Arts & Communication">
-                <h2>Arts & Communication</h2>
-            </form>
-            <form action="A&NR.html">
-                <input class="icon" type="image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvL1j2iunZQDwKgvLCjNAipv29eHEtVqGKmQ&s" alt="Agriculture & Natural Resources">
-                <h2>Agriculture & Natural Resources</h2>
-            </form>
-            <form action="MD&PS.html">
-                <input class="icon" type="image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTesefe5-fQlc81HMv7X1k2tFVsBTQ1m_zcI8jQtYZ0Z9qYMlH_6iXo4Cw9Q8_5dJeoHjE&usqp=CAU" alt="Medical Network">
-                <h2>Medical Network</h2>
-            </form>
-        </div>
-        <div class="row">
-            <form action="PBS.html">
-                <input class="icon" type="image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLa5MOBoKsneqiD8bo5Y8Q63iWQdvHxvoEUTZlLNHi-GZ6fAavi18IWORpkHA1AOtVNyw&usqp=CAU" alt="Public Service Network">
-                <h2>Public Service Network</h2>
-            </form>
-            <form action="ETI.html">
-                <input class="icon" type="image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRf-q8_7jl4oaZW8Ya3ZzWktucNHgpAYHj2czR2Xq6-0MFfeurRiJD2ilj36796zKoT5Oc&usqp=CAU" alt="Engineering & Technology">
-                <h2>Engineering & Technology</h2>
-            </form>
-            <form action="innovation.html">
-                <input class="icon" type="image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQ3Bdgc1BEdhxHC0qAmqOlMqnSyHteQLBk3g&s" alt="Innovation">
-                <h2>Innovation</h2>
-            </form>
-            <form action="business.html">
-                <input class="icon" type="image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQojtpp4hn1A0aLECEOJWPOknUDsy2m3jjtAPRc6C3j7OkfBW0sLbByJYazC9OE68WpEzA&usqp=CAU" alt="Business & Administration">
-                <h2>Business & Administration</h2>
-            </form>
-            <form action="IB.html">
-                <input class="icon" type="image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7eTdF4yJ9N1VYESswz802nghLYMcRndFeoQ&s" alt="International Baccalaureate">
-                <h2>International Baccalaureate</h2>
-            </form>
-        </div>
+  <!-- Welcome Section -->
+  <section id="welcome" class="welcome">
+    <h1>Welcome to ASYPR!</h1>
+    <p>Discover, learn, and have fun while achieving your goals.</p>
+  </section>
+
+ <!-- Courses Section -->  
+ <section id="courses" class="section courses">  
+  <h2>Our Networks</h2>  
+  <p>Explore a variety of networks to see what suits your style.</p>  
+  <div class="nav-buttons">  
+    <button class="nav-button" onclick="location.href='A&C.html'">  
+       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBnwEI-nBnIBaRFhoTuPQMHWdfnE_JKUIxeg&s" alt="Arts & Communication" style="width: 100px; height: 100px;">  
+       Arts & Communication  
+    </button>  
+    <button class="nav-button" onclick="location.href='A&NR.html'">  
+       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvL1j2iunZQDwKgvLCjNAipv29eHEtVqGKmQ&s" alt="Agriculture & Natural Resources" style="width: 100px; height: 100px;">  
+       Agriculture & Natural Resources  
+    </button>  
+    <button class="nav-button" onclick="location.href='MD&PS.html'">  
+       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTesefe5-fQlc81HMv7X1k2tFVsBTQ1m_zcI8jQtYZ0Z9qYMlH_6iXo4Cw9Q8_5dJeoHjE&usqp=CAU" alt="Medical Network" style="width: 100px; height: 100px;">  
+       Medical Network  
+    </button>  
+    <button class="nav-button" onclick="location.href='PBS.html'">  
+       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLa5MOBoKsneqiD8bo5Y8Q63iWQdvHxvoEUTZlLNHi-GZ6fAavi18IWORpkHA1AOtVNyw&usqp=CAU" alt="Public Service Network" style="width: 100px; height: 100px;">  
+       Public Service Network  
+    </button>  
+    <button class="nav-button" onclick="location.href='ETI.html'">  
+       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRf-q8_7jl4oaZW8Ya3ZzWktucNHgpAYHj2czR2Xq6-0MFfeurRiJD2ilj36796zKoT5Oc&usqp=CAU" alt="Engineering & Technology" style="width: 100px; height: 100px;">  
+       Engineering & Technology  
+    </button>  
+    <button class="nav-button" onclick="location.href='innovation.html'">  
+       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQ3Bdgc1BEdhxHC0qAmqOlMqnSyHteQLBk3g&s" alt="Innovation" style="width: 100px; height: 100px;">  
+       Innovation  
+    </button>  
+    <button class="nav-button" onclick="location.href='business.html'">  
+       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQojtpp4hn1A0aLECEOJWPOknUDsy2m3jjtAPRc6C3j7OkfBW0sLbByJYazC9OE68WpEzA&usqp=CAU" alt="Business & Administration" style="width: 100px; height: 100px;">  
+       Business & Administration  
+    </button>  
+  </div>  
+</section>  
+
+  <!-- Testimonials Section -->
+  <section id="testimonials">
+    <h2>What Our Students Say</h2>
+    <div class="testimonial-container">
+      <div class="testimonial">
+        <p>"Asypr helped me unlock my full potential in school. The guidance and tools provided were exceptional!"</p>
+        <h4>John Doe</h4>
+      </div>
+      <div class="testimonial">
+        <p>"The team at Asypr really cared about my success. I felt supported and motivated throughout my journey."</p>
+        <h4>Jane Smith</h4>
+      </div>
+      <div class="testimonial">
+        <p>"I learned so much, and the platform made studying easy and enjoyable. Thank you, Asypr!"</p>
+        <h4>Michael Johnson</h4>
+      </div>
     </div>
-</body>
+  </section>
+
+  <!-- Fun Facts Section -->
+  <section id="fun" class="section fun">
+    <h2>Did You Know?</h2>
+    <p>Fishers is far better than
+ <!-- Footer -->  
+ <footer>  
+  <p>&copy; 2024 AsyprPathways. All Rights Reserved.</p>  
+</footer>  
+</body>  
 </html>
