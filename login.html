@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Dictionary Authentication</title>
+    <style>
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #717172, #d03c3c);
+            color: #f5f5f5;
+        }
+        .container {
+            text-align: center;
+            width: 360px;
+        }
+        .header {
+            margin-bottom: 20px; 
+            color: #3a0000;
+        }
+        .header h1 {
+            font-size: 64px;
+            margin: 0;
+        }
+        .header h2 {
+            font-size: 18px;
+            color: #9f9f9f;
+            font-weight: 300;
+            margin: 5px 0 20px;
+        }
+        .login-container {
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        .login-container h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 26px;
+            color: #2C3E50;
+        }
+        .form-control {
+            margin-bottom: 20px;
+        }
+        .form-control label {
+            display: block;
+            margin-bottom: 6px;
+            font-size: 14px;
+            font-weight: bold;
+            color: #34495E;
+        }
+        .form-control input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+            background: #e9e9e9;
+            color: #000000;
+            transition: border-color 0.2s;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);  
+        }
+        .form-control input:focus {
+            outline: none;
+            border-color: #e02929;
+            background: #bab8b8;
+        }
+        .login-button {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #d6d7d8, #d20808, #d20808); /* Teal, Purple, Red */  
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background 0.3s ease, transform 0.2s ease;  
+
+        }
+        .login-button:hover {
+        background: linear-gradient(135deg, #0562ba, #d4a705, #f30707); /* Slightly darker red on hover */  
+        transform: scale(1.05); /* Slight grow effect on hover */  
+        }
+        .links {
+            margin-top: 20px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            gap: 20px; /* Adds spacing between links */
+        }
+        
+        .links a {
+            color: #ffffff; /* Text color */
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 25px;
+            background: linear-gradient(135deg, #d6d7d8, #d20808); /* Gradient background */
+            transition: all 0.3s ease; /* Smooth hover effect */
+            display: inline-block;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .links a:hover {
+            text-decoration: none;
+            background: linear-gradient(135deg, #d20808, #d6d7d8); /* Reverse gradient on hover */
+            transform: scale(1.1); /* Slight enlargement on hover */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+        
+        .links a:active {
+            transform: scale(1); /* Reset scale on click */
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+        }
+        
+        .message {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 14px;
+            color: #2C3E50;
+        }
+        .message.error {
+            color: #cb3e2e;
+        }
+        .message.success {
+            color: #23ac5c;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Aspyr</h1>
+            <h2>Find the Network to your Future Career Path</h2>
+        </div>
+        <div class="login-container">
+            <h1>Login</h1>
+            <form onsubmit="authenticate(event)">
+                <div class="form-control">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-control">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Enter your password" required>
+                </div>
+                <button type="submit" class="login-button">Sign In</button>
+            </form>
+            <div class="links">
+                <a href="forgot-password.html" class="nav-btn" onclick="forgotPassword()">Forgot Password?</a>
+                <a href="signup.html" class="nav-btn" onclick="createAccount()">Create Account</a>
+            </div>
+            <div class="message" id="message"></div>
+        </div>
+
+    </div>
+    <script>
+        // Dictionary of valid users
+        const users = {
+            "anndjo@student.com": "Hse2024",
+            "rithik@student.com": "Hse2024",
+            "daniel@student.com": "Hse2024"
+        };
+
+       
+// Function to handle login
+async function authenticate(event) {
+    event.preventDefault();
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
+    try {
+        const response = await fetch('http://localhost:3000/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, password })
+        });
+        const result = await response.json();
+        document.getElementById('message').textContent = result.message;
+        if (response.ok) {
+            document.getElementById('message').style.color = 'lightgreen';
+            setTimeout(() => {
+                window.location.href = 'index.html';
+            }, 1000);
+        } else {
+            document.getElementById('message').style.color = 'red';
+        }
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+
+
+        
+    </script>
+</body>
+</html>
