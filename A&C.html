@@ -61,6 +61,7 @@
             display: flex;
             flex-direction: column;
             gap: 20px;
+
         }
         .course-block:hover, .career-card:hover {
             transform: translateY(-8px);
@@ -84,6 +85,29 @@
             margin-bottom: 18px;
         }
 
+        .course-item {
+            border: 1px solid #ccc;
+            margin: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .course-item h3 {
+            margin-top: 0;
+            font-size: 1.5em;
+        }
+
+        .course-content {
+            margin: 10px 0;
+        }
+
+        .course-item-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Ensures title and plus icon are spaced appropriately */
+        }
+
         .period {
             font-weight: bold;
             color: #ff6b6b;
@@ -104,6 +128,7 @@
             height: 100%;
             background-color: rgba(0, 0, 0, 0.5);
             z-index: 10;
+            overflow-y: scroll;
           }
 /*-------------------------Copy above for confetti------------------------------------- */
 
@@ -198,18 +223,18 @@
         }
 
         .green-plus {
-            position:absolute;
-            transform:translate(10%,-10%);
             color: #28a745; /* Green color */
             font-size: 1.5em;
             cursor: pointer;
             padding-left: 10px;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, color 0.3s ease; /* Smooth transitions for transform and color */
         }
 
         .green-plus:hover {
-            font-size: 1.7em;
+            transform: scale(1.2); /* Gently enlarges the icon */
+            color: #218838; /* Optional: Slightly darkens the green color on hover */
         }
+
         /* Cart Icon Styling */
 
         .cart-icon {
@@ -409,21 +434,62 @@
 <div id="broadcast-overlay" class="overlay">
     <div class="overlay-content">
         <span class="overlay-close" onclick="closeOverlay('broadcast-overlay')">&times;</span>
-        <h2>Broadcasting & Production Details</h2>
-        <ul>
-            <li>Principals of Broadcasting
-                <span class="green-plus" onclick="toggleClass(this)"><div class="green-plus" onclick="celebrate()">+</div></span>
-            </li>
-            <li>Digital Media
-                <span class="green-plus" onclick="toggleClass(this)"><div class="green-plus" onclick="celebrate()">+</div></span>
-            </li>
-            <li>Audio/Visual Production or Student Media: Broadcast
-                <span class="green-plus" onclick="toggleClass(this)"><div class="green-plus" onclick="celebrate()">+</div></span>
-            </li>
-            <li>Mass Media Production
-                <span class="green-plus" onclick="toggleClass(this)"><div class="green-plus" onclick="celebrate()">+</div></span>
-            </li>
-        </ul>
+        <h2>Broadcasting & Production</h2>
+        <div>
+            <div class="course-item">
+                <div class="course-item-header">
+                    <h3>Principals of Broadcasting</h3>
+                    <span class="green-plus" onclick="toggleClass(this)">+</span>
+                </div>
+                <div class="course-content">
+                    <p>Description about the principles of broadcasting. This is where you explain what this course covers.</p>
+                    <video controls>
+                        <source src="path-to-your-video.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+            <div class="course-item">
+                <div class="course-item-header">
+                    <h3>Digital Media</h3>
+                    <span class="green-plus" onclick="toggleClass(this)">+</span>
+                </div>
+                <div class="course-content">
+                    <p>Description about digital media. Provide details about the content and objectives of this course.</p>
+                    <video controls>
+                        <source src="path-to-your-video.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+            <div class="course-item">
+                <div class="course-item-header">
+                    <h3>Audio/Visual Production or Student Media: Broadcast</h3>
+                    <span class="green-plus" onclick="toggleClass(this)">+</span>
+                </div>
+                <div class="course-content">
+                    <p>Details about Audio/Visual Production and broadcast media. Include key topics covered in this course.</p>
+                    <video controls>
+                        <source src="path-to-your-video.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+            <div class="course-item">
+                <div class="course-item-header">
+                    <h3>Mass Media Production</h3>
+                    <span class="green-plus" onclick="toggleClass(this)">+</span>
+                </div>
+                <div class="course-content">
+                    <p>Mass Media Production course description. Highlight the main objectives and skills students will learn.</p>
+                    <video controls>
+                        <source src="path-to-your-video.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>
 
@@ -432,38 +498,100 @@
     <div class="overlay-content">
         <span class="overlay-close" onclick="closeOverlay('digital-media-overlay')">&times;</span>
         <h2>Arts and Performance</h2>
-        <ul>
-            <li>Principles of Broadcasting
-                <a class="green-plus" onclick="toggleClass(this)"><div class="green-plus" onclick="celebrate()">+</div></a></a>
-            </li>
-            <li>ACP Speech
-                <span class="green-plus" onclick="toggleClass(this)"><div class="green-plus" onclick="celebrate()">+</div></span></span>
-            </li>
-            <li>Adv. Band/Orchestra/Art/Theatre
-                <span class="green-plus" onclick="toggleClass(this)"><div class="green-plus" onclick="celebrate()">+</div></span></span>
-            </li>
-        </ul>
+        <div>
+            <div class="course-item">
+                <div class="course-item-header">
+                    <h3>Principles of Broadcasting</h3>
+                    <span class="green-plus" onclick="toggleClass(this)">+</span>
+                </div>
+                <div class="course-content">
+                    <p>Description about the principles of broadcasting. This is where you explain what this course covers.</p>
+                    <video controls>
+                        <source src="path-to-your-video.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+            <div class="course-item">
+                <div class="course-item-header">
+                    <h3>ACP Speech</h3>
+                    <span class="green-plus" onclick="toggleClass(this)">+</span>
+                </div>
+                <div class="course-content">
+                    <p>Description about ACP Speech. Provide details about the content and objectives of this course.</p>
+                    <video controls>
+                        <source src="path-to-your-video.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+            <div class="course-item">
+                <div class="course-item-header">
+                    <h3>Adv. Band/Orchestra/Art/Theatre</h3>
+                    <span class="green-plus" onclick="toggleClass(this)">+</span>
+                </div>
+                <div class="course-content">
+                    <p>Details about advanced band, orchestra, art, or theatre. Include key topics and objectives covered in this course.</p>
+                    <video controls>
+                        <source src="path-to-your-video.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+
 
 <!-- AV Production Overlay -->
 <div id="av-production-overlay" class="overlay">
     <div class="overlay-content">
         <span class="overlay-close" onclick="closeOverlay('av-production-overlay')">&times;</span>
         <h2>Journalism</h2>
-        <ul>
-            <li>Principles of Business Management
-                <span class="green-plus" onclick="toggleClass(this)"><div class="green-plus" onclick="celebrate()">+</div></span>
-            </li>
-            <li>ACP Speech
-                <span class="green-plus" onclick="toggleClass(this)"><div class="green-plus" onclick="celebrate()">+</div></span>
-            </li>
-            <li>Newspaper/Yearbook
-                <span class="green-plus" onclick="toggleClass(this)"> <div class="green-plus" onclick="celebrate()">+</div></span>
-            </li>
-        </ul>
+        <div>
+            <div class="course-item">
+                <div class="course-item-header">
+                    <h3>Principles of Business Management</h3>
+                    <span class="green-plus" onclick="toggleClass(this)">+</span>
+                </div>
+                <div class="course-content">
+                    <p>Description about Principles of Business Management. Provide an overview of the objectives and topics covered in this course.</p>
+                    <video controls>
+                        <source src="path-to-your-video.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+            <div class="course-item">
+                <div class="course-item-header">
+                    <h3>ACP Speech</h3>
+                    <span class="green-plus" onclick="toggleClass(this)">+</span>
+                </div>
+                <div class="course-content">
+                    <p>Description about ACP Speech. Provide details about the content and learning goals of this course.</p>
+                    <video controls>
+                        <source src="path-to-your-video.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+            <div class="course-item">
+                <div class="course-item-header">
+                    <h3>Newspaper/Yearbook</h3>
+                    <span class="green-plus" onclick="toggleClass(this)">+</span>
+                </div>
+                <div class="course-content">
+                    <p>Description about Newspaper/Yearbook. Highlight the key skills and activities involved in this course.</p>
+                    <video controls>
+                        <source src="path-to-your-video.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+
 <!--------------------------Copy below for confetti-------------------------------------->
 
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti"></script> <!-- Confetti library -->
@@ -471,69 +599,69 @@
 
 <script>
 
-        function openOverlay(overlayId) {
-            document.getElementById(overlayId).style.display = 'block';
+    function openOverlay(overlayId) {
+        document.getElementById(overlayId).style.display = 'block';
+    }
+
+    function closeOverlay(overlayId) {
+        document.getElementById(overlayId).style.display = 'none';
+    }
+
+    // Close overlay if user clicks outside of it
+    window.onclick = function(event) {
+        if (event.target.classList.contains('overlay')) {
+            event.target.style.display = 'none';
+        }
+    }
+
+    // Function to toggle class and update button
+    function toggleClass(button) {
+        const className = button.parentElement.textContent.trim(); // Get class name from the li text
+        let currentClasses = JSON.parse(localStorage.getItem('classes')) || [];
+
+        // Toggle the class in the list
+        if (currentClasses.includes(className)) {
+            currentClasses = currentClasses.filter(c => c !== className);
+            button.textContent = ' +'; // Change button text to "+"
+        } else {
+            currentClasses.push(className);
+            button.textContent = ' -'; // Change button text to "-"
+            celebrate();
         }
 
-        function closeOverlay(overlayId) {
-            document.getElementById(overlayId).style.display = 'none';
-        }
+        // Update localStorage with the new classes list
+        localStorage.setItem('classes', JSON.stringify(currentClasses));
+    }
 
-        // Close overlay if user clicks outside of it
-        window.onclick = function(event) {
-            if (event.target.classList.contains('overlay')) {
-                event.target.style.display = 'none';
-            }
-        }
+    // Update all buttons on page load
+    window.onload = function() {
+        let currentClasses = JSON.parse(localStorage.getItem('classes')) || [];
 
-        // Function to toggle class and update button
-        function toggleClass(button) {
-            const className = button.parentElement.textContent.trim(); // Get class name from the li text
-            let currentClasses = JSON.parse(localStorage.getItem('classes')) || [];
+        // Loop through all li elements and update their buttons
+        const listItems = document.querySelectorAll('ul li');
+        listItems.forEach(item => {
+            const className = item.textContent.trim(); // Get class name from the li text
+            const button = item.querySelector('.green-plus');
 
-            // Toggle the class in the list
+            // Update the button text depending on whether the class is in localStorage
             if (currentClasses.includes(className)) {
-                currentClasses = currentClasses.filter(c => c !== className);
-                button.textContent = ' +'; // Change button text to "+"
+                button.textContent = ' -';
             } else {
-                currentClasses.push(className);
-                button.textContent = ' -'; // Change button text to "-"
-                celebrate();
+                button.textContent = ' +';
             }
-
-            // Update localStorage with the new classes list
-            localStorage.setItem('classes', JSON.stringify(currentClasses));
-        }
-
-        // Update all buttons on page load
-        window.onload = function() {
-            let currentClasses = JSON.parse(localStorage.getItem('classes')) || [];
-
-            // Loop through all li elements and update their buttons
-            const listItems = document.querySelectorAll('ul li');
-            listItems.forEach(item => {
-                const className = item.textContent.trim(); // Get class name from the li text
-                const button = item.querySelector('.green-plus');
-
-                // Update the button text depending on whether the class is in localStorage
-                if (currentClasses.includes(className)) {
-                    button.textContent = ' -';
-                } else {
-                    button.textContent = ' +';
-                }
-            });
-        };
+        });
+    };
 //--------------------------Copy below for confetti--------------------------------------//
-        
-        function celebrate() {
-            confetti({
-                particleCount: 100,
-                spread: 70,
-                origin: { x: 0.5, y: 0.5 }
-            });
-        }
+
+    function celebrate() {
+        confetti({
+            particleCount: 100,
+            spread: 70,
+            origin: { x: 0.5, y: 0.5 }
+        });
+    }
 //--------------------------Copy above for confetti--------------------------------------//
-        
+
 
 </script>
 </body>
