@@ -1,298 +1,317 @@
 <!DOCTYPE html>  
 <html lang="en">  
 <head>  
-   <meta charset="UTF-8">  
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-   <title>Student Class Reviews</title>  
-   <style>  
-      /* Modern styling with enhanced aesthetics */  
-      :root {  
-        --primary-color: #cd1313ef;  
-        --secondary-color: #ff0000;  
-        --background-color: #1e1e1f;  
-        --card-background: #edeaea;  
-        --text-primary: #000000;  
-        --text-secondary: #000000;  
-        --border-radius: 12px;  
-        --transition: all 0.3s ease;  
-      }  
+  <meta charset="UTF-8">  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+  <title>Student Class Reviews</title>  
+  <style>  
+    /* Modern styling with enhanced aesthetics */  
+    :root {  
+      --primary-color: #171616ef;  
+      --secondary-color: #ff0000;  
+      --background-color: #1e1e1f;  
+      --card-background: #edeaea;  
+      --text-primary: #000000;  
+      --text-secondary: #000000;  
+      --border-radius: 12px;  
+      --transition: all 0.3s ease;  
+    }  
   
-      body {  
-        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;  
-        margin: 0;  
-        padding: 20px;  
-        background: linear-gradient(135deg, #074a8d 0%, #890606 100%);  
-        color: var(--text-primary);  
-        min-height: 100vh;  
-      }  
+    body {  
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;  
+      margin: 0;  
+      padding: 20px;  
+      background: linear-gradient(135deg, #2D3142, #E71D36);  
+      color: var(--text-primary);  
+      min-height: 100vh;  
+    }  
   
-      .back-button {  
-        position: fixed;  
-        top: 20px;  
-        left: 20px;  
-        text-decoration: none;  
-        color: var(--text-primary);  
-        padding: 10px 20px;  
-        background: rgba(229, 229, 229, 0.907);  
-        border-radius: 30px;  
-        box-shadow: 0 2px 10px rgba(88, 30, 30, 0.1);  
-        transition: all 0.3s ease;  
-        backdrop-filter: blur(10px);  
-        border: 1px solid rgba(0, 0, 0, 0.918);  
-        z-index: 1000;  
-      }  
+    .back-button {  
+      position: fixed;  
+      top: 20px;  
+      left: 20px;  
+      text-decoration: none;  
+      color: var(--text-primary);  
+      padding: 10px 20px;  
+      background: rgba(229, 229, 229, 0.907);  
+      border-radius: 30px;  
+      box-shadow: 0 2px 10px rgba(88, 30, 30, 0.1);  
+      transition: all 0.3s ease;  
+      backdrop-filter: blur(10px);  
+      border: 1px solid rgba(0, 0, 0, 0.918);  
+      z-index: 1000;  
+    }  
   
-      .back-button:hover {  
-        transform: translateY(-2px);  
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);  
-      }  
+    .back-button:hover {  
+      transform: translateY(-2px);  
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);  
+    }  
   
+    .container {  
+      max-width: 800px;  
+      margin: 40px auto;  
+      background: var(--card-background);  
+      padding: 30px;  
+      border-radius: var(--border-radius);  
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);  
+    }  
+  
+    h1 {  
+      text-align: center;  
+      color: var(--primary-color);  
+      font-size: 2.5rem;  
+      margin-bottom: 40px;  
+      font-weight: 700;  
+    }  
+  
+    .sort-section {  
+      display: flex;  
+      gap: 15px;  
+      margin-bottom: 30px;  
+      flex-wrap: wrap;  
+    }  
+  
+    select {  
+      flex: 1;  
+      padding: 12px 20px;  
+      border-radius: var(--border-radius);  
+      border: 2px solid #000000;  
+      background-color: rgb(255, 255, 255);  
+      font-size: 1rem;  
+      color: var(--text-primary);  
+      transition: var(--transition);  
+      appearance: none;  
+      background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23131313%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");  
+      background-repeat: no-repeat;  
+      background-position: right 12px center;  
+      background-size: 12px;  
+      padding-right: 40px;  
+    }  
+  
+    select:focus {  
+      outline: none;  
+      border-color: var(--primary-color);  
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);  
+    }  
+  
+    button {  
+      padding: 12px 24px;  
+      background: var(--primary-color);  
+      color: rgb(255, 255, 255);  
+      border: none;  
+      border-radius: var(--border-radius);  
+      font-size: 1rem;  
+      cursor: pointer;  
+      transition: var(--transition);  
+    }  
+  
+    button:hover {  
+      background: var(--secondary-color);  
+      transform: translateY(-2px);  
+    }  
+  
+    .reviews {  
+      margin-top: 30px;  
+      display: grid;  
+      gap: 20px;  
+    }  
+  
+    .review-item {  
+      background: #ffffff;  
+      padding: 20px;  
+      border-radius: var(--border-radius);  
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);  
+      transition: var(--transition);  
+      border: 1px solid #f5f7f9;  
+    }  
+  
+    .review-item:hover {  
+      transform: translateY(-2px);  
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);  
+    }  
+  
+    .review-header {  
+      display: flex;  
+      justify-content: space-between;  
+      align-items: center;  
+      margin-bottom: 12px;  
+    }  
+  
+    .review-header strong {  
+      color: var(--primary-color);  
+      font-size: 1.1rem;  
+    }  
+  
+    .star-rating {  
+      color: #ffb700;  
+      letter-spacing: 2px;  
+    }  
+  
+    .review-content {  
+      color: var(--text-secondary);  
+      line-height: 1.6;  
+    }  
+  
+    .review-form {  
+      margin-top: 40px;  
+      display: grid;  
+      gap: 15px;  
+      padding-top: 20px;  
+      border-top: 2px solid #e2e8f0;  
+    }  
+  
+    .review-form input[type="text"] {  
+      padding: 12px 20px;  
+      border-radius: var(--border-radius);  
+      border: 2px solid #e2e8f0;  
+      font-size: 1rem;  
+      transition: var(--transition);  
+    }  
+  
+    .review-form input[type="text"]:focus {  
+      outline: none;  
+      border-color: var(--primary-color);  
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);  
+    }  
+  
+    .review-form button[type="submit"] {  
+      background: var(--primary-color);  
+      color: rgb(255, 255, 255);  
+      font-weight: 600;  
+      padding: 12px;  
+    }  
+  
+    .review-form button[type="submit"]:hover {  
+      background: var(--secondary-color);  
+    }  
+  
+    @media (max-width: 640px) {  
       .container {  
-        max-width: 800px;  
-        margin: 40px auto;  
-        background: var(--card-background);  
-        padding: 30px;  
-        border-radius: var(--border-radius);  
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);  
+        padding: 20px;  
+        margin: 20px;  
       }  
   
       h1 {  
-        text-align: center;  
-        color: var(--primary-color);  
-        font-size: 2.5rem;  
-        margin-bottom: 40px;  
-        font-weight: 700;  
+        font-size: 2rem;  
+        margin-bottom: 30px;  
       }  
   
       .sort-section {  
-        display: flex;  
-        gap: 15px;  
-        margin-bottom: 30px;  
-        flex-wrap: wrap;  
+        flex-direction: column;  
       }  
   
-      select {  
-        flex: 1;  
-        padding: 12px 20px;  
-        border-radius: var(--border-radius);  
-        border: 2px solid #000000;  
-        background-color: rgb(255, 255, 255);  
-        font-size: 1rem;  
-        color: var(--text-primary);  
-        transition: var(--transition);  
-        appearance: none;  
-        background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23131313%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");  
-        background-repeat: no-repeat;  
-        background-position: right 12px center;  
-        background-size: 12px;  
-        padding-right: 40px;  
+      select, button {  
+        width: 100%;  
       }  
-  
-      select:focus {  
-        outline: none;  
-        border-color: var(--primary-color);  
-        box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);  
-      }  
-  
-      button {  
-        padding: 12px 24px;  
-        background: var(--primary-color);  
-        color: rgb(255, 255, 255);  
-        border: none;  
-        border-radius: var(--border-radius);  
-        font-size: 1rem;  
-        cursor: pointer;  
-        transition: var(--transition);  
-      }  
-  
-      button:hover {  
-        background: var(--secondary-color);  
-        transform: translateY(-2px);  
-      }  
-  
-      .reviews {  
-        margin-top: 30px;  
-        display: grid;  
-        gap: 20px;  
-      }  
-  
-      .review-item {  
-        background: #ffffff;  
-        padding: 20px;  
-        border-radius: var(--border-radius);  
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);  
-        transition: var(--transition);  
-        border: 1px solid #f5f7f9;  
-      }  
-  
-      .review-item:hover {  
-        transform: translateY(-2px);  
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);  
-      }  
-  
-      .review-header {  
-        display: flex;  
-        justify-content: space-between;  
-        align-items: center;  
-        margin-bottom: 12px;  
-      }  
-  
-      .review-header strong {  
-        color: var(--primary-color);  
-        font-size: 1.1rem;  
-      }  
-  
-      .star-rating {  
-        color: #ffb700;  
-        letter-spacing: 2px;  
-      }  
-  
-      .review-content {  
-        color: var(--text-secondary);  
-        line-height: 1.6;  
-      }  
-  
-      .review-form {  
-        margin-top: 40px;  
-        display: grid;  
-        gap: 15px;  
-        padding-top: 20px;  
-        border-top: 2px solid #e2e8f0;  
-      }  
-  
-      .review-form input[type="text"] {  
-        padding: 12px 20px;  
-        border-radius: var(--border-radius);  
-        border: 2px solid #e2e8f0;  
-        font-size: 1rem;  
-        transition: var(--transition);  
-      }  
-  
-      .review-form input[type="text"]:focus {  
-        outline: none;  
-        border-color: var(--primary-color);  
-        box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);  
-      }  
-  
-      .review-form button[type="submit"] {  
-        background: var(--primary-color);  
-        color: rgb(255, 255, 255);  
-        font-weight: 600;  
-        padding: 12px;  
-      }  
-  
-      .review-form button[type="submit"]:hover {  
-        background: var(--secondary-color);  
-      }  
-  
-      @media (max-width: 640px) {  
-        .container {  
-           padding: 20px;  
-           margin: 20px;  
-        }  
-  
-        h1 {  
-           font-size: 2rem;  
-           margin-bottom: 30px;  
-        }  
-  
-        .sort-section {  
-           flex-direction: column;  
-        }  
-  
-        select, button {  
-           width: 100%;  
-        }  
-      }  
-   </style>  
+    }  
+  </style>  
 </head>  
 <body>  
-   <a href="index.html" class="back-button">← Back</a>  
-   <div class="container">  
-      <h1>Class Reviews</h1>  
+  <a href="index.html" class="back-button">← Back</a>  
+  <div class="container">  
+    <h1>Class Reviews</h1>  
   
-      <div class="sort-section">  
-        <select id="class-select">  
-           <option value="All Classes">All Classes</option>  
-           <option value="Computer Science">Computer Science</option>  
-           <option value="Anatomy">Anatomy</option>  
-           <option value="Physics">Physics</option>  
-           <option value="Graphic Design">Graphic Design</option>  
-           <option value="Journalism">Journalism</option>  
-           <option value="Psychology">Psychology</option>  
-           <option value="Business Management">Business Management</option>  
-           <option value="Creative Writing">Creative Writing</option>  
-           <option value="Environmental Science">Environmental Science</option>  
-           <option value="AP Economics">AP Economics</option>  
-           <option value="Digital Media">Digital Media</option>  
-           <option value="Audio/Visual Production">Audio/Visual Production</option>  
-           <option value="Sociology">Sociology</option>  
-           <option value="AP Statistics">AP Statistics</option>  
-           <option value="Forensic Science">Forensic Science</option>  
-        </select>  
-        <button onclick="sortReviews()">Sort by Class</button>  
-      </div>  
+    <div class="sort-section">  
+      <select id="class-select">  
+        <option value="All Classes">All Classes</option>  
+        <option value="Computer Science">Computer Science</option>  
+        <option value="Anatomy">Anatomy</option>  
+        <option value="Physics">Physics</option>  
+        <option value="Graphic Design">Graphic Design</option>  
+        <option value="Journalism">Journalism</option>  
+        <option value="Psychology">Psychology</option>  
+        <option value="Business Management">Business Management</option>  
+        <option value="Creative Writing">Creative Writing</option>  
+        <option value="Environmental Science">Environmental Science</option>  
+        <option value="AP Economics">AP Economics</option>  
+        <option value="Digital Media">Digital Media</option>  
+        <option value="Audio/Visual Production">Audio/Visual Production</option>  
+        <option value="Sociology">Sociology</option>  
+        <option value="AP Statistics">AP Statistics</option>  
+        <option value="Forensic Science">Forensic Science</option>  
+      </select>  
+      <button onclick="filterReviews()">Sort by Class</button>  
+    </div>  
   
-      <div class="reviews" id="reviews">  
-        <!-- Reviews will be dynamically added here -->  
-      </div>  
+    <div class="reviews" id="reviews">  
+      <!-- Reviews will be dynamically added here -->  
+    </div>  
   
-      <form class="review-form" onsubmit="addReview(event)">  
-        <input type="text" id="review-input" placeholder="Share your thoughts about this class..." required>  
-        <select id="rating">  
-           <option value="1">⭐</option>  
-           <option value="2">⭐⭐</option>  
-           <option value="3">⭐⭐⭐</option>  
-           <option value="4">⭐⭐⭐⭐</option>  
-           <option value="5">⭐⭐⭐⭐⭐</option>  
-        </select>  
-        <button type="submit">Submit Review</button>  
-      </form>  
-   </div>  
+    <form class="review-form" onsubmit="addReview(event)">  
+      <input type="text" id="review-input" placeholder="Share your thoughts about this class..." required>  
+      <select id="rating">  
+        <option value="1">⭐</option>  
+        <option value="2">⭐⭐</option>  
+        <option value="3">⭐⭐⭐</option>  
+        <option value="4">⭐⭐⭐⭐</option>  
+        <option value="5">⭐⭐⭐⭐⭐</option>  
+      </select>  
+      <button type="submit">Submit Review</button>  
+    </form>  
+  </div>  
   
-   <script>  
-      // Keep the original JavaScript code unchanged  
-      const reviews = JSON.parse(localStorage.getItem('reviews')) || [];  
+  <script>  
+    // Keep the original JavaScript code unchanged  
+    const reviews = JSON.parse(localStorage.getItem('reviews')) || [];  
   
-      function addReview(event) {  
-        event.preventDefault();  
-        const classSelect = document.getElementById('class-select').value;  
-        const reviewText = document.getElementById('review-input').value;  
-        const rating = document.getElementById('rating').value;  
+    function addReview(event) {  
+      event.preventDefault();  
+      const classSelect = document.getElementById('class-select').value;  
+      const reviewText = document.getElementById('review-input').value;  
+      const rating = document.getElementById('rating').value;  
   
-        reviews.unshift({ className: classSelect, review: reviewText, rating: '⭐'.repeat(rating) });  
-        localStorage.setItem('reviews', JSON.stringify(reviews));  
+      reviews.unshift({ className: classSelect, review: reviewText, rating: '⭐'.repeat(rating) });  
+      localStorage.setItem('reviews', JSON.stringify(reviews));  
   
-        document.getElementById('review-input').value = '';  
-        document.getElementById('rating').value = '1';  
-  
-        displayReviews();  
-      }  
-  
-      function displayReviews() {  
-        const reviewsContainer = document.getElementById('reviews');  
-        reviewsContainer.innerHTML = '';  
-  
-        reviews.forEach(review => {  
-           const reviewItem = document.createElement('div');  
-           reviewItem.classList.add('review-item');  
-           reviewItem.innerHTML = `  
-              <div class="review-header">  
-                <span><strong>${review.className}</strong></span>  
-                <span class="star-rating">${review.rating}</span>  
-              </div>  
-              <div class="review-content">${review.review}</div>  
-           `;  
-           reviewsContainer.appendChild(reviewItem);  
-        });  
-      }  
-  
-      function sortReviews() {  
-        reviews.sort((a, b) => a.className.localeCompare(b.className));  
-        displayReviews();  
-      }  
+      document.getElementById('review-input').value = '';  
+      document.getElementById('rating').value = '1';  
   
       displayReviews();  
-   </script>  
+    }  
+  
+    function displayReviews() {  
+      const reviewsContainer = document.getElementById('reviews');  
+      reviewsContainer.innerHTML = '';  
+  
+      reviews.forEach(review => {  
+        const reviewItem = document.createElement('div');  
+        reviewItem.classList.add('review-item');  
+        reviewItem.innerHTML = `  
+          <div class="review-header">  
+           <span><strong>${review.className}</strong></span>  
+           <span class="star-rating">${review.rating}</span>  
+          </div>  
+          <div class="review-content">${review.review}</div>  
+        `;  
+        reviewsContainer.appendChild(reviewItem);  
+      });  
+    }  
+  
+    function filterReviews() {  
+      const classSelect = document.getElementById('class-select').value;  
+      const reviewsContainer = document.getElementById('reviews');  
+      reviewsContainer.innerHTML = '';  
+  
+      if (classSelect === 'All Classes') {  
+       displayReviews();  
+      } else {  
+       const filteredReviews = reviews.filter(review => review.className === classSelect);  
+       filteredReviews.forEach(review => {  
+        const reviewItem = document.createElement('div');  
+        reviewItem.classList.add('review-item');  
+        reviewItem.innerHTML = `  
+          <div class="review-header">  
+           <span><strong>${review.className}</strong></span>  
+           <span class="star-rating">${review.rating}</span>  
+          </div>  
+          <div class="review-content">${review.review}</div>  
+        `;  
+        reviewsContainer.appendChild(reviewItem);  
+       });  
+      }  
+    }  
+  
+    displayReviews();  
+  </script>  
 </body>  
 </html>
