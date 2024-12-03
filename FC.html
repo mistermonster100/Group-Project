@@ -1,439 +1,503 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Personalized Career Suitability Survey</title>
-  <style>
-    body {
-        font-family: Arial, sans-serif;
-        background: linear-gradient(135deg, #2D3142, #E71D36);  
-        color: #333;
-        margin: 0;
-        padding: 20px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personalized Career Suitability Survey</title>
+    <style>
+        /* Header */
+        header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 20px;
+          background: rgba(0, 0, 0, 0.8); /* Semi-transparent dark background for header */
+          position: sticky;
+          top: 0;
+          z-index: 1000;
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
 
-    .container {
-        background: #fff;
-        border-radius: 8px;
-        padding: 30px;
-        max-width: 800px;
-        width: 100%;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    }
+        header .logo {
+          font-size: 2rem;
+          color: #dc0505; /* Red for the logo */
+        }
 
-    h1 {
-        color: #d32f2f;
-        font-size: 2em;
-        text-align: center;
-    }
+        header .logo span {
+          color: #f5f5f5; /* White accent for contrast */
+        }
 
-    p {
-        text-align: center;
-        font-size: 1em;
-        margin-bottom: 20px;
-    }
+        header nav {
+          display: flex;
+          align-items: center;
+        }
 
-    .question {
-        margin-bottom: 30px;
-    }
+        img {
+          width: 200px;
+          height: 200px;
+          object-fit: cover;
+          border-radius: 15px;
+        }
 
-    .question p {
-        font-size: 1.1em;
-        font-weight: bold;
-        margin-bottom: 10px;
-        color: #000000;
-    }
+        /* Navigation Buttons with Gradient */
+        .nav-buttons {
+          display: flex;
+        }
 
-    .slider-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-    }
+        .nav-button {
+          background: linear-gradient(135deg, #d6d7d8, #d20808, #d20808); /* Initial gradient */
+          background-size: 200%; /* Make the gradient larger for smoother transitions */
+          background-position: left; /* Start position of the gradient */
+          color: white;
+          border: none;
+          padding: 10px 20px;
+          margin: 5px;
+          font-size: 1rem;
+          cursor: pointer;
+          border-radius: 5px;
+          text-transform: uppercase;
+          font-weight: bold;
+          transition: background-position 0.5s ease, transform 0.2s ease; /* Smooth transition for background and transform */
+          }
 
-    .slider {
-        -webkit-appearance: none;
-        width: 100%;
-        height: 8px;
-        border-radius: 4px;
-        background: #e0e0e0;
-        outline: none;
-        cursor: pointer;
-    }
+        .nav-button:hover {
+              background-position: right; /* Shift the gradient position on hover */
+              transform: scale(1.05); /* Slight grow effect on hover */
+        }
 
-    .slider::-webkit-slider-thumb {
-        -webkit-appearance: none;
-        appearance: none;
-        width: 20px;
-        height: 20px;
-        border-radius: 50%;
-        background: #d32f2f;
-        cursor: pointer;
-        transition: background 0.2s;
-    }
 
-    .slider::-moz-range-thumb {
-        width: 20px;
-        height: 20px;
-        border-radius: 50%;
-        background: #d32f2f;
-        cursor: pointer;
-        transition: background 0.2s;
-        border: none;
-    }
+        body {
+          font-family: 'Arial', sans-serif;
+          margin: 0;
+          padding: 0;
+          background: linear-gradient(135deg, #2D3142, #E71D36); /* Cool gradient background */
+          color: #fffdfd;
+          overflow-x: hidden;
+        }
 
-    .slider::-webkit-slider-thumb:hover {
-        background: #b71c1c;
-    }
+        .container {
+            position: relative;
+            background: #fff;
+            border-radius: 8px;
+            margin:30px;
+            padding: 30px;
+            max-width: 800px;
+            width: 100%;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            left: 50%;
+            transform: translateX(-50%);
+        }
 
-    .slider-labels {
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
-        font-size: 0.9em;
-        color: #757575;
-    }
+        h1 {
+            color: #d32f2f;
+            font-size: 2em;
+            text-align: center;
+        }
 
-    .button {
-        display: block;
-        width: 100%;
-        background-color: #1976d2;
-        color: white;
-        padding: 15px;
-        border: none;
-        border-radius: 5px;
-        font-size: 1.1em;
-        font-weight: bold;
-        text-align: center;
-        cursor: pointer;
-        margin-top: 20px;
-        transition: background-color 0.2s;
-    }
+        p {
+            text-align: center;
+            font-size: 1em;
+            margin-bottom: 20px;
+        }
 
-    .button:hover {
-        background-color: #1565c0;
-    }
+        .question {
+            margin-bottom: 30px;
+        }
 
-    #results {
-        margin-top: 30px;
-        padding: 20px;
-        background-color: #f5f5f5;
-        border: 1px solid #e0e0e0;
-        border-radius: 8px;
-    }
+        .question p {
+            font-size: 1.1em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #000000;
+        }
 
-    .network-score {
-        margin: 15px 0;
-        padding: 10px;
-        background-color: #fff;
-        border-radius: 5px;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-    }
+        .slider-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
 
-    .network-score h3 {
-        color: #d32f2f;
-        margin: 0 0 10px 0;
-    }
+        .slider {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 8px;
+            border-radius: 4px;
+            background: #e0e0e0;
+            outline: none;
+            cursor: pointer;
+        }
 
-    .score-bar {
-        height: 10px;
-        background-color: #e0e0e0;
-        border-radius: 5px;
-        margin-bottom: 10px;
-        overflow: hidden;
-    }
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #d32f2f;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
 
-    .score-fill {
-        height: 100%;
-        background-color: #1976d2;
-        transition: width 0.5s ease-out;
-    }
+        .slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #d32f2f;
+            cursor: pointer;
+            transition: background 0.2s;
+            border: none;
+        }
 
-    .career-suggestions {
-        padding-left: 20px;
-    }
+        .slider::-webkit-slider-thumb:hover {
+            background: #b71c1c;
+        }
 
-    .career-suggestions li {
-        margin: 5px 0;
-        color: #424242;
-    }
-    .back-button {
-        position: fixed;
-        top: 20px;
-        left: 20px;
-        text-decoration: none;
-        color: var(--text-primary);
-        padding: 10px 20px;
-        background: rgba(229, 229, 229, 0.907);
-        border-radius: 30px;
-        box-shadow: 0 2px 10px rgba(88, 30, 30, 0.1);
-        transition: all 0.3s ease;
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(0, 0, 0, 0.918);
-        z-index: 1000;
-    }
+        .slider-labels {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            font-size: 0.9em;
+            color: #757575;
+        }
 
-    .back-button:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-    }
-  </style>
+        .button {
+            display: block;
+            width: 100%;
+            background-color: #1976d2;
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            font-weight: bold;
+            text-align: center;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.2s;
+        }
+
+        .button:hover {
+            background-color: #1565c0;
+        }
+
+        #results {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f5f5f5;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+        }
+
+        .network-score {
+            margin: 15px 0;
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .network-score h3 {
+            color: #d32f2f;
+            margin: 0 0 10px 0;
+        }
+
+        .score-bar {
+            height: 10px;
+            background-color: #e0e0e0;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        .score-fill {
+            height: 100%;
+            background-color: #1976d2;
+            transition: width 0.5s ease-out;
+        }
+
+        .career-suggestions {
+            padding-left: 20px;
+        }
+
+        .career-suggestions li {
+            margin: 5px 0;
+            color: #424242;
+        }
+
+    </style>
 </head>
+
+
 <body>
-<a href="index.html" class="back-button">← Back</a>
+
+<header>
+    <a href="index.html" style="font-size: 2rem; color: #d20808; text-decoration: none; cursor: pointer;">
+        Aspyr<span style="color: white;">Pathways</span>
+    </a>
+
+    <nav>
+        <!-- Gradient Buttons -->
+        <div class="nav-buttons">
+            <button class="nav-button" onclick="location.href='about.html'">About</button>
+            <button class="nav-button" onclick="location.href='FC.html'">Survey</button>
+            <button class="nav-button" onclick="location.href='SR.html'">Class Reviews</button>
+            <button class="nav-button" onclick="location.href='dp.html'">Diploma Pathways</button>
+            <button class="nav-button" onclick="location.href='connectwithcounselors.html'">Connect with Counselors</button>
+        </div>
+    </nav>
+</header>
+
 <div class="container">
-  <h1>Personalized Career Suitability Survey</h1>
-  <p>Rate how strongly you agree with each statement from 1 (Strongly Disagree) to 5 (Strongly Agree)</p>
-  <div id="survey-container"></div>
-  <button class="button" id="submit-button" onclick="handleSubmit()">Submit</button>
-  <div id="results"></div>
+    <h1>Personalized Career Suitability Survey</h1>
+    <p>Rate how strongly you agree with each statement from 1 (Strongly Disagree) to 5 (Strongly Agree)</p>
+    <div id="survey-container"></div>
+    <button class="button" id="submit-button" onclick="handleSubmit()">Submit</button>
+    <div id="results"></div>
 </div>
 
+</body>
+
 <script>
-  const questions = [
-      {
-          text: "I enjoy working on creative projects and expressing ideas through various media.",
-          networks: {
-              "Arts & Communication": 2,
-              "Innovation": 1
-          }
-      },
-      {
-          text: "I like solving complex technical problems and understanding how things work.",
-          networks: {
-              "Engineering & Technology": 2,
-              "Innovation": 1
-          }
-      },
-      {
-          text: "I enjoy helping people and making a positive impact in their lives.",
-          networks: {
-              "Public Service Network": 2,
-              "Medical Network": 1
-          }
-      },
-      {
-          text: "I like working with nature and understanding environmental systems.",
-          networks: {
-              "Agriculture & Natural Resources": 2,
-              "Public Service Network": 1
-          }
-      },
-      {
-          text: "I am interested in health, medicine, and scientific research.",
-          networks: {
-              "Medical Network": 2,
-              "Engineering & Technology": 1
-          }
-      },
-      {
-          text: "I enjoy organizing, planning, and managing resources efficiently.",
-          networks: {
-              "Business & Administration": 2,
-              "Innovation": 1
-          }
-      },
-      {
-          text: "I like learning about different cultures and global perspectives.",
-          networks: {
-              "International Baccalaureate": 2,
-              "Arts & Communication": 1
-          }
-      },
-      {
-          text: "I enjoy analyzing data and using technology to solve problems.",
-          networks: {
-              "Engineering & Technology": 2,
-              "Business & Administration": 1
-          }
-      },
-      {
-          text: "I like leading teams and coordinating group efforts.",
-          networks: {
-              "Business & Administration": 2,
-              "Public Service Network": 1
-          }
-      },
-      {
-          text: "I enjoy teaching others and sharing knowledge.",
-          networks: {
-              "International Baccalaureate": 2,
-              "Public Service Network": 1
-          }
-      },
-      // Adding new questions
-      {
-          text: "I am comfortable working with financial data and making investment decisions.",
-          networks: {
-              "Business & Administration": 2,
-              "Innovation": 1
-          }
-      },
-      {
-          text: "I enjoy conducting research and discovering new information.",
-          networks: {
-              "Medical Network": 2,
-              "Engineering & Technology": 1
-          }
-      },
-      {
-          text: "I like working with digital tools and creating online content.",
-          networks: {
-              "Arts & Communication": 2,
-              "Engineering & Technology": 1
-          }
-      },
-      {
-          text: "I am passionate about sustainability and environmental conservation.",
-          networks: {
-              "Agriculture & Natural Resources": 2,
-              "Public Service Network": 1
-          }
-      },
-      {
-          text: "I enjoy solving puzzles and complex logical problems.",
-          networks: {
-              "Engineering & Technology": 2,
-              "Innovation": 1
-          }
-      }
-  ];
+    const questions = [
+        {
+            text: "I enjoy working on creative projects and expressing ideas through various media.",
+            networks: {
+                "Arts & Communication": 2,
+                "Innovation": 1
+            }
+        },
+        {
+            text: "I like solving complex technical problems and understanding how things work.",
+            networks: {
+                "Engineering & Technology": 2,
+                "Innovation": 1
+            }
+        },
+        {
+            text: "I enjoy helping people and making a positive impact in their lives.",
+            networks: {
+                "Public Service Network": 2,
+                "Medical Network": 1
+            }
+        },
+        {
+            text: "I like working with nature and understanding environmental systems.",
+            networks: {
+                "Agriculture & Natural Resources": 2,
+                "Public Service Network": 1
+            }
+        },
+        {
+            text: "I am interested in health, medicine, and scientific research.",
+            networks: {
+                "Medical Network": 2,
+                "Engineering & Technology": 1
+            }
+        },
+        {
+            text: "I enjoy organizing, planning, and managing resources efficiently.",
+            networks: {
+                "Business & Administration": 2,
+                "Innovation": 1
+            }
+        },
+        {
+            text: "I like learning about different cultures and global perspectives.",
+            networks: {
+                "International Baccalaureate": 2,
+                "Arts & Communication": 1
+            }
+        },
+        {
+            text: "I enjoy analyzing data and using technology to solve problems.",
+            networks: {
+                "Engineering & Technology": 2,
+                "Business & Administration": 1
+            }
+        },
+        {
+            text: "I like leading teams and coordinating group efforts.",
+            networks: {
+                "Business & Administration": 2,
+                "Public Service Network": 1
+            }
+        },
+        {
+            text: "I enjoy teaching others and sharing knowledge.",
+            networks: {
+                "International Baccalaureate": 2,
+                "Public Service Network": 1
+            }
+        },
+        // Adding new questions
+        {
+            text: "I am comfortable working with financial data and making investment decisions.",
+            networks: {
+                "Business & Administration": 2,
+                "Innovation": 1
+            }
+        },
+        {
+            text: "I enjoy conducting research and discovering new information.",
+            networks: {
+                "Medical Network": 2,
+                "Engineering & Technology": 1
+            }
+        },
+        {
+            text: "I like working with digital tools and creating online content.",
+            networks: {
+                "Arts & Communication": 2,
+                "Engineering & Technology": 1
+            }
+        },
+        {
+            text: "I am passionate about sustainability and environmental conservation.",
+            networks: {
+                "Agriculture & Natural Resources": 2,
+                "Public Service Network": 1
+            }
+        },
+        {
+            text: "I enjoy solving puzzles and complex logical problems.",
+            networks: {
+                "Engineering & Technology": 2,
+                "Innovation": 1
+            }
+        }
+    ];
 
-  const careerNetworks = {
-      "Arts & Communication": {
-          careers: ["Graphic Designer", "Public Relations Specialist", "Content Creator", "Journalist", "Marketing Creative Director", "Digital Media Producer"]
-      },
-      "Agriculture & Natural Resources": {
-          careers: ["Environmental Scientist", "Agricultural Manager", "Wildlife Biologist", "Conservation Officer", "Sustainable Agriculture Consultant", "Renewable Energy Specialist"]
-      },
-      "Medical Network": {
-          careers: ["Registered Nurse", "Pharmacist", "Physical Therapist", "Medical Laboratory Technician", "Healthcare Administrator", "Biomedical Researcher"]
-      },
-      "Public Service Network": {
-          careers: ["Social Worker", "Urban Planner", "Public Policy Analyst", "Community Outreach Coordinator", "Non-profit Manager", "Emergency Management Director"]
-      },
-      "Engineering & Technology": {
-          careers: ["Software Engineer", "Mechanical Engineer", "Data Scientist", "Systems Architect", "Robotics Engineer", "AI Developer"]
-      },
-      "Innovation": {
-          careers: ["Product Manager", "Innovation Consultant", "Research & Development Specialist", "Technology Entrepreneur", "Design Thinking Consultant", "Strategic Innovation Director"]
-      },
-      "Business & Administration": {
-          careers: ["Financial Analyst", "Marketing Manager", "Project Manager", "Business Development Manager", "Human Resources Director", "Investment Banker"]
-      },
-      "International Baccalaureate": {
-          careers: ["International Teacher", "Education Consultant", "Curriculum Developer", "Global Programs Coordinator", "Educational Technology Specialist", "International School Administrator"]
-      }
-  };
-
-  function createSurvey() {
-      const container = document.getElementById("survey-container");
-      questions.forEach((question, index) => {
-          const questionDiv = document.createElement("div");
-          questionDiv.className = "question";
-
-          const questionText = document.createElement("p");
-          questionText.textContent = `${index + 1}. ${question.text}`;
-          questionDiv.appendChild(questionText);
-
-          const sliderContainer = document.createElement("div");
-          sliderContainer.className = "slider-container";
-
-          const slider = document.createElement("input");
-          slider.type = "range";
-          slider.min = 1;
-          slider.max = 5;
-          slider.value = 3;
-          slider.className = "slider";
-          slider.id = `question-${index}`;
-
-          const labels = document.createElement("div");
-          labels.className = "slider-labels";
-          labels.innerHTML = `
-              <span>Strongly Disagree</span>
-              <span>Neutral</span>
-              <span>Strongly Agree</span>
-          `;
-
-          sliderContainer.appendChild(slider);
-          sliderContainer.appendChild(labels);
-          questionDiv.appendChild(sliderContainer);
-          container.appendChild(questionDiv);
-      });
-  }
-
-  function handleSubmit() {
-      const networkScores = Object.keys(careerNetworks).reduce((acc, network) => {
-          acc[network] = 0;
-          return acc;
-      }, {});
-
-      questions.forEach((question, index) => {
-          const value = parseInt(document.getElementById(`question-${index}`).value);
-          const weight = (value - 1) / 4; // Normalize to 0-1 range
-
-          Object.entries(question.networks).forEach(([network, impact]) => {
-              networkScores[network] += weight * impact;
-          });
-      });
-
-      // Normalize scores to percentages
-      const maxPossibleScore = Math.max(...Object.values(networkScores));
-      Object.keys(networkScores).forEach(network => {
-          networkScores[network] = (networkScores[network] / maxPossibleScore) * 100;
-      });
-
-      displayResults(networkScores);
-  }
-
-  function displayResults(scores) {
-    const resultsDiv = document.getElementById("results");
-    const sortedNetworks = Object.entries(scores)
-        .sort((a, b) => b[1] - a[1]);
-
-    // Map career networks to specific HTML files
-    const networkLinks = {
-        "Arts & Communication": "A&C.html",
-        "Agriculture & Natural Resources": "A&NR.html",
-        "Medical Network": "MD&PS.html",
-        "Public Service Network": "PBS.html",
-        "Engineering & Technology": "ETI.html",
-        "Innovation": "innovation.html",
-        "Business & Administration": "business.html",
+    const careerNetworks = {
+        "Arts & Communication": {
+            careers: ["Graphic Designer", "Public Relations Specialist", "Content Creator", "Journalist", "Marketing Creative Director", "Digital Media Producer"]
+        },
+        "Agriculture & Natural Resources": {
+            careers: ["Environmental Scientist", "Agricultural Manager", "Wildlife Biologist", "Conservation Officer", "Sustainable Agriculture Consultant", "Renewable Energy Specialist"]
+        },
+        "Medical Network": {
+            careers: ["Registered Nurse", "Pharmacist", "Physical Therapist", "Medical Laboratory Technician", "Healthcare Administrator", "Biomedical Researcher"]
+        },
+        "Public Service Network": {
+            careers: ["Social Worker", "Urban Planner", "Public Policy Analyst", "Community Outreach Coordinator", "Non-profit Manager", "Emergency Management Director"]
+        },
+        "Engineering & Technology": {
+            careers: ["Software Engineer", "Mechanical Engineer", "Data Scientist", "Systems Architect", "Robotics Engineer", "AI Developer"]
+        },
+        "Innovation": {
+            careers: ["Product Manager", "Innovation Consultant", "Research & Development Specialist", "Technology Entrepreneur", "Design Thinking Consultant", "Strategic Innovation Director"]
+        },
+        "Business & Administration": {
+            careers: ["Financial Analyst", "Marketing Manager", "Project Manager", "Business Development Manager", "Human Resources Director", "Investment Banker"]
+        },
+        "International Baccalaureate": {
+            careers: ["International Teacher", "Education Consultant", "Curriculum Developer", "Global Programs Coordinator", "Educational Technology Specialist", "International School Administrator"]
+        }
     };
 
-    let html = '<h2>Your Career Network Matches</h2>';
+    function createSurvey() {
+        const container = document.getElementById("survey-container");
+        questions.forEach((question, index) => {
+            const questionDiv = document.createElement("div");
+            questionDiv.className = "question";
 
-    sortedNetworks.forEach(([network, score]) => {
-        const link = networkLinks[network] || "#"; // Use "#" as a fallback URL
+            const questionText = document.createElement("p");
+            questionText.textContent = `${index + 1}. ${question.text}`;
+            questionDiv.appendChild(questionText);
 
-        html += `
-            <div class="network-score">
-                <h3>
-                    <a href="${link}" target="_blank">${network}</a>
-                </h3>
-                <div class="score-bar">
-                    <div class="score-fill" style="width: ${score}%"></div>
-                </div>
-                <p>Match: ${Math.round(score)}%</p>
-                <h4>Suggested Careers:</h4>
-                <ul class="career-suggestions">
-                    ${careerNetworks[network].careers.map(career => `<li>${career}</li>`).join('')}
-                </ul>
-            </div>
-        `;
-    });
+            const sliderContainer = document.createElement("div");
+            sliderContainer.className = "slider-container";
 
-    resultsDiv.innerHTML = html;
-}
+            const slider = document.createElement("input");
+            slider.type = "range";
+            slider.min = 1;
+            slider.max = 5;
+            slider.value = 3;
+            slider.className = "slider";
+            slider.id = `question-${index}`;
+
+            const labels = document.createElement("div");
+            labels.className = "slider-labels";
+            labels.innerHTML = `
+                <span>Strongly Disagree</span>
+                <span>Neutral</span>
+                <span>Strongly Agree</span>
+            `;
+
+            sliderContainer.appendChild(slider);
+            sliderContainer.appendChild(labels);
+            questionDiv.appendChild(sliderContainer);
+            container.appendChild(questionDiv);
+        });
+    }
+
+    function handleSubmit() {
+        const networkScores = Object.keys(careerNetworks).reduce((acc, network) => {
+            acc[network] = 0;
+            return acc;
+        }, {});
+
+        questions.forEach((question, index) => {
+            const value = parseInt(document.getElementById(`question-${index}`).value);
+            const weight = (value - 1) / 4; // Normalize to 0-1 range
+
+            Object.entries(question.networks).forEach(([network, impact]) => {
+                networkScores[network] += weight * impact;
+            });
+        });
+
+        // Normalize scores to percentages
+        const maxPossibleScore = Math.max(...Object.values(networkScores));
+        Object.keys(networkScores).forEach(network => {
+            networkScores[network] = (networkScores[network] / maxPossibleScore) * 100;
+        });
+
+        displayResults(networkScores);
+    }
+
+    function displayResults(scores) {
+      const resultsDiv = document.getElementById("results");
+      const sortedNetworks = Object.entries(scores)
+          .sort((a, b) => b[1] - a[1]);
+
+      // Map career networks to specific HTML files
+      const networkLinks = {
+          "Arts & Communication": "A&C.html",
+          "Agriculture & Natural Resources": "A&NR.html",
+          "Medical Network": "MD&PS.html",
+          "Public Service Network": "PBS.html",
+          "Engineering & Technology": "ETI.html",
+          "Innovation": "innovation.html",
+          "Business & Administration": "business.html",
+      };
+
+      let html = '<h2>Your Career Network Matches</h2>';
+
+      sortedNetworks.forEach(([network, score]) => {
+          const link = networkLinks[network] || "#"; // Use "#" as a fallback URL
+
+          html += `
+              <div class="network-score">
+                  <h3>
+                      <a href="${link}" target="_blank">${network}</a>
+                  </h3>
+                  <div class="score-bar">
+                      <div class="score-fill" style="width: ${score}%"></div>
+                  </div>
+                  <p>Match: ${Math.round(score)}%</p>
+                  <h4>Suggested Careers:</h4>
+                  <ul class="career-suggestions">
+                      ${careerNetworks[network].careers.map(career => `<li>${career}</li>`).join('')}
+                  </ul>
+              </div>
+          `;
+      });
+
+      resultsDiv.innerHTML = html;
+  }
 
 
-  createSurvey();
+    createSurvey();
 </script>
 </body>
 </html>
