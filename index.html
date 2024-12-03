@@ -69,24 +69,26 @@
       display: flex;   
     }   
    
-    .nav-button {   
-      background: linear-gradient(135deg, #d6d7d8, #d20808, #d20808); /* Teal, Purple, Red */   
-      color: white;   
-      border: none;   
-      padding: 10px 20px;   
-      margin: 5px;   
-      font-size: 1rem;   
-      cursor: pointer;   
-      border-radius: 5px;   
-      text-transform: uppercase;   
-      font-weight: bold;   
-      transition: background 0.3s ease, transform 0.2s ease;   
-    }   
-   
-    .nav-button:hover {   
-      background: linear-gradient(135deg, #d20808, #dd6464, #ffffff); /* Slightly darker red on hover */   
-      transform: scale(1.05); /* Slight grow effect on hover */   
-    }   
+    .nav-button {
+      background: linear-gradient(135deg, #d6d7d8, #d20808, #d20808); /* Initial gradient */
+      background-size: 200%; /* Make the gradient larger for smoother transitions */
+      background-position: left; /* Start position of the gradient */
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      margin: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+      border-radius: 5px;
+      text-transform: uppercase;
+      font-weight: bold;
+      transition: background-position 0.5s ease, transform 0.2s ease; /* Smooth transition for background and transform */
+    }
+    
+    .nav-button:hover {
+        background-position: right; /* Shift the gradient position on hover */
+        transform: scale(1.05); /* Slight grow effect on hover */
+    }
    
     /* Welcome Section */   
     .welcome {   
