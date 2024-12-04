@@ -61,6 +61,7 @@
             display: flex;
             flex-direction: column;
             gap: 20px;
+
         }
         .course-block:hover, .career-card:hover {
             transform: translateY(-8px);
@@ -84,6 +85,29 @@
             margin-bottom: 18px;
         }
 
+        .course-item {
+            border: 1px solid #ccc;
+            margin: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .course-item h3 {
+            margin-top: 0;
+            font-size: 1.5em;
+        }
+
+        .course-content {
+            margin: 10px 0;
+        }
+
+        .course-item-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Ensures title and plus icon are spaced appropriately */
+        }
+
         .period {
             font-weight: bold;
             color: #ff6b6b;
@@ -104,6 +128,7 @@
             height: 100%;
             background-color: rgba(0, 0, 0, 0.5);
             z-index: 10;
+            overflow-y: scroll;
           }
 /*-------------------------Copy above for confetti------------------------------------- */
 
@@ -198,18 +223,18 @@
         }
 
         .green-plus {
-            position:absolute;
-            transform:translate(10%,-10%);
             color: #28a745; /* Green color */
             font-size: 1.5em;
             cursor: pointer;
             padding-left: 10px;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, color 0.3s ease; /* Smooth transitions for transform and color */
         }
 
         .green-plus:hover {
-            font-size: 1.7em;
+            transform: scale(1.2); /* Gently enlarges the icon */
+            color: #218838; /* Optional: Slightly darkens the green color on hover */
         }
+
         /* Cart Icon Styling */
 
         .cart-icon {
@@ -278,274 +303,391 @@
 </head>
 <body>
 
-    <a href="index.html" class="home-button">
+<a href="index.html" class="home-button">
     <img src="https://static.thenounproject.com/png/1407802-200.png" alt="Home" class="home-icon">
-    </a>
-    
-    <div class="header">
-        <h1>Engineering & Technology</h1>
-        <div class="header-links">
-            <a href="A&C.html" class="header-link">Arts</a>
-            <a href="A&NR.html" class="header-link">Agriculture</a>
-            <a href="MD&PS.html" class="header-link">Medical</a>
-            <a href="PBS.html" class="header-link">Public Service</a>
-            <a href="innovation.html" class="header-link">Innovation</a>
-            <a href="business.html" class="header-link">Business</a>
-        </div>
+</a>
+
+<div class="header">
+    <h1>Engineering & Technology</h1>
+    <div class="header-links">
+        <a href="A&C.html" class="header-link">Arts</a>
+        <a href="A&NR.html" class="header-link">Agriculture</a>
+        <a href="MD&PS.html" class="header-link">Medical</a>
+        <a href="PBS.html" class="header-link">Public Service</a>
+        <a href="innovation.html" class="header-link">Innovation</a>
+        <a href="business.html" class="header-link">Business</a>
     </div>
-    <div id="cart-icon" class="cart-icon">
+</div>
+<div id="cart-icon" class="cart-icon">
     <a href="CC.html">
         <img src="https://banner2.cleanpng.com/20180426/jxq/avez1anz5.webp" alt="Cart" />
     </a>
 </div>
-    <div class="content-container">
-        <!-- Left Section: Schedules -->
-        <div class="schedules">
-            <h2>Sample Schedules</h2>
-            
-            <div class="schedule-block">
-                <h3>Freshman Year</h3>
-                <p><span class="period">1st:</span> English 9</p>
-                <p><span class="period">2nd:</span> Honors Geometry</p>
-                <p><span class="period">3rd:</span> Honors Biology</p>
-                <p><span class="period">4th:</span> PCC/Health</p>
-                <p class="fifth-period"><span class="period">5th:</span> AP Computer Scienence Principals</p>
-                <p><span class="period">6th:</span> World Language</p>
-                <p><span class="period">7th:</span> Performing Arts</p>
-            </div>
+<div class="content-container">
+    <!-- Left Section: Schedules -->
+    <div class="schedules">
+        <h2>Sample Schedules</h2>
 
-            <div class="schedule-block">
-                <h3>Sophomore Year</h3>
-                <p><span class="period">1st:</span> English 10</p>
-                <p><span class="period">2nd:</span> Honors Algebra II</p>
-                <p><span class="period">3rd:</span> Honors Chemistry</p>
-                <p><span class="period">4th:</span> World History</p>
-                <p class="fifth-period"><span class="period">5th:</span> Intro to Engineering</p>
-                <p><span class="period">6th:</span> AP World Language</p>
-                <p><span class="period">7th:</span> Performing Arts</p>
-            </div>
-
-            <div class="schedule-block">
-                <h3>Junior Year</h3>
-                <p><span class="period">1st:</span> AP Literature</p>
-                <p><span class="period">2nd:</span> Honors Pre-Calculus</p>
-                <p><span class="period">3rd:</span> AP Physcis I</p>
-                <p><span class="period">4th:</span> U.S. History</p>
-                <p class="fifth-period"><span class="period">5th:</span> Principles of Engineering</p>
-                <p><span class="period">6th:</span> World Language</p>
-                <p><span class="period">7th:</span> Performing Arts</p>
-            </div>
-
-            <div class="schedule-block">
-                <h3>Senior Year</h3>
-                <p><span class="period">1st:</span> ACP Composition/Speech</p>
-                <p><span class="period">2nd:</span> AP Calculus</p>
-                <p><span class="period">3rd:</span> AP Physics C</p>
-                <p><span class="period">4th:</span> Goverment/Personal Finacnce</p>
-                <p class="fifth-period"><span class="period">5th:</span> Digital Electronics</p>
-                <p><span class="period">6th:</span> AP World Language</p>
-                <p><span class="period">7th:</span> Performing Arts</p>
-            </div>
+        <div class="schedule-block">
+            <h3>Freshman Year</h3>
+            <p><span class="period">1st:</span> English 9</p>
+            <p><span class="period">2nd:</span> Honors Geometry</p>
+            <p><span class="period">3rd:</span> Honors Biology</p>
+            <p><span class="period">4th:</span> PCC/Health</p>
+            <p class="fifth-period"><span class="period">5th:</span> AP Computer Scienence Principals</p>
+            <p><span class="period">6th:</span> World Language</p>
+            <p><span class="period">7th:</span> Performing Arts</p>
         </div>
 
-        <!-- Rest of the document remains unchanged -->
-        <!-- (Courses, Careers, Overlays, and Script sections are identical to the original) -->
-        
-        <!-- Full original right section content goes here -->
-        <div class="courses-container">
-            <div class="courses-section">
-                <h2>Available Courses</h2>
-                
-                <div class="course-block" onclick="openOverlay('broadcast-overlay')">
-                    <h3>Cybersecurity</h3>
-                    <p>Learn to protect systems, networks, and programs from digital attacks. This is the art of cyber-war.</p>
-                </div>
+        <div class="schedule-block">
+            <h3>Sophomore Year</h3>
+            <p><span class="period">1st:</span> English 10</p>
+            <p><span class="period">2nd:</span> Honors Algebra II</p>
+            <p><span class="period">3rd:</span> Honors Chemistry</p>
+            <p><span class="period">4th:</span> World History</p>
+            <p class="fifth-period"><span class="period">5th:</span> Intro to Engineering</p>
+            <p><span class="period">6th:</span> AP World Language</p>
+            <p><span class="period">7th:</span> Performing Arts</p>
+        </div>
 
-                <div class="course-block" onclick="openOverlay('digital-media-overlay')">
-                    <h3>Computer Science and Software Development</h3>
-                    <p>Learn to design, create, and maintain software programs. The art of game making and game playing.</p>
-                </div>
+        <div class="schedule-block">
+            <h3>Junior Year</h3>
+            <p><span class="period">1st:</span> AP Literature</p>
+            <p><span class="period">2nd:</span> Honors Pre-Calculus</p>
+            <p><span class="period">3rd:</span> AP Physcis I</p>
+            <p><span class="period">4th:</span> U.S. History</p>
+            <p class="fifth-period"><span class="period">5th:</span> Principles of Engineering</p>
+            <p><span class="period">6th:</span> World Language</p>
+            <p><span class="period">7th:</span> Performing Arts</p>
+        </div>
 
-                <div class="course-block" onclick="openOverlay('av-production-overlay')">
-                    <h3>Engineering</h3>
-                    <p>Learn to design and build machines, structures, and processes, and improve systems. The art of our everyday world.</p>
-                </div>
-
-                <div class="course-block" onclick="openOverlay('av-production-overlay')">
-                    <h3>Informatics</h3>
-                    <p>Learn the study of information and computational systems, and how people interact with information and technology. The art of how you interact with your phones.</p>
-                </div>
-            </div>
-
-            <div class="careers-section">
-                <h2>Unique Career Paths</h2>
-                
-                <div class="career-card">
-                    <h3>Software Engineer</h3>
-                    <p>A professional who designs, develops, tests, and maintains software applications and computer systems.</p>
-                </div>
-
-                <div class="career-card">
-                    <h3>Mechanical Engineer"</h3>
-                    <p>Helps designs, analyzes, manufactures, and maintains mechanical systems.</p>
-                </div>
-
-                <div class="career-card">
-                    <h3>Data Scientist</h3>
-                    <p>A professional who uses scientific methods to extract insights from data to help organizations make decisions and solve problems.</p>
-                </div>
-
-                <div class="career-card">
-                    <h3>Systems Architect</h3>
-                    <p>An IT professional who designs, builds, and maintains computer systems and networks.</p>
-                </div>
-
-                <div class="career-card">
-                    <h3>Robotics Engineer</h3>
-                    <p>Helps design, build, and maintain robots and robotic systems for a variety of industries.</p>
-                </div>
-
-                <div class="career-card">
-                    <h3>AI Developer</h3>
-                    <p>Writes code to implement AI algorithms and models, typically using programming languages such as Python, Java, or C++.</p>
-                </div>
+        <div class="schedule-block">
+            <h3>Senior Year</h3>
+            <p><span class="period">1st:</span> ACP Composition/Speech</p>
+            <p><span class="period">2nd:</span> AP Calculus</p>
+            <p><span class="period">3rd:</span> AP Physics C</p>
+            <p><span class="period">4th:</span> Goverment/Personal Finacnce</p>
+            <p class="fifth-period"><span class="period">5th:</span> Digital Electronics</p>
+            <p><span class="period">6th:</span> AP World Language</p>
+            <p><span class="period">7th:</span> Performing Arts</p>
         </div>
     </div>
 
-      <!-- Broadcast Overlay -->
-<div id="broadcast-overlay" class="overlay">
-    <div class="overlay-content">
-        <span class="overlay-close" onclick="closeOverlay('broadcast-overlay')">&times;</span>
-        <h2>Cybersecurity</h2>
-        <ul>
-            <li>Principals of Computing
-                <span class="green-plus" onclick="toggleClass(this)"> <div class="green-plus" onclick="celebrate()">+</div></span>
-            </li>
-            <li>Cybersecurity Fundamentals
-                <span class="green-plus" onclick="toggleClass(this)"> <div class="green-plus" onclick="celebrate()">+</div></span>
-            </li>
-            <li>Advance Cybersecurity
-                <span class="green-plus" onclick="toggleClass(this)"> <div class="green-plus" onclick="celebrate()">+</div></span>
-        </ul>
+    <!-- Rest of the document remains unchanged -->
+    <!-- (Courses, Careers, Overlays, and Script sections are identical to the original) -->
+
+    <!-- Full original right section content goes here -->
+    <div class="courses-container">
+        <div class="courses-section">
+            <h2>Available Courses</h2>
+
+            <div class="course-block" onclick="openOverlay('broadcast-overlay')">
+                <h3>Cybersecurity</h3>
+                <p>Learn to protect systems, networks, and programs from digital attacks. This is the art of cyber-war.</p>
+            </div>
+
+            <div class="course-block" onclick="openOverlay('digital-media-overlay')">
+                <h3>Computer Science and Software Development</h3>
+                <p>Learn to design, create, and maintain software programs. The art of game making and game playing.</p>
+            </div>
+
+            <div class="course-block" onclick="openOverlay('av-production-overlay')">
+                <h3>Engineering</h3>
+                <p>Learn to design and build machines, structures, and processes, and improve systems. The art of our everyday world.</p>
+            </div>
+
+            <div class="course-block" onclick="openOverlay('informatics-overlay')">
+                <h3>Informatics</h3>
+                <p>Learn the study of information and computational systems, and how people interact with information and technology. The art of how you interact with your phones.</p>
+            </div>
+        </div>
+
+        <div class="careers-section">
+            <h2>Unique Career Paths</h2>
+
+            <div class="career-card">
+                <h3>Software Engineer</h3>
+                <p>A professional who designs, develops, tests, and maintains software applications and computer systems.</p>
+            </div>
+
+            <div class="career-card">
+                <h3>Mechanical Engineer"</h3>
+                <p>Helps designs, analyzes, manufactures, and maintains mechanical systems.</p>
+            </div>
+
+            <div class="career-card">
+                <h3>Data Scientist</h3>
+                <p>A professional who uses scientific methods to extract insights from data to help organizations make decisions and solve problems.</p>
+            </div>
+
+            <div class="career-card">
+                <h3>Systems Architect</h3>
+                <p>An IT professional who designs, builds, and maintains computer systems and networks.</p>
+            </div>
+
+            <div class="career-card">
+                <h3>Robotics Engineer</h3>
+                <p>Helps design, build, and maintain robots and robotic systems for a variety of industries.</p>
+            </div>
+
+            <div class="career-card">
+                <h3>AI Developer</h3>
+                <p>Writes code to implement AI algorithms and models, typically using programming languages such as Python, Java, or C++.</p>
+            </div>
+        </div>
     </div>
-</div>
 
-<!-- Digital Media Overlay -->
-<div id="digital-media-overlay" class="overlay">
-    <div class="overlay-content">
-        <span class="overlay-close" onclick="closeOverlay('digital-media-overlay')">&times;</span>
-        <h2>Computer Science and Software Development</h2>
-        <ul>
-            <li>AP CS Principles
-                <span class="green-plus" onclick="toggleClass(this)"> <div class="green-plus" onclick="celebrate()">+</div></span>
-            </li>
-            <li>Website and Database Development
-                <span class="green-plus" onclick="toggleClass(this)"> <div class="green-plus" onclick="celebrate()">+</div></span>
-            </li>
-            <li>AP CS A
-                <span class="green-plus" onclick="toggleClass(this)"> <div class="green-plus" onclick="celebrate()">+</div></span>
-            </li>
-        </ul>
+    <!-- Broadcast Overlay -->
+    <div id="broadcast-overlay" class="overlay">
+        <div class="overlay-content">
+            <span class="overlay-close" onclick="closeOverlay('broadcast-overlay')">&times;</span>
+            <h2>Cybersecurity</h2>
+            <div>
+                <div class="course-item">
+                    <div class="course-item-header">
+                        <h3>Principals of Computing</h3>
+                        <span class="green-plus" onclick="toggleClass(this)">+</span>
+                    </div>
+                    <div class="course-content">
+                        <p>Description about the principles of computing. Explain what this course covers, such as foundational computing concepts.</p>
+                        <video controls>
+                            <source src="path-to-your-video.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+                <div class="course-item">
+                    <div class="course-item-header">
+                        <h3>Cybersecurity Fundamentals</h3>
+                        <span class="green-plus" onclick="toggleClass(this)">+</span>
+                    </div>
+                    <div class="course-content">
+                        <p>Description about cybersecurity fundamentals. Outline key topics and objectives of this course.</p>
+                        <video controls>
+                            <source src="path-to-your-video.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+                <div class="course-item">
+                    <div class="course-item-header">
+                        <h3>Advanced Cybersecurity</h3>
+                        <span class="green-plus" onclick="toggleClass(this)">+</span>
+                    </div>
+                    <div class="course-content">
+                        <p>Details about advanced cybersecurity topics. Highlight the skills students will gain in this advanced course.</p>
+                        <video controls>
+                            <source src="path-to-your-video.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
 
-<!-- AV Production Overlay -->
-<div id="av-production-overlay" class="overlay">
-    <div class="overlay-content">
-        <span class="overlay-close" onclick="closeOverlay('av-production-overlay')">&times;</span>
-        <h2>Enigineering</h2>
-        <ul>
-            <li>AP Calculus AB/BC
-                <span class="green-plus" onclick="toggleClass(this)"> <div class="green-plus" onclick="celebrate()">+</div></span>
-            </li>
-            <li>AP Physics
-                <span class="green-plus" onclick="toggleClass(this)"> <div class="green-plus" onclick="celebrate()">+</div></span>
-        </ul>
+
+
+    <!-- Digital Media Overlay -->
+    <div id="digital-media-overlay" class="overlay">
+        <div class="overlay-content">
+            <span class="overlay-close" onclick="closeOverlay('digital-media-overlay')">&times;</span>
+            <h2>Computer Science and Software Development</h2>
+            <div>
+                <div class="course-item">
+                    <div class="course-item-header">
+                        <h3>AP CS Principles</h3>
+                        <span class="green-plus" onclick="toggleClass(this)">+</span>
+                    </div>
+                    <div class="course-content">
+                        <p>Description about AP CS Principles. Cover the foundational concepts of computer science and programming.</p>
+                        <video controls>
+                            <source src="path-to-your-video.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+                <div class="course-item">
+                    <div class="course-item-header">
+                        <h3>Website and Database Development</h3>
+                        <span class="green-plus" onclick="toggleClass(this)">+</span>
+                    </div>
+                    <div class="course-content">
+                        <p>Description about Website and Database Development. Highlight the skills taught, including web design and database management.</p>
+                        <video controls>
+                            <source src="path-to-your-video.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+                <div class="course-item">
+                    <div class="course-item-header">
+                        <h3>AP CS A</h3>
+                        <span class="green-plus" onclick="toggleClass(this)">+</span>
+                    </div>
+                    <div class="course-content">
+                        <p>Details about AP CS A. Focus on programming in Java, problem-solving, and algorithms.</p>
+                        <video controls>
+                            <source src="path-to-your-video.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
-<div id="av-production-overlay" class="overlay">
-    <div class="overlay-content">
-        <span class="overlay-close" onclick="closeOverlay('av-production-overlay')">&times;</span>
-        <h2>Informatics</h2>
-        <ul>
-            <li>ACP Finite Mathematics or ACP Calculus Survey
-                <span class="green-plus" onclick="toggleClass(this)"> <div class="green-plus" onclick="celebrate()">+</div></span>
-            </li>
-            <li>ACP Intro to Informatics
-                <span class="green-plus" onclick="toggleClass(this)"> <div class="green-plus" onclick="celebrate()">+</div></span>
-            </li>
-        <li>ACP Analytical Foundations Of Security 
-            <span class="green-plus" onclick="toggleClass(this)"> <div class="green-plus" onclick="celebrate()">+</div></span>
-        </ul>
+
+    <!-- AV Production Overlay -->
+    <div id="av-production-overlay" class="overlay">
+        <div class="overlay-content">
+            <span class="overlay-close" onclick="closeOverlay('av-production-overlay')">&times;</span>
+            <h2>Engineering</h2>
+            <div>
+                <div class="course-item">
+                    <div class="course-item-header">
+                        <h3>AP Calculus AB/BC</h3>
+                        <span class="green-plus" onclick="toggleClass(this)">+</span>
+                    </div>
+                    <div class="course-content">
+                        <p>Description about AP Calculus AB/BC. Focus on integral and differential calculus concepts, techniques, and applications.</p>
+                        <video controls>
+                            <source src="path-to-your-video.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+                <div class="course-item">
+                    <div class="course-item-header">
+                        <h3>AP Physics</h3>
+                        <span class="green-plus" onclick="toggleClass(this)">+</span>
+                    </div>
+                    <div class="course-content">
+                        <p>Details about AP Physics. Cover topics like mechanics, electricity, and magnetism, with problem-solving and lab experiments.</p>
+                        <video controls>
+                            <source src="path-to-your-video.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti"></script> <!-- Confetti library -->
-<script>
 
-    function openOverlay(overlayId) {
-        document.getElementById(overlayId).style.display = 'block';
-    }
+    <div id="informatics-overlay" class="overlay">
+        <div class="overlay-content">
+            <span class="overlay-close" onclick="closeOverlay('informatics-overlay')">&times;</span>
+            <h2>Informatics</h2>
+            <div>
+                <div class="course-item">
+                    <div class="course-item-header">
+                        <h3>ACP Finite Mathematics or ACP Calculus Survey</h3>
+                        <span class="green-plus" onclick="toggleClass(this)">+</span>
+                    </div>
+                    <div class="course-content">
+                        <p>Description about ACP Finite Mathematics or ACP Calculus Survey. Provide an overview of the mathematical concepts and their real-world applications.</p>
+                        <video controls>
+                            <source src="path-to-your-video.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+                <div class="course-item">
+                    <div class="course-item-header">
+                        <h3>ACP Intro to Informatics</h3>
+                        <span class="green-plus" onclick="toggleClass(this)">+</span>
+                    </div>
+                    <div class="course-content">
+                        <p>Description about ACP Intro to Informatics. Introduce fundamental informatics concepts and their use in data and information management.</p>
+                        <video controls>
+                            <source src="path-to-your-video.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+                <div class="course-item">
+                    <div class="course-item-header">
+                        <h3>ACP Analytical Foundations Of Security</h3>
+                        <span class="green-plus" onclick="toggleClass(this)">+</span>
+                    </div>
+                    <div class="course-content">
+                        <p>Details about ACP Analytical Foundations Of Security. Focus on analytical methods and their application in cybersecurity and data protection.</p>
+                        <video controls>
+                            <source src="path-to-your-video.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    function closeOverlay(overlayId) {
-        document.getElementById(overlayId).style.display = 'none';
-    }
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti"></script> <!-- Confetti library -->
+    <script>
 
-    // Close overlay if user clicks outside of it
-    window.onclick = function(event) {
-        if (event.target.classList.contains('overlay')) {
-            event.target.style.display = 'none';
+        function openOverlay(overlayId) {
+            document.getElementById(overlayId).style.display = 'block';
         }
-    }
 
-    // Function to toggle class and update button
-    function toggleClass(button) {
-        const className = button.parentElement.textContent.trim(); // Get class name from the li text
-        let currentClasses = JSON.parse(localStorage.getItem('classes')) || [];
-
-        // Toggle the class in the list
-        if (currentClasses.includes(className)) {
-            currentClasses = currentClasses.filter(c => c !== className);
-            button.textContent = ' +'; // Change button text to "+"
-        } else {
-            currentClasses.push(className);
-            button.textContent = ' -'; // Change button text to "-"
-            celebrate();
+        function closeOverlay(overlayId) {
+            document.getElementById(overlayId).style.display = 'none';
         }
 
-        // Update localStorage with the new classes list
-        localStorage.setItem('classes', JSON.stringify(currentClasses));
-    }
-
-    // Update all buttons on page load
-    window.onload = function() {
-        let currentClasses = JSON.parse(localStorage.getItem('classes')) || [];
-
-        // Loop through all li elements and update their buttons
-        const listItems = document.querySelectorAll('ul li');
-        listItems.forEach(item => {
-            const className = item.textContent.trim(); // Get class name from the li text
-            const button = item.querySelector('.green-plus');
-
-            // Update the button text depending on whether the class is in localStorage
-            if (currentClasses.includes(className)) {
-                button.textContent = ' -';
-            } else {
-                button.textContent = ' +';
+        // Close overlay if user clicks outside of it
+        window.onclick = function(event) {
+            if (event.target.classList.contains('overlay')) {
+                event.target.style.display = 'none';
             }
-        });
-    };
-//--------------------------Copy below for confetti--------------------------------------//
-    
-    function celebrate() {
-        confetti({
-            particleCount: 100,
-            spread: 70,
-            origin: { x: 0.5, y: 0.5 }
-        });
-    }
-//--------------------------Copy above for confetti--------------------------------------//
-    
+        }
 
-</script>
+        // Function to toggle class and update button
+        function toggleClass(button) {
+            const className = button.parentElement.textContent.trim(); // Get class name from the li text
+            let currentClasses = JSON.parse(localStorage.getItem('classes')) || [];
+
+            // Toggle the class in the list
+            if (currentClasses.includes(className)) {
+                currentClasses = currentClasses.filter(c => c !== className);
+                button.textContent = ' +'; // Change button text to "+"
+            } else {
+                currentClasses.push(className);
+                button.textContent = ' -'; // Change button text to "-"
+                celebrate();
+            }
+
+            // Update localStorage with the new classes list
+            localStorage.setItem('classes', JSON.stringify(currentClasses));
+        }
+
+        // Update all buttons on page load
+        window.onload = function() {
+            let currentClasses = JSON.parse(localStorage.getItem('classes')) || [];
+
+            // Loop through all li elements and update their buttons
+            const listItems = document.querySelectorAll('ul li');
+            listItems.forEach(item => {
+                const className = item.textContent.trim(); // Get class name from the li text
+                const button = item.querySelector('.green-plus');
+
+                // Update the button text depending on whether the class is in localStorage
+                if (currentClasses.includes(className)) {
+                    button.textContent = ' -';
+                } else {
+                    button.textContent = ' +';
+                }
+            });
+        };
+    //--------------------------Copy below for confetti--------------------------------------//
+
+        function celebrate() {
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { x: 0.5, y: 0.5 }
+            });
+        }
+    //--------------------------Copy above for confetti--------------------------------------//
+
+
+    </script>
 </body>
 </html>
