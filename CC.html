@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Classes</title>
     <style>
+        /* Color Variables */
         :root {
             --primary-color: #000000;
             --secondary-color: #d10606;
@@ -16,6 +17,7 @@
             --border-radius: 8px;
         }
 
+        /* General Styling */
         body {
             font-family: 'Arial', sans-serif;
             margin: 0;
@@ -38,13 +40,19 @@
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
 
+        header img {
+            height: 50px;
+            margin-right: 10px;
+        }
+
         header h1 {
             font-size: 24px;
             margin: 0;
         }
 
+        /* Main Container */
         .container {
-            max-width: 1200px;
+            max-width: 900px;
             width: 100%;
             background-color: var(--card-bg);
             margin-top: 20px;
@@ -60,49 +68,34 @@
             color: var(--primary-color);
         }
 
-        .team-block {
-            margin-bottom: 30px;
-            padding: 20px;
-            background-color: var(--grey-bg);
-            border: 2px solid var(--primary-color);
-            border-radius: var(--border-radius);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .team-header {
-            font-size: 20px;
-            font-weight: bold;
-            color: var(--secondary-color);
-            margin-bottom: 10px;
-        }
-
-        .counselor-list, .class-list {
+        /* Class List */
+        .class-list, .counselor-list {
             list-style: none;
             padding: 0;
-            margin: 0;
+            margin: 0 0 20px 0;
         }
 
-        .counselor-list li, .class-list li {
+        .class-list li, .counselor-list li {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: var(--card-bg);
-            margin-bottom: 10px;
+            background-color: var(--grey-bg);
+            margin-bottom: 15px;
             padding: 15px 20px;
             border-radius: var(--border-radius);
             transition: var(--transition);
         }
 
-        .counselor-list li:hover, .class-list li:hover {
+        .class-list li:hover, .counselor-list li:hover {
             transform: translateY(-2px);
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
-        .counselor-name, .class-name {
+        .class-name, .counselor-name {
             font-size: 18px;
         }
 
-        .submit-btn, .remove-btn {
+        .delete-btn, .submit-btn {
             background-color: var(--secondary-color);
             color: white;
             border: none;
@@ -113,116 +106,399 @@
             transition: var(--transition);
         }
 
-        .submit-btn:hover, .remove-btn:hover {
-            background-color: var(--btn-hover);
+        .delete-btn:hover, .submit-btn:hover {
+            background-color: #0571b5;
+        }
+        .nav-buttons {
+            position: absolute;
+            top: 40px;
+            right: 20px;
+        }
+        .back-button {
+        background-color: var(--secondary-color);
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: var(--border-radius);
+        cursor: pointer;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transition: var(--transition);
+        }
+        
+        .back-button:hover {
+        background-color: var(--btn-hover);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
     </style>
 </head>
 <body>
+<div class="header-container">
+    <div class="nav-buttons">
+    <button class="back-button" onclick="history.back()">Back</button>
+    </div>
+</div>
 <header>
-    <h1>Your Classes</h1>
+    <img src="https://yt3.googleusercontent.com/ytc/AIdro_k9Hz1yVRb_QzFjCL2G8q0r_ILFozqdF43uOuvf8TvE8w=s900-c-k-c0x00ffffff-no-rj" alt="Logo">
 </header>
 
 <div class="container">
     <h2>Selected Classes</h2>
     <ul class="class-list" id="class-list">
-        <!-- Selected classes will appear here -->
+        <!-- Class items will be dynamically added here -->
     </ul>
-
-    <h2>Meet Your Counselors</h2>
-    <div id="teams-container">
-        <!-- Team blocks will be dynamically generated here -->
-    </div>
+    <h2> Send your Selected Classes to your Counselor</h2>
+    <ul class="counselor-list" id="counselor-list">
+        <!-- Counselor items will be dynamically added here -->
+    </ul>
 </div>
 
 <script>
-    // Example class and team data
-    let selectedClasses = ["Math 101", "English 202", "Biology 301"];
+    // Sample counselors data
+    const counselors = [
+        { name: "Matt Swaim", email: "mswaim@hse.k12.in.us" },
+        { name: "Kelly Applegate", email: "kapplegate@hse.k12.in.us" },
+        { name: "Lindsay Thomas", email: "lthomas@hse.k12.in.us" },
+        { name: "Maria Chinni", email: "mchinni@hse.k12.in.us" },
+    ];
 
-    const teams = {
-        "Team Red": [
-            { name: "Katie Rehor", email: "krehor@hse.k12.in.us" },
-            { name: "Maggie Schwartzkopf", email: "mschwartzkopf@hse.k12.in.us" },
-            { name: "Jenna Petroff", email: "jpetroff@hse.k12.in.us" }
-        ],
-        "Team White": [
-            { name: "Matt Swaim", email: "mswaim@hse.k12.in.us" },
-            { name: "Kelly Applegate", email: "kapplegate@hse.k12.in.us" },
-            { name: "Maria Chinni", email: "mchinni@hse.k12.in.us" }
-        ],
-        "Team Silver": [
-            { name: "Jacob Hornberger", email: "jhornberger@hse.k12.in.us" },
-            { name: "Lizette Baumann", email: "lbaumann@hse.k12.in.us" },
-            { name: "Lindsay Thomas", email: "lthomas@hse.k12.in.us" }
-        ],
-        "Team Freshman": [
-            { name: "Steven Curtis", email: "scurtis@hse.k12.in.us" },
-            { name: "Maggie Stiller", email: "mstiller@hse.k12.in.us" }
-        ]
-    };
+    // Fetch the class list from localStorage
+    let savedClasses = JSON.parse(localStorage.getItem('classes')) || [];
 
-    // Populate class list
-    function populateClasses() {
-        const classList = document.getElementById('class-list');
-        classList.innerHTML = ''; // Clear existing content
-        selectedClasses.forEach((className, index) => {
-            const classItem = document.createElement('li');
-            classItem.innerHTML = `
-                <span class="class-name">${className}</span>
-                <button class="remove-btn" onclick="removeClass(${index})">Remove</button>
-            `;
-            classList.appendChild(classItem);
-        });
+    // Populate the class list in the HTML
+    const classList = document.getElementById('class-list');
+    savedClasses.forEach((className, index) => {
+        let listItem = document.createElement('li');
+        listItem.innerHTML = <span class="class-name">${className}</span>;
+        
+        // Create the delete button
+        let deleteBtn = document.createElement('button');
+        deleteBtn.textContent = 'Remove';
+        deleteBtn.classList.add('delete-btn');
+        deleteBtn.onclick = function () {
+            deleteClass(index);
+        };
+
+        listItem.appendChild(deleteBtn);
+        classList.appendChild(listItem);
+    });
+
+    // Populate the counselor list in the HTML
+    const counselorList = document.getElementById('counselor-list');
+    counselors.forEach(counselor => {
+        let listItem = document.createElement('li');
+        listItem.innerHTML = <span class="counselor-name">${counselor.name}</span>;
+
+        // Create the submit button
+        let submitBtn = document.createElement('button');
+        submitBtn.textContent = 'Submit';
+        submitBtn.classList.add('submit-btn');
+        submitBtn.onclick = function () {
+            submitToCounselor(counselor.email);
+        };
+
+        listItem.appendChild(submitBtn);
+        counselorList.appendChild(listItem);
+    });
+
+    // Function to delete a class
+    function deleteClass(index) {
+        savedClasses.splice(index, 1);
+        localStorage.setItem('classes', JSON.stringify(savedClasses));
+        location.reload();
     }
 
-    // Remove class from the list
-    function removeClass(index) {
-        selectedClasses.splice(index, 1);
-        populateClasses();
-    }
-
-    // Populate team blocks
-    function populateTeams() {
-        const teamsContainer = document.getElementById('teams-container');
-        teamsContainer.innerHTML = ''; // Clear existing content
-        Object.keys(teams).forEach(teamName => {
-            const teamBlock = document.createElement('div');
-            teamBlock.className = 'team-block';
-
-            const teamHeader = document.createElement('div');
-            teamHeader.className = 'team-header';
-            teamHeader.textContent = teamName;
-            teamBlock.appendChild(teamHeader);
-
-            const counselorList = document.createElement('ul');
-            counselorList.className = 'counselor-list';
-            teams[teamName].forEach(counselor => {
-                const counselorItem = document.createElement('li');
-                counselorItem.innerHTML = `
-                    <span class="counselor-name">${counselor.name}</span>
-                    <button class="submit-btn" onclick="submitToCounselor('${counselor.email}')">Submit</button>
-                `;
-                counselorList.appendChild(counselorItem);
-            });
-            teamBlock.appendChild(counselorList);
-
-            teamsContainer.appendChild(teamBlock);
-        });
-    }
-
-    // Submit selected classes to a counselor
+    // Function to submit classes to a counselor
     function submitToCounselor(email) {
-        if (selectedClasses.length === 0) {
-            alert('No classes selected.');
+        if (savedClasses.length === 0) {
+            alert('No classes to submit.');
             return;
         }
-        const emailBody = encodeURIComponent(`Selected Classes:\n\n${selectedClasses.join('\n')}`);
-        window.location.href = `mailto:${email}?subject=Class Selection&body=${emailBody}`;
-    }
 
-    // Initial page load
-    populateClasses();
-    populateTeams();
+        const emailBody = encodeURIComponent(Selected classes:\n\n${savedClasses.join('\n')});
+        window.location.href = mailto:${email}?subject=Class Selection&body=${emailBody};
+    }
 </script>
+
+</body>
+</html> <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counselors</title>
+    <style>
+        body {
+          font-family: Arial, sans-serif;
+          margin: 0;
+          padding: 0;
+          background-color: #f4f4f4;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+          overflow: hidden;
+        }
+
+        header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 20px;
+          background: rgba(0, 0, 0, 0.8); /* Semi-transparent dark background for header */
+          position: sticky;
+          top: 0;
+          z-index: 1000;
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        header .logo {
+          font-size: 2rem;
+          color: #dc0505; /* Red for the logo */
+        }
+
+        header .logo span {
+          color: #f5f5f5; /* White accent for contrast */
+        }
+
+        header nav {
+          display: flex;
+          align-items: center;
+        }
+
+        img {
+          width: 200px;
+          height: 200px;
+          object-fit: cover;
+          border-radius: 15px;
+        }
+
+        /* Navigation Buttons with Gradient */
+        .nav-buttons {
+          display: flex;
+        }
+
+        .nav-button {
+          background: linear-gradient(135deg, #d6d7d8, #d20808, #d20808); /* Initial gradient */
+          background-size: 200%; /* Make the gradient larger for smoother transitions */
+          background-position: left; /* Start position of the gradient */
+          color: white;
+          border: none;
+          padding: 10px 20px;
+          margin: 5px;
+          font-size: 1rem;
+          cursor: pointer;
+          border-radius: 5px;
+          text-transform: uppercase;
+          font-weight: bold;
+          transition: background-position 0.5s ease, transform 0.2s ease; /* Smooth transition for background and transform */
+          }
+
+        .nav-button:hover {
+              background-position: right; /* Shift the gradient position on hover */
+              transform: scale(1.05); /* Slight grow effect on hover */
+        }
+
+
+        .grid-container {
+          position: relative;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          grid-gap: 15px;
+          width: 90%;
+          max-width: 800px;
+          padding:30px;
+          left: 50%;
+          transform: translateX(-50%);
+        }
+
+        .counselor-block {
+          background: #ffffff;
+          border: 2px solid #000000;
+          border-radius: 8px;
+          padding: 15px;
+          box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+          text-align: center;
+          font-size: 0.9rem;
+        }
+
+        .counselor-header {
+          font-size: 1.2rem;
+          font-weight: bold;
+          margin-bottom: 5px;
+          text-transform: uppercase;
+        }
+
+        .counselor-subtitle {
+          font-size: 0.9rem;
+          font-weight: normal;
+          color: #333;
+          margin-bottom: 10px;
+        }
+
+        .counselor-info {
+          margin-bottom: 8px;
+        }
+
+        .counselor-name {
+          font-weight: bold;
+          color: #000;
+          font-size: 0.9rem;
+        }
+
+        .counselor-email {
+          color: #e81212;
+          text-decoration: none;
+          font-size: 0.8rem;
+        }
+
+        .counselor-email:hover {
+          text-decoration: underline;
+        }
+
+        .connect-circle {
+          grid-column: span 2;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          background: #ba0707;
+          color: white;
+          border-radius: 50%;
+          width: 180px;
+          height: 180px;
+          margin: auto;
+          text-align: center;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+          font-size: 0.9rem;
+        }
+
+        .connect-circle img {
+          width: 80px;
+          height: 80px;
+          margin-bottom: 8px;
+          border-radius: 50%;
+          border: 2px solid white;
+        }
+
+        .connect-circle h2 {
+          font-size: 1rem;
+          margin: 0;
+          text-transform: uppercase;
+        }.back-button {
+                position: fixed;
+                top: 20px;
+                left: 20px;
+                text-decoration: none;
+                color: var(--text-primary);
+                padding: 10px 20px;
+                background: rgba(229, 229, 229, 0.907);
+                border-radius: 30px;
+                box-shadow: 0 2px 10px rgba(88, 30, 30, 0.1);
+                transition: all 0.3s ease;
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba(0, 0, 0, 0.918);
+                z-index: 1000;
+            }
+
+            .back-button:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            }
+    </style>
+</head>
+<body>
+
+<header>
+    <a href="index.html" style="font-size: 2rem; color: #d20808; text-decoration: none; cursor: pointer;">
+        Aspyr<span style="color: white;">Pathways</span>
+    </a>
+
+    <nav>
+        <!-- Gradient Buttons -->
+        <div class="nav-buttons">
+            <button class="nav-button" onclick="location.href='about.html'">About</button>
+            <button class="nav-button" onclick="location.href='SR.html'">Class Reviews</button>
+            <button class="nav-button" onclick="location.href='dp.html'">Diploma Pathways</button>
+            <button class="nav-button" onclick="location.href='connectwithcounselors.html'">Connect with Counselors</button>
+            <button class="nav-button" onclick="location.href='FC.html'">Survey</button>
+        </div>
+    </nav>
+</header>
+
+<div class="grid-container">
+    <!-- Team Red -->
+    <div class="counselor-block" style="border-color: #e60000;">
+        <div class="counselor-header" style="color: #e60000;">Team Red</div>
+        <div class="counselor-subtitle">GRADES 10-12, Last Names A-Graz</div>
+        <div class="counselor-info">
+            <div class="counselor-name">Katie Rehor</div>
+            <a href="mailto:krehor@hse.k12.in.us" class="counselor-email">krehor@hse.k12.in.us</a>
+        </div>
+        <div class="counselor-info">
+            <div class="counselor-name">Maggie Schwartzkopf</div>
+            <a href="mailto:mschwartzkopf@hse.k12.in.us" class="counselor-email">mschwartzkopf@hse.k12.in.us</a>
+        </div>
+        <div class="counselor-info">
+            <div class="counselor-name">Jenna Petroff</div>
+            <a href="mailto:jpetroff@hse.k12.in.us" class="counselor-email">jpetroff@hse.k12.in.us</a>
+        </div>
+    </div>
+
+    <!-- Team White -->
+    <div class="counselor-block" style="border-color: #000000;">
+        <div class="counselor-header" style="color: #000000;">TEAM WHITE</div>
+        <div class="counselor-subtitle">GRADES 10-12, LAST NAMES OI-Z</div>
+        <div class="counselor-info">
+            <div class="counselor-name">Matt Swaim</div>
+            <a href="mailto:mswaim@hse.k12.in.us" class="counselor-email">mswaim@hse.k12.in.us</a>
+        </div>
+        <div class="counselor-info">
+            <div class="counselor-name">Kelly Applegate</div>
+            <a href="mailto:kapplegate@hse.k12.in.us" class="counselor-email">kapplegate@hse.k12.in.us</a>
+        </div>
+        <div class="counselor-info">
+            <div class="counselor-name">Maria Chinni</div>
+            <a href="mailto:mchinni@hse.k12.in.us" class="counselor-email">mchinni@hse.k12.in.us</a>
+        </div>
+    </div>
+
+    <!-- Connect Circle -->
+    <div class="connect-circle">
+        <img src="https://image.maxpreps.io/school-mascot/9/5/1/951860ab-d82d-476e-b355-80a8dbad705e.gif?version=637304818800000000&width=1024&height=1024" alt="School Mascot">
+        <h2>Connect with Counselors</h2>
+    </div>
+
+    <!-- Team Silver -->
+    <div class="counselor-block" style="border-color: #afabab;">
+        <div class="counselor-header" style="color: #989494;">Team Silver</div>
+        <div class="counselor-subtitle">GRADES 10-12, Last Names GRB-OHZ</div>
+        <div class="counselor-info">
+            <div class="counselor-name">Jacob Hornberger</div>
+            <a href="mailto:jhornberger@hse.k12.in.us" class="counselor-email">jhornberger@hse.k12.in.us</a>
+        </div>
+        <div class="counselor-info">
+            <div class="counselor-name">Lizette Baumann</div>
+            <a href="mailto:lbaumann@hse.k12.in.us" class="counselor-email">lbaumann@hse.k12.in.us</a>
+        </div>
+        <div class="counselor-info">
+            <div class="counselor-name">Lindsay Thomas</div>
+            <a href="mailto:lthomas@hse.k12.in.us" class="counselor-email">lthomas@hse.k12.in.us</a>
+        </div>
+    </div>
+
+    <!-- Team Freshman -->
+    <div class="counselor-block" style="border-color: #e60606;">
+        <div class="counselor-header" style="color: #e60606;">Team Freshman</div>
+        <div class="counselor-subtitle">GRADES 9</div>
+        <div class="counselor-info">
+            <div class="counselor-name">Steven Curtis</div>
+            <a href="mailto:scurtis@hse.k12.in.us" class="counselor-email">scurtis@hse.k12.in.us</a>
+        </div>
+        <div class="counselor-info">
+            <div class="counselor-name">Maggie Stiller</div>
+            <a href="mailto:mstiller@hse.k12.in.us" class="counselor-email">mstiller@hse.k12.in.us</a>
+        </div>
+    </div>
+</div>
 </body>
 </html>
