@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Classes</title>
     <style>
-        /* Color Variables */
         :root {
             --primary-color: #000000;
             --secondary-color: #d10606;
@@ -17,7 +16,6 @@
             --border-radius: 8px;
         }
 
-        /* General Styling */
         body {
             font-family: 'Arial', sans-serif;
             margin: 0;
@@ -40,19 +38,13 @@
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
 
-        header img {
-            height: 50px;
-            margin-right: 10px;
-        }
-
         header h1 {
             font-size: 24px;
             margin: 0;
         }
 
-        /* Main Container */
         .container {
-            max-width: 900px;
+            max-width: 1200px;
             width: 100%;
             background-color: var(--card-bg);
             margin-top: 20px;
@@ -68,34 +60,49 @@
             color: var(--primary-color);
         }
 
-        /* Class List */
-        .class-list, .counselor-list {
-            list-style: none;
-            padding: 0;
-            margin: 0 0 20px 0;
+        .team-block {
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: var(--grey-bg);
+            border: 2px solid var(--primary-color);
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
-        .class-list li, .counselor-list li {
+        .team-header {
+            font-size: 20px;
+            font-weight: bold;
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+
+        .counselor-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .counselor-list li {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: var(--grey-bg);
-            margin-bottom: 15px;
+            background-color: var(--card-bg);
+            margin-bottom: 10px;
             padding: 15px 20px;
             border-radius: var(--border-radius);
             transition: var(--transition);
         }
 
-        .class-list li:hover, .counselor-list li:hover {
+        .counselor-list li:hover {
             transform: translateY(-2px);
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
-        .class-name, .counselor-name {
+        .counselor-name {
             font-size: 18px;
         }
 
-        .delete-btn, .submit-btn {
+        .submit-btn {
             background-color: var(--secondary-color);
             color: white;
             border: none;
@@ -106,119 +113,81 @@
             transition: var(--transition);
         }
 
-        .delete-btn:hover, .submit-btn:hover {
-            background-color: #0571b5;
-        }
-        .nav-buttons {
-            position: absolute;
-            top: 40px;
-            right: 20px;
-        }
-        .back-button {
-        background-color: var(--secondary-color);
-        color: white;
-        border: none;
-        padding: 10px 20px;
-        font-size: 16px;
-        border-radius: var(--border-radius);
-        cursor: pointer;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        transition: var(--transition);
-        }
-        
-        .back-button:hover {
-        background-color: var(--btn-hover);
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        .submit-btn:hover {
+            background-color: var(--btn-hover);
         }
     </style>
 </head>
 <body>
-<div class="header-container">
-    <div class="nav-buttons">
-    <button class="back-button" onclick="history.back()">Back</button>
-    </div>
-</div>
 <header>
-    <img src="https://yt3.googleusercontent.com/ytc/AIdro_k9Hz1yVRb_QzFjCL2G8q0r_ILFozqdF43uOuvf8TvE8w=s900-c-k-c0x00ffffff-no-rj" alt="Logo">
+    <h1>Your Classes</h1>
 </header>
 
 <div class="container">
-    <h2>Selected Classes</h2>
-    <ul class="class-list" id="class-list">
-        <!-- Class items will be dynamically added here -->
-    </ul>
-    <h2> Send your Selected Classes to your Counselor</h2>
-    <ul class="counselor-list" id="counselor-list">
-        <!-- Counselor items will be dynamically added here -->
-    </ul>
+    <h2>Submit to your Counselors</h2>
+    <div id="teams-container">
+        <!-- Team blocks will be dynamically generated here -->
+    </div>
 </div>
 
 <script>
-    // Sample counselors data
-    const counselors = [
-        { name: "Matt Swaim", email: "mswaim@hse.k12.in.us" },
-        { name: "Kelly Applegate", email: "kapplegate@hse.k12.in.us" },
-        { name: "Lindsay Thomas", email: "lthomas@hse.k12.in.us" },
-        { name: "Maria Chinni", email: "mchinni@hse.k12.in.us" },
-    ];
+    // Team and counselors data
+    const teams = {
+        "Team Red": [
+            { name: "Katie Rehor", email: "krehor@hse.k12.in.us" },
+            { name: "Maggie Schwartzkopf", email: "mschwartzkopf@hse.k12.in.us" },
+            { name: "Jenna Petroff", email: "jpetroff@hse.k12.in.us" }
+        ],
+        "Team White": [
+            { name: "Matt Swaim", email: "mswaim@hse.k12.in.us" },
+            { name: "Kelly Applegate", email: "kapplegate@hse.k12.in.us" },
+            { name: "Maria Chinni", email: "mchinni@hse.k12.in.us" }
+        ],
+        "Team Silver": [
+            { name: "Jacob Hornberger", email: "jhornberger@hse.k12.in.us" },
+            { name: "Lizette Baumann", email: "lbaumann@hse.k12.in.us" },
+            { name: "Lindsay Thomas", email: "lthomas@hse.k12.in.us" }
+        ],
+        "Team Freshman": [
+            { name: "Steven Curtis", email: "scurtis@hse.k12.in.us" },
+            { name: "Maggie Stiller", email: "mstiller@hse.k12.in.us" }
+        ]
+    };
 
-    // Fetch the class list from localStorage
-    let savedClasses = JSON.parse(localStorage.getItem('classes')) || [];
+    // Generate team blocks
+    const teamsContainer = document.getElementById('teams-container');
+    Object.keys(teams).forEach(teamName => {
+        // Create team block
+        const teamBlock = document.createElement('div');
+        teamBlock.className = 'team-block';
 
-    // Populate the class list in the HTML
-    const classList = document.getElementById('class-list');
-    savedClasses.forEach((className, index) => {
-        let listItem = document.createElement('li');
-        listItem.innerHTML = `<span class="class-name">${className}</span>`;
-        
-        // Create the delete button
-        let deleteBtn = document.createElement('button');
-        deleteBtn.textContent = 'Remove';
-        deleteBtn.classList.add('delete-btn');
-        deleteBtn.onclick = function () {
-            deleteClass(index);
-        };
+        // Add team header
+        const teamHeader = document.createElement('div');
+        teamHeader.className = 'team-header';
+        teamHeader.textContent = teamName;
+        teamBlock.appendChild(teamHeader);
 
-        listItem.appendChild(deleteBtn);
-        classList.appendChild(listItem);
+        // Add counselors
+        const counselorList = document.createElement('ul');
+        counselorList.className = 'counselor-list';
+        teams[teamName].forEach(counselor => {
+            const counselorItem = document.createElement('li');
+            counselorItem.innerHTML = `
+                <span class="counselor-name">${counselor.name}</span>
+                <button class="submit-btn" onclick="submitToCounselor('${counselor.email}')">Submit</button>
+            `;
+            counselorList.appendChild(counselorItem);
+        });
+        teamBlock.appendChild(counselorList);
+
+        // Append team block to container
+        teamsContainer.appendChild(teamBlock);
     });
 
-    // Populate the counselor list in the HTML
-    const counselorList = document.getElementById('counselor-list');
-    counselors.forEach(counselor => {
-        let listItem = document.createElement('li');
-        listItem.innerHTML = `<span class="counselor-name">${counselor.name}</span>`;
-
-        // Create the submit button
-        let submitBtn = document.createElement('button');
-        submitBtn.textContent = 'Submit';
-        submitBtn.classList.add('submit-btn');
-        submitBtn.onclick = function () {
-            submitToCounselor(counselor.email);
-        };
-
-        listItem.appendChild(submitBtn);
-        counselorList.appendChild(listItem);
-    });
-
-    // Function to delete a class
-    function deleteClass(index) {
-        savedClasses.splice(index, 1);
-        localStorage.setItem('classes', JSON.stringify(savedClasses));
-        location.reload();
-    }
-
-    // Function to submit classes to a counselor
+    // Function to handle class submission
     function submitToCounselor(email) {
-        if (savedClasses.length === 0) {
-            alert('No classes to submit.');
-            return;
-        }
-
-        const emailBody = encodeURIComponent(`Selected classes:\n\n${savedClasses.join('\n')}`);
-        window.location.href = `mailto:${email}?subject=Class Selection&body=${emailBody}`;
+        alert(`Classes will be sent to ${email}.`); // Replace with real submission logic
     }
 </script>
-
 </body>
 </html>
