@@ -76,13 +76,13 @@
             margin-bottom: 10px;
         }
 
-        .counselor-list {
+        .counselor-list, .class-list {
             list-style: none;
             padding: 0;
             margin: 0;
         }
 
-        .counselor-list li {
+        .counselor-list li, .class-list li {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -93,16 +93,16 @@
             transition: var(--transition);
         }
 
-        .counselor-list li:hover {
+        .counselor-list li:hover, .class-list li:hover {
             transform: translateY(-2px);
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
-        .counselor-name {
+        .counselor-name, .class-name {
             font-size: 18px;
         }
 
-        .submit-btn {
+        .submit-btn, .remove-btn {
             background-color: var(--secondary-color);
             color: white;
             border: none;
@@ -113,7 +113,7 @@
             transition: var(--transition);
         }
 
-        .submit-btn:hover {
+        .submit-btn:hover, .remove-btn:hover {
             background-color: var(--btn-hover);
         }
     </style>
@@ -124,14 +124,21 @@
 </header>
 
 <div class="container">
-    <h2>Submit to your Counselors</h2>
+    <h2>Selected Classes</h2>
+    <ul class="class-list" id="class-list">
+        <!-- Selected classes will appear here -->
+    </ul>
+
+    <h2>Meet Your Counselors</h2>
     <div id="teams-container">
         <!-- Team blocks will be dynamically generated here -->
     </div>
 </div>
 
 <script>
-    // Team and counselors data
+    // Example class and team data
+    let selectedClasses = ["Math 101", "English 202", "Biology 301"];
+
     const teams = {
         "Team Red": [
             { name: "Katie Rehor", email: "krehor@hse.k12.in.us" },
@@ -154,40 +161,68 @@
         ]
     };
 
-    // Generate team blocks
-    const teamsContainer = document.getElementById('teams-container');
-    Object.keys(teams).forEach(teamName => {
-        // Create team block
-        const teamBlock = document.createElement('div');
-        teamBlock.className = 'team-block';
-
-        // Add team header
-        const teamHeader = document.createElement('div');
-        teamHeader.className = 'team-header';
-        teamHeader.textContent = teamName;
-        teamBlock.appendChild(teamHeader);
-
-        // Add counselors
-        const counselorList = document.createElement('ul');
-        counselorList.className = 'counselor-list';
-        teams[teamName].forEach(counselor => {
-            const counselorItem = document.createElement('li');
-            counselorItem.innerHTML = `
-                <span class="counselor-name">${counselor.name}</span>
-                <button class="submit-btn" onclick="submitToCounselor('${counselor.email}')">Submit</button>
+    // Populate class list
+    function populateClasses() {
+        const classList = document.getElementById('class-list');
+        classList.innerHTML = ''; // Clear existing content
+        selectedClasses.forEach((className, index) => {
+            const classItem = document.createElement('li');
+            classItem.innerHTML = `
+                <span class="class-name">${className}</span>
+                <button class="remove-btn" onclick="removeClass(${index})">Remove</button>
             `;
-            counselorList.appendChild(counselorItem);
+            classList.appendChild(classItem);
         });
-        teamBlock.appendChild(counselorList);
-
-        // Append team block to container
-        teamsContainer.appendChild(teamBlock);
-    });
-
-    // Function to handle class submission
-    function submitToCounselor(email) {
-        alert(`Classes will be sent to ${email}.`); // Replace with real submission logic
     }
+
+    // Remove class from the list
+    function removeClass(index) {
+        selectedClasses.splice(index, 1);
+        populateClasses();
+    }
+
+    // Populate team blocks
+    function populateTeams() {
+        const teamsContainer = document.getElementById('teams-container');
+        teamsContainer.innerHTML = ''; // Clear existing content
+        Object.keys(teams).forEach(teamName => {
+            const teamBlock = document.createElement('div');
+            teamBlock.className = 'team-block';
+
+            const teamHeader = document.createElement('div');
+            teamHeader.className = 'team-header';
+            teamHeader.textContent = teamName;
+            teamBlock.appendChild(teamHeader);
+
+            const counselorList = document.createElement('ul');
+            counselorList.className = 'counselor-list';
+            teams[teamName].forEach(counselor => {
+                const counselorItem = document.createElement('li');
+                counselorItem.innerHTML = `
+                    <span class="counselor-name">${counselor.name}</span>
+                    <button class="submit-btn" onclick="submitToCounselor('${counselor.email}')">Submit</button>
+                `;
+                counselorList.appendChild(counselorItem);
+            });
+            teamBlock.appendChild(counselorList);
+
+            teamsContainer.appendChild(teamBlock);
+        });
+    }
+
+    // Submit selected classes to a counselor
+    function submitToCounselor(email) {
+        if (selectedClasses.length === 0) {
+            alert('No classes selected.');
+            return;
+        }
+        const emailBody = encodeURIComponent(`Selected Classes:\n\n${selectedClasses.join('\n')}`);
+        window.location.href = `mailto:${email}?subject=Class Selection&body=${emailBody}`;
+    }
+
+    // Initial page load
+    populateClasses();
+    populateTeams();
 </script>
 </body>
 </html>
