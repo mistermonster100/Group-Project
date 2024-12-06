@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Class Cart</title>
+    <title>Your Classes</title>
     <style>
         :root {
             --primary-color: #000000;
             --secondary-color: #d10606;
             --grey-bg: #f4f4f9;
             --text-color: #333;
-            --card-bg: #b0aaaa;
+            --card-bg: #ffffff;
             --btn-hover: #0885bb;
             --transition: all 0.3s ease-in-out;
             --border-radius: 8px;
@@ -29,12 +29,12 @@
 
         header {
             background-color: var(--primary-color);
-            color: rgb(255, 255, 255);
+            color: white;
             width: 100%;
             padding: 15px 20px;
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: space-between;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
 
@@ -60,13 +60,29 @@
             color: var(--primary-color);
         }
 
-        .class-list, .counselor-list {
+        .team-block {
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: var(--grey-bg);
+            border: 2px solid var(--primary-color);
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .team-header {
+            font-size: 20px;
+            font-weight: bold;
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+
+        .counselor-list, .class-list {
             list-style: none;
             padding: 0;
             margin: 0;
         }
 
-        .class-list li, .counselor-list li {
+        .counselor-list li, .class-list li {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -77,18 +93,18 @@
             transition: var(--transition);
         }
 
-        .class-list li:hover, .counselor-list li:hover {
+        .counselor-list li:hover, .class-list li:hover {
             transform: translateY(-2px);
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
-        .class-name, .counselor-name {
+        .counselor-name, .class-name {
             font-size: 18px;
         }
 
-        .add-btn, .remove-btn, .submit-btn {
+        .submit-btn, .remove-btn {
             background-color: var(--secondary-color);
-            color: rgb(255, 255, 255);
+            color: white;
             border: none;
             border-radius: var(--border-radius);
             padding: 10px 15px;
@@ -97,14 +113,14 @@
             transition: var(--transition);
         }
 
-        .add-btn:hover, .remove-btn:hover, .submit-btn:hover {
+        .submit-btn:hover, .remove-btn:hover {
             background-color: var(--btn-hover);
         }
     </style>
 </head>
 <body>
 <header>
-    <h1>Class Cart</h1>
+    <h1>Your Classes</h1>
 </header>
 
 <div class="container">
@@ -113,26 +129,42 @@
         <!-- Selected classes will appear here -->
     </ul>
 
-    <h2>Counselors</h2>
-    <ul class="counselor-list" id="counselor-list">
-        <!-- Counselors will be dynamically added here -->
-    </ul>
+    <h2>Meet Your Counselors</h2>
+    <div id="teams-container">
+        <!-- Team blocks will be dynamically generated here -->
+    </div>
 </div>
 
 <script>
-    // Example data for classes and counselors
-    let selectedClasses = []; // Empty cart initially
+    // Example class and team data
+    let selectedClasses = ["Math 101", "English 202", "Biology 301"];
 
-    const counselors = [
-        { name: "Matt Swaim", email: "mswaim@hse.k12.in.us" },
-        { name: "Kelly Applegate", email: "kapplegate@hse.k12.in.us" },
-        { name: "Lindsay Thomas", email: "lthomas@hse.k12.in.us" }
-    ];
+    const teams = {
+        "Team Red": [
+            { name: "Katie Rehor", email: "krehor@hse.k12.in.us" },
+            { name: "Maggie Schwartzkopf", email: "mschwartzkopf@hse.k12.in.us" },
+            { name: "Jenna Petroff", email: "jpetroff@hse.k12.in.us" }
+        ],
+        "Team White": [
+            { name: "Matt Swaim", email: "mswaim@hse.k12.in.us" },
+            { name: "Kelly Applegate", email: "kapplegate@hse.k12.in.us" },
+            { name: "Maria Chinni", email: "mchinni@hse.k12.in.us" }
+        ],
+        "Team Silver": [
+            { name: "Jacob Hornberger", email: "jhornberger@hse.k12.in.us" },
+            { name: "Lizette Baumann", email: "lbaumann@hse.k12.in.us" },
+            { name: "Lindsay Thomas", email: "lthomas@hse.k12.in.us" }
+        ],
+        "Team Freshman": [
+            { name: "Steven Curtis", email: "scurtis@hse.k12.in.us" },
+            { name: "Maggie Stiller", email: "mstiller@hse.k12.in.us" }
+        ]
+    };
 
-    // Populate selected classes
+    // Populate class list
     function populateClasses() {
         const classList = document.getElementById('class-list');
-        classList.innerHTML = ''; // Clear previous content
+        classList.innerHTML = ''; // Clear existing content
         selectedClasses.forEach((className, index) => {
             const classItem = document.createElement('li');
             classItem.innerHTML = `
@@ -143,33 +175,42 @@
         });
     }
 
-    // Add a class to the cart
-    function addClass(className) {
-        selectedClasses.push(className);
-        populateClasses();
-    }
-
-    // Remove a class from the cart
+    // Remove class from the list
     function removeClass(index) {
         selectedClasses.splice(index, 1);
         populateClasses();
     }
 
-    // Populate counselors
-    function populateCounselors() {
-        const counselorList = document.getElementById('counselor-list');
-        counselorList.innerHTML = ''; // Clear previous content
-        counselors.forEach(counselor => {
-            const counselorItem = document.createElement('li');
-            counselorItem.innerHTML = `
-                <span class="counselor-name">${counselor.name}</span>
-                <button class="submit-btn" onclick="submitToCounselor('${counselor.email}')">Submit</button>
-            `;
-            counselorList.appendChild(counselorItem);
+    // Populate team blocks
+    function populateTeams() {
+        const teamsContainer = document.getElementById('teams-container');
+        teamsContainer.innerHTML = ''; // Clear existing content
+        Object.keys(teams).forEach(teamName => {
+            const teamBlock = document.createElement('div');
+            teamBlock.className = 'team-block';
+
+            const teamHeader = document.createElement('div');
+            teamHeader.className = 'team-header';
+            teamHeader.textContent = teamName;
+            teamBlock.appendChild(teamHeader);
+
+            const counselorList = document.createElement('ul');
+            counselorList.className = 'counselor-list';
+            teams[teamName].forEach(counselor => {
+                const counselorItem = document.createElement('li');
+                counselorItem.innerHTML = `
+                    <span class="counselor-name">${counselor.name}</span>
+                    <button class="submit-btn" onclick="submitToCounselor('${counselor.email}')">Submit</button>
+                `;
+                counselorList.appendChild(counselorItem);
+            });
+            teamBlock.appendChild(counselorList);
+
+            teamsContainer.appendChild(teamBlock);
         });
     }
 
-    // Submit classes to a counselor
+    // Submit selected classes to a counselor
     function submitToCounselor(email) {
         if (selectedClasses.length === 0) {
             alert('No classes selected.');
@@ -179,9 +220,9 @@
         window.location.href = `mailto:${email}?subject=Class Selection&body=${emailBody}`;
     }
 
-    // Initial setup
+    // Initial page load
     populateClasses();
-    populateCounselors();
+    populateTeams();
 </script>
 </body>
 </html>
