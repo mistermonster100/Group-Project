@@ -1,351 +1,596 @@
-<!DOCTYPE html>   
-<html lang="en">   
-<head>   
-  <meta charset="UTF-8">   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">   
-  <title>Aspyr</title>   
-  <style>   
-    /* General Styles */   
-    body {   
-      font-family: 'Arial', sans-serif;   
-      margin: 0;   
-      padding: 0;   
-      background: linear-gradient(135deg, #2D3142, #E71D36); /* Cool gradient background */   
-      color: #fffdfd;   
-      overflow-x: hidden;   
-    }   
-   
-    /* Background Tiger Animation */   
-    #background {   
-      position: fixed; /* Fix the background */   
-      top: 0;   
-      left: 0;   
-      width: 100%;   
-      height: 100%;   
-      background-image: url('https://i.pinimg.com/originals/e6/26/3e/e6263ebb5f1cc929a4a7b1a81ab61547.gif');  
-      background-size: 25%;   
-      background-repeat: no-repeat;   
-      background-position: center;   
-      opacity: 0.6;   
-      z-index: -1; /* Keep it behind all content */   
-    }   
-   
-    /* Header */   
-    header {   
-      display: flex;   
-      justify-content: space-between;   
-      align-items: center;   
-      padding: 20px;   
-      background: rgba(0, 0, 0, 0.8); /* Semi-transparent dark background for header */   
-      position: sticky;   
-      top: 0;   
-      z-index: 1000;   
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);   
-    }   
-   
-    header .logo {   
-      font-size: 2rem;   
-      color: #dc0505; /* Red for the logo */   
-    }   
-   
-    header .logo span {   
-      color: #f5f5f5; /* White accent for contrast */   
-    }   
-   
-    header nav {   
-      display: flex;   
-      align-items: center;   
-    }   
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AspyrPathways</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #1A1A1A;
+            color: #FFFFFF;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
-    img {
-      width: 200px;
-      height: 200px;
-      object-fit: cover;
-      border-radius: 15px;
-    }
-   
-    /* Navigation Buttons with Gradient */   
-    .nav-buttons {   
-      display: flex;   
-    }   
-   
-    .nav-button {
-      background: linear-gradient(135deg, #e64a19, #d20808, #d20808); /* Initial gradient */
-      background-size: 200%; /* Make the gradient larger for smoother transitions */
-      background-position: left; /* Start position of the gradient */
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      margin: 5px;
-      font-size: 1rem;
-      cursor: pointer;
-      border-radius: 5px;
-      text-transform: uppercase;
-      font-weight: bold;
-      transition: background-position 0.5s ease, transform 0.2s ease; /* Smooth transition for background and transform */
-    }
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Header Styles */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 95%;
+            padding: 1rem;
+            z-index: 1000;
+            background-color: #1A1A1A);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s ease;
+             margin-left: auto;
+             margin-right: auto;
+        }
+
     
-    .nav-button:hover {
-        background-position: right; /* Shift the gradient position on hover */
-        transform: scale(1.05); /* Slight grow effect on hover */
-    }
-   
-    /* Welcome Section */   
-    .welcome {   
-      text-align: center;   
-      padding: 100px 20px;   
-      background: linear-gradient(135deg, rgba(178, 175, 175, 0.9), rgba(60, 60, 60, 0.8));   
-      animation: fadeIn 2s ease-in-out;   
-      position: relative;   
-      border-bottom: 3px solid #f21b1b; /* Red border for visual separation */   
-    }   
-   
-    .welcome h1 {   
-      font-size: 4rem;   
-      margin-bottom: 20px;   
-      color: #e2e1e1; /* Red for the title */   
-    }   
-   
-    .welcome p {   
-      font-size: 1.2rem;   
-      margin-bottom: 100px;   
-      color: #f5f5f5; /* White text */   
-    }   
-   
-    /* Section Colors */   
-    .section {   
-      padding: 50px 20px;   
-      text-align: center;   
-      border-bottom: 3px solid #dc0505; /* Red border for separation */   
-    }   
-   
-    .courses, .motivation, .fun {   
-      background: #191b20; /* Dark gray for sections */   
-      border-radius: 10px;   
-      margin-bottom: 30px;   
-    }   
-   
-    .courses h2, .motivation h2, .fun h2 {   
-      font-size: 2.5rem;   
-      margin-bottom: 30px;   
-      color: #E71D36; /* Red headings */   
-    }   
-   
-    .courses p, .motivation p, .fun p {   
-      font-size: 1.2rem;   
-      color: #939597; /* Light gray text */   
-    }   
-    /* Testimonial Section Styles */  
-    #testimonials {  
-       background: #191b20; /* Dark background to match other sections */  
-       padding: 50px 20px;  
-       text-align: center;  
-       border-bottom: 3px solid #dc0505; /* Red border for separation */  
-    }  
-  
-    #testimonials h2 {  
-       font-size: 2.5rem;  
-       margin-bottom: 30px;  
-       color: #E71D36; /* Red for headings */  
-    }  
-  
-    .testimonial-container {  
-       display: flex;  
-       justify-content: space-around;  
-       flex-wrap: wrap;  
-       gap: 20px;  
-    }  
-  
-    .testimonial {  
-       background: #222; /* Slightly lighter dark background for testimonials */  
-       padding: 20px;  
-       border-radius: 10px;  
-       width: 30%;  
-       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);  
-       transition: transform 0.3s ease-in-out;  
-    }  
-  
-    .testimonial:hover {  
-       transform: scale(1.05); /* Slight grow effect on hover */  
-    }  
-  
-    .testimonial p {  
-       font-size: 1.2rem;  
-       color: #ccc; /* Light gray text for testimonials */  
-       margin-bottom: 10px;  
-    }  
-  
-    .testimonial h4 {  
-       font-size: 1.5rem;  
-       color: #e71d36; /* Red for the names */  
-       margin-top: 10px;  
-    }  
-  
-    /* Footer */   
-    footer {   
-      text-align: center;   
-      padding: 20px;   
-      background: #171818; /* Very dark gray for footer */   
-      position: relative;   
-      z-index: 1;   
-      border-top: 3px solid #e61515; /* Red top border for footer */   
-    }   
-   
-    footer p {   
-      font-size: 0.9rem;   
-      color: #aaa; /* Light gray footer text */   
-    }   
-   
-    /* Animations */   
-    @keyframes fadeIn {   
-      from {   
-        opacity: 0;   
-        transform: translateY(-50px);   
-      }   
-      to {   
-        opacity: 1;   
-        transform: translateY(0);   
-      }   
-    }   
-  </style>   
-</head>   
-<body>   
-  <!-- Background Tiger Animation -->   
-  <div id="background"></div>   
-   
-  <!-- Header -->   
-  <header>   
-    <div class="logo">Aspyr<span>Pathways</span></div>   
-    <nav>   
-      <!-- Gradient Buttons -->   
-      <div class="nav-buttons">   
-        <button class="nav-button" onclick="location.href='about.html'">About</button> 
-        <button class="nav-button" onclick="location.href='SR.html'">Class Reviews</button>   
-        <button class="nav-button" onclick="location.href='dp.html'">Diploma Pathways</button>   
-        <button class="nav-button" onclick="location.href='connectwithcounselors.html'">Connect with Counselors</button> 
-        <button class="nav-button" onclick="location.href='FC.html'">Survey</button>   
-      </div>   
-    </nav>   
-  </header>   
-   
-  <!-- Welcome Section -->   
-  <section id="welcome" class="welcome">   
-    <h1>Welcome to ASPYR!</h1>   
-    <p>Discover, learn, and have fun while achieving your goals.</p>   
-    <canvas id="welcome-canvas" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></canvas>   
-    <script>   
-      const canvas = document.getElementById("welcome-canvas");   
-      const ctx = canvas.getContext("2d");   
-   
-      canvas.width = canvas.parentNode.offsetWidth;   
-      canvas.height = canvas.parentNode.offsetHeight;   
-   
-      const dots = [];   
-      const colors = ["#FF0000", "#FFFFFF", "#808080"];   
-   
-      function createDots(count) {   
-        for (let i = 0; i < count; i++) {   
-          dots.push({   
-           x: Math.random() * canvas.width,   
-           y: Math.random() * canvas.height,   
-           radius: Math.random() * 5 + 1,   
-           color: colors[Math.floor(Math.random() * colors.length)],   
-           speedX: Math.random() * 2 - 1,   
-           speedY: Math.random() * 2 - 1,   
-          });   
-        }   
-      }   
-   
-      function drawDots() {   
-        ctx.clearRect(0, 0, canvas.width, canvas.height);   
-   
-        dots.forEach((dot) => {   
-          ctx.beginPath();   
-          ctx.arc(dot.x, dot.y, dot.radius, 0, Math.PI * 2);   
-          ctx.fillStyle = dot.color;   
-          ctx.fill();   
-   
-          // Move dots   
-          dot.x += dot.speedX;   
-          dot.y += dot.speedY;   
-   
-          // Bounce off edges   
-          if (dot.x < 0 || dot.x > canvas.width) dot.speedX *= -1;   
-          if (dot.y < 0 || dot.y > canvas.height) dot.speedY *= -1;   
-        });   
-   
-        requestAnimationFrame(drawDots);   
-      }   
-   
-      createDots(100);   
-      drawDots();   
-    </script>   
-  </section>   
-   
-  <!-- Courses Section -->   
-  <section id="courses" class="section courses">   
-    <h2>Our Networks</h2>   
-    <p>Explore a variety of networks to see what suits your style.</p>   
-    <div class="nav-buttons">   
-      <button class="nav-button" onclick="location.href='A&C.html'">   
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBnwEI-nBnIBaRFhoTuPQMHWdfnE_JKUIxeg&s" alt="Arts & Communication" style="width: 100px; height: 100px;">   
-        Arts & Communication   
-      </button>   
-      <button class="nav-button" onclick="location.href='A&NR.html'">   
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvL1j2iunZQDwKgvLCjNAipv29eHEtVqGKmQ&s" alt="Agriculture & Natural Resources" style="width: 100px; height: 100px;">   
-        Agriculture & Natural Resources   
-      </button>   
-      <button class="nav-button" onclick="location.href='MD&PS.html'">   
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTesefe5-fQlc81HMv7X1k2tFVsBTQ1m_zcI8jQtYZ0Z9qYMlH_6iXo4Cw9Q8_5dJeoHjE&usqp=CAU" alt="Medical Network" style="width: 100px; height: 100px;">   
-        Medical Network   
-      </button>   
-      <button class="nav-button" onclick="location.href='PBS.html'">   
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLa5MOBoKsneqiD8bo5Y8Q63iWQdvHxvoEUTZlLNHi-GZ6fAavi18IWORpkHA1AOtVNyw&usqp=CAU" alt="Public Service Network" style="width: 100px; height: 100px;">   
-        Public Service Network   
-      </button>   
-      <button class="nav-button" onclick="location.href='ETI.html'">   
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRf-q8_7jl4oaZW8Ya3ZzWktucNHgpAYHj2czR2Xq6-0MFfeurRiJD2ilj36796zKoT5Oc&usqp=CAU" alt="Engineering & Technology" style="width: 100px; height: 100px;">   
-        Engineering & Technology   
-      </button>   
-      <button class="nav-button" onclick="location.href='innovation.html'">   
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQ3Bdgc1BEdhxHC0qAmqOlMqnSyHteQLBk3g&s" alt="Innovation" style="width: 100px; height: 100px;">   
-        Innovation   
-      </button>   
-      <button class="nav-button" onclick="location.href='business.html'">   
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQojtpp4hn1A0aLECEOJWPOknUDsy2m3jjtAPRc6C3j7OkfBW0sLbByJYazC9OE68WpEzA&usqp=CAU" alt="Business & Administration" style="width: 100px; height: 100px;">   
-        Business & Administration   
-      </button>   
-    </div>   
-  </section>   
-   
-  <!-- Testimonial Section -->  
-  <section id="testimonials">  
-    <h2>What Our Students Say</h2>  
-    <div class="testimonial-container">  
-      <div class="testimonial">  
-        <p>"Asypr helped me unlock my full potential in school. The guidance and tools provided were exceptional!"</p>  
-        <h4>Robert</h4>  
-      </div>  
-      <div class="testimonial">  
-        <p>"The team at Asypr really cared about my success. I felt supported and motivated throughout my journey."</p>  
-        <h4> Smith</h4>  
-      </div>  
-      <div class="testimonial">  
-        <p>"I learned so much, and the platform made studying easy and enjoyable. Thank you, Asypr!"</p>  
-        <h4>Michael </h4>  
-      </div>  
-    </div>  
-  </section>  
-   
-  <!-- Fun Facts Section -->   
-  <section id="fun" class="section fun">   
-    <h2>Did You Know?</h2>   
-    <p>Fishers is far better than HSE.</p>   
-  </section>   
-   
-  <!-- Footer -->   
-  <footer>   
-    <p>&copy; 2024 AsyprPathways. All Rights Reserved.</p>   
-  </footer>   
-</body>   
+
+        header .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #FFFFFF;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        header .logo span {
+            color: #dc2e2b;
+        }
+
+        header nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1rem;
+            padding: 0;
+            margin: 0;
+        }
+
+    header nav a {
+            color: #FFFFFF;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            position: relative;
+            white-space: nowrap;
+            padding: 0.5rem 0;
+        }
+
+        header nav a::before {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #00eaff;
+            transition: width 0.3s ease;
+        }
+
+        header nav a:hover::before {
+            width: 100%;
+        }
+
+        /* Hero Section Styles */
+        #hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        #hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.8) 100%);
+            z-index: 1;
+        }
+
+        #hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 0 2rem;
+        }
+
+        #hero h1 {
+            font-size: 3rem;
+            font-weight: 650;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            letter-spacing: 1px;
+        }
+
+        #hero p {
+            font-size: 1.5rem;
+            color: #EEEEEE;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background-color: #ea3131;
+            color: #FFFFFF;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.2rem;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #f80768;
+            transform: scale(1.05);
+        }
+
+        /* Starfield */
+        #starfield-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* About Section Styles */
+        #about {
+            padding: 8rem 2rem;
+            text-align: center;
+            background-color: #292727;
+            color: #EEEEEE;
+        }
+
+        #about h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+        }
+
+        #about p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        /* Networks Section Styles */
+        #networks {
+            padding: 8rem 2rem;
+            background-color: #333333;
+        }
+
+        #networks h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 4rem;
+            color: #FFFFFF;
+        }
+
+        .network-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* Explicitly 4 columns */
+            gap: 20px;
+            justify-items: stretch;
+        }
+
+        .network-card {
+            background-color: #474545;
+            padding: 2rem;
+            border-radius: 15px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+            color: #EEEEEE;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .network-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .network-card img {
+            width: 100px;
+            height: 90px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+        }
+
+        .network-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .network-card p {
+            font-size: 1rem;
+            line-height: 1.5;
+             margin-bottom: 1rem;
+        }
+
+        .network-card a {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.8rem 2rem;
+    background-color: #E53935;
+    color: #FFFFFF;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.network-card a:hover {
+    background-color: #f80768;
+    transform: scale(1.05);
+}
+
+        
+
+        .trouble-card {
+            background-color: #474545;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            color: #EEEEEE;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            /* NEW for Border Animation */
+            overflow: hidden;
+            z-index: 1; /* Ensure content is above the pseudo-element */
+        }
+
+         /* Animated Border */
+        .trouble-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 85%;
+            height: 90%;
+            /* Increased border size and blurring effect */
+            padding: 8px;
+            background: linear-gradient(90deg, rgb(6, 168, 237), rgb(4, 121, 231), rgb(233, 92, 236), rgb(141, 5, 226));
+            border-radius: 10px;
+            z-index: -10;
+            animation: animatedGlow 10s linear infinite;
+            background-size: 300%;
+            /*Added blur*/
+            filter: blur(80px);
+        }
+
+        @keyframes animatedGlow {
+            0% {
+                background-position: 0%;
+            }
+            100% {
+                background-position: 300%;
+            }
+        }
+
+         .trouble-card p {
+        font-size: 1.2rem;
+        line-height: 1.5;
+         margin-bottom: 1rem;
+         }
+
+        /* Sponsorships Section Styles */
+        #sponsors {
+            padding: 3rem 2rem;
+            background-color: #292727;
+            color: #EEEEEE;
+            text-align: center;
+        }
+
+        #sponsors h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        #sponsors ul {
+            list-style: none;
+            padding: 0;
+            margin: 0 auto;
+            max-width: 700px;
+        }
+
+        #sponsors li {
+            font-size: 1.2rem;
+            padding: 0.5rem 1rem;
+            border-bottom: 1px solid #e5660b;
+            margin-bottom: 0.5rem;
+        }
+
+       
+
+
+        /* Fun Facts Styles */
+        #fun-facts {
+            padding: 4rem 2rem;
+            background-color: #333333;
+            color: #EEEEEE;
+            text-align: center;
+            word-wrap: break-word;
+        }
+
+        #fun-facts h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        #fun-facts p {
+            font-size: 1.2rem;
+        }
+
+        /* Footer Styles */
+        footer {
+            padding: 2rem 1rem;
+            background-color: #1A1A1A;
+            color: #BDBDBD;
+            text-align: center;
+            font-size: 0.8rem;
+            word-wrap: break-word;
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 0.5rem;
+            }
+
+            header .logo {
+                font-size: 1.5rem;
+                margin-bottom: 0.5rem;
+            }
+
+            header nav ul {
+                flex-direction: column;
+                gap: 0.5rem;
+                margin: 0;
+                padding: 0;
+            }
+
+            header nav a {
+                font-size: 1rem;
+                padding: 0.3rem;
+                display: block;
+            }
+
+            header nav a::before {
+                display: none;
+            }
+
+            .network-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 3rem;
+            }
+
+            .network-grid > * {
+                grid-column: auto;
+            }
+
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <a href="#" class="logo">Aspyr<span>Pathways</span></a>
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#networks">Networks</a></li>
+                <li><a href="connectwithcounselors.html">Connect with Counselors</a></li>
+                 <li><a href="dp.html">Diploma Pathways</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <canvas id="starfield-canvas"></canvas>
+
+        <div id="hero-content">
+            <h1>Your High School Roadmap to College and Career Success.</h1>
+            <p>Find Your Passion, Construct Your Path.</p>
+            <a href="#networks" class="btn">Explore Pathways</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2>About AspyrPathways</h2>
+<p>With endless possibilities ahead, AspyrPathways helps high school students cut through the confusion and focus on what truly matters—their future. We streamline the journey by identifying each student's passions and matching them with the right courses designed for their chosen career path. By providing clear direction and purpose, Aspyr ensures every student takes the right steps toward success, turning dreams into achievable goals.</p>    </section>
+
+    <!-- Networks Section -->
+    <section id="networks">
+        <h2>Explore Our Pathways</h2>
+           <div class="network-grid">
+                <div class="network-card">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBnwEI-nBnIBaRFhoTuPQMHWdfnE_JKUIxeg&s" alt="Arts & Communication">
+                    <h3>Arts & Communication</h3>
+                    <p>Explore pathways in visual arts, journalism, digital media, and performing arts.</p>
+                    <a href="A&C.html">Learn More</a>
+                </div>
+                <div class="network-card">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvL1j2iunZQDwKgvLCjNAipv29eHEtVqGKmQ&s" alt="Agriculture & Natural Resources">
+                    <h3>Agriculture & Natural Resources</h3>
+                    <p>Discover careers related to agriculture, environment, and sustainability.</p>
+                    <a href="A&NR.html">Learn More</a>
+                </div>
+                <div class="network-card">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTesefe5-fQlc81HMv7X1k2tFVsBTQ1m_zcI8jQtYZ0Z9qYMlH_6iXo4Cw9Q8_5dJeoHjE&usqp=CAU" alt="Medical Network">
+                    <h3>Medical Network</h3>
+                    <p>Explore pathways to become a professional in the medical field.</p>
+                    <a href="MD&PS.html">Learn More</a>
+                </div>
+                <div class="network-card">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLa5MOBoKsneqiD8bo5Y8Q63iWQdvHxvoEUTZlLNHi-GZ6fAavi18IWORpkHA1AOtVNyw&usqp=CAU" alt="Public Service Network">
+                    <h3>Public Service Network</h3>
+                    <p>Discover careers related to public safety and education..</p>
+                    <a href="PBS.html">Learn More</a>
+                </div>
+                <div class="network-card">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRf-q8_7jl4oaZW8Ya3ZzWktucNHgpAYHj2czR2Xq6-0MFfeurRiJD2ilj36796zKoT5Oc&usqp=CAU" alt="Engineering & Technology">
+                    <h3>Engineering & Technology</h3>
+                    <p>Explore pathways to learn and become an engineer or prodigy in technology.</p>
+                    <a href="ETI.html">Learn More</a>
+                </div>
+                <div class="network-card">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQ3Bdgc1BEdhxHC0qAmqOlMqnSyHteQLBk3g&s" alt="Innovation">
+                    <h3>Innovation</h3>
+                    <p>Discover a new way to innovate and learn with our innovation courses.</p>
+                    <a href="innovation.html">Learn More</a>
+                </div>
+                <div class="network-card">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQojtpp4hn1A0aLECEOJWPOknUDsy2m3jjtAPRc6C3j7OkfBW0sLbByJYazC9OE68WpEzA&usqp=CAU" alt="Business & Administration">
+                    <h3>Business & Administration</h3>
+                    <p>Learn how to grow your business and explore the economy with our programs.</p>
+                    <a href="business.html">Learn More</a>
+                </div>
+                <div class="network-card trouble-card">
+                    <h3>Having Trouble?</h3>
+                    <p>Take our survey to see what's the perfect match for you!</p>
+                    <a href="FC.html" class="btn">Get Started</a>
+                </div>
+
+
+            </div>
+    </section>
+
+    <!-- Sponsor Section Styles - List instead of Card -->
+    <section id="sponsors">
+        <h2>Our Partners</h2>
+        <ul>
+            <li><span class="shine">Indiana Department of Education</span></li>
+            <li><span class="shine">Fishers High School</span></li>
+            <li><span class="shine">Hamilton Southeastern High School</span></li>
+            <li><span class="shine">Fishers Junior High</span></li>
+            <li><span class="shine">Hamilton Southeastern Junior High</span></li>
+            <li><span class="shine">Fall Creek Junior High</span></li>
+            <li><span class="shine">Riverside Junior High</span></li>
+        </ul>
+    </section>
+
+    <!-- Fun Facts Section -->
+    <section id="fun-facts">
+        <h2>Fun Fact</h2>
+        <p>Our students have a 95% college acceptance rate!</p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        &copy; 2024 Aspyr Pathways. All rights reserved.
+    </footer>
+
+    <script>
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+            } else {
+                header.style.backgroundColor = 'rgba(0, 0, 0, 0.3)';
+            }
+        });
+            // Starfield
+            const canvas = document.getElementById('starfield-canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            const stars = [];
+            const numberOfStars = 200;  //Adjust star count
+            const starSpeed = 0.5;  //Adjust the speed of the stars
+
+            class Star {
+                constructor() {
+                    this.x = Math.random() * canvas.width;
+                    this.y = Math.random() * canvas.height;
+                    this.size = Math.random() * 4; // Adjust star size
+                    this.z = Math.random() * 10;  //Depth for the stars.
+                }
+
+                draw() {
+                    ctx.fillStyle = 'white';  //Star color
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.closePath();
+                    ctx.fill();
+                }
+
+                update() {
+                    this.x -= starSpeed * this.z;  //Move the star to the left, faster based on depth
+
+                    if (this.x < 0) {  //If star moves off the screen, reset its position
+                        this.x = canvas.width;
+                        this.y = Math.random() * canvas.height;
+                        this.z = Math.random() * 5;
+                    }
+                }
+            }
+
+            function init() {
+                for (let i = 0; i < numberOfStars; i++) {
+                    stars.push(new Star());
+                }
+            }
+
+            function animate() {
+                requestAnimationFrame(animate);
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                for (let i = 0; i < stars.length; i++) {
+                    stars[i].update();
+                    stars[i].draw();
+                }
+            }
+
+            window.addEventListener('resize', () => {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+                stars.length = 0; //Clear existing stars.
+                init();
+            });
+
+            init();
+            animate();
+    </script>
+</body>
 </html>
