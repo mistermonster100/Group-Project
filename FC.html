@@ -3,502 +3,700 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personalized Career Suitability Survey</title>
+    <title>Career Network Pathways Survey</title>
     <style>
-        /* Header */
-        header {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          padding: 20px;
-          background: rgba(0, 0, 0, 0.8); /* Semi-transparent dark background for header */
-          position: sticky;
-          top: 0;
-          z-index: 1000;
-          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-        }
-
-        header .logo {
-          font-size: 2rem;
-          color: #dc0505; /* Red for the logo */
-        }
-
-        header .logo span {
-          color: #f5f5f5; /* White accent for contrast */
-        }
-
-        header nav {
-          display: flex;
-          align-items: center;
-        }
-
-        img {
-          width: 200px;
-          height: 200px;
-          object-fit: cover;
-          border-radius: 15px;
-        }
-
-        /* Navigation Buttons with Gradient */
-        .nav-buttons {
-          display: flex;
-        }
-
-        .nav-button {
-          background: linear-gradient(135deg, #d6d7d8, #d20808, #d20808); /* Initial gradient */
-          background-size: 200%; /* Make the gradient larger for smoother transitions */
-          background-position: left; /* Start position of the gradient */
-          color: white;
-          border: none;
-          padding: 10px 20px;
-          margin: 5px;
-          font-size: 1rem;
-          cursor: pointer;
-          border-radius: 5px;
-          text-transform: uppercase;
-          font-weight: bold;
-          transition: background-position 0.5s ease, transform 0.2s ease; /* Smooth transition for background and transform */
-          }
-
-        .nav-button:hover {
-              background-position: right; /* Shift the gradient position on hover */
-              transform: scale(1.05); /* Slight grow effect on hover */
-        }
-
-
         body {
-          font-family: 'Arial', sans-serif;
-          margin: 0;
-          padding: 0;
-          background: linear-gradient(135deg, #2D3142, #E71D36); /* Cool gradient background */
-          color: #fffdfd;
-          overflow-x: hidden;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #2f3030; /* Dark Grey */
+            color: #fff; /* White */
         }
 
         .container {
             position: relative;
-            background: #fff;
+            background: #4e4c4c; /* Medium Dark Grey */
             border-radius: 8px;
-            margin:30px;
+            margin: 30px;
             padding: 30px;
-            max-width: 800px;
+            max-width: 900px;
             width: 100%;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 10px rgb(177, 82, 82);
             left: 50%;
             transform: translateX(-50%);
         }
 
         h1 {
-            color: #d32f2f;
+            color: #e72323; /* Red */
             font-size: 2em;
             text-align: center;
-        }
-
-        p {
-            text-align: center;
-            font-size: 1em;
             margin-bottom: 20px;
-            color: black;
         }
 
         .question {
             margin-bottom: 30px;
+            padding: 20px;
+            background-color: #757474; /* Darker Grey */
+            border-radius: 10px;
         }
 
         .question p {
             font-size: 1.1em;
             font-weight: bold;
             margin-bottom: 10px;
-            color: #000000;
+            color: #fff; /* White */
         }
 
-        .slider-container {
+        .response-buttons {
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
+            justify-content: space-around;
+            margin-top: 15px;
         }
 
-        .slider {
-            -webkit-appearance: none;
-            width: 100%;
-            height: 8px;
-            border-radius: 4px;
-            background: #e0e0e0;
-            outline: none;
-            cursor: pointer;
-        }
-
-        .slider::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: #d32f2f;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-
-        .slider::-moz-range-thumb {
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: #d32f2f;
-            cursor: pointer;
-            transition: background 0.2s;
+        .response-button {
+            background-color: #555; /* Grey */
+            color: #fff; /* White */
+            padding: 10px 15px;
             border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            width: 30%; /* Adjust as needed for spacing */
+            text-align: center;
         }
 
-        .slider::-webkit-slider-thumb:hover {
-            background: #b71c1c;
+        .response-button:hover {
+            background-color: #777; /* Lighter Grey */
         }
 
-        .slider-labels {
-            display: flex;
-            justify-content: space-between;
-            width: 100%;
-            font-size: 0.9em;
-            color: #757575;
+        .response-button.selected {
+            background-color: #E71D36; /* Red */
         }
 
         .button {
             display: block;
             width: 100%;
-            background-color: #1976d2;
+            background-color: #E71D36; /* Red */
             color: white;
             padding: 15px;
             border: none;
             border-radius: 5px;
             font-size: 1.1em;
             font-weight: bold;
-            text-align: center;
             cursor: pointer;
             margin-top: 20px;
             transition: background-color 0.2s;
         }
 
         .button:hover {
-            background-color: #1565c0;
+            background-color: #d32f2f; /* Slightly Darker Red */
         }
 
         #results {
             margin-top: 30px;
+        }
+
+        .network-result {
+            background: #fff; /* White */
             padding: 20px;
-            background-color: #f5f5f5;
-            border: 1px solid #e0e0e0;
+            margin-bottom: 20px;
             border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            color: #333; /* Dark Grey */
         }
 
-        .network-score {
-            margin: 15px 0;
-            padding: 10px;
-            background-color: #fff;
+        .network-result h3 {
+            color: #E71D36; /* Red */
+            margin-top: 0;
+        }
+
+        .college-info {
+            background: #f5f5f5; /* Very Light Grey */
+            padding: 15px;
+            margin: 10px 0;
             border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+             color: #333; /* Dark Grey */
         }
 
-        .network-score h3 {
-            color: #d32f2f;
-            margin: 0 0 10px 0;
+        .career-list {
+            columns: 2;
+            margin: 15px 0;
         }
 
         .score-bar {
             height: 10px;
-            background-color: #e0e0e0;
+            background-color: #ddd; /* Light Grey */
             border-radius: 5px;
-            margin-bottom: 10px;
+            margin: 10px 0;
             overflow: hidden;
         }
 
         .score-fill {
             height: 100%;
-            background-color: #1976d2;
+            background-color: #E71D36; /* Red */
             transition: width 0.5s ease-out;
         }
-
-        .career-suggestions {
-            padding-left: 20px;
-        }
-
-        .career-suggestions li {
-            margin: 5px 0;
-            color: #424242;
-        }
-
     </style>
 </head>
-
-
 <body>
-
-<header>
-    <a href="index.html" style="font-size: 2rem; color: #d20808; text-decoration: none; cursor: pointer;">
-        Aspyr<span style="color: white;">Pathways</span>
-    </a>
-
-    <nav>
-        <!-- Gradient Buttons -->
-        <div class="nav-buttons">
-            <button class="nav-button" onclick="location.href='about.html'">About</button>
-            <button class="nav-button" onclick="location.href='SR.html'">Class Reviews</button>
-            <button class="nav-button" onclick="location.href='dp.html'">Diploma Pathways</button>
-            <button class="nav-button" onclick="location.href='connectwithcounselors.html'">Connect with Counselors</button>
-            <button class="nav-button" onclick="location.href='FC.html'">Survey</button>
-        </div>
-    </nav>
-</header>
-
-<div class="container">
-    <h1>Personalized Career Suitability Survey</h1>
-    <p>Rate how strongly you agree with each statement from 1 (Strongly Disagree) to 5 (Strongly Agree)</p>
-    <div id="survey-container"></div>
-    <button class="button" id="submit-button" onclick="handleSubmit()">Submit</button>
-    <div id="results"></div>
-</div>
-
-</body>
+    <div class="container">
+        <h1>Career Network Pathways Survey</h1>
+        <p>This survey is the first clue into the start of your journey. After you have submitted your results, you will be shown your TOP 3 RESULTS with example careers and colleges, there programs they provide and exclusive notes. <p>
+        <div id="survey-container"></div>
+        <button class="button" onclick="handleSubmit()">Show My Career Matches</button>
+        <div id="results"></div>
+    </div>
 
 <script>
-    const questions = [
-        {
-            text: "I enjoy working on creative projects and expressing ideas through various media.",
-            networks: {
-                "Arts & Communication": 2,
-                "Innovation": 1
+const careerNetworks = {
+    "Arts & Communication": {
+        careers: ["Graphic Designer", "Public Relations Specialist", "Digital Media Producer", "Journalist", "Marketing Creative Director"],
+        colleges: [
+            {
+                name: "Indiana University Herron School of Art + Design",
+                location: "Bloomington IN, Indianapolis IN",
+                programs: ["Fine Arts", "Visual Communication Design", "Photography"],
+                requirements: {
+                    gpa: "3.0+",
+                    sat: "Test Optional",
+                    notes: "Strong portfolio recommended"
+                }
+            },
+            {
+                name: "Ball State University",
+                location: "Muncie, IN",
+                programs: ["Telecommunications", "Journalism", "Theatre"],
+                requirements: {
+                    gpa: "3.0+",
+                    sat: "Test Optional",
+                    notes: "Portfolio/Audition may be required"
+                }
+            },
+            {
+                name: "University of Indianapolis",
+                location: "Indianapolis, IN",
+                programs: ["Communication", "Electronic Media", "Music"],
+                requirements: {
+                    gpa: "3.0+",
+                    sat: "Test Optional",
+                    notes: "Small class sizes"
+                }
             }
-        },
-        {
-            text: "I like solving complex technical problems and understanding how things work.",
-            networks: {
-                "Engineering & Technology": 2,
-                "Innovation": 1
+        ]
+    },
+    "Engineering & Technology": {
+        careers: ["Software Engineer", "Mechanical Engineer", "Data Scientist", "Systems Architect", "Robotics Engineer"],
+        colleges: [
+            {
+                name: "Rose-Hulman Institute of Technology",
+                location: "Terre Haute, IN",
+                programs: ["Computer Science", "Mechanical Engineering", "Software Engineering"],
+                requirements: {
+                    gpa: "3.8+",
+                    sat: "1300-1480",
+                    notes: "Strong math background required"
+                }
+            },
+            {
+                name: "Purdue University",
+                location: "West Lafayette IN, Indianapolis IN",
+                programs: ["Engineering", "Computer Science", "Technology"],
+                requirements: {
+                    gpa: "3.5+",
+                    sat: "1190-1410",
+                    notes: "Competitive admission for engineering"
+                }
+            },
+            {
+                name: "Valparaiso University",
+                location: "Valparaiso, IN",
+                programs: ["Engineering", "Computer Science"],
+                requirements: {
+                    gpa: "3.3+",
+                    sat: "1100+",
+                    notes: "Small class sizes; strong co-op program"
+                }
             }
-        },
-        {
-            text: "I enjoy helping people and making a positive impact in their lives.",
-            networks: {
-                "Public Service Network": 2,
-                "Medical Network": 1
+        ]
+    },
+    "Medical Network": {
+        careers: ["Registered Nurse", "Physical Therapist", "Medical Laboratory Technician", "Healthcare Administrator", "Pharmacist"],
+        colleges: [
+            {
+                name: "Indiana University",
+                location: "Bloomington IN, Indianapolis IN",
+                programs: ["Medicine", "Nursing", "Healthcare Administration"],
+                requirements: {
+                    gpa: "3.7+",
+                    sat: "Test Optional",
+                    notes: "Strong science background required"
+                }
+            },
+            {
+                name: "Butler University",
+                location: "Indianapolis, IN",
+                programs: ["Pharmacy", "Healthcare Studies", "Biology"],
+                requirements: {
+                    gpa: "3.5+",
+                    sat: "1170-1350",
+                    notes: "Pre-health focus available"
+                }
+            },
+            {
+                name: "Purdue University",
+                location: "West Lafayette IN, Indianapolis IN",
+                programs: ["Nursing", "Pharmacy", "Public Health"],
+                requirements: {
+                    gpa: "3.4+",
+                    sat: "1190-1410",
+                    notes: "Strong science and math background"
+                }
             }
-        },
-        {
-            text: "I like working with nature and understanding environmental systems.",
-            networks: {
-                "Agriculture & Natural Resources": 2,
-                "Public Service Network": 1
+        ]
+    },
+    "Business & Administration": {
+        careers: ["Financial Analyst", "Marketing Manager", "Project Manager", "Business Development Manager", "Investment Banker"],
+        colleges: [
+            {
+                name: "Indiana University Kelley School of Business",
+                location: "Bloomington IN, Indianapolis IN",
+                programs: ["Business Administration", "Finance", "Marketing"],
+                requirements: {
+                    gpa: "3.8+",
+                    sat: "1230-1420",
+                    notes: "Direct admit requirements higher"
+                }
+            },
+            {
+                name: "Butler University",
+                location: "Indianapolis, IN",
+                programs: ["Business", "Marketing", "Finance"],
+                requirements: {
+                    gpa: "3.5+",
+                    sat: "1170-1350",
+                    notes: "Internship opportunities available"
+                }
+            },
+                        {
+                name: "University of Evansville",
+                location: "Evansville, IN",
+                programs: ["Business Administration", "Accounting", "Economics"],
+                requirements: {
+                    gpa: "3.3+",
+                    sat: "1100+",
+                    notes: "Strong international programs"
+                }
             }
-        },
-        {
-            text: "I am interested in health, medicine, and scientific research.",
-            networks: {
-                "Medical Network": 2,
-                "Engineering & Technology": 1
+        ]
+    },
+    "Public Service Network": {
+        careers: ["Social Worker", "Urban Planner", "Public Policy Analyst", "Non-profit Manager", "Emergency Management Director"],
+        colleges: [
+            {
+                name: "IUI School of Public and Environmental Affairs",
+                location: "Indianapolis, IN",
+                programs: ["Public Affairs", "Criminal Justice", "Non-profit Management"],
+                requirements: {
+                    gpa: "3.0+",
+                    sat: "Test Optional",
+                    notes: "Service learning opportunities"
+                }
+            },
+            {
+                name: "Indiana State University",
+                location: "Terre Haute, IN",
+                programs: ["Criminology and Criminal Justice", "Social Work"],
+                requirements: {
+                    gpa: "2.75+",
+                    sat: "Test Optional",
+                    notes: "Community engagement focus"
+                }
+            },
+            {
+                name: "Ball State University",
+                location: "Muncie, IN",
+                programs: ["Urban Planning", "Political Science", "Social Work"],
+                requirements: {
+                    gpa: "3.0+",
+                    sat: "Test Optional",
+                    notes: "Internship opportunities in government"
+                }
             }
-        },
-        {
-            text: "I enjoy organizing, planning, and managing resources efficiently.",
-            networks: {
-                "Business & Administration": 2,
-                "Innovation": 1
+        ]
+    },
+    "Agriculture & Natural Resources": {
+        careers: ["Environmental Scientist", "Agricultural Manager", "Wildlife Biologist", "Conservation Officer", "Sustainable Agriculture Consultant"],
+        colleges: [
+            {
+                name: "Purdue University",
+                location: "West Lafayette IN, Indianapolis IN",
+                programs: ["Agricultural Science", "Environmental Studies", "Natural Resources"],
+                requirements: {
+                    gpa: "3.3+",
+                    sat: "1190-1410",
+                    notes: "Research opportunities available"
+                }
+            },
+             {
+                name: "Purdue University Fort Wayne",
+                location: "Fort Wayne, IN",
+                programs: ["Environmental Science"],
+                requirements: {
+                    gpa: "2.75+",
+                    sat: "Test Optional",
+                    notes: ""
+                }
+            },
+            {
+                name: "Ball State University",
+                location: "Muncie, IN",
+                programs: ["Natural Resources and Environmental Management"],
+                requirements: {
+                    gpa: "3.0+",
+                    sat: "Test Optional",
+                    notes: "Field experience opportunities"
+                }
             }
-        },
-        {
-            text: "I like learning about different cultures and global perspectives.",
-            networks: {
-                "International Baccalaureate": 2,
-                "Arts & Communication": 1
+        ]
+    },
+    "Innovation": {
+        careers: ["Product Manager", "Innovation Consultant", "R&D Specialist", "Technology Entrepreneur", "Design Thinking Consultant"],
+        colleges: [
+            {
+                name: "Purdue University",
+                location: "West Lafayette IN, Indianapolis IN",
+                programs: ["Innovation and Entrepreneurship", "Design Thinking"],
+                requirements: {
+                    gpa: "3.5+",
+                    sat: "1190-1410",
+                    notes: "Interdisciplinary programs"
+                }
+            },
+            {
+                name: "Indiana University",
+                location: "Bloomington IN, Indianapolis IN",
+                programs: ["Technology Management", "Entrepreneurship"],
+                requirements: {
+                    gpa: "3.3+",
+                    sat: "Test Optional",
+                    notes: "Business and technology focus"
+                }
+            },
+            {
+                name: "Rose-Hulman Institute of Technology",
+                location: "Terre Haute, IN",
+                programs: ["Engineering Design", "Software Engineering"],
+                requirements: {
+                    gpa: "3.8+",
+                    sat: "1300-1480",
+                    notes: "Strong technical background"
+                }
             }
-        },
-        {
-            text: "I enjoy analyzing data and using technology to solve problems.",
-            networks: {
-                "Engineering & Technology": 2,
-                "Business & Administration": 1
-            }
-        },
-        {
-            text: "I like leading teams and coordinating group efforts.",
-            networks: {
-                "Business & Administration": 2,
-                "Public Service Network": 1
-            }
-        },
-        {
-            text: "I enjoy teaching others and sharing knowledge.",
-            networks: {
-                "International Baccalaureate": 2,
-                "Public Service Network": 1
-            }
-        },
-        // Adding new questions
-        {
-            text: "I am comfortable working with financial data and making investment decisions.",
-            networks: {
-                "Business & Administration": 2,
-                "Innovation": 1
-            }
-        },
-        {
-            text: "I enjoy conducting research and discovering new information.",
-            networks: {
-                "Medical Network": 2,
-                "Engineering & Technology": 1
-            }
-        },
-        {
-            text: "I like working with digital tools and creating online content.",
-            networks: {
-                "Arts & Communication": 2,
-                "Engineering & Technology": 1
-            }
-        },
-        {
-            text: "I am passionate about sustainability and environmental conservation.",
-            networks: {
-                "Agriculture & Natural Resources": 2,
-                "Public Service Network": 1
-            }
-        },
-        {
-            text: "I enjoy solving puzzles and complex logical problems.",
-            networks: {
-                "Engineering & Technology": 2,
-                "Innovation": 1
-            }
-        }
-    ];
-
-    const careerNetworks = {
-        "Arts & Communication": {
-            careers: ["Graphic Designer", "Public Relations Specialist", "Content Creator", "Journalist", "Marketing Creative Director", "Digital Media Producer"]
-        },
-        "Agriculture & Natural Resources": {
-            careers: ["Environmental Scientist", "Agricultural Manager", "Wildlife Biologist", "Conservation Officer", "Sustainable Agriculture Consultant", "Renewable Energy Specialist"]
-        },
-        "Medical Network": {
-            careers: ["Registered Nurse", "Pharmacist", "Physical Therapist", "Medical Laboratory Technician", "Healthcare Administrator", "Biomedical Researcher"]
-        },
-        "Public Service Network": {
-            careers: ["Social Worker", "Urban Planner", "Public Policy Analyst", "Community Outreach Coordinator", "Non-profit Manager", "Emergency Management Director"]
-        },
-        "Engineering & Technology": {
-            careers: ["Software Engineer", "Mechanical Engineer", "Data Scientist", "Systems Architect", "Robotics Engineer", "AI Developer"]
-        },
-        "Innovation": {
-            careers: ["Product Manager", "Innovation Consultant", "Research & Development Specialist", "Technology Entrepreneur", "Design Thinking Consultant", "Strategic Innovation Director"]
-        },
-        "Business & Administration": {
-            careers: ["Financial Analyst", "Marketing Manager", "Project Manager", "Business Development Manager", "Human Resources Director", "Investment Banker"]
-        },
-        "International Baccalaureate": {
-            careers: ["International Teacher", "Education Consultant", "Curriculum Developer", "Global Programs Coordinator", "Educational Technology Specialist", "International School Administrator"]
-        }
-    };
-
-    function createSurvey() {
-        const container = document.getElementById("survey-container");
-        questions.forEach((question, index) => {
-            const questionDiv = document.createElement("div");
-            questionDiv.className = "question";
-
-            const questionText = document.createElement("p");
-            questionText.textContent = `${index + 1}. ${question.text}`;
-            questionDiv.appendChild(questionText);
-
-            const sliderContainer = document.createElement("div");
-            sliderContainer.className = "slider-container";
-
-            const slider = document.createElement("input");
-            slider.type = "range";
-            slider.min = 1;
-            slider.max = 5;
-            slider.value = 3;
-            slider.className = "slider";
-            slider.id = `question-${index}`;
-
-            const labels = document.createElement("div");
-            labels.className = "slider-labels";
-            labels.innerHTML = `
-                <span>Strongly Disagree</span>
-                <span>Neutral</span>
-                <span>Strongly Agree</span>
-            `;
-
-            sliderContainer.appendChild(slider);
-            sliderContainer.appendChild(labels);
-            questionDiv.appendChild(sliderContainer);
-            container.appendChild(questionDiv);
-        });
+        ]
     }
+};
 
-    function handleSubmit() {
-        const networkScores = Object.keys(careerNetworks).reduce((acc, network) => {
-            acc[network] = 0;
-            return acc;
-        }, {});
+const questions = [
+   {
+        text: "I enjoy working on creative projects and expressing ideas through various media.",
+        networks: {
+            "Arts & Communication": 2,
+            "Innovation": 1
+        }
+    },
+    {
+        text: "I like solving complex technical problems and understanding how things work.",
+        networks: {
+            "Engineering & Technology": 2,
+            "Innovation": 1
+        }
+    },
+    {
+        text: "I enjoy helping people and making a positive impact in their lives.",
+        networks: {
+            "Public Service Network": 2,
+            "Medical Network": 1
+        }
+    },
+    {
+        text: "I like working with nature and understanding environmental systems.",
+        networks: {
+            "Agriculture & Natural Resources": 2,
+            "Public Service Network": 1
+        }
+    },
+    {
+        text: "I am interested in health, medicine, and scientific research.",
+        networks: {
+            "Medical Network": 2,
+            "Engineering & Technology": 1
+        }
+    },
+    {
+        text: "I enjoy organizing, planning, and managing resources efficiently.",
+        networks: {
+            "Business & Administration": 2,
+            "Innovation": 1
+        }
+    },
+    {
+        text: "I enjoy analyzing data and using technology to solve problems.",
+        networks: {
+            "Engineering & Technology": 2,
+            "Business & Administration": 1
+        }
+    },
+    {
+        text: "I like leading teams and coordinating group efforts.",
+        networks: {
+            "Business & Administration": 2,
+            "Public Service Network": 1
+        }
+    },
+    {
+        text: "I am comfortable working with financial data and making investment decisions.",
+        networks: {
+            "Business & Administration": 2,
+            "Innovation": 1
+        }
+    },
+    {
+        text: "I enjoy conducting research and discovering new information.",
+        networks: {
+            "Medical Network": 2,
+            "Engineering & Technology": 1
+        }
+    },
+    {
+        text: "I am passionate about sustainability and environmental conservation.",
+        networks: {
+            "Agriculture & Natural Resources": 2,
+            "Public Service Network": 1
+        }
+    },
+    {
+        text: "I enjoy solving puzzles and complex logical problems.",
+        networks: {
+            "Engineering & Technology": 2,
+            "Innovation": 1
+        }
+    },
+   {
+        text: "I am drawn to creating visual content like videos, graphics, and websites.",
+        networks: {
+            "Arts & Communication": 2,
+            "Engineering & Technology": 1,
+            "Innovation": 1
+        }
+    },
+    {
+        text: "I am interested in the design and construction of buildings and infrastructure.",
+        networks: {
+            "Engineering & Technology": 2,
+            "Agriculture & Natural Resources": 1
+        }
+    },
+    {
+        text: "I enjoy learning about different cultures and engaging with people from diverse backgrounds.",
+        networks: {
+            "Public Service Network": 2,
+            "Arts & Communication": 1
+        }
+    },
+    {
+        text: "I am fascinated by the study of living organisms and biological processes.",
+        networks: {
+            "Medical Network": 2,
+            "Agriculture & Natural Resources": 1
+        }
+    },
+    {
+        text: "I am interested in learning how to develop new products and services",
+        networks: {
+            "Innovation": 2,
+            "Business & Administration": 1,
+            "Engineering & Technology": 1
+        }
+    },
+    {
+        text: "I want to work directly with people providing care.",
+        networks: {
+            "Medical Network": 2,
+            "Public Service Network": 1
+        }
+    },
+     {
+        text: "I am curious about the way the human body works.",
+        networks: {
+            "Medical Network": 2,
+            "Agriculture & Natural Resources": 1
+        }
+    },
+    {
+        text: "I am interested in managing the finances of a company.",
+        networks: {
+            "Business & Administration": 2,
+            "Engineering & Technology": 1
+        }
+    },
+    {
+        text: "I get satisfaction from organizing events.",
+        networks: {
+            "Business & Administration": 1,
+            "Arts & Communication": 1,
+            "Public Service Network": 2
+        }
+    },
+];
 
-        questions.forEach((question, index) => {
-            const value = parseInt(document.getElementById(`question-${index}`).value);
-            const weight = (value - 1) / 4; // Normalize to 0-1 range
+function createSurvey() {
+    const container = document.getElementById("survey-container");
+    questions.forEach((question, index) => {
+        const questionDiv = document.createElement("div");
+        questionDiv.className = "question";
 
-            Object.entries(question.networks).forEach(([network, impact]) => {
-                networkScores[network] += weight * impact;
+        const questionText = document.createElement("p");
+        questionText.textContent = `${index + 1}. ${question.text}`;
+        questionDiv.appendChild(questionText);
+
+        const responseButtonsDiv = document.createElement("div");
+        responseButtonsDiv.className = "response-buttons";
+
+        const responses = {
+            "Agree": 5,
+            "Neutral": 3,
+            "Disagree": 1
+        }; // Response values
+        for (const label in responses) {
+            const value = responses[label];
+            const button = document.createElement("button");
+            button.className = "response-button";
+            button.textContent = label;
+            button.dataset.questionIndex = index; // Store question index
+            button.dataset.value = value;       // Store response value
+
+            button.addEventListener("click", function() {
+                // Remove 'selected' class from all buttons in the same question
+                const buttons = responseButtonsDiv.querySelectorAll(".response-button");
+                buttons.forEach(btn => btn.classList.remove("selected"));
+
+                // Add 'selected' class to the clicked button
+                this.classList.add("selected");
             });
-        });
+            responseButtonsDiv.appendChild(button);
+        }
 
-        // Normalize scores to percentages
-        const maxPossibleScore = Math.max(...Object.values(networkScores));
-        Object.keys(networkScores).forEach(network => {
-            networkScores[network] = (networkScores[network] / maxPossibleScore) * 100;
-        });
+        questionDiv.appendChild(responseButtonsDiv);
+        container.appendChild(questionDiv);
+    });
+}
 
-        displayResults(networkScores);
+function handleSubmit() {
+    const networkScores = {};
+    Object.keys(careerNetworks).forEach(network => {
+        networkScores[network] = 0;
+    });
+
+    questions.forEach((question, index) => {
+        // Find the selected button for this question
+        const questionDiv = document.getElementById("survey-container").children[index];
+        const selectedButton = questionDiv.querySelector(".response-buttons .response-button.selected");
+
+        if (selectedButton) {
+            const value = parseInt(selectedButton.dataset.value); // Parse the value
+
+            // Accumulate network scores based on the question's networks
+            for (const network in question.networks) {
+                networkScores[network] += question.networks[network] * value;
+            }
+        } else {
+            alert(`Please answer question ${index + 1}.`);
+            return; // Stop if a question is unanswered
+        }
+    });
+    // Normalize scores to a percentage
+    let maxPossibleScore = 0;
+    for (const network in careerNetworks) {
+        let networkMax = 0;
+        questions.forEach(question => {
+            if (question.networks[network]) {
+                networkMax += question.networks[network] * 5;
+            }
+        });
+        maxPossibleScore = Math.max(maxPossibleScore, networkMax); //Not needed just to make the code more readable.
     }
 
-    function displayResults(scores) {
-      const resultsDiv = document.getElementById("results");
-      const sortedNetworks = Object.entries(scores)
-          .sort((a, b) => b[1] - a[1]);
+    const resultsDiv = document.getElementById("results");
+    resultsDiv.innerHTML = "";
 
-      // Map career networks to specific HTML files
-      const networkLinks = {
-          "Arts & Communication": "A&C.html",
-          "Agriculture & Natural Resources": "A&NR.html",
-          "Medical Network": "MD&PS.html",
-          "Public Service Network": "PBS.html",
-          "Engineering & Technology": "ETI.html",
-          "Innovation": "innovation.html",
-          "Business & Administration": "business.html",
-      };
+    const sortedNetworks = Object.entries(networkScores)
+        .sort(([, scoreA], [, scoreB]) => scoreB - scoreA)
+        .slice(0, 3); // Display top 3 networks
 
-      let html = '<h2>Your Career Network Matches</h2>';
+    sortedNetworks.forEach(([network, score]) => {
+        const networkResultDiv = document.createElement("div");
+        networkResultDiv.className = "network-result";
 
-      sortedNetworks.forEach(([network, score]) => {
-          const link = networkLinks[network] || "#"; // Use "#" as a fallback URL
+        const networkTitle = document.createElement("h3");
+        networkTitle.textContent = network;
+        networkResultDiv.appendChild(networkTitle);
 
-          html += `
-              <div class="network-score">
-                  <h3>
-                      <a href="${link}" target="_blank">${network}</a>
-                  </h3>
-                  <div class="score-bar">
-                      <div class="score-fill" style="width: ${score}%"></div>
-                  </div>
-                  <p>Match: ${Math.round(score)}%</p>
-                  <h4>Suggested Careers:</h4>
-                  <ul class="career-suggestions">
-                      ${careerNetworks[network].careers.map(career => `<li>${career}</li>`).join('')}
-                  </ul>
-              </div>
-          `;
-      });
+        //Score Bar
+        const scoreBar = document.createElement("div");
+        scoreBar.className = "score-bar";
+        const percentage = (score / maxPossibleScore) * 100;
+        const scoreFill = document.createElement("div");
+        scoreFill.className = "score-fill";
+        scoreFill.style.width = `${percentage}%`;
+        scoreBar.appendChild(scoreFill);
+        networkResultDiv.appendChild(scoreBar);
 
-      resultsDiv.innerHTML = html;
-  }
+        const careersTitle = document.createElement("h4");
+        careersTitle.textContent = "Possible Careers:";
+        networkResultDiv.appendChild(careersTitle);
 
+        const careerList = document.createElement("ul");
+        careerList.className = "career-list";
+        careerNetworks[network].careers.forEach(career => {
+            const careerItem = document.createElement("li");
+            careerItem.textContent = career;
+            careerList.appendChild(careerItem);
+        });
+        networkResultDiv.appendChild(careerList);
 
-    createSurvey();
+        const collegesTitle = document.createElement("h4");
+        collegesTitle.textContent = "Related Colleges:";
+        networkResultDiv.appendChild(collegesTitle);
+
+        careerNetworks[network].colleges.forEach(college => {
+            const collegeInfoDiv = document.createElement("div");
+            collegeInfoDiv.className = "college-info";
+
+            const collegeName = document.createElement("h5");
+            collegeName.textContent = college.name;
+            collegeInfoDiv.appendChild(collegeName);
+
+            const collegeLocation = document.createElement("p");
+            collegeLocation.textContent = `Location: ${college.location}`;
+            collegeInfoDiv.appendChild(collegeLocation);
+
+             const collegePrograms = document.createElement("p");
+            collegePrograms.textContent = `Programs: ${college.programs.join(", ")}`;
+            collegeInfoDiv.appendChild(collegePrograms);
+
+            const collegeRequirements = document.createElement("p");
+            collegeRequirements.textContent = `Requirements: GPA ${college.requirements.gpa}, SAT ${college.requirements.sat}, Notes: ${college.requirements.notes}`;
+            collegeInfoDiv.appendChild(collegeRequirements);
+
+            networkResultDiv.appendChild(collegeInfoDiv);
+        });
+
+        resultsDiv.appendChild(networkResultDiv);
+    });
+}
+
+createSurvey();
 </script>
 </body>
 </html>
