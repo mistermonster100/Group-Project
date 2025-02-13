@@ -9,37 +9,82 @@
           font-family: Arial, sans-serif;
           margin: 0;
           padding: 0;
-          background-color: #f4f4f4;
-          justify-content: center;
-          align-items: center;
-          height: 100vh;
-          overflow: hidden;
+          background-color: #1A1A1A;
+          min-height: 100vh;
+          overflow-x: hidden;
         }
 
         header {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          padding: 20px;
-          background: rgba(0, 0, 0, 0.8); /* Semi-transparent dark background for header */
-          position: sticky;
-          top: 0;
-          z-index: 1000;
-          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1rem;
+            z-index: 1000;
+            background-color: #1A1A1A;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s ease;
         }
 
         header .logo {
-          font-size: 2rem;
-          color: #dc0505; /* Red for the logo */
+            font-size: 2rem;
+            font-weight: 700;
+            color: #ffffff;
+            text-decoration: none;
+            white-space: nowrap;
+            margin-left: 20px;
         }
 
         header .logo span {
-          color: #f5f5f5; /* White accent for contrast */
+            color: #dc2e2b;
         }
 
-        header nav {
-          display: flex;
-          align-items: center;
+        header nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1rem;
+            padding: 0;
+            margin-right: 20px;
+        }
+
+        header nav a {
+            color: #FFFFFF;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            position: relative;
+            white-space: nowrap;
+            padding: 0.5rem 0;
+        }
+
+        header nav a::before {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #00eaff;
+            transition: width 0.3s ease;
+        }
+
+        header nav a:hover::before {
+            width: 100%;
+        }
+
+        .grid-container {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          grid-gap: 15px;
+          width: 90%;
+          max-width: 800px;
+          padding: 30px;
+          margin: 100px auto 0;
+          position: relative;
+          left: 0;
+          transform: none;
         }
 
         img {
@@ -49,49 +94,10 @@
           border-radius: 15px;
         }
 
-        /* Navigation Buttons with Gradient */
-        .nav-buttons {
-          display: flex;
-        }
-
-        .nav-button {
-          background: linear-gradient(135deg, #d6d7d8, #d20808, #d20808); /* Initial gradient */
-          background-size: 200%; /* Make the gradient larger for smoother transitions */
-          background-position: left; /* Start position of the gradient */
-          color: white;
-          border: none;
-          padding: 10px 20px;
-          margin: 5px;
-          font-size: 1rem;
-          cursor: pointer;
-          border-radius: 5px;
-          text-transform: uppercase;
-          font-weight: bold;
-          transition: background-position 0.5s ease, transform 0.2s ease; /* Smooth transition for background and transform */
-          }
-
-        .nav-button:hover {
-              background-position: right; /* Shift the gradient position on hover */
-              transform: scale(1.05); /* Slight grow effect on hover */
-        }
-
-
-        .grid-container {
-          position: relative;
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          grid-gap: 15px;
-          width: 90%;
-          max-width: 800px;
-          padding:30px;
-          left: 50%;
-          transform: translateX(-50%);
-        }
-
         .counselor-block {
           background: #ffffff;
           border: 2px solid #000000;
-          border-radius: 8px;
+          border-radius: 15px;
           padding: 15px;
           box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
           text-align: center;
@@ -161,121 +167,96 @@
           font-size: 1rem;
           margin: 0;
           text-transform: uppercase;
-        }.back-button {
-                position: fixed;
-                top: 20px;
-                left: 20px;
-                text-decoration: none;
-                color: var(--text-primary);
-                padding: 10px 20px;
-                background: rgba(229, 229, 229, 0.907);
-                border-radius: 30px;
-                box-shadow: 0 2px 10px rgba(88, 30, 30, 0.1);
-                transition: all 0.3s ease;
-                backdrop-filter: blur(10px);
-                border: 1px solid rgba(0, 0, 0, 0.918);
-                z-index: 1000;
-            }
-
-            .back-button:hover {
-                transform: translateY(-2px);
-                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-            }
+        }
     </style>
 </head>
 <body>
+    <header>
+        <a href="#" class="logo">Aspyr<span>Pathways</span></a>
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#networks">Networks</a></li>
+                <li><a href="connectwithcounselors.html">Connect with Counselors</a></li>
+                <li><a href="dp.html">Diploma Pathways</a></li>
+            </ul>
+        </nav>
+    </header>
 
-<header>
-    <a href="index.html" style="font-size: 2rem; color: #d20808; text-decoration: none; cursor: pointer;">
-        Aspyr<span style="color: white;">Pathways</span>
-    </a>
+    <div class="grid-container">
+        <!-- Team Red -->
+        <div class="counselor-block" style="border-color: #e60000;">
+            <div class="counselor-header" style="color: #e60000;">Team Red</div>
+            <div class="counselor-subtitle">GRADES 10-12, Last Names A-Graz</div>
+            <div class="counselor-info">
+                <div class="counselor-name">Katie Rehor</div>
+                <a href="mailto:krehor@hse.k12.in.us" class="counselor-email">krehor@hse.k12.in.us</a>
+            </div>
+            <div class="counselor-info">
+                <div class="counselor-name">Maggie Schwartzkopf</div>
+                <a href="mailto:mschwartzkopf@hse.k12.in.us" class="counselor-email">mschwartzkopf@hse.k12.in.us</a>
+            </div>
+            <div class="counselor-info">
+                <div class="counselor-name">Jenna Petroff</div>
+                <a href="mailto:jpetroff@hse.k12.in.us" class="counselor-email">jpetroff@hse.k12.in.us</a>
+            </div>
+        </div>
 
-    <nav>
-        <!-- Gradient Buttons -->
-        <div class="nav-buttons">
-            <button class="nav-button" onclick="location.href='about.html'">About</button>
-            <button class="nav-button" onclick="location.href='SR.html'">Class Reviews</button>
-            <button class="nav-button" onclick="location.href='dp.html'">Diploma Pathways</button>
-            <button class="nav-button" onclick="location.href='connectwithcounselors.html'">Connect with Counselors</button>
-            <button class="nav-button" onclick="location.href='FC.html'">Survey</button>
+        <!-- Team White -->
+        <div class="counselor-block" style="border-color: #000000;">
+            <div class="counselor-header" style="color: #000000;">TEAM WHITE</div>
+            <div class="counselor-subtitle">GRADES 10-12, LAST NAMES OI-Z</div>
+            <div class="counselor-info">
+                <div class="counselor-name">Matt Swaim</div>
+                <a href="mailto:mswaim@hse.k12.in.us" class="counselor-email">mswaim@hse.k12.in.us</a>
+            </div>
+            <div class="counselor-info">
+                <div class="counselor-name">Kelly Applegate</div>
+                <a href="mailto:kapplegate@hse.k12.in.us" class="counselor-email">kapplegate@hse.k12.in.us</a>
+            </div>
+            <div class="counselor-info">
+                <div class="counselor-name">Maria Chinni</div>
+                <a href="mailto:mchinni@hse.k12.in.us" class="counselor-email">mchinni@hse.k12.in.us</a>
+            </div>
         </div>
-    </nav>
-</header>
 
-<div class="grid-container">
-    <!-- Team Red -->
-    <div class="counselor-block" style="border-color: #e60000;">
-        <div class="counselor-header" style="color: #e60000;">Team Red</div>
-        <div class="counselor-subtitle">GRADES 10-12, Last Names A-Graz</div>
-        <div class="counselor-info">
-            <div class="counselor-name">Katie Rehor</div>
-            <a href="mailto:krehor@hse.k12.in.us" class="counselor-email">krehor@hse.k12.in.us</a>
+        <!-- Connect Circle -->
+        <div class="connect-circle">
+            <img src="https://image.maxpreps.io/school-mascot/9/5/1/951860ab-d82d-476e-b355-80a8dbad705e.gif?version=637304818800000000&width=1024&height=1024" alt="School Mascot">
+            <h2>Connect with Counselors</h2>
         </div>
-        <div class="counselor-info">
-            <div class="counselor-name">Maggie Schwartzkopf</div>
-            <a href="mailto:mschwartzkopf@hse.k12.in.us" class="counselor-email">mschwartzkopf@hse.k12.in.us</a>
+
+        <!-- Team Silver -->
+        <div class="counselor-block" style="border-color: #afabab;">
+            <div class="counselor-header" style="color: #989494;">Team Silver</div>
+            <div class="counselor-subtitle">GRADES 10-12, Last Names GRB-OHZ</div>
+            <div class="counselor-info">
+                <div class="counselor-name">Jacob Hornberger</div>
+                <a href="mailto:jhornberger@hse.k12.in.us" class="counselor-email">jhornberger@hse.k12.in.us</a>
+            </div>
+            <div class="counselor-info">
+                <div class="counselor-name">Lizette Baumann</div>
+                <a href="mailto:lbaumann@hse.k12.in.us" class="counselor-email">lbaumann@hse.k12.in.us</a>
+            </div>
+            <div class="counselor-info">
+                <div class="counselor-name">Lindsay Thomas</div>
+                <a href="mailto:lthomas@hse.k12.in.us" class="counselor-email">lthomas@hse.k12.in.us</a>
+            </div>
         </div>
-        <div class="counselor-info">
-            <div class="counselor-name">Jenna Petroff</div>
-            <a href="mailto:jpetroff@hse.k12.in.us" class="counselor-email">jpetroff@hse.k12.in.us</a>
+
+        <!-- Team Freshman -->
+        <div class="counselor-block" style="border-color: #e60606;">
+            <div class="counselor-header" style="color: #e60606;">Team Freshman</div>
+            <div class="counselor-subtitle">GRADES 9</div>
+            <div class="counselor-info">
+                <div class="counselor-name">Steven Curtis</div>
+                <a href="mailto:scurtis@hse.k12.in.us" class="counselor-email">scurtis@hse.k12.in.us</a>
+            </div>
+            <div class="counselor-info">
+                <div class="counselor-name">Maggie Stiller</div>
+                <a href="mailto:mstiller@hse.k12.in.us" class="counselor-email">mstiller@hse.k12.in.us</a>
+            </div>
         </div>
     </div>
-
-    <!-- Team White -->
-    <div class="counselor-block" style="border-color: #000000;">
-        <div class="counselor-header" style="color: #000000;">TEAM WHITE</div>
-        <div class="counselor-subtitle">GRADES 10-12, LAST NAMES OI-Z</div>
-        <div class="counselor-info">
-            <div class="counselor-name">Matt Swaim</div>
-            <a href="mailto:mswaim@hse.k12.in.us" class="counselor-email">mswaim@hse.k12.in.us</a>
-        </div>
-        <div class="counselor-info">
-            <div class="counselor-name">Kelly Applegate</div>
-            <a href="mailto:kapplegate@hse.k12.in.us" class="counselor-email">kapplegate@hse.k12.in.us</a>
-        </div>
-        <div class="counselor-info">
-            <div class="counselor-name">Maria Chinni</div>
-            <a href="mailto:mchinni@hse.k12.in.us" class="counselor-email">mchinni@hse.k12.in.us</a>
-        </div>
-    </div>
-
-    <!-- Connect Circle -->
-    <div class="connect-circle">
-        <img src="https://image.maxpreps.io/school-mascot/9/5/1/951860ab-d82d-476e-b355-80a8dbad705e.gif?version=637304818800000000&width=1024&height=1024" alt="School Mascot">
-        <h2>Connect with Counselors</h2>
-    </div>
-
-    <!-- Team Silver -->
-    <div class="counselor-block" style="border-color: #afabab;">
-        <div class="counselor-header" style="color: #989494;">Team Silver</div>
-        <div class="counselor-subtitle">GRADES 10-12, Last Names GRB-OHZ</div>
-        <div class="counselor-info">
-            <div class="counselor-name">Jacob Hornberger</div>
-            <a href="mailto:jhornberger@hse.k12.in.us" class="counselor-email">jhornberger@hse.k12.in.us</a>
-        </div>
-        <div class="counselor-info">
-            <div class="counselor-name">Lizette Baumann</div>
-            <a href="mailto:lbaumann@hse.k12.in.us" class="counselor-email">lbaumann@hse.k12.in.us</a>
-        </div>
-        <div class="counselor-info">
-            <div class="counselor-name">Lindsay Thomas</div>
-            <a href="mailto:lthomas@hse.k12.in.us" class="counselor-email">lthomas@hse.k12.in.us</a>
-        </div>
-    </div>
-
-    <!-- Team Freshman -->
-    <div class="counselor-block" style="border-color: #e60606;">
-        <div class="counselor-header" style="color: #e60606;">Team Freshman</div>
-        <div class="counselor-subtitle">GRADES 9</div>
-        <div class="counselor-info">
-            <div class="counselor-name">Steven Curtis</div>
-            <a href="mailto:scurtis@hse.k12.in.us" class="counselor-email">scurtis@hse.k12.in.us</a>
-        </div>
-        <div class="counselor-info">
-            <div class="counselor-name">Maggie Stiller</div>
-            <a href="mailto:mstiller@hse.k12.in.us" class="counselor-email">mstiller@hse.k12.in.us</a>
-        </div>
-    </div>
-</div>
 </body>
 </html>
