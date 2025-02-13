@@ -12,117 +12,129 @@
         padding: 0;
         min-height: 100vh;
         color: #ffffff;
-        overflow-x: hidden;
         background-color: #1A1A1A;
     }
 
+    /* Sidebar styles */
     header {
         position: fixed;
         top: 0;
         left: 0;
-        width: 100%;
-        padding: 1rem;
-        z-index: 1000;
-        background-color: #1A1A1A;
+        width: 250px;
+        height: 100vh;
+        background-color: #0f0f0f;
+        padding: 2rem;
         display: flex;
-        justify-content: space-between;
-        align-items: center;
-        transition: background-color 0.3s ease;
+        flex-direction: column;
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
     }
 
-    header .logo {
+    .logo-button {
         font-size: 2rem;
         font-weight: 700;
-        color: #d20808;
+        color: #dc2e2b;
         text-decoration: none;
-        margin-left: 2rem;
+        padding: 0.75rem;
+        margin-bottom: 3rem;
+        text-align: center;
+        cursor: pointer;
     }
 
-    header .logo span {
+    .logo-button span {
         color: white;
     }
 
     header nav {
-        margin-right: 2rem;
+        width: 100%;
     }
 
     header nav ul {
         list-style: none;
-        display: flex;
-        gap: 2rem;
         padding: 0;
         margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    header nav li {
+        position: relative;
+        padding-left: 1rem;
     }
 
     header nav a {
         color: #FFFFFF;
         text-decoration: none;
         font-weight: 600;
-        font-size: 0.9rem;
+        font-size: 1.1rem;
         position: relative;
-        white-space: nowrap;
+        display: inline-block;
         padding: 0.5rem 0;
     }
 
     header nav a::before {
         content: '';
         position: absolute;
-        bottom: -3px;
+        bottom: -2px;
         left: 0;
         width: 0;
         height: 2px;
         background-color: #00eaff;
         transition: width 0.3s ease;
+        box-shadow: 0 0 10px #00eaff;
     }
 
     header nav a:hover::before {
         width: 100%;
     }
 
+    /* Main content styles */
     .content-container {
+        margin-left: 250px;
+        padding: 4rem;
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
-        margin-top: 100px;
-    }
-
-    .pdf-link {
-        display: inline-block;
-        padding: 15px 30px;
-        background: linear-gradient(135deg, #4caf50, #388e3c);
-        color: #ffffff;
-        font-family: 'Poppins', sans-serif;
-        font-size: 1.2em;
-        font-weight: 600;
-        text-decoration: none;
-        border-radius: 30px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-        transition: all 0.3s ease;
-        text-align: center;
-        margin-top: 20px;
-    }
-
-    .pdf-link:hover {
-        background: linear-gradient(135deg, #43a047, #2e7d32);
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
-        transform: translateY(-2px);
+        min-height: 100vh;
     }
 
     h1 {
         font-family: 'Poppins', sans-serif;
+        font-size: 2.5rem;
+        margin-bottom: 3rem;
         text-align: center;
-        margin-top: 20px;
+    }
+
+    .pdf-link {
+        display: inline-block;
+        width: 80%;
+        max-width: 400px;
+        padding: 1.25rem;
+        background: linear-gradient(135deg, #d20808, #ff1f1f);
+        color: #ffffff;
+        font-family: 'Poppins', sans-serif;
+        font-size: 1.1rem;
+        font-weight: 600;
+        text-decoration: none;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(210, 8, 8, 0.3);
+        transition: all 0.3s ease;
+        text-align: center;
+        margin-bottom: 1.5rem;
+    }
+
+    .pdf-link:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(210, 8, 8, 0.4);
+        background: linear-gradient(135deg, #ff1f1f, #d20808);
     }
   </style>
 </head>
 <body>
 <header>
-    <a href="#" class="logo">Aspyr<span>Pathways</span></a>
+    <a href="index.html" class="logo-button">Aspyr<span>Pathways</span></a>
     <nav>
         <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#networks">Networks</a></li>
             <li><a href="connectwithcounselors.html">Connect with Counselors</a></li>
             <li><a href="dp.html">Diploma Pathways</a></li>
         </ul>
@@ -130,21 +142,21 @@
 </header>
 
 <div class="content-container">
-    
+    <h1>Diploma Pathways</h1>
     <a href="https://resources.finalsite.net/images/v1686228813/hsek12inus/g3aroo3o5rlrde2d1zvn/Diploma_Pathways.pdf"
        target="_blank"
        class="pdf-link">
-        Open Graduation Requirements PDF
+        Open Diploma Pathways PDF
     </a>
     <a href="https://fhs.hseschools.org/academics/course-guide"
        target="_blank"
        class="pdf-link">
         Visit Course Guides
-</a>
-        <a href="https://fhs.hseschools.org/academics/course-guide"
-        target="_blank"
-        class="pdf-link">
-       Explore Clubs
+    </a>
+    <a href="https://fhs.hseschools.org/student-life/activities-and-clubs-new"
+       target="_blank"
+       class="pdf-link">
+        Explore Clubs
     </a>
 </div>
 </body>
