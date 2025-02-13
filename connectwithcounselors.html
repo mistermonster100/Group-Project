@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,86 +6,112 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Counselors</title>
     <style>
-        body {
-          font-family: Arial, sans-serif;
-          margin: 0;
-          padding: 0;
-          background-color: #1A1A1A;
-          min-height: 100vh;
-          overflow-x: hidden;
-        }
+         body {
+        font-family: 'Inter', sans-serif;
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        color: #ffffff;
+        background-color: #1A1A1A;
+    }
 
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 1rem;
-            z-index: 1000;
-            background-color: #1A1A1A;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: background-color 0.3s ease;
-        }
+    /* Sidebar styles */
+    header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 250px;
+        height: 100vh;
+        background-color: #0f0f0f;
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+    }
 
-        header .logo {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #ffffff;
-            text-decoration: none;
-            white-space: nowrap;
-            margin-left: 20px;
-        }
+    .logo-button {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #dc2e2b;
+        text-decoration: none;
+        padding: 0.75rem;
+        margin-bottom: 3rem;
+        text-align: center;
+        cursor: pointer;
+    }
 
-        header .logo span {
-            color: #dc2e2b;
-        }
+    .logo-button span {
+        color: white;
+    }
 
-        header nav ul {
-            list-style: none;
-            display: flex;
-            gap: 1rem;
-            padding: 0;
-            margin-right: 20px;
-        }
+    header nav {
+        width: 100%;
+    }
 
-        header nav a {
-            color: #FFFFFF;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            position: relative;
-            white-space: nowrap;
-            padding: 0.5rem 0;
-        }
+    header nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
 
-        header nav a::before {
-            content: '';
-            position: absolute;
-            bottom: -3px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: #00eaff;
-            transition: width 0.3s ease;
-        }
+    header nav li {
+        position: relative;
+        padding-left: 1rem;
+    }
 
-        header nav a:hover::before {
-            width: 100%;
-        }
+    header nav a {
+        color: #FFFFFF;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 1.1rem;
+        position: relative;
+        display: inline-block;
+        padding: 0.5rem 0;
+    }
+
+    header nav a::before {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: #00eaff;
+        transition: width 0.3s ease;
+        box-shadow: 0 0 10px #00eaff;
+    }
+
+    header nav a:hover::before {
+        width: 100%;
+    }
+
+/* Adjust Content Layout */
+
+
+.grid-container {
+    margin-left: 320px; /* Increase this value to push it further right */
+    padding: 2rem;
+    transition: margin-left 0.3s ease;
+}
 
         .grid-container {
           display: grid;
           grid-template-columns: 1fr 1fr;
           grid-gap: 15px;
-          width: 90%;
+          width: 110%;
           max-width: 800px;
-          padding: 30px;
+          padding: 20px;
           margin: 100px auto 0;
           position: relative;
           left: 0;
           transform: none;
+          margin-left: 350px; /* Increase this value to push it further right */
+          padding: 2rem;
+          transition: margin-left 0.3s ease;
+}
         }
 
         img {
@@ -172,17 +199,15 @@
 </head>
 <body>
     <header>
-        <a href="#" class="logo">Aspyr<span>Pathways</span></a>
+        <a href="index.html" class="logo-button">Aspyr<span>Pathways</span></a>
         <nav>
             <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#networks">Networks</a></li>
                 <li><a href="connectwithcounselors.html">Connect with Counselors</a></li>
                 <li><a href="dp.html">Diploma Pathways</a></li>
             </ul>
         </nav>
     </header>
-
+    
     <div class="grid-container">
         <!-- Team Red -->
         <div class="counselor-block" style="border-color: #e60000;">
