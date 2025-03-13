@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Arts & Communication</title>
+    <title>Business & Administration</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         /* Global Styles */
@@ -22,17 +22,16 @@
         }
 
         /* Header */
-        .header {
-            text-align: center;
-            padding: 40px 20px;
-            margin-bottom: 40px;
-            background: linear-gradient(135deg, #df0505, #bd0f0f);
-            color: white;
-            border-radius: 15px;
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-        }
-
+       .header {
+    text-align: center;
+    padding: 40px 20px;
+    margin-bottom: 40px;
+    background: linear-gradient(to top, #002f87, #1A6AFF);
+    color: white;
+    border-radius: 15px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
         .header h1 {
             font-size: 3em;
             color: rgb(255, 253, 253);
@@ -61,6 +60,7 @@
             display: flex;
             flex-direction: column;
             gap: 20px;
+
         }
         .course-block:hover, .career-card:hover {
             transform: translateY(-8px);
@@ -84,6 +84,29 @@
             margin-bottom: 18px;
         }
 
+        .course-item {
+            border: 1px solid #ccc;
+            margin: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .course-item h3 {
+            margin-top: 0;
+            font-size: 1.5em;
+        }
+
+        .course-content {
+            margin: 10px 0;
+        }
+
+        .course-item-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Ensures title and plus icon are spaced appropriately */
+        }
+
         .period {
             font-weight: bold;
             color: #ff6b6b;
@@ -104,6 +127,7 @@
             height: 100%;
             background-color: rgba(0, 0, 0, 0.5);
             z-index: 10;
+            overflow-y: scroll;
           }
 /*-------------------------Copy above for confetti------------------------------------- */
 
@@ -128,7 +152,7 @@
         }
 
         .overlay-close:hover {
-            color: #1a73e8;
+            color: #1A6AFF;
         }
 
         /* Responsive Design */
@@ -183,7 +207,7 @@
         .header-link {
             text-decoration: none;
             color: white;
-            background-color: rgba(50, 50, 150, 0.8);
+            background-color: #db0032;;
             padding: 10px 20px;
             border-radius: 8px;
             font-size: 1em;
@@ -194,22 +218,22 @@
 
         .header-link:hover {
             transform: scale(1.2);
-            background-color: rgba(50, 50, 150, 1);
+            background-color: #8331a7;;
         }
 
         .green-plus {
-            position:absolute;
-            transform:translate(10%,-10%);
             color: #28a745; /* Green color */
             font-size: 1.5em;
             cursor: pointer;
             padding-left: 10px;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, color 0.3s ease; /* Smooth transitions for transform and color */
         }
 
         .green-plus:hover {
-            font-size: 1.7em;
+            transform: scale(1.2); /* Gently enlarges the icon */
+            color: #218838; /* Optional: Slightly darkens the green color on hover */
         }
+
         /* Cart Icon Styling */
 
         .cart-icon {
@@ -348,8 +372,8 @@
         </div>
 
         <!-- Rest of the document remains
-          <!-- Rest of the document remains unchanged -->
-        <!-- (Courses, Careers, Overlays, and Script sections are identical to the original) -->
+          
+        (Courses, Careers, Overlays, and Script sections are identical to the original) -->
         
         <!-- Full original right section content goes here -->
         <div class="courses-container">
@@ -380,28 +404,28 @@
                 <h2>Unique Career Paths</h2>
                 
                 <div class="career-card">
-                    <h3>Finacial Analyst</h3>
-                    <p> evaluates financial data to guide businesses and individuals in making informed investment decisions. They analyze market trends, assess financial performance, create reports, and provide recommendations to maximize profitability and minimize risk. Financial analysts often specialize in areas like budgeting, forecasting, or portfolio management. </p>
+                    <h3>Finacial Analyst $82,472/year</h3>
+                    <p> Evaluates financial data to guide businesses and individuals in making informed investment decisions. They analyze market trends, assess financial performance, create reports, and provide recommendations to maximize profitability and minimize risk. Financial analysts often specialize in areas like budgeting, forecasting, or portfolio management. </p>
                 </div>
 
                 <div class="career-card">
-                    <h3>Human resource Director</h3>
-                    <p> oversees an organization’s HR strategies and operations, ensuring they align with company goals. They manage recruitment, employee relations, training, compliance with labor laws, and organizational development. </p>
+                    <h3>Human resource Director $150,625/year</h3>
+                    <p> Oversees an organization’s HR strategies and operations, ensuring they align with company goals. They manage recruitment, employee relations, training, compliance with labor laws, and organizational development. </p>
                 </div>
 
                 <div class="career-card">
-                    <h3>Project Manager</h3>
-                    <p> responsible for planning, executing, and completing projects within a specified scope, timeline, and budget. They coordinate with team members, stakeholders, and clients to ensure project objectives are met. Key tasks include defining project goals, managing resources, mitigating risks, tracking progress, and ensuring deliverables meet quality standards. </p>
+                    <h3>Project Manager $88,053/year</h3>
+                    <p> Responsible for planning, executing, and completing projects within a specified scope, timeline, and budget. They coordinate with team members, stakeholders, and clients to ensure project objectives are met. Key tasks include defining project goals, managing resources, mitigating risks, tracking progress, and ensuring deliverables meet quality standards. </p>
                 </div>
 
                 <div class="career-card">
-                    <h3>Marketing Manager</h3>
-                    <p> develops and oversees strategies to promote a company’s products or services, aiming to meet target audience needs and achieve business goals. They analyze market trends, plan campaigns, manage budgets, and collaborate with teams to create compelling content. </p>
+                    <h3>Marketing Manager $83,488/year</h3>
+                    <p> Develops and oversees strategies to promote a company’s products or services, aiming to meet target audience needs and achieve business goals. They analyze market trends, plan campaigns, manage budgets, and collaborate with teams to create compelling content. </p>
                 </div>
 
                 <div class="career-card">
-                    <h3>Investment Banker</h3>
-                    <p>advises companies, governments, and institutions on financial strategies, including raising capital, mergers, acquisitions, and restructuring. They analyze market trends, prepare financial models, and negotiate deals to help clients achieve their financial and strategic objectives.</p>
+                    <h3>Investment Banker $100,000/year</h3>
+                    <p>Advises companies, governments, and institutions on financial strategies, including raising capital, mergers, acquisitions, and restructuring. They analyze market trends, prepare financial models, and negotiate deals to help clients achieve their financial and strategic objectives.</p>
                 </div>
             </div>
         </div>
