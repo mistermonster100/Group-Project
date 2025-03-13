@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Agriculture & Natural Resources    </title>
+    <title>Arts & Communication</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         /* Global Styles */
@@ -22,64 +22,20 @@
         }
 
         /* Header */
-        /* Modified Header with gradient fade effect */
-        .header {
-            text-align: center;
-            padding: 40px 20px;
-            margin-bottom: 40px;
-            background: linear-gradient(to top, #002f87, #1A6AFF);
-            color: white;
-            border-radius: 15px;
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-        }
-
+       .header {
+    text-align: center;
+    padding: 40px 20px;
+    margin-bottom: 40px;
+    background: linear-gradient(to top, #002f87, #1A6AFF);
+    color: white;
+    border-radius: 15px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
         .header h1 {
             font-size: 3em;
             color: rgb(255, 253, 253);
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-
-        /* Header Links Container - Adjusted for text links */
-        .header-links {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 20px;
-        }
-
-        /* Individual Header Links - New Style with Line Hover Effect */
-        .header-link {
-            text-decoration: none;
-            color: white;
-            font-size: 1em;
-            font-weight: 600;
-            position: relative;
-            margin: 0 15px;
-            padding: 5px 0;
-            transition: color 0.3s ease;
-        }
-
-        .header-link::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            transform: scaleX(0);
-            height: 2px;
-            bottom: 0;
-            left: 0;
-            background-color: #db0032; /* Red underline */
-            transform-origin: bottom right;
-            transition: transform 0.3s ease-out;
-        }
-
-        .header-link:hover {
-            color: #f8f8f8; /* Slightly lighter text on hover */
-        }
-
-        .header-link:hover::after {
-            transform: scaleX(1);
-            transform-origin: bottom left;
         }
 
         /* Layout */
@@ -104,6 +60,7 @@
             display: flex;
             flex-direction: column;
             gap: 20px;
+
         }
         .course-block:hover, .career-card:hover {
             transform: translateY(-8px);
@@ -123,8 +80,31 @@
             border-radius: 12px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
             transition: all 0.3s ease;
-            border-left: 5.5px solid #1A6AFF;
+            border-left: 5.5px solid #1a73e8;
             margin-bottom: 18px;
+        }
+
+        .course-item {
+            border: 1px solid #ccc;
+            margin: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .course-item h3 {
+            margin-top: 0;
+            font-size: 1.5em;
+        }
+
+        .course-content {
+            margin: 10px 0;
+        }
+
+        .course-item-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Ensures title and plus icon are spaced appropriately */
         }
 
         .period {
@@ -136,7 +116,7 @@
         .fifth-period {
             background-color: #ffff9c;
         }
-        
+/*-------------------------Copy below for confetti------------------------------------- */
         /* Overlay Styles */
         .overlay {
             display: none; /* Hidden by default */
@@ -147,7 +127,9 @@
             height: 100%;
             background-color: rgba(0, 0, 0, 0.5);
             z-index: 10;
+            overflow-y: scroll;
           }
+/*-------------------------Copy above for confetti------------------------------------- */
 
         .overlay-content {
             background-color: rgb(255, 255, 255);
@@ -170,7 +152,7 @@
         }
 
         .overlay-close:hover {
-            color: #1a73e8;
+            color: #1A6AFF;
         }
 
         /* Responsive Design */
@@ -212,19 +194,46 @@
             height: 60%;
         }
 
+        /* Header Links Container */
+        .header-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        /* Individual Header Links */
+        .header-link {
+            text-decoration: none;
+            color: white;
+            background-color: #db0032;;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 1em;
+            font-weight: 600;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .header-link:hover {
+            transform: scale(1.2);
+            background-color: #8331a7;;
+        }
+
         .green-plus {
-            position:absolute;
-            transform:translate(10%,-10%);
             color: #28a745; /* Green color */
             font-size: 1.5em;
             cursor: pointer;
             padding-left: 10px;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, color 0.3s ease; /* Smooth transitions for transform and color */
         }
 
         .green-plus:hover {
-            font-size: 1.7em;
+            transform: scale(1.2); /* Gently enlarges the icon */
+            color: #218838; /* Optional: Slightly darkens the green color on hover */
         }
+
         /* Cart Icon Styling */
 
         .cart-icon {
@@ -258,6 +267,7 @@
          transform: scale(1.2);
          cursor: pointer; /* Changes cursor to pointer */
         }
+/*-------------------------Copy below for confetti------------------------------------- */
 
         .confetti {
             position: fixed; /* Ensure the confetti is fixed on the screen */
