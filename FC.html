@@ -232,11 +232,14 @@
         <button class="button" onclick="handleSubmit()">Show My Career Matches</button>
         <div id="results"></div>
     </div>
+</head>
+<body>
 
 <script>
 const careerNetworks = {
     "Arts & Communication": {
         careers: ["Graphic Designer", "Public Relations Specialist", "Digital Media Producer", "Journalist", "Marketing Creative Director"],
+        clubs: ["School newspaper", "Yearbook team", "Art club", "Drama club", "Speech team", "School broadcasts", "Debate club", "School media teams"],
         colleges: [
             {
                 name: "Indiana University",
@@ -245,7 +248,7 @@ const careerNetworks = {
                 requirements: {
                     gpa: "3.0+",
                     sat: "Test Optional",
-                    notes: "Strong portfolio recommended"
+                    notes: "Strong portfolio recommended. Join your school newspaper, yearbook team, or art club now to build your portfolio. Summer camps like IU's Media School High School Journalism Institute give you a taste of college life. Consider creating a digital portfolio of your creative work starting in 9th grade."
                 }
             },
             {
@@ -255,7 +258,7 @@ const careerNetworks = {
                 requirements: {
                     gpa: "3.0+",
                     sat: "Test Optional",
-                    notes: "Portfolio/Audition may be required"
+                    notes: "Portfolio/Audition may be required. Get involved in drama club, speech team, or school broadcasts. Ball State offers Cardinal Journalism Workshop each summer for high schoolers. The university is known for its immersive learning projects where you work with real clients."
                 }
             },
             {
@@ -265,13 +268,14 @@ const careerNetworks = {
                 requirements: {
                     gpa: "3.0+",
                     sat: "Test Optional",
-                    notes: "Small class sizes"
+                    notes: "Small class sizes with personalized attention. Begin exploring communication by joining debate club or school media teams. UIndy hosts high school media days and music competitions. Their 'Greyhound Connection' events let you experience campus while still in high school."
                 }
             }
         ]
     },
     "Engineering & Technology": {
         careers: ["Software Engineer", "Mechanical Engineer", "Data Scientist", "Systems Architect", "Robotics Engineer"],
+        clubs: ["Robotics club", "Coding club", "Math team", "FIRST Robotics", "Science Olympiad", "Computer Science club", "Engineering competitions"],
         colleges: [
             {
                 name: "Rose-Hulman Institute of Technology",
@@ -280,7 +284,7 @@ const careerNetworks = {
                 requirements: {
                     gpa: "3.8+",
                     sat: "1300-1480",
-                    notes: "Strong math background required"
+                    notes: "Strong math background required. Join robotics club, coding club, or math team now. Take the most challenging math and science courses available. Rose-Hulman's 'Operation Catapult' summer program lets high schoolers experience engineering projects. The school is consistently ranked #1 for undergraduate engineering."
                 }
             },
             {
@@ -290,7 +294,7 @@ const careerNetworks = {
                 requirements: {
                     gpa: "3.5+",
                     sat: "1190-1410",
-                    notes: "Competitive admission for engineering/Computer Science"
+                    notes: "Competitive admission for engineering/Computer Science. Start building technical skills through FIRST Robotics, Science Olympiad, or coding clubs. Purdue offers 'Imagination, Innovation, Discovery, and Design' summer workshops for high schoolers. Begin learning programming languages like Python in your free time."
                 }
             },
             {
@@ -300,13 +304,14 @@ const careerNetworks = {
                 requirements: {
                     gpa: "3.3+",
                     sat: "1100+",
-                    notes: "Small class sizes; strong co-op program"
+                    notes: "Small class sizes with strong co-op program. Take part in engineering competitions and science fairs. Valpo hosts 'Engineering Previews' where you can explore labs and meet professors. Their unique 'Engineers Without Borders' program starts community service early with technical skills."
                 }
             }
         ]
     },
     "Medical Network": {
         careers: ["Registered Nurse", "Physical Therapist", "Medical Laboratory Technician", "Healthcare Administrator", "Pharmacist"],
+        clubs: ["HOSA (Health Occupations Students of America)", "Health science clubs", "Red Cross Club", "Science clubs", "Future Medical Professionals", "Volunteer programs at hospitals"],
         colleges: [
             {
                 name: "Indiana University",
@@ -315,7 +320,7 @@ const careerNetworks = {
                 requirements: {
                     gpa: "3.7+",
                     sat: "Test Optional",
-                    notes: "Strong science and math background required"
+                    notes: "Strong science and math background required. Join HOSA (Health Occupations Students of America) if available at your school. Volunteer at hospitals or nursing homes to gain healthcare exposure. IU's 'Mini Medical School' program gives high schoolers hands-on experiences. Focus on biology, chemistry, and anatomy courses."
                 }
             },
             {
@@ -325,7 +330,7 @@ const careerNetworks = {
                 requirements: {
                     gpa: "3.5+",
                     sat: "1170-1350",
-                    notes: "Pre-health focus available"
+                    notes: "Pre-health focus available with strong pharmacy program. Look for health science clubs or Red Cross Club at school. Butler offers 'Pharmacy Camp' for high school students. Their six-year direct admit PharmD program accepts freshmen directly from high school, so planning early is crucial."
                 }
             },
             {
@@ -335,13 +340,14 @@ const careerNetworks = {
                 requirements: {
                     gpa: "3.4+",
                     sat: "1190-1410",
-                    notes: "Strong science and math background"
+                    notes: "Strong science and math background needed. Consider joining science clubs and seeking healthcare volunteering opportunities. Purdue's 'Molecule Makers Lab' summer program introduces pharmacy concepts. Their nursing simulation labs are among the most advanced in the Midwest."
                 }
             }
         ]
     },
     "Business & Administration": {
         careers: ["Financial Analyst", "Marketing Manager", "Project Manager", "Business Development Manager", "Investment Banker"],
+        clubs: ["DECA", "BPA (Business Professionals of America)", "Investment clubs", "Junior Achievement", "Entrepreneurship clubs", "School store", "Financial literacy clubs"],
         colleges: [
             {
                 name: "Indiana University",
@@ -350,7 +356,7 @@ const careerNetworks = {
                 requirements: {
                     gpa: "3.8+",
                     sat: "1230-1420",
-                    notes: "Direct admit requirements higher"
+                    notes: "Direct admit requirements higher for Kelley School of Business. Join DECA, BPA (Business Professionals of America), or create school fundraisers to gain business experience. IU's 'Young Women's Leadership Institute' and 'Kelley Business Experience' summer programs are excellent for high schoolers. The Kelley School requires separate application."
                 }
             },
             {
@@ -360,7 +366,7 @@ const careerNetworks = {
                 requirements: {
                     gpa: "3.5+",
                     sat: "1170-1350",
-                    notes: "Internship opportunities available"
+                    notes: "Internship opportunities available with Indianapolis businesses. Start business clubs or participate in Junior Achievement. Butler's 'Real Business Experience' program gives students startup funding. Their connection to Indianapolis businesses means early internship possibilities, even for freshmen."
                 }
             },
             {
@@ -370,13 +376,14 @@ const careerNetworks = {
                 requirements: {
                     gpa: "3.3+",
                     sat: "1100+",
-                    notes: "Strong international programs"
+                    notes: "Strong international programs with Harlaxton College in England. Explore entrepreneurship by starting small businesses or joining investment clubs. UE's 'Global Enterprise' program connects students with businesses worldwide. Their 'Career Advantage Program' guarantees either graduate school admission or a job after graduation."
                 }
             }
         ]
     },
     "Public Service Network": {
         careers: ["Social Worker", "Urban Planner", "Public Policy Analyst", "Non-profit Manager", "Emergency Management Director"],
+        clubs: ["Student government", "Volunteer groups", "Youth leadership councils", "Peer mediation programs", "Model UN", "Mock trial", "Community service club"],
         colleges: [
             {
                 name: "Indiana University",
@@ -385,7 +392,7 @@ const careerNetworks = {
                 requirements: {
                     gpa: "3.0+",
                     sat: "Test Optional",
-                    notes: "Service learning opportunities"
+                    notes: "Service learning opportunities embedded in curriculum. Get involved in student government, volunteer groups, or community service projects. IU's School of Public and Environmental Affairs (SPEA) offers summer programs for high schoolers. Start tracking service hours now - they'll be valuable for applications."
                 }
             },
             {
@@ -395,7 +402,7 @@ const careerNetworks = {
                 requirements: {
                     gpa: "2.75+",
                     sat: "Test Optional",
-                    notes: "Community engagement focus"
+                    notes: "Community engagement focus with early field experiences. Join youth leadership councils or peer mediation programs. ISU's 'Community Service Learning' program connects students with over 100 agencies. Their 'Police Explorer' programs partner with local law enforcement for early exposure."
                 }
             },
             {
@@ -405,13 +412,14 @@ const careerNetworks = {
                 requirements: {
                     gpa: "3.0+",
                     sat: "Test Optional",
-                    notes: "Internship opportunities in government"
+                    notes: "Internship opportunities in government and non-profits. Participate in Model UN, mock trial, or community improvement projects. Ball State's 'Building Better Communities' initiatives let students work with real cities. They offer weekend immersion experiences for high school students interested in public service."
                 }
             }
         ]
     },
     "Agriculture & Natural Resources": {
         careers: ["Environmental Scientist", "Agricultural Manager", "Wildlife Biologist", "Conservation Officer", "Sustainable Agriculture Consultant"],
+        clubs: ["4-H", "FFA (Future Farmers of America)", "Environmental clubs", "Conservation projects", "Nature centers", "Outdoor education programs", "Garden club"],
         colleges: [
             {
                 name: "Purdue University",
@@ -420,11 +428,9 @@ const careerNetworks = {
                 requirements: {
                     gpa: "3.3+",
                     sat: "1190-1410",
-                    notes: "Research opportunities available"
+                    notes: "Research opportunities available from freshman year. Join 4-H, FFA (Future Farmers of America), or environmental clubs. Purdue's 'Molecular Agriculture Summer Institute' introduces cutting-edge research. Their connections to agriculture industry leaders provide internships throughout Indiana."
                 }
-        
-           
-        
+            },
             {
                 name: "Ball State University",
                 location: "Muncie, IN",
@@ -432,13 +438,14 @@ const careerNetworks = {
                 requirements: {
                     gpa: "3.0+",
                     sat: "Test Optional",
-                    notes: "Field experience opportunities"
+                    notes: "Field experience opportunities in diverse ecosystems. Participate in conservation projects, nature centers, or outdoor education programs. Ball State's 'Field Station' offers high school programs in environmental science. Their sustainability initiatives have won national recognition and provide student leadership roles."
                 }
             }
         ]
     },
     "Innovation": {
         careers: ["Product Manager", "Innovation Consultant", "R&D Specialist", "Technology Entrepreneur", "Design Thinking Consultant"],
+        clubs: ["Invention clubs", "Hackathon participants", "Innovation competitions", "Maker spaces", "Engineering design competitions", "Entrepreneurship club", "App development teams"],
         colleges: [
             {
                 name: "Purdue University",
@@ -447,7 +454,7 @@ const careerNetworks = {
                 requirements: {
                     gpa: "3.5+",
                     sat: "1190-1410",
-                    notes: "Interdisciplinary programs"
+                    notes: "Interdisciplinary programs combining technology and business. Join invention clubs, participate in hackathons, or enter innovation competitions. Purdue's 'Foundry' program helps students launch startups while in school. Their 'Innovation Fast Track' program can lead to patentable ideas as early as sophomore year."
                 }
             },
             {
@@ -457,7 +464,7 @@ const careerNetworks = {
                 requirements: {
                     gpa: "3.3+",
                     sat: "Test Optional",
-                    notes: "Business and technology focus"
+                    notes: "Business and technology focus with startup incubator access. Try creating apps, joining maker spaces, or developing new solutions to school problems. IU's 'Shoemaker Innovation Center' hosts high school idea competitions. Their 'Entrepreneur in Residence' program connects students with successful founders."
                 }
             },
             {
@@ -467,7 +474,7 @@ const careerNetworks = {
                 requirements: {
                     gpa: "3.8+",
                     sat: "1300-1480",
-                    notes: "Strong technical background"
+                    notes: "Strong technical background combined with entrepreneurial mindset. Explore engineering design competitions or develop independent technology projects. Rose-Hulman's 'Startup Conference' welcomes high school participants. Their 'Rose Innovative Student Entrepreneurs' program has launched multiple successful companies."
                 }
             }
         ]
@@ -626,6 +633,7 @@ const questions = [
         }
     },
 ];
+
 
 function createSurvey() {
     const container = document.getElementById("survey-container");
