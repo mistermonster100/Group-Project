@@ -6,33 +6,121 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
         body {
             font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #b1b1b1;
             color: #2c3e50;
             line-height: 1.6;
+            background-color: #b1b1b1;
         }
 
         h1, h2, h3 {
-            margin: 0;
             font-weight: 600;
             color: #0e0e0e;
         }
+        
+        /* Sidebar styles */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 310px;
+            height: 100vh;
+            background-color: #002f87;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+            z-index: 100;
+        }
+
+        .logo-button {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 0.75rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .logo-button span {
+            color: white;
+        }
+
+        header nav {
+            width: 150%;
+        }
+
+        header nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        header nav li {
+            position: relative;
+            padding-left: 1rem;
+        }
+
+        header nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            position: relative;
+            display: inline-block;
+            padding: 0.5rem 0;
+        }
+
+        header nav a::before {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #db0032;
+            transition: width 0.3s ease;
+            box-shadow: 0 0 10px #db0032;
+        }
+
+        header nav a:hover::before {
+            width: 100%;
+        }
+
+        /* Main content styles */
+        .content-container {
+            margin-left: 290px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
 
         /* Header */
-        .header {
+        .main-header {
             text-align: center;
             padding: 40px 20px;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
             background: linear-gradient(to top, #002f87, #1A6AFF);
             color: white;
-            border-radius: 15px;
+            border-radius: 25px;
             box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+            width: 100%;
         }
         
-        .header h1 {
+        .main-header h1 {
             font-size: 3em;
             color: rgb(255, 253, 253);
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
@@ -42,7 +130,7 @@
         .pathway-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 30px;
+            gap: 20px;
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -57,6 +145,7 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             margin-bottom: 30px;
         }
+
 
         /* Pathway Header/Label */
         .pathway-title {
@@ -98,142 +187,176 @@
             padding: 5px;
             border-radius: 5px;
         }
+        
+        /* Back Button */
+        .back-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background: linear-gradient(to right, #002f87, #1A6AFF);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 20px 0;
+            font-weight: 600;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
     </style>
 </head>
 <body>
-    <div class="header">
-        <h1>Pathway Sample Schedules</h1>
-    </div>
+    <!-- Sidebar Navigation -->
+    <header>
+        <a href="#" class="logo-button">Aspyr<span>Pathways</span></a>
+        <nav>
+            <ul>
+                <li><a href="connectwithcounselors.html">Connect with Counselors</a></li>
+                <li><a href="dp.html">Diploma Pathways</a></li>
+                <li><a href="sampleschedules.html">Sample Schedules</a></li>
 
-    <div class="pathway-grid">
-        <!-- Arts & Communication -->
-        <div class="pathway-card">
-            <div class="pathway-title">Arts & Communication</div>
-            <div class="pathway-content">
-                <div class="schedule-block">
-                    <h3>Freshman Year</h3>
-                    <p><span class="period">1st:</span> English 9</p>
-                    <p><span class="period">2nd:</span> Algebra I</p>
-                    <p><span class="period">3rd:</span> Biology</p>
-                    <p><span class="period">4th:</span> World History</p>
-                    <p class="fifth-period"><span class="period">5th:</span> Principles of Broadcasting</p>
-                    <p><span class="period">6th:</span> Physical Education</p>
-                    <p><span class="period">7th:</span> World Language</p>
-                </div>
+            </ul>
+        </nav>
+    </header>
 
-                <div class="schedule-block">
-                    <h3>Sophomore Year</h3>
-                    <p><span class="period">1st:</span> English 10</p>
-                    <p><span class="period">2nd:</span> Geometry</p>
-                    <p><span class="period">3rd:</span> Chemistry</p>
-                    <p><span class="period">4th:</span> Digital Media</p>
-                    <p class="fifth-period"><span class="period">5th:</span> ACP Speech</p>
-                    <p><span class="period">6th:</span> World Language</p>
-                    <p><span class="period">7th:</span> Elective</p>
-                </div>
+    <!-- Main Content -->
+    <div class="content-container">
+        <div class="main-header">
+            <h1>Pathway Sample Schedules</h1>
+        </div>
+        
+        <div class="pathway-grid">
+            <!-- Arts & Communication -->
+            <div class="pathway-card">
+                <div class="pathway-title">Arts & Communication</div>
+                <div class="pathway-content">
+                    <div class="schedule-block">
+                        <h3>Freshman Year</h3>
+                        <p><span class="period">1st:</span> English 9</p>
+                        <p><span class="period">2nd:</span> Algebra I</p>
+                        <p><span class="period">3rd:</span> Biology</p>
+                        <p><span class="period">4th:</span> World History</p>
+                        <p class="fifth-period"><span class="period">5th:</span> Principles of Broadcasting</p>
+                        <p><span class="period">6th:</span> Physical Education</p>
+                        <p><span class="period">7th:</span> World Language</p>
+                    </div>
 
-                <div class="schedule-block">
-                    <h3>Junior Year</h3>
-                    <p><span class="period">1st:</span> English 11</p>
-                    <p><span class="period">2nd:</span> Algebra II</p>
-                    <p><span class="period">3rd:</span> Physics</p>
-                    <p><span class="period">4th:</span> U.S. History</p>
-                    <p class="fifth-period"><span class="period">5th:</span> Audio/Visual Production</p>
-                    <p><span class="period">6th:</span> Newspaper/Yearbook</p>
-                    <p><span class="period">7th:</span> Elective</p>
-                </div>
+                    <div class="schedule-block">
+                        <h3>Sophomore Year</h3>
+                        <p><span class="period">1st:</span> English 10</p>
+                        <p><span class="period">2nd:</span> Geometry</p>
+                        <p><span class="period">3rd:</span> Chemistry</p>
+                        <p><span class="period">4th:</span> Digital Media</p>
+                        <p class="fifth-period"><span class="period">5th:</span> ACP Speech</p>
+                        <p><span class="period">6th:</span> World Language</p>
+                        <p><span class="period">7th:</span> Elective</p>
+                    </div>
 
-                <div class="schedule-block">
-                    <h3>Senior Year</h3>
-                    <p><span class="period">1st:</span> English 12</p>
-                    <p><span class="period">2nd:</span> Math</p>
-                    <p><span class="period">3rd:</span> Government/Economics</p>
-                    <p><span class="period">4th:</span> Mass Media Production</p>
-                    <p class="fifth-period"><span class="period">5th:</span> Advanced Media Production</p>
-                    <p><span class="period">6th:</span> Newspaper/Yearbook</p>
-                    <p><span class="period">7th:</span> Elective</p>
+                    <div class="schedule-block">
+                        <h3>Junior Year</h3>
+                        <p><span class="period">1st:</span> English 11</p>
+                        <p><span class="period">2nd:</span> Algebra II</p>
+                        <p><span class="period">3rd:</span> Physics</p>
+                        <p><span class="period">4th:</span> U.S. History</p>
+                        <p class="fifth-period"><span class="period">5th:</span> Audio/Visual Production</p>
+                        <p><span class="period">6th:</span> Newspaper/Yearbook</p>
+                        <p><span class="period">7th:</span> Elective</p>
+                    </div>
+
+                    <div class="schedule-block">
+                        <h3>Senior Year</h3>
+                        <p><span class="period">1st:</span> English 12</p>
+                        <p><span class="period">2nd:</span> Math</p>
+                        <p><span class="period">3rd:</span> Government/Economics</p>
+                        <p><span class="period">4th:</span> Mass Media Production</p>
+                        <p class="fifth-period"><span class="period">5th:</span> Advanced Media Production</p>
+                        <p><span class="period">6th:</span> Newspaper/Yearbook</p>
+                        <p><span class="period">7th:</span> Elective</p>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Agriculture & Natural Resources -->
-        <div class="pathway-card">
-            <div class="pathway-title">Agriculture & Natural Resources</div>
-            <div class="pathway-content">
-                <div class="schedule-block">
-                    <h3>Freshman Year</h3>
-                    <p><span class="period">1st:</span> English 9</p>
-                    <p><span class="period">2nd:</span> Algebra I</p>
-                    <p><span class="period">3rd:</span> Biology</p>
-                    <p><span class="period">4th:</span> PCC/Health</p>
-                    <p class="fifth-period"><span class="period">5th:</span> World History</p>
-                    <p><span class="period">6th:</span> Elective</p>
-                    <p><span class="period">7th:</span> Elective</p>
-                </div>
+            <!-- Agriculture & Natural Resources -->
+            <div class="pathway-card">
+                <div class="pathway-title">Agriculture & Natural Resources</div>
+                <div class="pathway-content">
+                    <div class="schedule-block">
+                        <h3>Freshman Year</h3>
+                        <p><span class="period">1st:</span> English 9</p>
+                        <p><span class="period">2nd:</span> Algebra I</p>
+                        <p><span class="period">3rd:</span> Biology</p>
+                        <p><span class="period">4th:</span> PCC/Health</p>
+                        <p class="fifth-period"><span class="period">5th:</span> World History</p>
+                        <p><span class="period">6th:</span> Elective</p>
+                        <p><span class="period">7th:</span> Elective</p>
+                    </div>
 
-                <div class="schedule-block">
-                    <h3>Sophomore Year</h3>
-                    <p><span class="period">1st:</span> English 10</p>
-                    <p><span class="period">2nd:</span> Geometry</p>
-                    <p><span class="period">3rd:</span> Chemistry</p>
-                    <p><span class="period">4th:</span> AP Human Geography</p>
-                    <p class="fifth-period"><span class="period">5th:</span> Principals of Agriculture</p>
-                    <p><span class="period">6th:</span> Elective</p>
-                    <p><span class="period">7th:</span> Elective</p>
-                </div>
+                    <div class="schedule-block">
+                        <h3>Sophomore Year</h3>
+                        <p><span class="period">1st:</span> English 10</p>
+                        <p><span class="period">2nd:</span> Geometry</p>
+                        <p><span class="period">3rd:</span> Chemistry</p>
+                        <p><span class="period">4th:</span> AP Human Geography</p>
+                        <p class="fifth-period"><span class="period">5th:</span> Principals of Agriculture</p>
+                        <p><span class="period">6th:</span> Elective</p>
+                        <p><span class="period">7th:</span> Elective</p>
+                    </div>
 
-                <div class="schedule-block">
-                    <h3>Junior Year</h3>
-                    <p><span class="period">1st:</span> ACP Speech/Comp</p>
-                    <p><span class="period">2nd:</span> Algebra II</p>
-                    <p><span class="period">3rd:</span> U.S. History</p>
-                    <p class="fifth-period"><span class="period">4th:</span> AP Environmental Science</p>
-                    <p><span class="period">5th:</span> Elective</p>
-                    <p><span class="period">6th:</span> Elective</p>
-                    <p><span class="period">7th:</span> Elective</p>
-                </div>
+                    <div class="schedule-block">
+                        <h3>Junior Year</h3>
+                        <p><span class="period">1st:</span> ACP Speech/Comp</p>
+                        <p><span class="period">2nd:</span> Algebra II</p>
+                        <p><span class="period">3rd:</span> U.S. History</p>
+                        <p class="fifth-period"><span class="period">4th:</span> AP Environmental Science</p>
+                        <p><span class="period">5th:</span> Elective</p>
+                        <p><span class="period">6th:</span> Elective</p>
+                        <p><span class="period">7th:</span> Elective</p>
+                    </div>
 
-                <div class="schedule-block">
-                    <h3>Senior Year</h3>
-                    <p><span class="period">1st:</span> English 12</p>
-                    <p><span class="period">2nd:</span> Pre-Calc</p>
-                    <p><span class="period">3rd:</span> ACP Gov/Personal Finance</p>
-                    <p class="fifth-period"><span class="period">4th:</span> AP Micro/Macro</p>
-                    <p><span class="period">5th:</span> Elective</p>
-                    <p><span class="period">6th:</span> Elective</p>
-                    <p><span class="period">7th:</span> Elective</p>
+                    <div class="schedule-block">
+                        <h3>Senior Year</h3>
+                        <p><span class="period">1st:</span> English 12</p>
+                        <p><span class="period">2nd:</span> Pre-Calc</p>
+                        <p><span class="period">3rd:</span> ACP Gov/Personal Finance</p>
+                        <p class="fifth-period"><span class="period">4th:</span> AP Micro/Macro</p>
+                        <p><span class="period">5th:</span> Elective</p>
+                        <p><span class="period">6th:</span> Elective</p>
+                        <p><span class="period">7th:</span> Elective</p>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Engineering & Technology -->
-        <div class="pathway-card">
-            <div class="pathway-title">Engineering & Technology</div>
-            <div class="pathway-content">
-                <div class="schedule-block">
-                    <h3>Freshman Year</h3>
-                    <p><span class="period">1st:</span> English 9</p>
-                    <p><span class="period">2nd:</span> Honors Geometry</p>
-                    <p><span class="period">3rd:</span> Honors Biology</p>
-                    <p><span class="period">4th:</span> PCC/Health</p>
-                    <p class="fifth-period"><span class="period">5th:</span> AP Computer Science Principals</p>
-                    <p><span class="period">6th:</span> World Language</p>
-                    <p><span class="period">7th:</span> Performing Arts</p>
-                </div>
+            <!-- Engineering & Technology -->
+            <div class="pathway-card">
+                <div class="pathway-title">Engineering & Technology</div>
+                <div class="pathway-content">
+                    <div class="schedule-block">
+                        <h3>Freshman Year</h3>
+                        <p><span class="period">1st:</span> English 9</p>
+                        <p><span class="period">2nd:</span> Honors Geometry</p>
+                        <p><span class="period">3rd:</span> Honors Biology</p>
+                        <p><span class="period">4th:</span> PCC/Health</p>
+                        <p class="fifth-period"><span class="period">5th:</span> AP Computer Science Principals</p>
+                        <p><span class="period">6th:</span> World Language</p>
+                        <p><span class="period">7th:</span> Performing Arts</p>
+                    </div>
 
-                <div class="schedule-block">
-                    <h3>Sophomore Year</h3>
-                    <p><span class="period">1st:</span> English 10</p>
-                    <p><span class="period">2nd:</span> Honors Algebra II</p>
-                    <p><span class="period">3rd:</span> Honors Chemistry</p>
-                    <p><span class="period">4th:</span> World History</p>
-                    <p class="fifth-period"><span class="period">5th:</span> Intro to Engineering</p>
-                    <p><span class="period">6th:</span> AP World Language</p>
-                    <p><span class="period">7th:</span> Performing Arts</p>
-                </div>
+                    <div class="schedule-block">
+                        <h3>Sophomore Year</h3>
+                        <p><span class="period">1st:</span> English 10</p>
+                        <p><span class="period">2nd:</span> Honors Algebra II</p>
+                        <p><span class="period">3rd:</span> Honors Chemistry</p>
+                        <p><span class="period">4th:</span> World History</p>
+                        <p class="fifth-period"><span class="period">5th:</span> Intro to Engineering</p>
+                        <p><span class="period">6th:</span> AP World Language</p>
+                        <p><span class="period">7th:</span> Performing Arts</p>
+                    </div>
 
-                <div class="schedule-block">
-                    <h3>Junior Year</h3>
+                    <div class="schedule-block">
+                        <h3>Junior Year</h3>
                     <p><span class="period">1st:</span> AP Literature</p>
                     <p><span class="period">2nd:</span> Honors Pre-Calculus</p>
                     <p><span class="period">3rd:</span> AP Physics I</p>
@@ -411,6 +534,9 @@
     <p><span class="period">6th:</span> Goverment</p>
     <p><span class="period">7th:</span> Flex</p>
     </div>
+
+
+
 
 
 
