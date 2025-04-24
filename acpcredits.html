@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ACP Courses and Degree Relevance</title>
+  <style>
+     /* Global Styles */
+     * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: #2c3e50;
+            line-height: 1.6;
+            background-color: #ecebeb;
+            padding: 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        h1, h2, h3 {
+            font-weight: 600;
+            color: #0e0e0e;
+        }
+        
+        /* Sidebar styles */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 310px;
+            height: 100vh;
+            background-color: #002f87;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+            z-index: 100;
+        }
+
+        .logo-button {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 0.75rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .logo-button span {
+            color: white;
+        }
+
+        header nav {
+            width: 100%;
+        }
+
+        header nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        header nav li {
+            position: relative;
+            padding-left: 1rem;
+        }
+
+        header nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            position: relative;
+            display: inline-block;
+            padding: 0.5rem 0;
+        }
+
+        header nav a::before {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #db0032;
+            transition: width 0.3s ease;
+            box-shadow: 0 0 10px #db0032;
+        }
+
+        header nav a:hover::before {
+            width: 100%;
+        }
+
+        /* Main content styles */
+        .content-container {
+            margin-left: 310px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .main-header {
+            text-align: center;
+            padding: 40px 20px;
+            margin-bottom: 30px;
+            background: linear-gradient(to top, #db0032, #ef5f5f);
+            color: white;
+            border-radius: 25px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+            width: 100%;
+        }
+        
+        .main-header h1 {
+            font-size: 3em;
+            color: rgb(255, 253, 253);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        /* Other styles from the second part */
+        select {
+          padding: 8px;
+          margin: 10px 0;
+          width: 350px;
+        }
+        table {
+          width: 100%;
+          border-collapse: collapse;
+          margin-top: 20px;
+        }
+        th, td {
+          border: 1px solid #ccc;
+          padding: 10px;
+          text-align: left;
+        }
+        th {
+          background-color: #f2f2f2;
+        }
+        .notes {
+          margin-top: 30px;
+          background: #f9f9f9;
+          padding: 15px;
+          border-left: 4px solid #fb7f31;
+        }
+        .school-content {
+          display: none;
+        }
+        
+        /* Grid Layout */
+        .pathway-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Pathway Card */
+        .pathway-card {
+            background: rgb(239, 238, 238);
+            border-radius: 15px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            border-left: 5px solid #db0032;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-bottom: 30px;
+        }
+
+
+        /* Pathway Header/Label */
+        .pathway-title {
+            background: linear-gradient(to right, #db0032, #ff6666);
+            color: white;
+            padding: 15px 20px;
+            font-weight: 600;
+            font-size: 1.2em;
+            border-radius: 10px 10px 0 0;
+            text-align: center;
+        }
+
+        /* Schedule Content */
+        .pathway-content {
+            padding: 20px;
+        }
+
+        /* Schedule Block */
+        .schedule-block {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f0f4f8;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .schedule-block h3 {
+            margin-bottom: 15px;
+            color: #db0032;
+        }
+
+        .period {
+            font-weight: bold;
+            color: #ff6b6b;
+        }
+
+        .fifth-period, .seventh-period, .fourth-period {
+            background-color: #ffff9c;
+            padding: 5px;
+            border-radius: 5px;
+        }
+        
+        /* Back Button */
+        .back-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background: linear-gradient(to right, #002f87, #1A6AFF);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 20px 0;
+            font-weight: 600;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <header>
+        <a href="index.html" class="logo-button">Aspyr<span>Pathways</span></a>
+        <nav>
+            <ul>
+                <li><a href="connectwithcounselors.html">Connect with Counselors</a></li>
+                <li><a href="dp.html">Diploma Pathways</a></li>
+                <li><a href="sampleschedules.html">Sample Schedules</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <!-- Main Content -->
+    <div class="content-container">
+        <div class="main-header">
+            <h1>IU ACP Courses at Fishers High School</h1>
+            <h2>Credit Breakdown and Degree Relevance</h2>
+        </div>
+        
+        <label for="college">College:</label><br>
+        <select id="college">
+            <option value="">-- Select a College --</option>
+            <option value="iu">Indiana University</option>
+            <option value="purdue">Purdue University</option>
+            <option value="ballstate">Ball State University</option>
+            <option value="ivytech">Ivy Tech Community College</option>
+        </select>
+
+        <br>
+
+        <label for="school">School:</label><br>
+        <select id="school">
+            <option value="">-- Select a School --</option>
+        </select>
+
+        <!-- Kelley School of Business Content -->
+        <div id="kelley-content" class="school-content">
+            <table>
+                <tr>
+                    <th>Course Title</th>
+                    <th>IU Course Code</th>
+                    <th>Credit Hours</th>
+                    <th>Fulfills Req. For</th>
+                    <th>Common IU Majors/Degrees</th>
+                </tr>
+                <tr>
+                    <td>ENG-W 131 Reading, Writing, & Inquiry I</td>
+                    <td>ENG-W 131</td>
+                    <td>3</td>
+                    <td>English Composition</td>
+                    <td>All majors (Business, Education, Psychology, Journalism)</td>
+                </tr>
+                <tr>
+                    <td>MATH-M 119 Brief Survey of Calculus</td>
+                    <td>MATH-M 119</td>
+                    <td>3</td>
+                    <td>Quantitative Reasoning</td>
+                    <td>Business (Kelley), Econ, Public Affairs, Environmental Mgmt.</td>
+                </tr>
+                <tr>
+                    <td>MATH-M 211 Calculus I</td>
+                    <td>MATH-M 211</td>
+                    <td>3</td>
+                    <td>Calculus Requirement</td>
+                    <td>Business, Math, Informatics, Physics</td>
+                </tr>
+                <tr>
+                    <td>ENG-L 111 Discovering Literature</td>
+                    <td>ENG-L 111</td>
+                    <td>3</td>
+                    <td>Arts & Humanities</td>
+                    <td>English, Journalism, Education, Communications</td>
+                </tr>
+                <tr>
+                    <td>ENG-L 202 Literary Interpretations</td>
+                    <td>ENG-L 202</td>
+                    <td>3</td>
+                    <td>Arts & Humanities</td>
+                    <td>English, Education, Creative Writing, Comp Lit</td>
+                </tr>
+                <tr>
+                    <td>BUS-X 100 Business Admin: Introduction</td>
+                    <td>BUS-X 100</td>
+                    <td>3</td>
+                    <td>Business Foundations</td>
+                    <td>Business (Kelley), Marketing, Finance, Mgmt., Entrepreneurship</td>
+                </tr>
+                <tr>
+                    <td>POLS-Y 103 Intro to American Politics</td>
+                    <td>POLS-Y 103</td>
+                    <td>3</td>
+                    <td>Social & Historical Studies</td>
+                    <td>Poli Sci, Pre-Law, Public Policy, Criminal Justice, Journalism</td>
+                </tr>
+                <tr>
+                    <td>BIOL-L 100 Humans & the Biological World</td>
+                    <td>BIOL-L 100</td>
+                    <td>3</td>
+                    <td>Natural Science (Non-Major)</td>
+                    <td>Nursing, Education, Psychology, Public Health</td>
+                </tr>
+                <tr>
+                    <td>CHEM-C 101/121 Elementary Chemistry & Lab</td>
+                    <td>CHEM-C 101/121</td>
+                    <td>3</td>
+                    <td>Natural Science (Non-Major)</td>
+                    <td>Nursing, Public Health, Environmental Studies, Nutrition Science</td>
+                </tr>
+            </table>
+
+            <div class="notes">
+                <h3>Notes:</h3>
+                <ul>
+                    <li><strong>BUS-X 100, MATH-M 119, and ENG-W 131</strong> are a need for Kelley School of Business majors(take it).</li>
+                    <li><strong>MATH-M 211</strong> is better for STEM and Informatics tracks than M119 ACP Calulus.</li>
+                    <li><strong>ENG-W 131</strong> and <strong>POLS-Y 103</strong> fulfill general education requirements for almost all majors (take it).</li>
+                    <li><strong>BIOL-L 100</strong> and <strong>CHEM-C 101/121</strong> are tailored for health sciences and non-science majors, not for pre-med or biology majors.</li>
+                    <li><strong>ACP credit</strong> is IU credit and typically transferable within IU campuses.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Luddy School Content -->
+        <div id="luddy-content" class="school-content">
+            <table>
+                <tr>
+                    <th>Course Title</th>
+                    <th>IU Course Code</th>
+                    <th>Credit Hours</th>
+                    <th>Fulfills Req. For</th>
+                    <th>Common IU Majors/Degrees</th>
+                </tr>
+                <tr>
+                    <td>ENG-W 131 Reading, Writing, & Inquiry I</td>
+                    <td>ENG-W 131</td>
+                    <td>3</td>
+                    <td>English Composition</td>
+                    <td>All Informatics & Computing majors, Computer Science</td>
+                </tr>
+                <tr>
+                    <td>MATH-M 211 Calculus I</td>
+                    <td>MATH-M 211</td>
+                    <td>3</td>
+                    <td>Mathematics Requirement</td>
+                    <td>Computer Science, Informatics, Data Science, Intelligent Systems</td>
+                </tr>
+                <tr>
+                    <td>ENG-L 111 Discovering Literature</td>
+                    <td>ENG-L 111</td>
+                    <td>3</td>
+                    <td>Arts & Humanities</td>
+                    <td>All Luddy majors (General Education requirement)</td>
+                </tr>
+                <tr>
+                    <td>ENG-L 202 Literary Interpretations</td>
+                    <td>ENG-L 202</td>
+                    <td>3</td>
+                    <td>Arts & Humanities</td>
+                    <td>All Luddy majors (General Education requirement)</td>
+                </tr>
+                <tr>
+                    <td>POLS-Y 103 Intro to American Politics</td>
+                    <td>POLS-Y 103</td>
+                    <td>3</td>
+                    <td>Social & Historical Studies</td>
+                    <td>All Luddy majors (General Education requirement)</td>
+                </tr>
+                <tr>
+                    <td>BUS-X 100 Business Admin: Introduction</td>
+                    <td>BUS-X 100</td>
+                    <td>3</td>
+                    <td>Elective</td>
+                    <td>Informatics with Business Cognate, Cybersecurity & Global Policy</td>
+                </tr>
+                <tr>
+                    <td>BIOL-L 100 Humans & the Biological World</td>
+                    <td>BIOL-L 100</td>
+                    <td>3</td>
+                    <td>Natural Science</td>
+                    <td>Bioinformatics, Health Informatics, Human-Computer Interaction</td>
+                </tr>
+                <tr>
+                    <td>CHEM-C 101/121 Elementary Chemistry & Lab</td>
+                    <td>CHEM-C 101/121</td>
+                    <td>3</td>
+                    <td>Natural Science</td>
+                    <td>Bioinformatics, Health Informatics, Data Science</td>
+                </tr>
+            </table>
+
+            <div class="notes">
+                <h3>Notes:</h3>
+                <ul>
+                    <li><strong>MATH-M 211</strong> is essential for Computer Science and most Luddy majors(take it).</li>
+                    <li><strong>ENG-W 131</strong> fulfills the English composition requirement for all majors(take it).</li>
+                    <li><strong>ACP Math courses</strong> will prepare for core courses in Informatics, Computing, and Engineering.</li>
+                    <li><strong>BIOL-L 100</strong> and <strong>CHEM-C 101/121</strong> are particularly valuable for students interested in bioinformatics or health informatics tracks.</li>
+                    <li><strong>ACP credit</strong> is IU credit and typically transferable within IU campuses.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- School of Sciences Content -->
+        <div id="sciences-content" class="school-content">
+            <table>
+                <tr>
+                    <th>Course Title</th>
+                    <th>IU Course Code</th>
+                    <th>Credit Hours</th>
+                    <th>Fulfills Req. For</th>
+                    <th>Common IU Majors/Degrees</th>
+                </tr>
+                <tr>
+                    <td>ENG-W 131 Reading, Writing, & Inquiry I</td>
+                    <td>ENG-W 131</td>
+                    <td>3</td>
+                    <td>English Composition</td>
+                    <td>All Science majors (Biology, Chemistry, Physics, Math)</td>
+                </tr>
+                <tr>
+                    <td>MATH-M 211 Calculus I</td>
+                    <td>MATH-M 211</td>
+                    <td>3</td>
+                    <td>Mathematics Requirement</td>
+                    <td>Physics, Chemistry, Mathematics, Biochemistry</td>
+                </tr>
+                <tr>
+                    <td>COLL-P 155 Public Speaking</td>
+                    <td>COLL-P 155</td>
+                    <td>3</td>
+                    <td>Communications</td>
+                    <td>All Science majors (Professional Development)</td>
+                </tr>
+                <tr>
+                    <td>ENG-L 111 Discovering Literature</td>
+                    <td>ENG-L 111</td>
+                    <td>3</td>
+                    <td>Arts & Humanities</td>
+                    <td>All Science majors (General Education requirement)</td>
+                </tr>
+                <tr>
+                    <td>ENG-L 202 Literary Interpretations</td>
+                    <td>ENG-L 202</td>
+                    <td>3</td>
+                    <td>Arts & Humanities</td>
+                    <td>All Science majors (General Education requirement)</td>
+                </tr>
+                <tr>
+                    <td>BUS-X 100 Business Admin: Introduction</td>
+                    <td>BUS-X 100</td>
+                    <td>3</td>
+                    <td>Elective</td>
+                    <td>Science & Entrepreneurship, Science Management</td>
+                </tr>
+                <tr>
+                    <td>POLS-Y 103 Intro to American Politics</td>
+                    <td>POLS-Y 103</td>
+                    <td>3</td>
+                    <td>Social & Historical Studies</td>
+                    <td>All Science majors (General Education requirement)</td>
+                </tr>
+            </table>
+
+            <div class="notes">
+                <h3>Notes:</h3>
+                <ul>
+                    <li><strong>MATH-M 211</strong> is critical for all physical science and mathematics majors.</li>
+                    <li><strong>ACP Science & Math courses</strong> will prepare for core courses in the School of Sciences.</li>
+                    <li><strong>COLL-P 155</strong> helps develop communication skills essential for research presentations.</li>
+                    <li><strong>ENG-W 131</strong> fulfills the English composition requirement for all science majors.</li>
+                    <li><strong>ACP credit</strong> is IU credit and typically transferable within IU campuses.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- College of Arts and Sciences Content -->
+        <div id="arts-sciences-content" class="school-content">
+            <table>
+                <tr>
+                    <th>Course Title</th>
+                    <th>IU Course Code</th>
+                    <th>Credit Hours</th>
+                    <th>Fulfills Req. For</th>
+                    <th>Common IU Majors/Degrees</th>
+                </tr>
+                <tr>
+                    <td>ENG-W 131 Reading, Writing, & Inquiry I</td>
+                    <td>ENG-W 131</td>
+                    <td>3</td>
+                    <td>English Composition</td>
+                    <td>All Arts & Sciences majors</td>
+                </tr>
+                <tr>
+                    <td>MATH-M 118 Finite Mathematics</td>
+                    <td>MATH-M 118</td>
+                    <td>3</td>
+                    <td>Mathematics Requirement</td>
+                    <td>Psychology, Sociology, Anthropology, History</td>
+                </tr>
+                <tr>
+                    <td>MATH-M 119 Brief Survey of Calculus</td>
+                    <td>MATH-M 119</td>
+                    <td>3</td>
+                    <td>Mathematics Requirement</td>
+                    <td>Economics, Statistics, Some Social Sciences</td>
+                </tr>
+                <tr>
+                    <td>MATH-M 211 Calculus I</td>
+                    <td>MATH-M 211</td>
+                    <td>3</td>
+                    <td>Mathematics Requirement</td>
+                    <td>Physics, Chemistry, Mathematics, Astronomy</td>
+                </tr>
+                <tr>
+                    <td>COLL-P 155 Public Speaking</td>
+                    <td>COLL-P 155</td>
+                    <td>3</td>
+                    <td>Communications</td>
+                    <td>Communications, Media Studies, International Studies</td>
+                </tr>
+                <tr>
+                    <td>ENG-L 111 Discovering Literature</td>
+                    <td>ENG-L 111</td>
+                    <td>3</td>
+                    <td>Arts & Humanities</td>
+                    <td>English, Comparative Literature, Cultural Studies</td>
+                </tr>
+                <tr>
+                    <td>ENG-L 202 Literary Interpretations</td>
+                    <td>ENG-L 202</td>
+                    <td>3</td>
+                    <td>Arts & Humanities</td>
+                    <td>English, Comparative Literature, Liberal Studies</td>
+                </tr>
+                <tr>
+                    <td>POLS-Y 103 Intro to American Politics</td>
+                    <td>POLS-Y 103</td>
+                    <td>3</td>
+                    <td>Social & Historical Studies</td>
+                    <td>Political Science, International Studies, History</td>
+                </tr>
+                <tr>
+                    <td>CHEM-C 101/121 Elementary Chemistry & Lab</td>
+                    <td>CHEM-C 101/121</td>
+                    <td>3</td>
+                    <td>Natural Science</td>
+                    <td>Environmental Studies, General Sciences, Pre-Health</td>
+                </tr>
+            </table>
+
+            <div class="notes">
+                <h3>Notes:</h3>
+                <ul>
+                    <li><strong>The College of Arts & Sciences</strong> has the most diverse set of majors, so course relevance varies widely by specific program.</li>
+                    <li><strong>MATH options</strong> vary by major: M118 for humanities, M119 for social sciences, M211 for natural sciences.</li>
+                    <li><strong>ENG-L courses</strong> are particularly valuable for humanities majors but fulfill requirements for all College students.</li>
+                    <li><strong>POLS-Y 103</strong> directly applies to Political Science majors but fulfills social studies requirements for all College majors.</li>
+                    <li><strong>ACP credit</strong> is IU credit and typically transferable within IU campuses.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- School of Nursing Content -->
+        <div id="nursing-content" class="school-content">
+            <table>
+                <tr>
+                    <th>Course Title</th>
+                    <th>IU Course Code</th>
+                    <th>Credit Hours</th>
+                    <th>Fulfills Req. For</th>
+                    <th>Common IU Majors/Degrees</th>
+                </tr>
+                <tr>
+                    <td>ENG-W 131 Reading, Writing, & Inquiry I</td>
+                    <td>ENG-W 131</td>
+                    <td>3</td>
+                    <td>English Composition</td>
+                    <td>BSN (Bachelor of Science in Nursing)</td>
+                </tr>
+                <tr>
+                    <td>MATH-M 118 Finite Mathematics</td>
+                    <td>MATH-M 118</td>
+                    <td>3</td>
+                    <td>Mathematics Requirement</td>
+                    <td>BSN, Nursing Administration</td>
+                </tr>
+                <tr>
+                    <td>MATH-M 119 Brief Survey of Calculus</td>
+                    <td>MATH-M 119</td>
+                    <td>3</td>
+                    <td>Advanced Mathematics</td>
+                    <td>Nursing Research, Healthcare Administration</td>
+                </tr>
+                <tr>
+                    <td>MATH-M 211 Calculus I</td>
+                    <td>MATH-M 211</td>
+                    <td>3</td>
+                    <td>Advanced Mathematics</td>
+                    <td>Nursing Research, DNP (Doctor of Nursing Practice)</td>
+                </tr>
+                <tr>
+                    <td>ENG-L 111 Discovering Literature</td>
+                    <td>ENG-L 111</td>
+                    <td>3</td>
+                    <td>Arts & Humanities</td>
+                    <td>BSN (General Education requirement)</td>
+                </tr>
+                <tr>
+                    <td>ENG-L 202 Literary Interpretations</td>
+                    <td>ENG-L 202</td>
+                    <td>3</td>
+                    <td>Arts & Humanities</td>
+                    <td>BSN (General Education requirement)</td>
+                </tr>
+                <tr>
+                    <td>POLS-Y 103 Intro to American Politics</td>
+                    <td>POLS-Y 103</td>
+                    <td>3</td>
+                    <td>Social & Historical Studies</td>
+                    <td>BSN, Healthcare Policy tracks</td>
+                </tr>
+                <tr>
+                    <td>BUS-X 100 Business Admin: Introduction</td>
+                    <td>BUS-X 100</td>
+                    <td>3</td>
+                    <td>Elective</td>
+                    <td>Nursing Administration, Healthcare Management</td>
+                </tr>
+            </table>
+
+            <div class="notes">
+                <h3>Notes:</h3>
+                <ul>
+                    <li><strong>ENG-W 131</strong> is required for all nursing students for developing clinical documentation skills.</li>
+                    <li><strong>MATH-M 118</strong> is the minimum math requirement for most nursing students.</li>
+                    <li><strong>ACP Science courses</strong> will prepare for core nursing prerequisites not listed here (e.g., Anatomy, Physiology).</li>
+                    <li><strong>BUS-X 100</strong> is valuable for students interested in nursing administration or management roles.</li>
+                    <li><strong>POLS-Y 103</strong> provides helpful background for understanding healthcare policy issues.</li>
+                    <li><strong>ACP credit</strong> is IU credit and typically transferable within IU campuses.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const schoolsByCollege = {
+        iu: [
+            "Kelley School of Business",
+            "Luddy School of Informatics, Computing, and Engineering",
+            "School of Sciences",
+            "College of Arts and Sciences",
+            "School of Nursing"
+        ],
+        purdue: [],
+        ballstate: [],
+        ivytech: []
+        };
+
+        const schoolToContentMap = {
+        "Kelley School of Business": "kelley-content",
+        "Luddy School of Informatics, Computing, and Engineering": "luddy-content",
+        "School of Sciences": "sciences-content",
+        "College of Arts and Sciences": "arts-sciences-content",
+        "School of Nursing": "nursing-content"
+        };
+
+        const collegeSelect = document.getElementById('college');
+        const schoolSelect = document.getElementById('school');
+        const schoolContents = document.querySelectorAll('.school-content');
+
+        collegeSelect.addEventListener('change', () => {
+        const selectedCollege = collegeSelect.value;
+        const schools = schoolsByCollege[selectedCollege] || [];
+
+        schoolSelect.innerHTML = '<option value="">-- Select a School --</option>';
+        hideAllSchoolContents();
+
+        schools.forEach(school => {
+            const option = document.createElement('option');
+            option.value = school;
+            option.textContent = school;
+            schoolSelect.appendChild(option);
+        });
+        });
+
+        schoolSelect.addEventListener('change', () => {
+        const selectedSchool = schoolSelect.value;
+        hideAllSchoolContents();
+
+        if (selectedSchool && schoolToContentMap[selectedSchool]) {
+            document.getElementById(schoolToContentMap[selectedSchool]).style.display = 'block';
+        }
+        });
+
+        function hideAllSchoolContents() {
+        schoolContents.forEach(content => {
+            content.style.display = 'none';
+        });
+        }
+    </script>
+</body>
+</html>
